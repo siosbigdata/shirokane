@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admin_graph.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @admin_graph.title %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @admin_graph.type %>
+</p>
+
+<p>
+  <strong>Term:</strong>
+  <%= @admin_graph.term %>
+</p>
+
+<p>
+  <strong>X:</strong>
+  <%= @admin_graph.x %>
+</p>
+
+<p>
+  <strong>Y:</strong>
+  <%= @admin_graph.y %>
+</p>
+
+<%= link_to 'Edit', edit_admin_graph_path(@admin_graph) %> |
+<%= link_to 'Back', admin_graphs_path %>

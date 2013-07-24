@@ -1,0 +1,9 @@
+<h1>Admin Log in</h1>
+<%= form_tag :controller => 'login', :action => 'create' do -%>
+<div class="field">  <%= label_tag :name, 'login name' %>
+  <%= text_field_tag :name, params[:name] %>
+</div><div class="field">  <%= label_tag :pass, 'password' %>
+  <%= password_field_tag :pass , params[:pass]%>
+</div><div class="actions"><%= submit_tag "ログイン" %>
+</div>
+<% end %>

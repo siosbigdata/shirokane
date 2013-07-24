@@ -1,0 +1,4 @@
+サイドバー
+<% if current_user != nil %>
+  <%= link_to 'ログアウト', {:controller => "login", :action => "destroy",:id=>current_user.id}, :confirm => 'ログアウトしますか？', :method => :delete %>
+<% end %>

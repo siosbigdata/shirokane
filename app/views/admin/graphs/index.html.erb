@@ -1,0 +1,37 @@
+<h1>Listing admin_graphs</h1>
+<%= render 'admin/sidebar' %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Type</th>
+      <th>Term</th>
+      <th>X</th>
+      <th>Y</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_graphs.each do |admin_graph| %>
+      <tr>
+        <td><%= admin_graph.name %></td>
+        <td><%= admin_graph.title %></td>
+        <td><%= admin_graph.type %></td>
+        <td><%= admin_graph.term %></td>
+        <td><%= admin_graph.x %></td>
+        <td><%= admin_graph.y %></td>
+        <td><%= link_to 'Show', admin_graph %></td>
+        <td><%= link_to 'Edit', edit_admin_graph_path(admin_graph) %></td>
+        <td><%= link_to 'Destroy', admin_graph, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Graph', new_admin_graph_path %>

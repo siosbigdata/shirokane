@@ -1,9 +1,22 @@
 Shirokane::Application.routes.draw do
+  get "graph/index"
+
+  namespace :admin do
+    resources :login
+    resources :users
+    resources :graphs
+    resources :groups
+  end
+    
+  resources :login do
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root 'graph#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -53,4 +66,5 @@ Shirokane::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
 end

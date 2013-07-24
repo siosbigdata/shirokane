@@ -1,0 +1,37 @@
+<h1>Listing admin_users</h1>
+<%= render 'admin/sidebar' %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Password digest</th>
+      <th>Title</th>
+      <th>Mail</th>
+      <th>Group</th>
+      <th>Admin</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_users.each do |admin_user| %>
+      <tr>
+        <td><%= admin_user.name %></td>
+        <td><%= admin_user.password_digest %></td>
+        <td><%= admin_user.title %></td>
+        <td><%= admin_user.mail %></td>
+        <td><%= admin_user.group %></td>
+        <td><%= admin_user.admin %></td>
+        <td><%= link_to 'Show', admin_user %></td>
+        <td><%= link_to 'Edit', edit_admin_user_path(admin_user) %></td>
+        <td><%= link_to 'Destroy', admin_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_admin_user_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  group: 1
+  graph1: 1
+  graph2: 1
+  graph3: 1
+  graph4: 1
+
+two:
+  group: 1
+  graph1: 1
+  graph2: 1
+  graph3: 1
+  graph4: 1
