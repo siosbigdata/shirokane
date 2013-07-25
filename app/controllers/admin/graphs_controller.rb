@@ -70,6 +70,6 @@ class Admin::GraphsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_graph_params
-      params.require(:admin_graph).permit(:name, :title, :type, :term, :x, :y)
+      params.require(:admin_graph).permit(:name, :title, :gtype, :term, :x, :y)
     end
 end

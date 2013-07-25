@@ -5,7 +5,7 @@ one:
   password_digest: MyString
   title: MyString
   mail: MyString
-  group: 1
+  group_id: 1
   admin: false
 
 two:
@@ -13,5 +13,5 @@ two:
   password_digest: MyString
   title: MyString
   mail: MyString
-  group: 1
+  group_id: 1
   admin: false

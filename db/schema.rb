@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20130724051444) do
   create_table "graphs", force: true do |t|
     t.string   "name"
     t.string   "title"
-    t.integer  "type"
+    t.integer  "gtype"
     t.integer  "term"
     t.string   "x"
     t.string   "y"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20130724051444) do
     t.string   "password_digest"
     t.string   "title"
     t.string   "mail"
-    t.integer  "group"
+    t.integer  "group_id"
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"

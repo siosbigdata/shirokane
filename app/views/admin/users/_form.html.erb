@@ -16,8 +16,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :password_digest %><br>
-    <%= f.text_field :password_digest %>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
@@ -28,8 +32,8 @@
     <%= f.text_field :mail %>
   </div>
   <div class="field">
-    <%= f.label :group %><br>
-    <%= f.number_field :group %>
+    <%= f.label :group_id %><br>
+    <%= f.collection_select("group_id",Group.find(:all), :id, :title) %>
   </div>
   <div class="field">
     <%= f.label :admin %><br>

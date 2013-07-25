@@ -3,7 +3,7 @@ class CreateGraphs < ActiveRecord::Migration
     create_table :graphs do |t|
       t.string :name
       t.string :title
-      t.integer :type
+      t.integer :gtype
       t.integer :term
       t.string :x
       t.string :y

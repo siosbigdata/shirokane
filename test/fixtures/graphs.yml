@@ -3,7 +3,7 @@
 one:
   name: MyString
   title: MyString
-  type: 1
+  gtype: 1
   term: 1
   x: MyString
   'y': MyString
@@ -11,7 +11,7 @@ one:
 two:
   name: MyString
   title: MyString
-  type: 1
+  gtype: 1
   term: 1
   x: MyString
   'y': MyString

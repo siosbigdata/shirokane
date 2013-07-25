@@ -13,5 +13,16 @@ en:
   title_new: New
   title_edit: Edit
   title_delete: Delete
+  
+  title_user_name: User Name
+  title_user_title: User View Name
+  title_user_mail: User E-Mail
+  title_group_name: Group
+  title_user_admin: Admin
+  
+  title_edit: Edit
+  title_delete: Del
+  title_new: New
+  title_show: Show
 
 

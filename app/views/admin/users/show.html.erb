@@ -10,11 +10,6 @@
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @admin_user.password_digest %>
-</p>
-
-<p>
   <strong>Title:</strong>
   <%= @admin_user.title %>
 </p>
@@ -26,7 +21,7 @@
 
 <p>
   <strong>Group:</strong>
-  <%= @admin_user.group %>
+  <%= @admin_user.group.title %>
 </p>
 
 <p>

@@ -18,7 +18,7 @@ class Admin::GraphsControllerTest < ActionController::TestCase
 
   test "should create admin_graph" do
     assert_difference('Admin::Graph.count') do
-      post :create, admin_graph: { name: @admin_graph.name, term: @admin_graph.term, title: @admin_graph.title, type: @admin_graph.type, x: @admin_graph.x, y: @admin_graph.y }
+      post :create, admin_graph: { name: @admin_graph.name, term: @admin_graph.term, title: @admin_graph.title, gtype: @admin_graph.gtype, x: @admin_graph.x, y: @admin_graph.y }
     end
 
     assert_redirected_to admin_graph_path(assigns(:admin_graph))
