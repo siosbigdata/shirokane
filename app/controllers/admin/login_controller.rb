@@ -1,13 +1,13 @@
 class Admin::LoginController < ApplicationController
   def index
-    render "index"
   end
     
   def create
     user = Admin::User.find_by_name params[:name]
-    if user && user.authenticate(params[:pass])
-      session[:user_id] = user.id
-      redirect_to "/admin/users#index"
+
+    if user && user.authenticate(params[:pass]) && user.admin
+      session[:admin_user_id] = user.id
+      redirect_to "/admin/"
     else
       flash.now.alert = "Invalid"
       render "index"
@@ -15,7 +15,7 @@ class Admin::LoginController < ApplicationController
   end
   
   def destroy
-    session[:user_id] = nil
+    session[:admin_user_id] = nil
     #redirect_to root_path
     render "index"
   end

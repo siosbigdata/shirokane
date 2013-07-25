@@ -1,12 +1,14 @@
 Shirokane::Application.routes.draw do
-  get "home/index"
-  get "graph/index"
+  #get "home/index"
+  #get "graph/index"
 
   namespace :admin do
     resources :login
     resources :users
     resources :graphs
     resources :groups
+    resources :home
+    root 'home#index'
   end
     
   resources :login do

@@ -4,8 +4,9 @@
 		<h1><%= t('title') %>&nbsp;<%= t('admin') %></h1>
 	</div>
 	<div id="login">
-	<% if current_user != nil %>
-	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>current_user.id}, :confirm => t('logout_message'), :method => :delete %>
+	<% if admin_current_user != nil %>
+	  <%= admin_current_user.title %>
+	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>admin_current_user.id}, :confirm => t('logout_message'), :method => :delete %>
 	<% end %>
 	</div>
 </div>
