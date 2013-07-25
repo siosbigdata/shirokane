@@ -26,3 +26,7 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 /config/database.yml
+/config/locales/*.yml
+/config/locales/admin/*.yml
+/config/locales/defaults/*.yml
+/config/locales/graphs/*.yml
