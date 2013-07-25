@@ -1,0 +1,119 @@
+body {
+width:800px;
+margin:0 auto;
+margin-top:10px;
+}
+
+/* ----- HEADER ----- */
+
+#header {
+width:800px;
+height:50px;
+background-color:#333333;
+position:relative;
+}
+#header a:link    { color: #ffffff; }
+#header a:visited { color: #ffffff; }
+#header a:hover   { color: #ffffff; }
+#header a:active  { color: #ffffff; }
+
+#header_admin {
+width:800px;
+height:50px;
+background-color:#cd5c5d;
+position:relative;
+}
+#header_admin a:link    { color: #ffffff; }
+#header_admin a:visited { color: #ffffff; }
+#header_admin a:hover   { color: #ffffff; }
+#header_admin a:active  { color: #ffffff; }
+
+#login {
+	position:absolute;
+	right:5px;
+	bottom: 5px;
+}
+
+/* FAUX LAYOUT WRAPPER */
+
+/* 
+This div is optional: When you delete it the navigation bar and the content block won't have the same size when one of them has a larger height then the other. I recommend you to leave this faux layout wrapper here.
+
+IMPORTANT: In order to make this work you have to download http://csseasy.com/layouts/fixed/background_3.gif (copy past in your address bar) and place it in the same folder as this html file. DON'T HOTLINK to this file.
+*/
+
+#wrapper{
+width:800px;
+background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
+overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
+margin-top:10px;
+}
+
+/* ----- NAVIGATION ----- */
+
+#navigation {
+width:190px;
+min-height:400px; /* for modern browsers */
+height:auto !important; /* for modern browsers */
+height:400px; /* for IE5.x and IE6 */
+background-color:#333333;
+float:left;
+}
+
+#navigation_admin {
+width:190px;
+min-height:400px; /* for modern browsers */
+height:auto !important; /* for modern browsers */
+height:400px; /* for IE5.x and IE6 */
+background-color:#cd5c5d;
+float:left;
+}
+
+/* ----- MAIN CONTENT ----- */
+
+#content { 
+margin-left:200px;
+width:600px;
+min-height:400px; /* for modern browsers */
+height:auto !important; /* for modern browsers */
+height:400px; /* for IE5.x and IE6 */
+/*background-color:#333333;
+/margin-top:10px;*/
+background-color:#ffffff;
+}
+
+#content h1 { color: #000000;}
+#content h2 { color: #000000;}
+#content h3 { color: #000000;}
+#content h4 { color: #000000;}
+
+/* ----- FOOTER ----- */
+
+#footer { 
+margin-top:5px;
+width:800px;
+height:50px;
+background-color:#333333;
+position:relative;
+}
+#footer_admin { 
+margin-top:5px;
+width:800px;
+height:50px;
+background-color:#cd5c5d;
+position:relative;
+}
+#footer h1 {
+	font-size:100%;
+	font-color: #ffffff;
+	position:absolute;
+	right:5px;
+	bottom: 5px;
+}
+#footer_admin h1 {
+	font-size:100%;
+	font-color: #ffffff;
+	position:absolute;
+	right:5px;
+	bottom: 5px;
+}

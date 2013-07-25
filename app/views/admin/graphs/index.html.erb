@@ -1,5 +1,8 @@
+<%= render 'admin/common/header' %>
+<%= render 'admin/common/sidebar' %>
+<div id="content">
 <h1>Listing admin_graphs</h1>
-<%= render 'admin/sidebar' %>
+
 <table>
   <thead>
     <tr>
@@ -35,3 +38,6 @@
 <br>
 
 <%= link_to 'New Graph', new_admin_graph_path %>
+
+</div>
+<%= render 'admin/common/footer' %>

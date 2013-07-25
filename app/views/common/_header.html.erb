@@ -1,0 +1,11 @@
+<div id="header">
+	<div id="logo">
+		<h1><%= t('title') %></h1>
+	</div>
+	<div id="login">
+	<% if current_user != nil %>
+	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>current_user.id}, :confirm => t('logout_message'), :method => :delete %>
+	<% end %>
+	</div>
+</div>
+<div id="wrapper">

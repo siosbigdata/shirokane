@@ -1,6 +1,12 @@
+<%= render 'admin/common/header' %>
+<%= render 'admin/common/sidebar' %>
+<div id="content">
 <h1>Editing admin_graph</h1>
-<%= render 'admin/sidebar' %>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @admin_graph %> |
 <%= link_to 'Back', admin_graphs_path %>
+
+</div>
+<%= render 'admin/common/footer' %>

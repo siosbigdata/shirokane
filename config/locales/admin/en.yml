@@ -1,0 +1,17 @@
+en:
+  adminlogin: AdminLogin
+  admin: Admin
+  menu_user: Users
+  menu_group: Groups
+  menu_graph: Graphs
+  menu_setiing: Setting
+  title_user: Users
+  title_group: Groups
+  title_graph: Graphs
+  title_setting: Setting
+  title_list: List
+  title_new: New
+  title_edit: Edit
+  title_delete: Delete
+
+

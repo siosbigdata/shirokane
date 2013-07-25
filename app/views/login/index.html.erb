@@ -1,9 +1,12 @@
-<h1>Log in</h1>
+<%= render 'common/header' %>
+
+<h2><%= t('login') %></h2>
 <%= form_tag :controller => 'login', :action => 'create' do -%>
-<div class="field">  <%= label_tag :name, 'login name' %>
+<div class="field">  <%= label_tag :name, t('name') %>
   <%= text_field_tag :name, params[:name] %>
-</div><div class="field">  <%= label_tag :pass, 'password' %>
+</div><div class="field">  <%= label_tag :pass, t('password') %>
   <%= password_field_tag :pass , params[:pass]%>
-</div><div class="actions"><%= submit_tag "ログイン" %>
+</div><div class="actions"><%= submit_tag t('login') %>
 </div>
 <% end %>
+<%= render 'common/footer' %>

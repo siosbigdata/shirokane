@@ -1,3 +1,6 @@
+<%= render 'admin/common/header' %>
+<%= render 'admin/common/sidebar' %>
+<div id="content">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -32,3 +35,6 @@
 
 <%= link_to 'Edit', edit_admin_user_path(@admin_user) %> |
 <%= link_to 'Back', admin_users_path %>
+
+</div>
+<%= render 'admin/common/footer' %>

@@ -1,5 +1,8 @@
+<%= render 'admin/common/header' %>
+<%= render 'admin/common/sidebar' %>
+<div id="content">
 <h1>Listing admin_groups</h1>
-<%= render 'admin/sidebar' %>
+
 <table>
   <thead>
     <tr>
@@ -27,3 +30,6 @@
 <br>
 
 <%= link_to 'New Group', new_admin_group_path %>
+
+</div>
+<%= render 'admin/common/footer' %>
