@@ -32,7 +32,6 @@ class ApplicationController < ActionController::Base
       redirect_to :controller => 'login', :action => 'index'
     end
   end
-    
-    
+ 
     
 end

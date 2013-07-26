@@ -2,11 +2,12 @@
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
 <div id="content">
-<h1>New admin_graph</h1>
+	<h1><%= t('menu_graph') %></h1>
+	<h2><%= t('title_new') %></h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', admin_graphs_path %>
+<%= link_to t('title_back'), admin_graphs_path %>
 
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

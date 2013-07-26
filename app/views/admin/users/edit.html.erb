@@ -2,12 +2,12 @@
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
 <div id="content">
-<h1>Editing admin_user</h1>
+	<h1><%= t('menu_user') %></h1>
+	<h2><%= t('title_edit') %></h2>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @admin_user %> |
-<%= link_to 'Back', admin_users_path %>
+<%= link_to t('title_back'), admin_users_path %>
 
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

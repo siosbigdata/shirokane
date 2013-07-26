@@ -28,18 +28,16 @@ ActiveRecord::Schema.define(version: 20130724051444) do
   end
 
   create_table "group_dashboards", force: true do |t|
-    t.integer  "group"
-    t.integer  "graph1"
-    t.integer  "graph2"
-    t.integer  "graph3"
-    t.integer  "graph4"
+    t.integer  "group_id"
+    t.integer  "graph_id"
+    t.integer  "view_rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "group_graphs", force: true do |t|
-    t.integer  "group"
-    t.integer  "graph"
+    t.integer  "group_id"
+    t.integer  "graph_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

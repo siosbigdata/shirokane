@@ -1,7 +1,7 @@
 <%= form_for(@admin_group) do |f| %>
   <% if @admin_group.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@admin_group.errors.count, "error") %> prohibited this admin_group from being saved:</h2>
+      <h2><%= pluralize(@admin_group.errors.count, "error") %> <%= t('error_group_message') %></h2>
 
       <ul>
       <% @admin_group.errors.full_messages.each do |msg| %>

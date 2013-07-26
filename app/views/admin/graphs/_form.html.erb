@@ -1,7 +1,7 @@
 <%= form_for(@admin_graph) do |f| %>
   <% if @admin_graph.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@admin_graph.errors.count, "error") %> prohibited this admin_graph from being saved:</h2>
+      <h2><%= pluralize(@admin_graph.errors.count, "error") %> <%= t('error_graph_message') %></h2>
 
       <ul>
       <% @admin_graph.errors.full_messages.each do |msg| %>
@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :gtype %><br>
-    <%= f.number_field :gtype %>
+    <%= f.select :gtype,{"折線" => 1,"縦棒" => 2} %>
   </div>
   <div class="field">
     <%= f.label :term %><br>
-    <%= f.number_field :term %>
+    <%= f.select :term,{"日" => 1 ,"週" => 2 ,"月" => 3 ,"年" => 4} %>
   </div>
   <div class="field">
     <%= f.label :x %><br>

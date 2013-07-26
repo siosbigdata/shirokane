@@ -2,19 +2,21 @@
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
 <div id="content">
-<p id="notice"><%= notice %></p>
+	<h1><%= t('menu_group') %></h1>
+	<h2><%= t('title_show') %></h2>
+
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= t('title_group_name')%></strong>
   <%= @admin_group.name %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%= t('title_group_title')%></strong>
   <%= @admin_group.title %>
 </p>
 
-<%= link_to 'Edit', edit_admin_group_path(@admin_group) %> |
-<%= link_to 'Back', admin_groups_path %>
+<%= link_to t('title_edit'), edit_admin_group_path(@admin_group) %> |
+<%= link_to t('title_back'), admin_groups_path %>
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

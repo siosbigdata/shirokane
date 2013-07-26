@@ -6,6 +6,8 @@ class Admin::GraphsController < ApplicationController
   # GET /admin/graphs.json
   def index
     @admin_graphs = Admin::Graph.all
+  @h_gtypes = {1 => "折線",2 => "縦棒"}
+  @h_terms ={1 => "日",2 => "週",3 => "月",4 => "年"}
   end
 
   # GET /admin/graphs/1

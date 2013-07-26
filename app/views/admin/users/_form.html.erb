@@ -1,7 +1,7 @@
 <%= form_for(@admin_user) do |f| %>
   <% if @admin_user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@admin_user.errors.count, "error") %> prohibited this admin_user from being saved:</h2>
+      <h2><%= pluralize(@admin_user.errors.count,"error" )%> <%= t('error_user_message') %></h2>
 
       <ul>
       <% @admin_user.errors.full_messages.each do |msg| %>
@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :mail %><br>
-    <%= f.text_field :mail %>
+    <%= f.email_field :mail %>
   </div>
   <div class="field">
     <%= f.label :group_id %><br>

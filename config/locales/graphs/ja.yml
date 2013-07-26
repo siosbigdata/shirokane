@@ -1,4 +1,9 @@
 ja:
-  login: ログイン2
+  login: ログイン
+  logout: ログアウト
+  logout_message: ログアウトしますか？
+  login_notice: ログインしてください
   title: SISO ダッシュボード
   password: パスワード
+  name: 名前
+

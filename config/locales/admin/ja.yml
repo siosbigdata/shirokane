@@ -1,2 +1,55 @@
 ja:
-  aaa:
+  adminlogin: 管理者ログイン
+  admin: 管理者
+  
+  menu_user: ユーザ管理
+  menu_group: グループ管理
+  menu_graph: グラフ管理
+  menu_setting: 設定
+  
+  title_user: ユーザ
+  title_group: グループ
+  title_graph: グラフ
+  title_setting: 設定
+  
+  title_list: 一覧
+  title_new: 新規作成
+  title_edit: 編集
+  title_delete: 削除
+  title_show: 詳細
+  title_back: 戻る
+  
+  title_user_name: ユーザ名
+  title_user_title: 表示名
+  title_user_mail: メールアドレス
+  title_user_admin: 管理者権限
+  title_group_name: グループ名
+  title_group_title: 表示名
+  title_graph_name: グラフ名
+  title_graph_title: 表示名
+  title_graph_gtype: グラフ種類
+  title_graph_term: 期間
+  title_graph_x: X軸表示名
+  title_graph_y: Y軸表示名
+  
+  message_delete: 削除してもよいですか？
+
+  error: エラー
+  error_user_message: ユーザ情報の保存ができませんでした。
+  error_group_message: グループ情報の保存ができませんでした。
+  error_graph_message: グラフ情報の保存ができませんでした。
+  error_mail_message: が正しくありません。
+
+  attributes:
+    name: 名前
+    password: パスワード
+    password_confirmation: 確認用パスワード
+    title: 表示名
+    mail: メールアドレス
+    admin: 管理者権限
+    group: グループ
+    graph: グラフ
+    gtype: グラフ種類
+    term: 期間
+    x: X軸表示名
+    y: Y軸表示名

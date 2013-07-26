@@ -1,11 +1,9 @@
 class CreateGroupDashboards < ActiveRecord::Migration
   def change
     create_table :group_dashboards do |t|
-      t.integer :group
-      t.integer :graph1
-      t.integer :graph2
-      t.integer :graph3
-      t.integer :graph4
+      t.integer :group_id
+      t.integer :graph_id
+      t.integer :view_rank
 
       t.timestamps
     end

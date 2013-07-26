@@ -2,35 +2,36 @@
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
 <div id="content">
-<p id="notice"><%= notice %></p>
+	<h1><%= t('menu_user') %></h1>
+	<h2><%= t('title_show') %></h2>
 
 <p>
-  <strong>Name:</strong>
+  <strong><Name:><%= t('title_user_name') %></strong>
   <%= @admin_user.name %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%= t('title_user_title') %></strong>
   <%= @admin_user.title %>
 </p>
 
 <p>
-  <strong>Mail:</strong>
+  <strong><%= t('title_user_mail') %></strong>
   <%= @admin_user.mail %>
 </p>
 
 <p>
-  <strong>Group:</strong>
+  <strong><%= t('title_group_name') %></strong>
   <%= @admin_user.group.title %>
 </p>
 
 <p>
-  <strong>Admin:</strong>
+  <strong><%= t('title_user_admin') %></strong>
   <%= @admin_user.admin %>
 </p>
 
-<%= link_to 'Edit', edit_admin_user_path(@admin_user) %> |
-<%= link_to 'Back', admin_users_path %>
+<%= link_to t('title_edit'), edit_admin_user_path(@admin_user) %> |
+<%= link_to t('title_back'), admin_users_path %>
 
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

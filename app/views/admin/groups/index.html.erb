@@ -2,15 +2,15 @@
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
 <div id="content">
-<h1>Listing admin_groups</h1>
+	<h1><%= t('menu_group') %></h1>
+	<h2><%= t('title_list') %></h2>
+
 
 <table class="coder">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Title</th>
-      <th></th>
-      <th></th>
+      <th><%= t('title_group_name')%></th>
+      <th><%= t('title_group_title')%></th>
       <th></th>
     </tr>
   </thead>
@@ -18,11 +18,9 @@
   <tbody>
     <% @admin_groups.each do |admin_group| %>
       <tr>
-        <td><%= admin_group.name %></td>
+        <td><%= link_to admin_group.name, edit_admin_group_path(admin_group) %></td>
         <td><%= admin_group.title %></td>
-        <td><%= link_to 'Show', admin_group %></td>
-        <td><%= link_to 'Edit', edit_admin_group_path(admin_group) %></td>
-        <td><%= link_to 'Destroy', admin_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('title_delete'), admin_group, method: :delete, data: { confirm: t('message_delete') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,7 +28,7 @@
 
 <br>
 
-<%= link_to 'New Group', new_admin_group_path %>
+<%= link_to t('title_new'), new_admin_group_path %>
 
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>
