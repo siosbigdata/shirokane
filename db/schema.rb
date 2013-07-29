@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130724051444) do
+ActiveRecord::Schema.define(version: 20130729081954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20130724051444) do
     t.datetime "updated_at"
   end
 
-  create_table "group_dashboards", force: true do |t|
+  create_table "groupdashboards", force: true do |t|
     t.integer  "group_id"
     t.integer  "graph_id"
     t.integer  "view_rank"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20130724051444) do
     t.datetime "updated_at"
   end
 
-  create_table "group_graphs", force: true do |t|
+  create_table "groupgraphs", force: true do |t|
     t.integer  "group_id"
     t.integer  "graph_id"
     t.datetime "created_at"

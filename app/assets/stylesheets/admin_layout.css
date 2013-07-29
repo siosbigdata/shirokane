@@ -1,28 +1,29 @@
 /* ----- HEADER ----- */
-#admn_header {
+#admin_header {
 	width:800px;
 	height:50px;
 	margin: 0 auto;
 	background-color:#cd5c5d;
 	position:relative;
 }
-#admn_header a:link    { color: #ffffff; }
-#admn_header a:visited { color: #ffffff; }
-#admn_header a:hover   { color: #ffffff; }
-#admn_header a:active  { color: #ffffff; }
+#admin_header a:link    { color: #ffffff; }
+#admin_header a:visited { color: #ffffff; }
+#admin_header a:hover   { color: #ffffff; }
+#admin_header a:active  { color: #ffffff; }
 
 /* FAUX LAYOUT WRAPPER */
-#admn_wrapper{
+#admin_wrapper{
 	text-align:left;
 	width:800px;
 	margin: 0 auto;  
 	background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
 	overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
 	margin-top:10px;
+	margin-bottom:10px;
 }
 
 /* ----- NAVIGATION ----- */
-#admn_navigation {
+#admin_navigation {
 	width:190px;
 	min-height:550px; /* for modern browsers */
 	/*height:auto !important; /* for modern browsers */
@@ -32,7 +33,7 @@
 }
 
 /* ----- MAIN CONTENT ----- */
-#admn_content {
+#admin_content {
 	margin-left:200px;
 	width:600px;
 	/*min-height:400px; /* for modern browsers */
@@ -43,10 +44,10 @@
 	background-color:#ffffff;
 }
 
-#admn_content h1 { color: #000000;}
-#admn_content h2 { color: #000000;}
-#admn_content h3 { color: #000000;}
-#admn_content h4 { color: #000000;}
+#admin_content h1 { color: #000000;}
+#admin_content h2 { color: #000000;}
+#admin_content h3 { color: #000000;}
+#admin_content h4 { color: #000000;}
 
 #admin_login {
 	width:300px;
@@ -58,7 +59,7 @@
 
 
 /* ----- FOOTER ----- */
-#admn_footer { 
+#admin_footer { 
 	margin-top:5px;
 	width:800px;
 	height:50px;
@@ -66,7 +67,7 @@
 	background-color:#cd5c5d;
 	position:relative;
 }
-#admn_footer h1 {
+#admin_footer h1 {
 	font-size:100%;
 	font-color: #ffffff;
 	position:absolute;

@@ -1,6 +1,6 @@
-class CreateGroupGraphs < ActiveRecord::Migration
+class CreateAdminGroupgraphs < ActiveRecord::Migration
   def change
-    create_table :group_graphs do |t|
+    create_table :groupgraphs do |t|
       t.integer :group_id
       t.integer :graph_id
 

@@ -1,6 +1,6 @@
-class CreateGroupDashboards < ActiveRecord::Migration
+class CreateAdminGroupdashboards < ActiveRecord::Migration
   def change
-    create_table :group_dashboards do |t|
+    create_table :groupdashboards do |t|
       t.integer :group_id
       t.integer :graph_id
       t.integer :view_rank

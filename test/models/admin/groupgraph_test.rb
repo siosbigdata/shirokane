@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GroupDashboardTest < ActiveSupport::TestCase
+class Admin::GroupgraphTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

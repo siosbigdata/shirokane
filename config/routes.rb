@@ -6,12 +6,18 @@ Shirokane::Application.routes.draw do
     resources :login
     resources :users
     resources :graphs
-    resources :groups do
+    resources :groups
+    resources :home
+    resources :groupgraphs do
       member do
-        get 'select'
+        get 'list'
       end
     end
-    resources :home
+    resources :groupdashboard do
+      member do
+        get 'list'
+      end
+    end
     root 'home#index'
   end
     

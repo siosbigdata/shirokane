@@ -1,3 +1,8 @@
+#coding: utf-8
+# GroupsController
+# Author:: Kazuko Ohmura
+# Date:: 2013.07.25
+
 class Admin::GroupsController < ApplicationController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
   before_action :set_admin_group, only: [:show, :edit, :update, :destroy]
@@ -50,10 +55,6 @@ class Admin::GroupsController < ApplicationController
         format.json { render json: @admin_group.errors, status: :unprocessable_entity }
       end
     end
-  end
-  
-  def select
-    @graph = Admin::Graph.all
   end
 
   # DELETE /admin/groups/1

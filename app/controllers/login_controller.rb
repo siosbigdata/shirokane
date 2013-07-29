@@ -1,3 +1,8 @@
+#coding: utf-8
+# LoginController
+# Author:: Kazuko Ohmura
+# Date:: 2013.07.25
+
 class LoginController < ApplicationController
     def index
       render "index"

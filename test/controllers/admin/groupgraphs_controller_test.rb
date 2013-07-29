@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GroupGraphTest < ActiveSupport::TestCase
+class Admin::GroupgraphsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

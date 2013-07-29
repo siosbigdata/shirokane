@@ -19,7 +19,8 @@ ja:
   title_show: 詳細
   title_back: 戻る
   title_select: 選択
-  title_group_graph_select: グラフを選択する
+  title_send: 送信
+  title_groupgraphs_index: グラフを選択する
   
   title_user_name: ユーザ名
   title_user_title: 表示名
