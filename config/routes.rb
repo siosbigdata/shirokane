@@ -6,7 +6,11 @@ Shirokane::Application.routes.draw do
     resources :login
     resources :users
     resources :graphs
-    resources :groups
+    resources :groups do
+      member do
+        get 'select'
+      end
+    end
     resources :home
     root 'home#index'
   end

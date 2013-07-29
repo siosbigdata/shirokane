@@ -51,6 +51,10 @@ class Admin::GroupsController < ApplicationController
       end
     end
   end
+  
+  def select
+    @graph = Admin::Graph.all
+  end
 
   # DELETE /admin/groups/1
   # DELETE /admin/groups/1.json

@@ -1,80 +1,75 @@
 body {
-width:800px;
+/*width:800px;*/
+width:90%
 margin:0 auto;
 margin-top:10px;
+text-align: center;  
 }
 
 /* ----- HEADER ----- */
 
 #header {
-width:800px;
-height:50px;
-background-color:#333333;
-position:relative;
+	/*width:800px;*/
+	height:50px;
+	background-color:#333333;
+	position:relative;
 }
 #header a:link    { color: #ffffff; }
 #header a:visited { color: #ffffff; }
 #header a:hover   { color: #ffffff; }
 #header a:active  { color: #ffffff; }
 
-#header_admin {
-width:800px;
-height:50px;
-background-color:#cd5c5d;
-position:relative;
-}
-#header_admin a:link    { color: #ffffff; }
-#header_admin a:visited { color: #ffffff; }
-#header_admin a:hover   { color: #ffffff; }
-#header_admin a:active  { color: #ffffff; }
-
-#login {
+#header_contents{
+	color:#ffffff;
 	position:absolute;
 	right:5px;
 	bottom: 5px;
-	color: #FFFFFF
 }
 
+#login {
+	width:300px;
+	margin:0 auto;
+}
+
+#login_action{
+	text-align: right;
+}
+
+#login_title{
+	text-align: left;
+}
 /* FAUX LAYOUT WRAPPER */
 
 #wrapper{
-width:800px;
-background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
-overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
-margin-top:10px;
+	/*width:800px;*/
+	text-align:left;
+	background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
+	overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
+	margin-top:10px;
 }
 
 /* ----- NAVIGATION ----- */
 
 #navigation {
-width:190px;
-min-height:600px; /* for modern browsers */
-height:auto !important; /* for modern browsers */
-height:600px; /* for IE5.x and IE6 */
-background-color:#333333;
-float:left;
-}
-
-#navigation_admin {
-width:190px;
-min-height:550px; /* for modern browsers */
-/*height:auto !important; /* for modern browsers */
-height:550px; /* for IE5.x and IE6 */
-background-color:#cd5c5d;
-float:left;
+	width:190px;
+	min-height:600px; /* for modern browsers */
+	height:auto !important; /* for modern browsers */
+	height:600px; /* for IE5.x and IE6 */
+	background-color:#333333;
+	float:left;
 }
 
 /* ----- MAIN CONTENT ----- */
 
 #content { 
-margin-left:200px;
-width:600px;
-/*min-height:400px; /* for modern browsers */
-height:auto !important; /* for modern browsers */
-/*height:400px; /* for IE5.x and IE6 */
-/*background-color:#333333;
-/margin-top:10px;*/
-background-color:#ffffff;
+	margin-left:200px;
+	/*width:600px;*/
+	/*min-height:400px; /* for modern browsers */
+	height:auto !important; /* for modern browsers */
+	/*height:400px; /* for IE5.x and IE6 */
+	/*background-color:#333333;
+	/margin-top:10px;*/
+	background-color:#ffffff;
 }
 
 #content h1 { color: #000000;}
@@ -85,18 +80,11 @@ background-color:#ffffff;
 /* ----- FOOTER ----- */
 
 #footer { 
-margin-top:5px;
-width:800px;
-height:50px;
-background-color:#333333;
-position:relative;
-}
-#footer_admin { 
-margin-top:5px;
-width:800px;
-height:50px;
-background-color:#cd5c5d;
-position:relative;
+	margin-top:5px;
+	/*width:800px;*/
+	height:50px;
+	background-color:#333333;
+	position:relative;
 }
 #footer h1 {
 	font-size:100%;
@@ -105,10 +93,4 @@ position:relative;
 	right:5px;
 	bottom: 5px;
 }
-#footer_admin h1 {
-	font-size:100%;
-	font-color: #ffffff;
-	position:absolute;
-	right:5px;
-	bottom: 5px;
-}
+

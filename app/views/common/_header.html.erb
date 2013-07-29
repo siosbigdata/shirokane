@@ -3,7 +3,7 @@
 	<div id="logo">
 		<h1><%= t('title') %></h1>
 	</div>
-	<div id="login">
+	<div id="header_contents">
 	<% if current_user != nil %>
 	  <%= current_user.title %> （<%= current_user.group.title %>）
 	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>current_user.id}, :confirm => t('logout_message'), :method => :delete %>

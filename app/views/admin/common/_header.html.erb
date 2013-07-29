@@ -1,9 +1,9 @@
 <!-- administrator header start -->
-<div id="header_admin">
+<div id="admn_header">
 	<div id="logo">
 		<h1><%= t('title') %>&nbsp;<%= t('admin') %></h1>
 	</div>
-	<div id="login">
+	<div id="header_contents">
 	<% if admin_current_user != nil %>
 	  <%= admin_current_user.title %>
 	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>admin_current_user.id}, :confirm => t('logout_message'), :method => :delete %>
@@ -12,4 +12,4 @@
 </div>
 <!-- administrator header end -->
 <!-- administrator wrapper start -->
-<div id="wrapper">
+<div id="admn_wrapper">

@@ -11,7 +11,4 @@
  *= require_self
  *= require_tree .
  */
-@import "layout.css";
-@import "headline.css";
-@import "side.css";
-@import "table.css"
+

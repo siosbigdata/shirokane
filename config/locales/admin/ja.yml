@@ -18,6 +18,8 @@ ja:
   title_delete: 削除
   title_show: 詳細
   title_back: 戻る
+  title_select: 選択
+  title_group_graph_select: グラフを選択する
   
   title_user_name: ユーザ名
   title_user_title: 表示名
