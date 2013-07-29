@@ -3,13 +3,13 @@
 <!-- administrator main content start -->
 <div id="content">
 	<h1><%= t('menu_group') %></h1>
-	<h2><%= t('title_groupgraphs_list') %>:<%= @group.title %></h2>
-
-<%= form_tag('/admin/groupgraphs') do |f| %>
+	<h2><%= t('title_groupdashboards_list') %>:<%= @group.title %></h2>
+	<p><%= t('message_groupdashboards')%></p>
+<%= form_tag('/admin/groupdashboards') do |f| %>
 <table class="coder">
   <thead>
     <tr>
-      <th><%= t('title_select') %></th>
+      <th><%= t('title_rank') %></th>
       <th><%= t('title_graph') %></th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
   	<%= hidden_field_tag :groupid,@group.id %>
     <% @graph.each do |g| %>
       <tr>
-        <td><%= check_box 'groupgraph', g.id,{:checked => @ghash[g.id]}, 1, false %></td>
+        <td><%= text_field_tag 'viewrank[]',{:value => @ghash[g.id],:size=>1} %></td>
         <td><%= g.title %></td>
       </tr>
     <% end %>

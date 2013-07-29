@@ -10,6 +10,7 @@ ja:
   title_user: ユーザ
   title_group: グループ
   title_graph: グラフ
+  title_dashboard: ダッシュボード
   title_setting: 設定
   
   title_list: 一覧
@@ -20,7 +21,8 @@ ja:
   title_back: 戻る
   title_select: 選択
   title_send: 送信
-  title_groupgraphs_index: グラフを選択する
+  title_groupgraphs_list: グラフを選択する
+  title_groupdashboards_list: ダッシュボード用グラフを選択する
   
   title_user_name: ユーザ名
   title_user_title: 表示名
@@ -34,8 +36,10 @@ ja:
   title_graph_term: 期間
   title_graph_x: X軸表示名
   title_graph_y: Y軸表示名
+  title_rank: 表示順
   
   message_delete: 削除してもよいですか？
+  message_groupdashboards: 表示順に1から4の数値を入力してください。
 
   error: エラー
   error_user_message: ユーザ情報の保存ができませんでした。

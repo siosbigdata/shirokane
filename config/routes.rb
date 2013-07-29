@@ -13,7 +13,7 @@ Shirokane::Application.routes.draw do
         get 'list'
       end
     end
-    resources :groupdashboard do
+    resources :groupdashboards do
       member do
         get 'list'
       end
