@@ -7,7 +7,7 @@
 	<h2><%= t('title_show') %></h2>
 
 <p>
-  <stron<%= t('title_graph_name') %></strong>
+  <strong><%= t('title_graph_name') %></strong>
   <%= @admin_graph.name %>
 </p>
 
@@ -18,17 +18,17 @@
 
 <p>
   <strong><%= t('title_graph_analysis_type') %></strong>
-  <%= @admin_graph.analysis_type %>
+  <%= @h_analysis_types[@admin_graph.analysis_type] %>
 </p>
 
 <p>
   <strong><%= t('title_graph_graph_type') %></strong>
-  <%= @admin_graph.graph_type %>
+  <%= @h_graph_types[@admin_graph.graph_type] %>
 </p>
 
 <p>
   <strong><%= t('title_graph_term') %></strong>
-  <%= @admin_graph.term %>
+  <%= @h_terms[@admin_graph.term] %>
 </p>
 
 <p>

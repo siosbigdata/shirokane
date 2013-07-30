@@ -3,7 +3,7 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
-require 'pp'
+#require 'pp'
 
 # グラフ管理用コントローラー
 class Admin::GraphsController < ApplicationController
@@ -14,7 +14,6 @@ class Admin::GraphsController < ApplicationController
   # GET /admin/graphs.json
   def index
     @admin_graphs = Admin::Graph.all
-    pp @admin_graphs
     @h_analysis_types = {1 => "集計",2 => "平均"}
     @h_graph_types = {1 => "折線",2 => "縦棒"}
     @h_terms ={1 => "日",2 => "週",3 => "月",4 => "年"}
@@ -23,6 +22,9 @@ class Admin::GraphsController < ApplicationController
   # GET /admin/graphs/1
   # GET /admin/graphs/1.json
   def show
+    @h_analysis_types = {1 => "集計",2 => "平均"}
+    @h_graph_types = {1 => "折線",2 => "縦棒"}
+    @h_terms ={1 => "日",2 => "週",3 => "月",4 => "年"}
   end
 
   # GET /admin/graphs/new
