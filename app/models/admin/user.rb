@@ -1,3 +1,8 @@
+#coding: utf-8
+# Admin::User Model
+# Author:: Kazuko Ohmura
+# Date:: 2013.07.25
+
 class Admin::User < ActiveRecord::Base
   #テーブル名の指定
   self.table_name = 'users'

@@ -18,8 +18,8 @@
 	margin: 0 auto;  
 	background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
 	overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
-	margin-top:10px;
-	margin-bottom:10px;
+	margin-top:5px;
+	margin-bottom:5px;
 }
 
 /* ----- NAVIGATION ----- */

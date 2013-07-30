@@ -3,11 +3,12 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
+# グラフ表示画面のログイン処理
 class LoginController < ApplicationController
     def index
-      render "index"
     end
-      
+    
+    # ユーザのログイン処理を行う
     def create
       user = User.find_by_name params[:name]
       if user && user.authenticate(params[:pass])
@@ -19,6 +20,7 @@ class LoginController < ApplicationController
       end
     end
     
+    # ユーザのログアウト処理を行う
     def destroy
       session[:user_id] = nil
       #redirect_to root_path

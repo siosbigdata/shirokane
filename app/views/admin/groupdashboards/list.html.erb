@@ -4,8 +4,10 @@
 <div id="content">
 	<h1><%= t('menu_group') %></h1>
 	<h2><%= t('title_groupdashboards_list') %>:<%= @group.title %></h2>
-	<p><%= t('message_groupdashboards')%></p>
+
 <%= form_tag('/admin/groupdashboards') do |f| %>
+<%= hidden_field_tag :group_id,@group.id %>
+
 <table class="coder">
   <thead>
     <tr>
@@ -15,18 +17,17 @@
   </thead>
 
   <tbody>
-  	<%= hidden_field_tag :groupid,@group.id %>
-    <% @graph.each do |g| %>
-      <tr>
-        <td><%= text_field_tag 'viewrank[]',{:value => @ghash[g.id],:size=>1} %></td>
-        <td><%= g.title %></td>
+  	
+    <% for rank in 1..4 do %>
+        <td><%= rank %></td>
+        <td><%= collection_select('graphs',rank,@graph, :id, :title,{:include_blank => t('message_select_blank'),:selected => @hrank[rank]}) %></td>
       </tr>
     <% end %>
     
   </tbody>
 </table>
 <br />
-<p><%= submit_tag t('title_select')%></p>
+<p><%= submit_tag t('title_edit')%></p>
 <% end %>
 <br />
 

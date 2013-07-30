@@ -39,7 +39,7 @@ ja:
   title_rank: 表示順
   
   message_delete: 削除してもよいですか？
-  message_groupdashboards: 表示順に1から4の数値を入力してください。
+  message_select_blank: 選択してください。
 
   error: エラー
   error_user_message: ユーザ情報の保存ができませんでした。

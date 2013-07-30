@@ -5,7 +5,7 @@
 
 #require 'pp'
 
-#グループとグラフの結びつきを管理する
+# グループとグラフの結びつきを管理する
 class Admin::GroupgraphsController < ApplicationController
 
   # GET /admin/groupgraphs/1/list
@@ -30,7 +30,7 @@ class Admin::GroupgraphsController < ApplicationController
   
   #関連グラフの更新
   def create
-    gid = params[:groupid]
+    gid = params[:group_id]
 #    p gid
     gs = params[:groupgraph]
 #    pp gs

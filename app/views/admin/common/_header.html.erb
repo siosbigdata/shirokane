@@ -6,7 +6,7 @@
 	<div id="header_contents">
 	<% if admin_current_user != nil %>
 	  <%= admin_current_user.title %>
-	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>admin_current_user.id}, :confirm => t('logout_message'), :method => :delete %>
+	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>admin_current_user.id},:data=>{:confirm => t('logout_message')} , :method => :delete %>
 	<% end %>
 	</div>
 </div>

@@ -6,6 +6,7 @@
 	<h2><%= t('title_groupgraphs_list') %>:<%= @group.title %></h2>
 
 <%= form_tag('/admin/groupgraphs') do |f| %>
+<%= hidden_field_tag :group_id,@group.id %>
 <table class="coder">
   <thead>
     <tr>
@@ -15,7 +16,7 @@
   </thead>
 
   <tbody>
-  	<%= hidden_field_tag :groupid,@group.id %>
+  	
     <% @graph.each do |g| %>
       <tr>
         <td><%= check_box 'groupgraph', g.id,{:checked => @ghash[g.id]}, 1, false %></td>

@@ -1,3 +1,8 @@
+#coding: utf-8
+# User Model
+# Author:: Kazuko Ohmura
+# Date:: 2013.07.25
+
 class User < ActiveRecord::Base
   #パスワード用処理
     has_secure_password

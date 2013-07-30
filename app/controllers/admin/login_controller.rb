@@ -3,11 +3,12 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
-#管理者のログイン
+# 管理画面のログイン
 class Admin::LoginController < ApplicationController
   def index
   end
-    
+  
+  # ユーザのログイン処理を行う
   def create
     user = Admin::User.find_by_name params[:name]
 
@@ -20,6 +21,7 @@ class Admin::LoginController < ApplicationController
     end
   end
   
+  # ユーザのログアウト処理を行う
   def destroy
     session[:admin_user_id] = nil
     #redirect_to root_path

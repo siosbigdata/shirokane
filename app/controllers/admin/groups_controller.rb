@@ -3,6 +3,7 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
+# グループ管理用クラス
 class Admin::GroupsController < ApplicationController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
   before_action :set_admin_group, only: [:show, :edit, :update, :destroy]
@@ -60,6 +61,10 @@ class Admin::GroupsController < ApplicationController
   # DELETE /admin/groups/1
   # DELETE /admin/groups/1.json
   def destroy
+    # 削除前に関連するテーブルの削除を行う
+    Admin::Groupgraph.delete_all(:group_id  => @admin_group.id)     #グループ-グラフ
+    Admin::Groupdashboard.delete_all(:group_id  => @admin_group.id) #グループ-ダッシュボード
+    
     @admin_group.destroy
     respond_to do |format|
       format.html { redirect_to admin_groups_url }
