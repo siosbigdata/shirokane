@@ -1,0 +1,29 @@
+<%= form_for(@admin_setting) do |f| %>
+  <% if @admin_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_setting.errors.count, "error") %> <%= t('error_setting_message') %></h2>
+
+      <ul>
+      <% @admin_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :parameter %><br>
+    <%= f.text_field :parameter %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

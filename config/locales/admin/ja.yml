@@ -37,15 +37,19 @@ ja:
   title_graph_x: X軸表示名
   title_graph_y: Y軸表示名
   title_rank: 表示順
+  title_setting_name: 設定名
+  title_setting_title: 表示名
+  title_setting_parameter: 値
   
   message_delete: 削除してもよいですか？
   message_select_blank: 選択してください。
 
   error: エラー
-  error_user_message: ユーザ情報の保存ができませんでした。
-  error_group_message: グループ情報の保存ができませんでした。
-  error_graph_message: グラフ情報の保存ができませんでした。
+  error_user_message: ユーザ情報の保存に失敗しました。
+  error_group_message: グループ情報の保存に失敗しました。
+  error_graph_message: グラフ情報の保存に失敗しました。
   error_mail_message: が正しくありません。
+  error_setting_message: 設定値の保存に失敗しました。
 
   attributes:
     name: 名前
@@ -60,3 +64,4 @@ ja:
     term: 期間
     x: X軸表示名
     y: Y軸表示名
+    parameter: 値

@@ -3,9 +3,9 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
+# 管理用グループグラフテーブル
 class Admin::Groupgraph < ActiveRecord::Base
   #テーブル名の指定
     self.table_name = 'groupgraphs'
-    
-  #belongs_to :graph
+
 end

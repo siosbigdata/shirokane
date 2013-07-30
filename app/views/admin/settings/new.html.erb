@@ -1,0 +1,13 @@
+<%= render 'admin/common/header' %>
+<%= render 'admin/common/sidebar' %>
+<!-- administrator main content start -->
+<div id="content">
+	<h1><%= t('menu_setting') %></h1>
+	<h2><%= t('title_new') %></h2>
+
+<%= render 'form' %>
+
+<%= link_to t('title_back'), admin_settings_path %>
+
+</div><!-- administrator main content end -->
+<%= render 'admin/common/footer' %>

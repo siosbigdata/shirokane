@@ -3,6 +3,6 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
+# グラフテーブル
 class Graph < ActiveRecord::Base
-  #belongs_to :groupgraph
 end

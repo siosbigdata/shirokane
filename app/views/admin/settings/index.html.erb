@@ -1,0 +1,33 @@
+<%= render 'admin/common/header' %>
+<%= render 'admin/common/sidebar' %>
+<!-- administrator main content start -->
+<div id="content">
+	<h1><%= t('menu_setting') %></h1>
+	<h2><%= t('title_list') %></h2>
+	<table class="coder">
+	  <thead>
+	    <tr>
+	      <th><%= t('title_setting_name') %></th>
+	      <th><%= t('title_setting_title') %></th>
+	      <th><%= t('title_setting_parameter') %></th>
+	      <th></th>
+	    </tr>
+	  </thead>
+	
+	  <tbody>
+	    <% @admin_settings.each do |admin_setting| %>
+	      <tr>
+	        <td><%= link_to admin_setting.name, edit_admin_setting_path(admin_setting) %></td>
+	        <td><%= admin_setting.title %></td>
+	        <td><%= admin_setting.parameter %></td>
+	        <td><%= link_to t('title_delete'), admin_setting, method: :delete, data: { confirm: t('message_delete') } %></td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+
+<br>
+
+<%= link_to t('title_new'), new_admin_setting_path %>
+</div><!-- administrator main content end -->
+<%= render 'admin/common/footer' %>

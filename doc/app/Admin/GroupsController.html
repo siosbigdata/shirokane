@@ -252,6 +252,10 @@
           <div class="method-source-code" id="destroy-source">
             <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+  <span class="ruby-comment"># 削除前に関連するテーブルの削除を行う</span>
+  <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Groupgraph</span>.<span class="ruby-identifier">delete_all</span>(<span class="ruby-value">:group_id</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@admin_group</span>.<span class="ruby-identifier">id</span>)     <span class="ruby-comment">#グループ-グラフ</span>
+  <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Groupdashboard</span>.<span class="ruby-identifier">delete_all</span>(<span class="ruby-value">:group_id</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@admin_group</span>.<span class="ruby-identifier">id</span>) <span class="ruby-comment">#グループ-ダッシュボード</span>
+  
   <span class="ruby-ivar">@admin_group</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_groups_url</span> }

@@ -1,4 +1,8 @@
 Shirokane::Application.routes.draw do
+  namespace :admin do
+    resources :settings
+  end
+
   #get "home/index"
   #get "graph/index"
 
