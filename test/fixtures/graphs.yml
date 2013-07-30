@@ -3,7 +3,8 @@
 one:
   name: MyString
   title: MyString
-  gtype: 1
+  analysis_type: 1
+  graph_type: 1
   term: 1
   x: MyString
   'y': MyString
@@ -11,7 +12,8 @@ one:
 two:
   name: MyString
   title: MyString
-  gtype: 1
+  analysis_type: 1
+  graph_type: 1
   term: 1
   x: MyString
   'y': MyString

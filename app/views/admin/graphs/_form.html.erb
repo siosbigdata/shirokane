@@ -20,9 +20,15 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :gtype %><br>
-    <%= f.select :gtype,{"折線" => 1,"縦棒" => 2} %>
+    <%= f.label :analysis_type %><br>
+    <%= f.select :analysis_type,{"集計" => 1,"平均" => 2} %>
   </div>
+  
+  <div class="field">
+    <%= f.label :graph_type %><br>
+    <%= f.select :graph_type,{"折線" => 1,"縦棒" => 2} %>
+  </div>
+  
   <div class="field">
     <%= f.label :term %><br>
     <%= f.select :term,{"日" => 1 ,"週" => 2 ,"月" => 3 ,"年" => 4} %>

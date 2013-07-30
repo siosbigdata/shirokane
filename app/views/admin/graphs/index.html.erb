@@ -1,7 +1,8 @@
 <%= render 'admin/common/header' %>
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
-<div id="content">
+<div id="admin_content">
+<div id="admin_sub_content">
 	<h1><%= t('menu_graph') %></h1>
 	<h2><%= t('title_list') %></h2>
 
@@ -10,7 +11,8 @@
     <tr>
       <th><%= t('title_graph_name') %></th>
       <th><%= t('title_graph_title') %></th>
-      <th><%= t('title_graph_gtype') %></th>
+      <th><%= t('title_graph_analysis_type') %></th>
+      <th><%= t('title_graph_graph_type') %></th>
       <th><%= t('title_graph_term') %></th>
       <th><%= t('title_graph_x') %></th>
       <th><%= t('title_graph_y') %></th>
@@ -23,7 +25,8 @@
       <tr>
         <td><%= link_to admin_graph.name, edit_admin_graph_path(admin_graph) %></td>
         <td><%= admin_graph.title %></td>
-        <td><%= @h_gtypes[admin_graph.gtype] %></td>
+        <td><%= @h_analysis_types[admin_graph.analysis_type] %></td>
+        <td><%= @h_graph_types[admin_graph.graph_type] %></td>
         <td><%= @h_terms[admin_graph.term] %></td>
         <td><%= admin_graph.x %></td>
         <td><%= admin_graph.y %></td>
@@ -36,6 +39,6 @@
 <br>
 
 <%= link_to t('title_new'), new_admin_graph_path %>
-
+</div>
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

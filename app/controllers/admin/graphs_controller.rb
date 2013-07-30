@@ -3,6 +3,8 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
+require 'pp'
+
 # グラフ管理用コントローラー
 class Admin::GraphsController < ApplicationController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
@@ -12,7 +14,9 @@ class Admin::GraphsController < ApplicationController
   # GET /admin/graphs.json
   def index
     @admin_graphs = Admin::Graph.all
-    @h_gtypes = {1 => "折線",2 => "縦棒"}
+    pp @admin_graphs
+    @h_analysis_types = {1 => "集計",2 => "平均"}
+    @h_graph_types = {1 => "折線",2 => "縦棒"}
     @h_terms ={1 => "日",2 => "週",3 => "月",4 => "年"}
   end
 
@@ -82,6 +86,6 @@ class Admin::GraphsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_graph_params
-      params.require(:admin_graph).permit(:name, :title, :gtype, :term, :x, :y)
+      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :x, :y)
     end
 end

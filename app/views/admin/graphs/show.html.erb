@@ -1,42 +1,48 @@
 <%= render 'admin/common/header' %>
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
-<div id="content">
+<div id="admin_content">
+<div id="admin_sub_content">
 	<h1><%= t('menu_graph') %></h1>
 	<h2><%= t('title_show') %></h2>
 
 <p>
-  <strong>Name:</strong>
+  <stron<%= t('title_graph_name') %></strong>
   <%= @admin_graph.name %>
 </p>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%= t('title_graph_title') %></strong>
   <%= @admin_graph.title %>
 </p>
 
 <p>
-  <strong>GType:</strong>
-  <%= @admin_graph.gtype %>
+  <strong><%= t('title_graph_analysis_type') %></strong>
+  <%= @admin_graph.analysis_type %>
 </p>
 
 <p>
-  <strong>Term:</strong>
+  <strong><%= t('title_graph_graph_type') %></strong>
+  <%= @admin_graph.graph_type %>
+</p>
+
+<p>
+  <strong><%= t('title_graph_term') %></strong>
   <%= @admin_graph.term %>
 </p>
 
 <p>
-  <strong>X:</strong>
+  <strong><%= t('title_graph_x') %></strong>
   <%= @admin_graph.x %>
 </p>
 
 <p>
-  <strong>Y:</strong>
+  <strong><%= t('title_graph_y') %></strong>
   <%= @admin_graph.y %>
 </p>
 
 <%= link_to t('title_edit'), edit_admin_graph_path(@admin_graph) %> |
 <%= link_to t('title_back'), admin_graphs_path %>
-
+</div>
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

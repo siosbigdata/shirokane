@@ -32,7 +32,8 @@ ja:
   title_group_title: 表示名
   title_graph_name: グラフ名
   title_graph_title: 表示名
-  title_graph_gtype: グラフ種類
+  title_graph_analysis_type: 分析タイプ
+  title_graph_graph_type: グラフタイプ
   title_graph_term: 期間
   title_graph_x: X軸表示名
   title_graph_y: Y軸表示名
@@ -60,7 +61,8 @@ ja:
     admin: 管理者権限
     group: グループ
     graph: グラフ
-    gtype: グラフ種類
+    analysis_type: 分析タイプ
+    graph_type: グラフタイプ
     term: 期間
     x: X軸表示名
     y: Y軸表示名

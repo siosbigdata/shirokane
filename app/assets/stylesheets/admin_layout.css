@@ -1,6 +1,6 @@
 /* ----- HEADER ----- */
 #admin_header {
-	width:800px;
+	/*width:800px;*/
 	height:50px;
 	margin: 0 auto;
 	background-color:#cd5c5d;
@@ -13,34 +13,23 @@
 
 /* FAUX LAYOUT WRAPPER */
 #admin_wrapper{
+	width:100%;
 	text-align:left;
-	width:800px;
-	margin: 0 auto;  
-	background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
 	overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
-	margin-top:5px;
+	margin-top:10px;
 	margin-bottom:5px;
 }
 
 /* ----- NAVIGATION ----- */
 #admin_navigation {
+	display: table-cell;
 	width:190px;
-	min-height:550px; /* for modern browsers */
-	/*height:auto !important; /* for modern browsers */
-	height:550px; /* for IE5.x and IE6 */
 	background-color:#cd5c5d;
-	float:left;
 }
 
 /* ----- MAIN CONTENT ----- */
 #admin_content {
-	margin-left:200px;
-	width:600px;
-	/*min-height:400px; /* for modern browsers */
-	height:auto !important; /* for modern browsers */
-	/*height:400px; /* for IE5.x and IE6 */
-	/*background-color:#333333;
-	/margin-top:10px;*/
+	display: table-cell;
 	background-color:#ffffff;
 }
 
@@ -48,6 +37,11 @@
 #admin_content h2 { color: #000000;}
 #admin_content h3 { color: #000000;}
 #admin_content h4 { color: #000000;}
+
+#admin_sub_content {
+	margin-left:20px;
+	text-align:left;
+}
 
 #admin_login {
 	width:300px;
@@ -61,7 +55,7 @@
 /* ----- FOOTER ----- */
 #admin_footer { 
 	margin-top:5px;
-	width:800px;
+	/*width:800px;*/
 	height:50px;
 	margin: 0 auto;
 	background-color:#cd5c5d;

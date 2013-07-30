@@ -42,33 +42,26 @@ text-align: center;
 
 #wrapper{
 	/*width:800px;*/
+	width:100%;
 	text-align:left;
-	background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
+	/*background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
 	overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
 	margin-top:10px;
+	margin-bottom:5px;
 }
 
 /* ----- NAVIGATION ----- */
 
 #navigation {
+	display: table-cell;
 	width:190px;
-	min-height:600px; /* for modern browsers */
-	height:auto !important; /* for modern browsers */
-	height:600px; /* for IE5.x and IE6 */
 	background-color:#333333;
-	float:left;
 }
 
 /* ----- MAIN CONTENT ----- */
 
 #content { 
-	margin-left:200px;
-	/*width:600px;*/
-	/*min-height:400px; /* for modern browsers */
-	height:auto !important; /* for modern browsers */
-	/*height:400px; /* for IE5.x and IE6 */
-	/*background-color:#333333;
-	/margin-top:10px;*/
+	display: table-cell;
 	background-color:#ffffff;
 }
 
@@ -76,6 +69,11 @@ text-align: center;
 #content h2 { color: #000000;}
 #content h3 { color: #000000;}
 #content h4 { color: #000000;}
+
+#sub_content {
+	margin-left:20px;
+	text-align:left;
+}
 
 /* ----- FOOTER ----- */
 

@@ -19,7 +19,8 @@ ActiveRecord::Schema.define(version: 20130730060314) do
   create_table "graphs", force: true do |t|
     t.string   "name"
     t.string   "title"
-    t.integer  "gtype"
+    t.integer  "analysis_type"
+    t.integer  "graph_type"
     t.integer  "term"
     t.string   "x"
     t.string   "y"
