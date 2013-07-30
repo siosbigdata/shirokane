@@ -66,6 +66,7 @@ class Admin::GraphsController < ApplicationController
     # 削除前に関連するテーブルの削除を行う
     Admin::Groupgraph.delete_all(:graph_id  => @admin_graph.id)     #グループ-グラフ
     Admin::Groupdashboard.delete_all(:graph_id  => @admin_graph.id) #グループ-ダッシュボード
+    # destory
     @admin_graph.destroy
     respond_to do |format|
       format.html { redirect_to admin_graphs_url }
