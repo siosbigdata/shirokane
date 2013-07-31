@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     belongs_to :group
     
     # 入力チェック
-    validates :name,  :presence => true,:uniqueness=>true
+    #validates :name,  :presence => true,:uniqueness=>true
     validates :title,  :presence => true
     validates :mail,  :presence => true,:uniqueness=>true, :email_format => {:message => I18n.t('error_mail_message')}
 end

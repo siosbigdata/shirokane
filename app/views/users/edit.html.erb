@@ -1,0 +1,44 @@
+<%= render 'common/header' %>
+<%= render 'common/sidebar' %>
+<!-- main content start -->
+<div id="content">
+<div id="sub_content">
+	<h2><%= t('title_setting')%></h2>
+	<%= form_for(@user) do |f| %>
+	  <% if @user.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@user.errors.count,"error" )%> <%= t('error_user_message') %></h2>
+	      <ul>
+	        <% @user.errors.full_messages.each do |msg| %>
+	          <li><%= msg %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+	  <% if @successmsg %>
+	  <div id="success_msg"><%= t('message_user_update_success') %><br /></div>
+	  <% end %>
+	  <div class="field">
+	    <%= f.label :title %><br>
+	    <%= f.text_field :title %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :password %><br>
+	    <%= f.password_field :password %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :password_confirmation %><br>
+	    <%= f.password_field :password_confirmation %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :mail %><br>
+	    <%= f.email_field :mail %>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
+
+</div>
+</div><!-- main content end -->
+<%= render 'common/footer' %>

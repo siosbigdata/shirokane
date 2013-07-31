@@ -5,13 +5,18 @@
 <tbody>
 	<tr><td colspan="2"><h2 id="login_title"><%= t('adminlogin') %></h2></td></tr>
 	<tr>
-		<th><%= label_tag :name, t('name') %></th>
-		<td><%= text_field_tag :name, params[:name] %></td>
+		<th><%= label_tag :mail, t('mail') %></th>
+		<td><%= text_field_tag :mail, params[:mail] %></td>
 	</tr>
 	<tr>
 		<th><%= label_tag :pass, t('password') %></th>
 		<td><%= password_field_tag :pass , params[:pass]%></td>
 	</tr>
+	<% if @errormsg %>
+		<tr><td colspan="2">
+		<div id="error_msg"><%= t('error_login_message') %><br /></div>
+		</td></tr>
+	<% end %>
 	<tr><td colspan="2"><div id="login_action"><%= submit_tag t('login') %></div></td></tr>
 </tbody>
 </table>

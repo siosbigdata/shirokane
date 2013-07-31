@@ -1,8 +1,8 @@
 #coding: utf-8
-# GraphHelper
+# GraphsHelper
 # Author:: Kazuko Ohmura
-# Date:: 2013.07.25
+# Date:: 2013.07.31
 
 # グラフヘルパー
-module GraphHelper
+module GraphsHelper
 end

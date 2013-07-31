@@ -6,4 +6,7 @@ ja:
   title: SISO ダッシュボード
   password: パスワード
   name: 名前
-
+  mail: メールアドレス
+  title_home: ホーム
+  message_user_update_success: 更新しました。
+  error_login_message: メールアドレスまたはパスワードが正しくありません。

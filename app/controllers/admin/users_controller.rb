@@ -1,5 +1,5 @@
 #coding: utf-8
-# UsersController
+# Admin UsersController
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
@@ -76,7 +76,6 @@ class Admin::UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_user_params
-      #params.require(:admin_user).permit(:name, :password_digest, :title, :mail, :group_id, :admin)
       params.require(:admin_user).permit(:name, :password,:password_confirmation, :title, :mail, :group_id, :admin)
     end
 end

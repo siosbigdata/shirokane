@@ -10,13 +10,14 @@ class Admin::LoginController < ApplicationController
   
   # ユーザのログイン処理を行う
   def create
-    user = Admin::User.find_by_name params[:name]
+    user = Admin::User.find_by_mail params[:mail]
 
     if user && user.authenticate(params[:pass]) && user.admin
       session[:admin_user_id] = user.id
       redirect_to "/admin/"
     else
       flash.now.alert = "Invalid"
+      @errormsg = {'msg' => 'error'}
       render "index"
     end
   end

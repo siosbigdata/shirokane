@@ -90,27 +90,34 @@ h3 { clear: both; font-size: 1.1em; color: #000; background: #fff url(images/h3b
 	float: right;
 	width: 643px;
 }
-	.leftcol { 
-		float: left; 
-		padding: 12px 15px;
-		width: 285px; 
-		border:#ccc 1px solid;
-		text-align: justify;
-		margin: 0 0 10px 0;
-	}
-	.rightcol { 
-		float: right; 
-		padding: 10px 15px;
-		width: 285px; 
-		border:#ccc 1px solid;
-		margin: 0 0 10px 0;
-		}
-	.special {
-		clear: both;
-		margin:0px 0 20px 0;	
-		padding: 5px 20px;
-		border: 1px solid #ccc;
-		background: #eee;
-		color: #444;
-	}
 
+.leftcol { 
+	float: left; 
+	padding: 12px 15px;
+	width: 285px; 
+	border:#ccc 1px solid;
+	text-align: justify;
+	margin: 0 0 10px 0;
+}
+.rightcol { 
+	float: right; 
+	padding: 10px 15px;
+	width: 285px; 
+	border:#ccc 1px solid;
+	margin: 0 0 10px 0;
+	}
+.special {
+	clear: both;
+	margin:0px 0 20px 0;	
+	padding: 5px 20px;
+	border: 1px solid #ccc;
+	background: #eee;
+	color: #444;
+}
+
+#success_msg {
+	color: #006633;
+}
+#error_msg {
+	color: #FF0000;
+}

@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(version: 20130730060314) do
   create_table "graphs", force: true do |t|
     t.string   "name"
     t.string   "title"
-    t.integer  "analysis_type"
     t.integer  "graph_type"
     t.integer  "term"
     t.string   "x"
     t.string   "y"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "analysis_type"
   end
 
   create_table "groupdashboards", force: true do |t|
@@ -56,6 +56,31 @@ ActiveRecord::Schema.define(version: 20130730060314) do
     t.string   "parameter"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "td_test1", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test2", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test3", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test4", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test5", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
   end
 
   create_table "users", force: true do |t|

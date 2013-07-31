@@ -5,4 +5,6 @@
 
 # グラフテーブル
 class Graph < ActiveRecord::Base
+  # アソシエーション
+  has_many :groupgraph
 end

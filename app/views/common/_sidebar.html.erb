@@ -1,10 +1,10 @@
 <!-- navigation start -->
 <div id="navigation">
 	<ul class="cds-navi">
-		<li><a href="#">MENU1</a></li>
-		<li><a href="#">MENU2</a></li>
-		<li><a href="#">MENU3</a></li>
-		<li><a href="#">MENU4</a></li>
-		<li><a href="#">MENU5</a></li>
+		<li><a href="/"><%= t('title_home') %></a></li>
+		<% current_graph_menu.each do |m| %>
+			<li><a href="#"><%= m.title %></a></li>
+		<% end %>
+		<li><a href="/users/<%= current_user.id%>/edit"><%= t('title_setting') %></a></li>
 	</ul>
 </div><!-- navigation end -->
