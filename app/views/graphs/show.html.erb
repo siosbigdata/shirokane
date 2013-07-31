@@ -1,0 +1,51 @@
+<%= render 'common/header' %>
+<%= render 'common/sidebar' %>
+<!-- main content start -->
+<div id="content">
+<div id="sub_content">
+	welcome graph ! <%= @oldday %>
+	show<br /><br />
+	
+	<canvas id="<%= @graph.name %>"></canvas>
+	<script>
+	var chartdata = {
+	
+	  "config": {
+	    "title": "<%= @graph.title %>",
+	    /*"subTitle": "<%= @graph.title %>",*/
+	    "type": "line",
+	    "lineWidth": 4,
+	    "colorSet": 
+	          ["red","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
+	    "bgGradient": {
+	            "direction":"vertical",
+	            "from":"#687478",
+	            "to":"#222222"
+	          }
+	  },
+	
+	  "data": [
+	    ["<%= @graph.x %>"<%= @xdata %>],
+	    ["<%= @graph.y %>"<%= @ydata %>]
+	  ]
+	};
+	ccchart.init('<%= @graph.name %>', chartdata)
+	</script>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<br />
+	<% @tdtable.each do |item| %>
+	<%= item.td_time%>:<%= item.td_count%><br />
+	<% end %>
+</div>
+</div><!-- main content end -->
+<%= render 'common/footer' %>

@@ -8,5 +8,6 @@ ja:
   name: 名前
   mail: メールアドレス
   title_home: ホーム
+  title_dashboard: ダッシュボード
   message_user_update_success: 更新しました。
   error_login_message: メールアドレスまたはパスワードが正しくありません。
