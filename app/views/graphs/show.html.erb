@@ -3,25 +3,36 @@
 <!-- main content start -->
 <div id="content">
 <div id="sub_content">
-	welcome graph ! <%= @oldday %>
-	show<br /><br />
-	
+	<h1><%= @graph.title %></h1>
+	<h2><%= @h_terms[@graph_term] %>:<%= @term %></h2>
+	<div id="term_button">
+		<a href="/graphs/<%= @graph.id %>?term=<%= @graph_term %>&add=<%= @add.to_i - 1 %>" class="term_button"><%= t('button_back') %></a>
+		<a href="/graphs/<%= @graph.id %>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>" class="term_button"><%= t('button_prev') %></a>
+	</div>
 	<canvas id="<%= @graph.name %>"></canvas>
+	<br />
+	
 	<script>
 	var chartdata = {
 	
 	  "config": {
-	    "title": "<%= @graph.title %>",
-	    /*"subTitle": "<%= @graph.title %>",*/
-	    "type": "line",
-	    "lineWidth": 4,
+	  	"width": <%= @gconf['graph_width'] %>,
+	  	"height": <%= @gconf['graph_height'] %>,
+	  	/*"onlyChart":"yes",*/
+	    /*"title": "title",*/
+	    /*"subTitle": "subTitle",*/
+	    "type": "<%= @graph_types[@graph.graph_type] %>",
+	    "useVal": "<%= @gconf['graph_useVal'] %>",
+	    "useShadow": "<%= @gconf['graph_useShadow'] %>",
+	    "lineWidth": <%= @gconf['graph_lineWidth'] %>,
 	    "colorSet": 
-	          ["red","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
+	          ["<%= @gconf['graph_lineColor'] %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
 	    "bgGradient": {
 	            "direction":"vertical",
-	            "from":"#687478",
-	            "to":"#222222"
-	          }
+	            "from":"<%= @gconf['graph_bgfrom'] %>",
+	            "to":"<%= @gconf['graph_bgto'] %>"
+	         },
+	    "textColor": "<%= @gconf['graph_textColor'] %>"
 	  },
 	
 	  "data": [
@@ -33,7 +44,12 @@
 	</script>
 
 	
-	
+	<div id="term_button">
+		<a href="/graphs/<%= @graph.id %>?term=0" class="term_button"><%= t('button_day') %></a>
+		<a href="/graphs/<%= @graph.id %>?term=1" class="term_button"><%= t('button_week') %></a>
+		<a href="/graphs/<%= @graph.id %>?term=2" class="term_button"><%= t('button_month') %></a>
+		<a href="/graphs/<%= @graph.id %>?term=3" class="term_button"><%= t('button_year') %></a>
+	</div>
 	
 	
 	

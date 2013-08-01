@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= @admin_graph.name %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
@@ -21,17 +21,17 @@
   </div>
   <div class="field">
     <%= f.label :analysis_type %><br>
-    <%= f.select :analysis_type,{"集計" => 1,"平均" => 2} %>
+    <%= f.select :analysis_type,@h_analysis_types.keys.map{|t| [@h_analysis_types[t], t]} %>
   </div>
   
   <div class="field">
     <%= f.label :graph_type %><br>
-    <%= f.select :graph_type,{"折線" => 1,"縦棒" => 2} %>
+    <%= f.select :graph_type,@h_graph_types.keys.map{|t| [@h_graph_types[t], t]} %>
   </div>
   
   <div class="field">
     <%= f.label :term %><br>
-    <%= f.select :term,{"日" => 1 ,"週" => 2 ,"月" => 3 ,"年" => 4} %>
+    <%= f.select :term,@h_terms.keys.map{|t| [@h_terms[t], t]} %>
   </div>
   <div class="field">
     <%= f.label :x %><br>

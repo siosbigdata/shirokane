@@ -10,14 +10,9 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= t('title_setting_name') %><br>
+    <%= @admin_setting.title %>
   </div>
   <div class="field">
     <%= f.label :parameter %><br>

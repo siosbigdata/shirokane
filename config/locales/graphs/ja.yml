@@ -3,7 +3,7 @@ ja:
   logout: ログアウト
   logout_message: ログアウトしますか？
   login_notice: ログインしてください
-  title: SISO ダッシュボード
+  title: SIOS ダッシュボード
   password: パスワード
   name: 名前
   mail: メールアドレス
@@ -11,3 +11,22 @@ ja:
   title_dashboard: ダッシュボード
   message_user_update_success: 更新しました。
   error_login_message: メールアドレスまたはパスワードが正しくありません。
+  
+  #選択肢
+  analysis_types_sum: 集計
+  analysis_types_avg: 平均
+  graph_types_line: 折線
+  graph_types_bar: 縦棒
+  graph_types_pie: 円
+  terms_day: 日
+  terms_week: 週
+  terms_month: 月
+  terms_year: 年
+  
+  #ボタン
+  button_day: 日
+  button_week: 週
+  button_month: 月
+  button_year: 年
+  button_back: 前
+  button_prev: 次

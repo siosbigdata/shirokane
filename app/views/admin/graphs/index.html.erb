@@ -3,8 +3,7 @@
 <!-- administrator main content start -->
 <div id="admin_content">
 <div id="admin_sub_content">
-	<h1><%= t('menu_graph') %></h1>
-	<h2><%= t('title_list') %></h2>
+	<h1><%= t('menu_graph') %></h1><br />
 
 <table class="coder">
   <thead>
@@ -16,7 +15,6 @@
       <th><%= t('title_graph_term') %></th>
       <th><%= t('title_graph_x') %></th>
       <th><%= t('title_graph_y') %></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -30,15 +28,11 @@
         <td><%= @h_terms[admin_graph.term] %></td>
         <td><%= admin_graph.x %></td>
         <td><%= admin_graph.y %></td>
-        <td><%= link_to t('title_delete'), admin_graph, method: :delete, data: { confirm: t('message_delete') } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to t('title_new'), new_admin_graph_path %>
+<br />
 </div>
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>
