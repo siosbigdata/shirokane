@@ -11,7 +11,7 @@ class Admin::SettingsController < ApplicationController
   # GET /admin/settings
   # GET /admin/settings.json
   def index
-    @admin_settings = Admin::Setting.all.order(:title)
+    @admin_settings = Admin::Setting.all.order(:vieworder)
   end
 
   # GET /admin/settings/1
@@ -72,6 +72,8 @@ class Admin::SettingsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_setting
       @admin_setting = Admin::Setting.find(params[:id])
+      @select_yes_no ={"yes"=>"yes","no"=>"no"}
+      @select_color = {"white" => "#FFFFFF","black"=>"#000000","red" => "#FF0000","gray1"=>"#687478","gray2"=>"#222222","blue"=>"#0000ff","yellow"=>"#ffcc00","green"=>"#006600"}
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

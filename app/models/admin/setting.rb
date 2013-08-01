@@ -6,5 +6,8 @@
 # 管理用パラメーターテーブル
 class Admin::Setting < ActiveRecord::Base
   #テーブル名の指定
-    self.table_name = 'settings'
+  self.table_name = 'settings'
+  
+  # 入力チェック
+  validates :parameter,  :presence => true
 end
