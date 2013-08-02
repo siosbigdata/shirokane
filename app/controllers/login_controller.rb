@@ -4,7 +4,7 @@
 # Date:: 2013.07.25
 
 # グラフ表示画面のログイン処理
-class LoginController < ApplicationController
+class LoginController < PublichtmlController
     def index
     end
     

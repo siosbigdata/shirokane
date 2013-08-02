@@ -3,7 +3,45 @@
 <!-- main content start -->
 <div id="content">
 <div id="sub_content">
-	welcome dashboard !
+	<h1><%= Time.now().to_s %></h1>
+<% for rank in 1..4 %>
+    <div>
+    	<h2><%= @graphs[rank].title %>(<%= @terms[rank]%>)</h2>
+	<a href="/graphs/<%= @graphs[rank].id %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
+	</div>
+	<br />
+	
+	<script>
+	var chartdata = {
+	
+	  "config": {
+	  	"width": <%= @gconf['graph_width'].to_i/2 %>,
+	  	"height": <%= @gconf['graph_height'].to_i/2 %>,
+	  	"onlyChart":"yes",
+	    /*"title": "title",*/
+	    /*"subTitle": "subTitle",*/
+	    "type": "<%= @graph_types[@graphs[rank].graph_type] %>",
+	    "useVal": "<%= @gconf['graph_useVal'] %>",
+	    "useShadow": "<%= @gconf['graph_useShadow'] %>",
+	    "lineWidth": <%= @gconf['graph_lineWidth'] %>,
+	    "colorSet": 
+	          ["<%= @gconf['graph_lineColor'] %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
+	    "bgGradient": {
+	            "direction":"vertical",
+	            "from":"<%= @gconf['graph_bgfrom'] %>",
+	            "to":"<%= @gconf['graph_bgto'] %>"
+	         },
+	    "textColor": "<%= @gconf['graph_textColor'] %>"
+	  },
+	
+	  "data": [
+	    ["<%= @graphs[rank].x %>"<%= @xdatas[rank] %>],
+	    ["<%= @graphs[rank].y %>"<%= @ydatas[rank] %>]
+	  ]
+	};
+	ccchart.init('<%= @graphs[rank].name %>', chartdata)
+	</script>
+<% end %>
 
 </div>
 </div><!-- main content end -->

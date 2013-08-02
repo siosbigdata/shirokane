@@ -4,7 +4,7 @@
 # Date:: 2013.07.25
 
 # グループ管理用クラス
-class Admin::GroupsController < ApplicationController
+class Admin::GroupsController < AdminController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
   before_action :set_admin_group, only: [:show, :edit, :update, :destroy]
 

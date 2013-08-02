@@ -3,24 +3,61 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.31
 
-#require 'date'
-#require 'active_support'
+require 'csv'
 
 #グラフ表示
-class GraphsController < ApplicationController
+class GraphsController < PublichtmlController
   before_filter :authorize, :except => :login #ログインしていない場合はログイン画面に移動
+  # グラフ用画面
+  def index
+    # グラフIDの指定が無い場合はルートへ移動
+    redirect_to root_path
+  end
+  
+  #csv出力
+  def csvexport
+    # 表示可能グラフチェック
+    return redirect_to :root if !check_graph_permission(params[:id]) 
+          
+    # 指定グラフ情報
+    @graph = Graph.find(params[:id])
+      
+    # 表示テーブル名の設定
+    Tdtable.table_name = "td_" + @graph.name
+    
+    # 取得期間
+    @start_day = params[:start];
+    @end_day = params[:end];
+    
+    # データ取得
+    @tdtable = Tdtable.where(:td_time => @start_day .. @end_day).order(:td_time)
+    data = CSV.generate do |csv|
+      csv << ["time", "value"]
+      @tdtable.each do |td|
+        csv << [td.td_time, td.td_count]
+      end
+    end
+    # ファイル名
+    fname =  @graph.name.to_s + "_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.csv"
+    # 出力
+    send_data(data, type: 'text/csv', filename: fname)    
+  end
   
   # 表示用処理
   def show
+    # 表示可能グラフチェック
+    return redirect_to :root if !check_graph_permission(params[:id]) 
+      
+    #コンボボックスの値設定
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
     @h_terms ={0=> t('terms_day'),1 => t('terms_week'),2 => t('terms_month'),3 => t('terms_year')}
+    
+    #グラフ選択枝
+    @graph_types = ['line','bar','pie']
           
     #指定グラフ情報
     @graph = Graph.find(params[:id])
       
-    #グラフ選択枝
-    @graph_types = ['line','bar','pie']
-    
     #設定の取得
     ss = Setting.all
     @gconf = Hash.new()
@@ -37,84 +74,51 @@ class GraphsController < ApplicationController
     
     #期間移動分
     @today = Date.today
-    @add = 0
-    if params[:add] then
-      @add = params[:add].to_i
-      case @graph_term
-      when 0 # 日
-        @today = @today + @add.days
-      when 1 # 週
-        @today = @today + (@add*7).days
-      when 2 # 月
-        @today = @today + @add.months
-      when 3 # 年
-        @today = @today + @add.years
-      end
-    end
-      
     
-    
-    #表示テーブル名の設定
-    Tdtable.table_name = "td_" + @graph.name
-    
-    #SQLの作成
-    if @graph_term == 1 || @graph_term == 2 then
-      #期間の設定
-      if @graph_term == 1 then
-        #週:７日分の日別データを表示する
-        @oldday = @today - 7.days
-      else
-        #月:１ヶ月分のデータを表示する
-        @oldday = @today - 1.month
-      end
-      #式の作成
-      if @graph.analysis_type == 1 then #集計タイプ : analysis_type 0:集計、1:平均
-        #平均
-        #@tdtable = Tdtable.where(:td_time => @oldday .. @today).group('td_time::DATE').select('td_time::DATE as td_time,avg(td_count) as td_count').order('td_time::DATE')
-        @tdtable = Tdtable.where(:td_time => @oldday .. @today).group("date_part('day',td_time)").select("date_part('day',td_time) as td_time,avg(td_count) as td_count").order("date_part('day',td_time)")
-      else
-        #集計
-        #@tdtable = Tdtable.where(:td_time => @oldday .. @today).group('td_time::DATE').select('td_time::DATE as td_time,sum(td_count) as td_count').order('td_time::DATE')
-        @tdtable = Tdtable.where(:td_time => @oldday .. @today).group("date_part('day',td_time)").select("date_part('day',td_time) as td_time,sum(td_count) as td_count").order("date_part('day',td_time)")
-      end
+    #期間の設定
+    @add = 0 #追加日数初期化
+    @add = params[:add] if params[:add]
+    case @graph_term
+    when 1  #週:７日分の日別データを表示する
+      @today = @today + (@add.to_i * 7).days if params[:add] # 追加日数
+      @oldday = @today - 7.days
       @term = @oldday.month.to_s + "." + @oldday.day.to_s + " - " + @today.month.to_s + "." + @today.day.to_s
-    elsif @graph_term == 3 then
-      #年:１ヶ月ごとのデータを表示する。
+      stime = "%d"
+    when 2  #月:１ヶ月分のデータを表示する
+      @today = @today + @add.to_i.months if params[:add] # 追加日数
+      @oldday = @today - 1.month
+      @term = @oldday.month.to_s + "." + @oldday.day.to_s + " - " + @today.month.to_s + "." + @today.day.to_s
+      stime = "%d"
+    when 3  #年:１ヶ月ごとのデータを表示する。
+      @today = @today + @add.to_i.years if params[:add] # 追加日数
       @oldday = @today - 1.year
-      if @graph.analysis_type == 1 then #集計タイプ : analysis_type 0:集計、1:平均
-        #平均
-        @tdtable = Tdtable.where(:td_time => @oldday .. @today).group("date_part('month',td_time)").select("date_part('month',td_time) as td_time,avg(td_count) as td_count").order("date_part('month',td_time)")
-      else
-        #集計
-        @tdtable = Tdtable.where(:td_time => @oldday .. @today).group("date_part('month',td_time)").select("date_part('month',td_time) as td_time,avg(td_count) as td_count").order("date_part('month',td_time)")
-      end
       @term = @oldday.year.to_s + "." + @oldday.month.to_s + " - " + @today.year.to_s + "." + @today.month.to_s
-    else
-      #0か指定なしは１日の集計
-      @oldday = @today.to_s + " 00:00:00"
-      @today_s = @today.to_s + " 23:59:59"
-      if @graph.analysis_type == 1 then #集計タイプ : analysis_type 0:集計、1:平均
-        #平均
-        #@tdtable = Tdtable.where(:td_time => @oldday .. @today).group('td_time::HOUR').select('td_time::HOUR as td_time,avg(td_count) as td_count').order('td_time::HOUR')
-        @tdtable = Tdtable.where(:td_time => @oldday .. @today_s).group("date_part('hour',td_time)").select("date_part('hour',td_time) as td_time,avg(td_count) as td_count").order("date_part('hour',td_time)")
-      else
-        #集計
-        #@tdtable = Tdtable.where(:td_time => @oldday .. @today).order(:td_time).select('extract(hour from td_time) as td_time,td_count')
-        #@tdtable = Tdtable.where(:td_time => @oldday .. @today).group('td_time::HOUR').select('td_time::HOUR as td_time,sum(td_count) as td_count').order('td_time::HOUR')
-        @tdtable = Tdtable.where(:td_time => @oldday .. @today_s).group("date_part('hour',td_time)").select("date_part('hour',td_time) as td_time,sum(td_count) as td_count").order("date_part('hour',td_time)")
-      end
+      stime = "%m"
+    else    #0か指定なしは１日の集計
+      @today = @today + @add.to_i.days if params[:add] # 追加日数
+      @oldday = @today
       @term = @today.month.to_s + "." + @today.day.to_s
+      stime = "%H"
     end
-    
 
-    #@tdtable = Tdtable.all
-    #@tdtable = Tdtable.where(:td_time => @oldday .. @today).group_by_day(:td_time)
-    #@tdtable = Tdtable.where(:td_time => @oldday .. @today).group('td_time::DATE').select('td_time::DATE as td_time,sum(td_count) as td_count')
+    # データ取得期間の設定
+    @today_s = @today.to_s + " 23:59:59"
+    @oldday_s = @oldday.to_s + " 00:00:00"
+    # データの取得
+    tdtable = td_graph_data(@graph.name,@graph_term,@graph.analysis_type,@oldday_s,@today_s)
+
+    # グラフ表示用データ作成
     @xdata = ""
     @ydata = ""
-    @tdtable.each do |dd|
-      @xdata = @xdata + "," + dd.td_time.to_s
+    tdtable.each do |dd|
+      @xdata = @xdata + "," + dd.td_time.strftime(stime)
       @ydata = @ydata + "," + dd.td_count.to_i.to_s
     end
+  end
+  
+  private
+  # グラフが利用可能かをチェックする
+  def check_graph_permission(p_graph_id)
+    return Groupgraph.exists?({:group_id=>current_user.group.id,:graph_id=>p_graph_id}) 
   end
 end

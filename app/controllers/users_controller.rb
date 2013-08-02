@@ -4,7 +4,7 @@
 # Date:: 2013.07.31
 
 #ユーザ情報更新
-class UsersController < ApplicationController
+class UsersController < PublichtmlController
     before_filter :authorize, :except => :login #ログインしていない場合はログイン画面に移動
     
     def index
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       @user = current_user
       respond_to do |format|
         if @user.update(user_params)
-          #format.html { redirect_to @user, notice: 'User was successfully updated.' }
           @successmsg = {'msg'=>'success'}
           format.html { render action: 'edit' }
           format.json { render json: @successmsg }
@@ -36,8 +35,6 @@ class UsersController < ApplicationController
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def user_params
-        #params.require(:user).permit(:name, :password_digest, :title, :mail, :group_id, :admin)
         params.require(:user).permit(:name, :password,:password_confirmation, :title, :mail, :group_id, :admin)
-        #params.require(:user).permit( :password,:password_confirmation, :title, :mail)
       end
 end

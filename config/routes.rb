@@ -32,7 +32,11 @@ Shirokane::Application.routes.draw do
     
   resources :login
   resources :users
-  resources :graphs
+  resources :graphs do
+    member do
+      get 'csvexport'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

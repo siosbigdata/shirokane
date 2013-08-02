@@ -4,7 +4,7 @@
 # Date:: 2013.07.25
 
 # ユーザ管理
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < AdminController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
 

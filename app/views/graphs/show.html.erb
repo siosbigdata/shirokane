@@ -8,6 +8,7 @@
 	<div id="term_button">
 		<a href="/graphs/<%= @graph.id %>?term=<%= @graph_term %>&add=<%= @add.to_i - 1 %>" class="term_button"><%= t('button_back') %></a>
 		<a href="/graphs/<%= @graph.id %>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>" class="term_button"><%= t('button_prev') %></a>
+		<a href="/graphs/<%= @graph.id %>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn">csv</a>
 	</div>
 	<canvas id="<%= @graph.name %>"></canvas>
 	<br />
@@ -51,17 +52,7 @@
 		<a href="/graphs/<%= @graph.id %>?term=3" class="term_button"><%= t('button_year') %></a>
 	</div>
 	
-	
-	
-	
-	
-	
-	
-	
-	<br />
-	<% @tdtable.each do |item| %>
-	<%= item.td_time%>:<%= item.td_count%><br />
-	<% end %>
+
 </div>
 </div><!-- main content end -->
 <%= render 'common/footer' %>

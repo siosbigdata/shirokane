@@ -4,7 +4,7 @@
 # Date:: 2013.07.25
 
 # 管理画面のログイン
-class Admin::LoginController < ApplicationController
+class Admin::LoginController < AdminController
   def index
   end
   

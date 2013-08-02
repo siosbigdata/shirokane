@@ -6,7 +6,7 @@
 #require 'pp'
 
 # グループとグラフの結びつきを管理する
-class Admin::GroupgraphsController < ApplicationController
+class Admin::GroupgraphsController < AdminController
 
   # GET /admin/groupgraphs/1/list
   def list

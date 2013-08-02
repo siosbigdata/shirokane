@@ -6,7 +6,7 @@
 #require 'pp'
 
 # グラフ管理用コントローラー
-class Admin::GraphsController < ApplicationController
+class Admin::GraphsController < AdminController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
   before_action :set_admin_graph, only: [:show, :edit, :update]
   before_action :set_select_items, only: [:index, :show,:edit]

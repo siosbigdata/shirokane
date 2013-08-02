@@ -6,7 +6,7 @@
 require 'pp'
 
 # グループ別でダッシュボードに表示するグラフを管理
-class Admin::GroupdashboardsController < ApplicationController
+class Admin::GroupdashboardsController < AdminController
   
   def index
     @admin_groupdashboard = Admin::Groupdashboard.new
