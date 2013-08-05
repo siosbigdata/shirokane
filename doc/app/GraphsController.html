@@ -223,12 +223,12 @@
 
         <div class="method-description">
           
-          <p>csv出力</p>
+          <p>csv出力処理</p>
           
 
           
           <div class="method-source-code" id="csvexport-source">
-            <pre><span class="ruby-comment"># File app/controllers/graphs_controller.rb, line 17</span>
+            <pre><span class="ruby-comment"># File app/controllers/graphs_controller.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">csvexport</span>
   <span class="ruby-comment"># 表示可能グラフチェック</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">redirect_to</span> <span class="ruby-operator">:</span><span class="ruby-identifier">root</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">check_graph_permission</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]) 
@@ -282,7 +282,7 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/graphs_controller.rb, line 11</span>
+            <pre><span class="ruby-comment"># File app/controllers/graphs_controller.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-comment"># グラフIDの指定が無い場合はルートへ移動</span>
   <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">root_path</span>
@@ -313,7 +313,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/graphs_controller.rb, line 46</span>
+            <pre><span class="ruby-comment"># File app/controllers/graphs_controller.rb, line 47</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-comment"># 表示可能グラフチェック</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">redirect_to</span> <span class="ruby-operator">:</span><span class="ruby-identifier">root</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">check_graph_permission</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]) 

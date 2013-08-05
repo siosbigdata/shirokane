@@ -1,12 +1,13 @@
 OSS Dashboard
 =========
-This is a dashboard of BigData graph.  
+This system is a dashboard of BigData graph.  
 
 Attention
 =========
 This system takes advantage of PostgreSQL.  
 This system is made ​​by the basis of Ruby on Rails4.  
 This system is compatible with Japanese and English. Please create a language file when using other languages​​.  
+Please be careful config/database.yml file because not enough.
 
 License
 =========
