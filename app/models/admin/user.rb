@@ -3,7 +3,9 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
-# 管理用ユーザテーブル
+# 管理用ユーザモデル
+# == テーブル作成
+# rails generate model user name:string title:string password_digest:string mail:string group_id:integer admin:boolean
 class Admin::User < ActiveRecord::Base
   #テーブル名の指定
   self.table_name = 'users'

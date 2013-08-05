@@ -3,7 +3,9 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
-# 管理用グループテーブル
+# 管理用グループモデル
+# == テーブル作成
+# rails generate model group name:string title:string
 class Admin::Group < ActiveRecord::Base
   # テーブル名
   self.table_name = 'groups'

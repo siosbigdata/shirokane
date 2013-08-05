@@ -3,8 +3,6 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.29
 
-require 'pp'
-
 # グループ別でダッシュボードに表示するグラフを管理
 class Admin::GroupdashboardsController < AdminController
   

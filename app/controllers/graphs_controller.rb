@@ -4,19 +4,18 @@
 # Date:: 2013.07.31
 
 require 'csv'
-require 'pp'
-
 
 #グラフ表示
 class GraphsController < PublichtmlController
   before_filter :authorize, :except => :login #ログインしていない場合はログイン画面に移動
+  
   # グラフ用画面
   def index
     # グラフIDの指定が無い場合はルートへ移動
     redirect_to root_path
   end
   
-  #csv出力
+  #csv出力処理
   def csvexport
     # 表示可能グラフチェック
     return redirect_to :root if !check_graph_permission(params[:id]) 
@@ -66,7 +65,7 @@ class GraphsController < PublichtmlController
     # 指定テンプレート情報
     templates = Graphtemplate.where({:name => @graph.template})
     @template = templates[0]
-   pp @template
+
     #設定の取得
     ss = Setting.all
     @gconf = Hash.new()

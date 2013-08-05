@@ -3,8 +3,6 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.29
 
-#require 'pp'
-
 # グループとグラフの結びつきを管理する
 class Admin::GroupgraphsController < AdminController
 

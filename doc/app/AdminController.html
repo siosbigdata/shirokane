@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class Group - Rails Application Documentation</title>
+<title>class AdminController - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/models/group.rb
+    <li>app/controllers/admin_controller.rb
   </ul>
 </nav>
 
@@ -59,12 +59,24 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">ActiveRecord::Base
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
   
 </nav>
 
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-i-admin_authorize">#admin_authorize</a>
+    
+    <li><a href="#method-i-admin_current_user">#admin_current_user</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -172,11 +184,11 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class Group</h1>
+  <h1 class="class">class AdminController</h1>
 
   <div id="description" class="description">
     
-<p>グループテーブル</p>
+<p>管理画面用共通コントローラー</p>
 
   </div><!-- description -->
 
@@ -194,6 +206,76 @@
 
     <!-- Methods -->
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-admin_authorize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">admin_authorize</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>管理者ログインチェック</p>
+          
+
+          
+          <div class="method-source-code" id="admin_authorize-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">admin_authorize</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">admin_current_user</span>
+    <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-string">&#39;login_notice&#39;</span>)
+    <span class="ruby-identifier">session</span>[<span class="ruby-value">:jumpto</span>] = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">parameters</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;login&#39;</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;index&#39;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- admin_authorize-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- admin_authorize-method -->
+
+    
+      <div id="method-i-admin_current_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">admin_current_user</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>管理者用-現在のアカウント設定</p>
+          
+
+          
+          <div class="method-source-code" id="admin_current_user-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 8</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">admin_current_user</span>
+  <span class="ruby-ivar">@admin_current_user</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_user_id</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_user_id</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- admin_current_user-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- admin_current_user-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class Admin::Graph - Rails Application Documentation</title>
+<title>class Admin::Setting - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/models/admin/graph.rb
+    <li>app/models/admin/setting.rb
   </ul>
 </nav>
 
@@ -172,11 +172,25 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class Admin::Graph</h1>
+  <h1 class="class">class Admin::Setting</h1>
 
   <div id="description" class="description">
     
-<p>管理用グラフテーブル</p>
+<p>管理用パラメーターテーブル</p>
+
+<h2 id="label-%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E4%BD%9C%E6%88%90">テーブル作成</h2>
+
+<p>rails g model setting name:string title:string parameter:string
+vieworder:integer columntype:integer</p>
+
+<h2 id="label-%E5%88%9D%E6%9C%9F%E3%83%87%E3%83%BC%E3%82%BF">初期データ</h2>
+
+<p>Setting.create(:name  =&gt; “admin_mail”,  :title  =&gt;  “管理者：メール”,
+:parameter =&gt; “k-omura@sios.com”,:vieworder =&gt; 1,:columntype =&gt; 0)
+Setting.create(:name =&gt; “title” ,:title =&gt; “アプリケーションタイトル”,:parameter
+=&gt; “SIOS DashBoard” ,:vieworder =&gt; 2,:columntype =&gt; 0)
+Setting.create(:name =&gt; “graphsize” ,:title =&gt; “グラフの大きさ”,:parameter
+=&gt; “1” ,:vieworder =&gt; 10,:columntype =&gt; 1)</p>
 
   </div><!-- description -->
 

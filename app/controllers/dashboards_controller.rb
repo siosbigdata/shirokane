@@ -3,8 +3,6 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.31
 
-require 'pp'
-
 #ダッシュボード
 class DashboardsController < PublichtmlController
   before_filter :authorize, :except => :login #ログインしていない場合はログイン画面に移動
@@ -24,7 +22,6 @@ class DashboardsController < PublichtmlController
         
     # ダッシュボード情報取得
     @dashboards = Groupdashboard.where({:group_id=>current_user.group.id}).order(:view_rank)
-    #pp @dashboards
     @graphs = Array.new()
     @template = Array.new()
     @xdatas = Array.new()

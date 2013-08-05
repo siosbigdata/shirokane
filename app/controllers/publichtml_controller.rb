@@ -3,8 +3,6 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.08.02
 
-require 'pp'
-
 # グラフ表示用共通コントローラー
 class PublichtmlController < ApplicationController
   # 通常ユーザ用-現在のアカウント設定

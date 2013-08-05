@@ -4,6 +4,8 @@
 # Date:: 2013.07.25
 
 # ユーザテーブル
+# == テーブル作成
+# rails generate model user name:string title:string password_digest:string mail:string group_id:integer admin:boolean
 class User < ActiveRecord::Base
     # パスワード用処理
     has_secure_password

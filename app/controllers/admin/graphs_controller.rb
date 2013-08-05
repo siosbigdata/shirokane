@@ -3,8 +3,6 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
-#require 'pp'
-
 # グラフ管理用コントローラー
 class Admin::GraphsController < AdminController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動

@@ -3,8 +3,6 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.08.02
 
-require 'pp'
-
 # 管理画面用共通コントローラー
 class AdminController < ApplicationController
   # 管理者用-現在のアカウント設定
