@@ -4,34 +4,34 @@
 <div id="content">
 <div id="sub_content">
 	<h1><%= Time.now().to_s %></h1>
+	<div id="dashboards">
 <% for rank in 1..4 %>
-    <div>
+    <div id="dashboard">
     	<h2><%= @graphs[rank].title %>(<%= @terms[rank]%>)</h2>
-	<a href="/graphs/<%= @graphs[rank].id %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
+		<a href="/graphs/<%= @graphs[rank].id %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
 	</div>
-	<br />
 	
 	<script>
 	var chartdata = {
 	
 	  "config": {
-	  	"width": <%= @gconf['graph_width'].to_i/2 %>,
-	  	"height": <%= @gconf['graph_height'].to_i/2 %>,
+	  	"width": 300,
+	  	"height": 200,
 	  	"onlyChart":"yes",
 	    /*"title": "title",*/
 	    /*"subTitle": "subTitle",*/
 	    "type": "<%= @graph_types[@graphs[rank].graph_type] %>",
-	    "useVal": "<%= @gconf['graph_useVal'] %>",
-	    "useShadow": "<%= @gconf['graph_useShadow'] %>",
-	    "lineWidth": <%= @gconf['graph_lineWidth'] %>,
+	    "useVal": "<%= @h_yesno[@graphs[rank].useval] %>",
+	    "useShadow": "<%= @h_yesno[@template[rank].useshadow] %>",
+	    "lineWidth": <%= @graphs[rank].linewidth %>,
 	    "colorSet": 
-	          ["<%= @gconf['graph_lineColor'] %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
+	          ["<%= @template[rank].linecolor %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
 	    "bgGradient": {
 	            "direction":"vertical",
-	            "from":"<%= @gconf['graph_bgfrom'] %>",
-	            "to":"<%= @gconf['graph_bgto'] %>"
+	            "from":"<%= @template[rank].bgfrom %>",
+	            "to":"<%= @template[rank].bgto %>"
 	         },
-	    "textColor": "<%= @gconf['graph_textColor'] %>"
+	    "textColor": "<%= @template[rank].textcolor %>"
 	  },
 	
 	  "data": [
@@ -41,8 +41,11 @@
 	};
 	ccchart.init('<%= @graphs[rank].name %>', chartdata)
 	</script>
+	<% if rank%2 == 0 then %>
+	<div class="space"></div>
+	<% end %>
 <% end %>
-
+</div>
 </div>
 </div><!-- main content end -->
 <%= render 'common/footer' %>

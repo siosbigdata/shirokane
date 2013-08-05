@@ -12,28 +12,27 @@
 	</div>
 	<canvas id="<%= @graph.name %>"></canvas>
 	<br />
-	
 	<script>
 	var chartdata = {
 	
 	  "config": {
-	  	"width": <%= @gconf['graph_width'] %>,
-	  	"height": <%= @gconf['graph_height'] %>,
+	  	"width": <%= @h_graphsize_width[@gconf['graphsize'].to_i] %>,
+	  	"height": <%= @h_graphsize_height[@gconf['graphsize'].to_i] %>,
 	  	/*"onlyChart":"yes",*/
 	    /*"title": "title",*/
 	    /*"subTitle": "subTitle",*/
 	    "type": "<%= @graph_types[@graph.graph_type] %>",
-	    "useVal": "<%= @gconf['graph_useVal'] %>",
-	    "useShadow": "<%= @gconf['graph_useShadow'] %>",
-	    "lineWidth": <%= @gconf['graph_lineWidth'] %>,
+	    "useVal": "<%= @h_yesno[@graph.useval] %>",
+	    "useShadow": "<%= @h_yesno[@template.useshadow] %>",
+	    "lineWidth": <%= @graph.linewidth %>,
 	    "colorSet": 
-	          ["<%= @gconf['graph_lineColor'] %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
+	          ["<%= @template.linecolor %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
 	    "bgGradient": {
 	            "direction":"vertical",
-	            "from":"<%= @gconf['graph_bgfrom'] %>",
-	            "to":"<%= @gconf['graph_bgto'] %>"
+	            "from":"<%= @template.bgfrom %>",
+	            "to":"<%= @template.bgto %>"
 	         },
-	    "textColor": "<%= @gconf['graph_textColor'] %>"
+	    "textColor": "<%= @template.textcolor %>"
 	  },
 	
 	  "data": [

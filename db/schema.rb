@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130801085954) do
+ActiveRecord::Schema.define(version: 20130805051457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,20 @@ ActiveRecord::Schema.define(version: 20130801085954) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "analysis_type"
+    t.integer  "useval"
+    t.integer  "linewidth"
+    t.string   "template"
+  end
+
+  create_table "graphtemplates", force: true do |t|
+    t.string   "linecolor"
+    t.string   "bgfrom"
+    t.string   "bgto"
+    t.string   "textcolor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "useshadow"
+    t.string   "name"
   end
 
   create_table "groupdashboards", force: true do |t|

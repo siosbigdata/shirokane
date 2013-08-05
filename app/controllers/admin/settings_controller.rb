@@ -7,6 +7,7 @@
 class Admin::SettingsController < AdminController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
   before_action :set_admin_setting, only: [:show, :edit, :update]
+  before_action :set_select_setting, only: [:index,:show, :edit, :update]
 
   # GET /admin/settings
   # GET /admin/settings.json
@@ -72,8 +73,12 @@ class Admin::SettingsController < AdminController
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_setting
       @admin_setting = Admin::Setting.find(params[:id])
+    end
+    
+    def set_select_setting
       @select_yes_no ={"yes"=>"yes","no"=>"no"}
       @select_color = {"white" => "#FFFFFF","black"=>"#000000","red" => "#FF0000","gray1"=>"#687478","gray2"=>"#222222","blue"=>"#0000ff","yellow"=>"#ffcc00","green"=>"#006600"}
+      @select_graphsize = {"600×400" => "0","720×480" => "1","300×200" => "2"}
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

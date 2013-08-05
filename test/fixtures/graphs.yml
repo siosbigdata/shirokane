@@ -7,7 +7,7 @@ one:
   graph_type: 1
   term: 1
   x: MyString
-  'y': MyString
+  y: MyString
 
 two:
   name: MyString
@@ -16,4 +16,4 @@ two:
   graph_type: 1
   term: 1
   x: MyString
-  'y': MyString
+  y: MyString

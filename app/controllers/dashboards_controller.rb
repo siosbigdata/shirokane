@@ -13,6 +13,8 @@ class DashboardsController < PublichtmlController
   def index
     #グラフ選択枝
     @graph_types = ['line','bar','pie']
+    @h_yesno = {0=>'no' , 1 => 'yes'}
+    
     #設定の取得
     ss = Setting.all
     @gconf = Hash.new()
@@ -24,6 +26,7 @@ class DashboardsController < PublichtmlController
     @dashboards = Groupdashboard.where({:group_id=>current_user.group.id}).order(:view_rank)
     #pp @dashboards
     @graphs = Array.new()
+    @template = Array.new()
     @xdatas = Array.new()
     @ydatas = Array.new()
     @terms = Array.new()
@@ -31,6 +34,10 @@ class DashboardsController < PublichtmlController
     @dashboards.each do |db|
       # データの取得
       graph = Graph.find(db.graph_id)
+      # 指定テンプレート情報
+      templates = Graphtemplate.where({:name => graph.template})
+      template = templates[0]
+          
       #期間移動分
       today = Date.today
       
@@ -68,6 +75,7 @@ class DashboardsController < PublichtmlController
         ydata = ydata + "," + dd.td_count.to_i.to_s
       end
       @graphs[db.view_rank.to_i] = graph
+      @template[db.view_rank.to_i] = template
       @xdatas[db.view_rank.to_i] = xdata
       @ydatas[db.view_rank.to_i] = ydata
       @terms[db.view_rank.to_i] = term

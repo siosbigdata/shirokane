@@ -37,10 +37,15 @@ ja:
   title_graph_term: 期間
   title_graph_x: X軸表示名
   title_graph_y: Y軸表示名
+  title_graph_useval: 値表示
+  title_graph_linewidth: 線の太さ
+  title_graph_template: テンプレート
   title_rank: 表示順
   title_setting_name: 設定名
   title_setting_title: 表示名
   title_setting_parameter: 値
+  title_yes: はい
+  title_no: いいえ
   
   message_delete: 削除してもよいですか？
   message_select_blank: 選択してください。
@@ -67,3 +72,6 @@ ja:
     x: X軸表示名
     y: Y軸表示名
     parameter: 値
+    useval: 値表示
+    linewidth: 線の太さ
+    template_id: テンプレート

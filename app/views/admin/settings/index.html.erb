@@ -18,7 +18,11 @@
 	    <% @admin_settings.each do |admin_setting| %>
 	      <tr>
 	        <td><%= link_to admin_setting.title, edit_admin_setting_path(admin_setting) %></td>
-	        <td><%= admin_setting.parameter %></td>
+	        <% if admin_setting.name == 'graphsize' then %>
+	        	<td><%= @select_graphsize.keys[admin_setting.parameter.to_i] %></td>
+	        <% else %>
+	        	<td><%= admin_setting.parameter %></td>
+	        <% end %>
 	      </tr>
 	    <% end %>
 	  </tbody>

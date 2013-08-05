@@ -41,6 +41,18 @@
     <%= f.label :y %><br>
     <%= f.text_field :y %>
   </div>
+   <div class="field">
+    <%= f.label :useval %><br>
+    <%= f.select :useval,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+  </div>
+   <div class="field">
+    <%= f.label :linewidth %><br>
+    <%= f.number_field :linewidth %>
+  </div>
+   <div class="field">
+    <%= f.label :template %><br>
+    <%= f.select :template,@h_template.keys.map{|t| [@h_template[t], t]} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

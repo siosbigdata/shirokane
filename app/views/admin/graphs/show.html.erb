@@ -40,6 +40,21 @@
   <strong><%= t('title_graph_y') %></strong>
   <%= @admin_graph.y %>
 </p>
+<p>
+  <strong><%= t('title_graph_useval') %></strong>
+  <%= @h_yesno[@admin_graph.useval] %>
+</p>
+
+<p>
+  <strong><%= t('title_graph_linewidth') %></strong>
+  <%= @admin_graph.linewidth %>
+</p>
+
+<p>
+  <strong><%= t('title_graph_template') %></strong>
+  <%= @h_template[@admin_graph.template] %>
+</p>
+
 
 <%= link_to t('title_edit'), edit_admin_graph_path(@admin_graph) %> |
 <%= link_to t('title_back'), admin_graphs_path %>

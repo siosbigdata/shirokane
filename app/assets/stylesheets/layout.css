@@ -91,4 +91,14 @@ text-align: center;
 	right:5px;
 	bottom: 5px;
 }
-
+/* dashboard */
+#dashboards {
+	overflow: hidden;
+}
+#dashboard {
+  width:350px;
+  float:left;
+}
+.space {
+	clear:left;
+}

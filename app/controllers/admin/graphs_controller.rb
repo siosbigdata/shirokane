@@ -86,10 +86,12 @@ class Admin::GraphsController < AdminController
       @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
       @h_graph_types = {0 => t('graph_types_line'),1 => t('graph_types_bar')}
       @h_terms ={0=> t('terms_day'),1 => t('terms_week'),2 => t('terms_month'),3 => t('terms_year')}
+      @h_yesno={0=> t('title_no'),1 => t('title_yes')}
+      @h_template={"black"=>"black","white"=>"white","yellow"=>"yellow","green"=>"green"}
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_graph_params
-      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :x, :y)
+      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :x, :y,:template,:useval,:linewidth)
     end
 end

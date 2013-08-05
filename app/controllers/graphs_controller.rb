@@ -4,6 +4,8 @@
 # Date:: 2013.07.31
 
 require 'csv'
+require 'pp'
+
 
 #グラフ表示
 class GraphsController < PublichtmlController
@@ -51,6 +53,9 @@ class GraphsController < PublichtmlController
     #コンボボックスの値設定
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
     @h_terms ={0=> t('terms_day'),1 => t('terms_week'),2 => t('terms_month'),3 => t('terms_year')}
+    @h_graphsize_width = {0 => 600,1 => 720,2 => 300}
+    @h_graphsize_height = {0 => 400,1 => 480,2 => 200}
+    @h_yesno = {0=>'no' , 1 => 'yes'}
     
     #グラフ選択枝
     @graph_types = ['line','bar','pie']
@@ -58,6 +63,10 @@ class GraphsController < PublichtmlController
     #指定グラフ情報
     @graph = Graph.find(params[:id])
       
+    # 指定テンプレート情報
+    templates = Graphtemplate.where({:name => @graph.template})
+    @template = templates[0]
+   pp @template
     #設定の取得
     ss = Setting.all
     @gconf = Hash.new()
