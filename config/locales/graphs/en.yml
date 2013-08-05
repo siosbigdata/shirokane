@@ -3,7 +3,30 @@ en:
   logout: Logout
   logout_message: Are you logging off ?
   login_notice: Please login !!
-  title: SISO DashBoard
+  title: OSS DashBoard
   password: Password
   name: Name
-
+  mail: Mail address
+  title_home: Home
+  title_dashboard: Dashboard
+  message_user_update_success: Update Success
+  error_login_message: Wrong your mail address or password
+  
+  #選択肢
+  analysis_types_sum: Sum
+  analysis_types_avg: Avg
+  graph_types_line: Line
+  graph_types_bar: Bar
+  graph_types_pie: Pie
+  terms_day: Day
+  terms_week: Week
+  terms_month: Month
+  terms_year: Year
+  
+  #ボタン
+  button_day: Day
+  button_week: Week
+  button_month: Month
+  button_year: Year
+  button_back: Prev
+  button_prev: Next
