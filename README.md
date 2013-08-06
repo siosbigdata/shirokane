@@ -15,6 +15,10 @@ Copyright &copy; 2013 SIOS Technology,Inc.
 Licensed under the [Apache License, Version 2.0][Apache]  
 Distributed under the [MIT License][mit].  
 Dual licensed under the [MIT license][MIT] and [GPL license][GPL].  
+
+Part of chart  
+The MIT License Copyright (c) 2013 Toshiro Takahashi  
+http://ccchart.com/  
   
 [Apache]: http://www.apache.org/licenses/LICENSE-2.0  
 [MIT]: http://www.opensource.org/licenses/mit-license.php  

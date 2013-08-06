@@ -23,7 +23,7 @@ class PublichtmlController < ApplicationController
   #graphメニュー作成
     def current_graph_menu
       if current_user then
-        @current_graph_menu = Graph.joins(:groupgraph).where(:groupgraphs=>{:group_id=>current_user.group.id}).order(:title)
+        @current_graph_menu = Graph.joins(:groupgraph).where(:groupgraphs=>{:group_id=>current_user.group.id}).order(:id)
       end
     end
     helper_method :current_graph_menu

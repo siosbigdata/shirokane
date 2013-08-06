@@ -11,7 +11,7 @@ class Admin::UsersController < AdminController
   # GET /admin/users
   # GET /admin/users.json
   def index
-    @admin_users = Admin::User.all
+    @admin_users = Admin::User.all.order(:id)
   end
 
   # GET /admin/users/1

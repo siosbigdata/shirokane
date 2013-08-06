@@ -11,7 +11,7 @@ class Admin::GroupsController < AdminController
   # GET /admin/groups
   # GET /admin/groups.json
   def index
-    @admin_groups = Admin::Group.all
+    @admin_groups = Admin::Group.all.order(:id)
   end
 
   # GET /admin/groups/1

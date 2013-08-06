@@ -1,4 +1,5 @@
 //utf-8 width module ccchart.m.cssHybrid http://ccchart.com/
+//The MIT License Copyright (c) 2013 Toshiro Takahashi
 
 window.ccchart = 
 (function(window) {
