@@ -17,9 +17,9 @@ Distributed under the [MIT License][mit].
 Dual licensed under the [MIT license][MIT] and [GPL license][GPL].  
 
 Part of chart  
-The MIT License Copyright (c) 2013 Toshiro Takahashi  
-http://ccchart.com/  
+[Copyright (c) 2013 Toshiro Takahashi][CCCHART]  
   
 [Apache]: http://www.apache.org/licenses/LICENSE-2.0  
 [MIT]: http://www.opensource.org/licenses/mit-license.php  
 [GPL]: http://www.gnu.org/licenses/gpl.html  
+[CCCHART]: http://ccchart.com/  
