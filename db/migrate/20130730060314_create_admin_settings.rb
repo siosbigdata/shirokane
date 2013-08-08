@@ -4,6 +4,8 @@ class CreateAdminSettings < ActiveRecord::Migration
       t.string :name
       t.string :title
       t.string :parameter
+      t.integer :vieworder
+      t.integer :columntype
 
       t.timestamps
     end

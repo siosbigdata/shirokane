@@ -5,6 +5,8 @@ class CreateGraphtemplates < ActiveRecord::Migration
       t.string :bgfrom
       t.string :bgto
       t.string :textcolor
+      t.integer :useshadow
+      t.string  :name
 
       t.timestamps
     end

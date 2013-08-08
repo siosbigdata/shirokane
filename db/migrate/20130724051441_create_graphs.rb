@@ -8,7 +8,11 @@ class CreateGraphs < ActiveRecord::Migration
       t.integer :term
       t.string :x
       t.string :y
-
+      t.integer :analysis_type
+      t.integer :useval
+      t.integer :linewidth
+      t.string  :template
+          
       t.timestamps
     end
   end
