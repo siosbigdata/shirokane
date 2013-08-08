@@ -14,7 +14,7 @@ class Admin::LoginController < AdminController
 
     if user && user.authenticate(params[:pass]) && user.admin
       session[:admin_user_id] = user.id
-      redirect_to "/admin/"
+      redirect_to admin_root_path
     else
       flash.now.alert = "Invalid"
       @errormsg = {'msg' => 'error'}
