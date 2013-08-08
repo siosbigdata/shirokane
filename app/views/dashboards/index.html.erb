@@ -8,7 +8,7 @@
 <% for rank in 1..4 %>
     <div id="dashboard">
     	<h2><%= @graphs[rank].title %>(<%= @terms[rank]%>)</h2>
-		<a href="/graphs/<%= @graphs[rank].id %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
+		<a href="<%= graph_path(@graphs[rank].id) %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
 	</div>
 	
 	<script>
