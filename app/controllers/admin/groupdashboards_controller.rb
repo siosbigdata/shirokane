@@ -62,7 +62,7 @@ class Admin::GroupdashboardsController < AdminController
       @gg.save
     end
     
-    redirect_to "/admin/groups"
+    redirect_to admin_groups_path
       
   end
 end
