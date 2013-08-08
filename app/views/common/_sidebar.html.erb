@@ -1,10 +1,10 @@
 <!-- navigation start -->
 <div id="navigation">
 	<ul class="cds-navi">
-		<li><a href="/"><%= t('title_dashboard') %></a></li>
+		<li><%= link_to t('title_dashboard'), root_path %></li>
 		<% current_graph_menu.each do |m| %>
-			<li><a href="/graphs/<%= m.id %>"><%= m.title %></a></li>
+			<li><%= link_to m.title, graph_path(m.id) %></li>
 		<% end %>
-		<li><a href="/users/<%= current_user.id%>/edit"><%= t('title_setting') %></a></li>
+		<li><%= link_to t('title_setting'), edit_user_path(current_user.id) %></li>
 	</ul>
 </div><!-- navigation end -->

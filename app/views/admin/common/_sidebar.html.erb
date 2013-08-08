@@ -1,11 +1,11 @@
 <!-- administrator navigation start -->
 <div id="admin_navigation">
 	<ul class="cds-navi">
-		<li><a href="/admin"><%= t('title_home') %></a></li>
-		<li><a href="/admin/users"><%= t('menu_user')%></a></li>
-		<li><a href="/admin/groups"><%= t('menu_group')%></a></li>
-		<li><a href="/admin/graphs"><%= t('menu_graph')%></a></li>
-		<li><a href="/admin/settings"><%= t('menu_setting')%></a></li>
+		<li><%= link_to t('title_home'), admin_root_path %></li>
+		<li><%= link_to t('menu_user'), admin_users_path %></li>
+		<li><%= link_to t('menu_group'), admin_groups_path %></li>
+		<li><%= link_to t('menu_graph'), admin_graphs_path %></li>
+		<li><%= link_to t('menu_setting'), admin_settings_path %></li>
 	</ul>
 </div>
 <!-- administrator navigation end -->
