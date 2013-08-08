@@ -1,7 +1,7 @@
 body {
 /*width:800px;*/
 width:90%
-margin:0 auto;
+margin:0 auto auto auto;
 margin-top:10px;
 text-align: center;  
 }
@@ -28,7 +28,7 @@ text-align: center;
 
 #login {
 	width:350px;
-	margin:0 auto;
+	margin:0 auto auto auto;
 }
 
 #login_action{

@@ -2,7 +2,7 @@
 #admin_header {
 	/*width:800px;*/
 	height:50px;
-	margin: 0 auto;
+	margin:0 auto auto auto;
 	background-color:#cd5c5d;
 	position:relative;
 }
@@ -45,7 +45,7 @@
 
 #admin_login {
 	width:350px;
-	margin:0 auto;
+	margin:0 auto auto auto;
 	/*position:absolute;*/
 	right:5px;
 	bottom: 5px;
@@ -57,7 +57,7 @@
 	margin-top:5px;
 	/*width:800px;*/
 	height:50px;
-	margin: 0 auto;
+	margin:0 auto auto auto;
 	background-color:#cd5c5d;
 	position:relative;
 }
