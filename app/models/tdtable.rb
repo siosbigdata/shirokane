@@ -8,6 +8,4 @@
 # create table td_xxx(td_time timestamp with time zone,td_count decimal);
 # xxx部分はGraph.nameとそろえる
 class Tdtable < ActiveRecord::Base
-  #テーブル名の指定
-  self.table_name = 'td_test1'
 end
