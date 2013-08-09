@@ -6,6 +6,7 @@
 	<h1><%= Time.now().to_s %></h1>
 	<div id="dashboards">
 <% for rank in 1..4 %>
+  <% if @graphs[rank] then%>
     <div id="dashboard">
     	<h2><%= @graphs[rank].title %>(<%= @terms[rank]%>)</h2>
 		<a href="<%= graph_path(@graphs[rank].id) %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
@@ -43,6 +44,7 @@
 	</script>
 	<% if rank%2 == 0 then %>
 	<div class="space"></div>
+	<% end %>
 	<% end %>
 <% end %>
 </div>

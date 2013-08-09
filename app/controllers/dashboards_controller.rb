@@ -29,53 +29,55 @@ class DashboardsController < PublichtmlController
     @terms = Array.new()
     
     @dashboards.each do |db|
-      # データの取得
-      graph = Graph.find(db.graph_id)
-      # 指定テンプレート情報
-      templates = Graphtemplate.where({:name => graph.template})
-      template = templates[0]
-          
-      #期間移動分
-      today = Date.today
-      
-      #期間の設定
-      case graph.term
-      when 1  #週:７日分の日別データを表示する
-        oldday = today - 7.days
-        term = oldday.month.to_s + "." + oldday.day.to_s + " - " + today.month.to_s + "." + today.day.to_s
-        stime = "%d"
-      when 2  #月:１ヶ月分のデータを表示する
-        oldday = today - 1.month
-        term = oldday.month.to_s + "." + oldday.day.to_s + " - " + today.month.to_s + "." + today.day.to_s
-        stime = "%d"
-      when 3  #年:１ヶ月ごとのデータを表示する。
-        oldday = today - 1.year
-        term = oldday.year.to_s + "." + oldday.month.to_s + " - " + today.year.to_s + "." + today.month.to_s
-        stime = "%m"
-      else    #0か指定なしは１日の集計
-        oldday = today
-        term = today.month.to_s + "." + today.day.to_s
-        stime = "%H"
-      end
+      if db.graph_id > 0 then
+        # データの取得
+        graph = Graph.find(db.graph_id)
+        # 指定テンプレート情報
+        templates = Graphtemplate.where({:name => graph.template})
+        template = templates[0]
+            
+        #期間移動分
+        today = Date.today
+        
+        #期間の設定
+        case graph.term
+        when 1  #週:７日分の日別データを表示する
+          oldday = today - 7.days
+          term = oldday.month.to_s + "." + oldday.day.to_s + " - " + today.month.to_s + "." + today.day.to_s
+          stime = "%d"
+        when 2  #月:１ヶ月分のデータを表示する
+          oldday = today - 1.month
+          term = oldday.month.to_s + "." + oldday.day.to_s + " - " + today.month.to_s + "." + today.day.to_s
+          stime = "%d"
+        when 3  #年:１ヶ月ごとのデータを表示する。
+          oldday = today - 1.year
+          term = oldday.year.to_s + "." + oldday.month.to_s + " - " + today.year.to_s + "." + today.month.to_s
+          stime = "%m"
+        else    #0か指定なしは１日の集計
+          oldday = today
+          term = today.month.to_s + "." + today.day.to_s
+          stime = "%H"
+        end
   
-      # データ取得期間の設定
-      today_s = today.to_s + " 23:59:59"
-      oldday_s = oldday.to_s + " 00:00:00"
-      # データの取得
-      tdtable = td_graph_data(graph.name,graph.term,graph.analysis_type,oldday_s,today_s)
-  
-      # グラフ表示用データ作成
-      xdata = ""
-      ydata = ""
-      tdtable.each do |dd|
-        xdata = xdata + "," + dd.td_time.strftime(stime)
-        ydata = ydata + "," + dd.td_count.to_i.to_s
+        # データ取得期間の設定
+        today_s = today.to_s + " 23:59:59"
+        oldday_s = oldday.to_s + " 00:00:00"
+        # データの取得
+        tdtable = td_graph_data(graph.name,graph.term,graph.analysis_type,oldday_s,today_s)
+    
+        # グラフ表示用データ作成
+        xdata = ""
+        ydata = ""
+        tdtable.each do |dd|
+          xdata = xdata + "," + dd.td_time.strftime(stime)
+          ydata = ydata + "," + dd.td_count.to_i.to_s
+        end
+        @graphs[db.view_rank.to_i] = graph
+        @template[db.view_rank.to_i] = template
+        @xdatas[db.view_rank.to_i] = xdata
+        @ydatas[db.view_rank.to_i] = ydata
+        @terms[db.view_rank.to_i] = term
       end
-      @graphs[db.view_rank.to_i] = graph
-      @template[db.view_rank.to_i] = template
-      @xdatas[db.view_rank.to_i] = xdata
-      @ydatas[db.view_rank.to_i] = ydata
-      @terms[db.view_rank.to_i] = term
     end
   end
 end
