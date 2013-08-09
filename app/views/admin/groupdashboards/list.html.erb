@@ -6,7 +6,7 @@
 	<h1><%= t('menu_group') %></h1>
 	<h2><%= t('title_groupdashboards_list') %>:<%= @group.title %></h2>
 
-<%= form_tag('/admin/groupdashboards') do |f| %>
+<%= form_tag(admin_groupdashboards_path) do |f| %>
 <%= hidden_field_tag :group_id,@group.id %>
 
 <table class="coder">
