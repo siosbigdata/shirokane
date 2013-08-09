@@ -14,7 +14,11 @@
 
 <p>
   <strong><%= t('title_setting_parameter') %></strong>
-  <%= @admin_setting.parameter %>
+  <% if @admin_setting.columntype == 4 then %>
+  	<%= @select_graphsize[@admin_setting.parameter] %>
+  <% else %>
+  	<%= @admin_setting.parameter %>
+  <% end %>
 </p>
 
 <%= link_to t('title_edit'), edit_admin_setting_path(@admin_setting) %> |
