@@ -1,6 +1,7 @@
 en:
   adminlogin: AdminLogin
   admin: Admin
+  adminview: Administrate
   
   menu_user: Users
   menu_group: Groups

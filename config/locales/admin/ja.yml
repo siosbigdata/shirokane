@@ -1,6 +1,7 @@
 ja:
   adminlogin: 管理者ログイン
   admin: 管理者
+  adminview: 管理画面
   
   menu_user: ユーザ管理
   menu_group: グループ管理
