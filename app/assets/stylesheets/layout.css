@@ -1,18 +1,23 @@
 body {
-/*width:800px;*/
-width:90%;
+width:95%;
 margin:0 auto auto auto;
 margin-top:10px;
-text-align: center;  
+text-align: center;
+border-left: 1px solid #EEEEEE;
+border-right: 1px solid #EEEEEE;
 }
 
 /* ----- HEADER ----- */
 
 #header {
-	/*width:800px;*/
+	width:95%;
 	height:50px;
-	background-color:#333333;
 	position:relative;
+	border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+	/* ----- background: -moz-linear-gradient(white, #787878); ---- */
+	/* ----- background: -webkit-gradient(linear, left top, left bottom, from(white), to(#787878)); ---- */
+	background-color: #BBBBBB;
+	margin-left:25px;
 }
 #header a:link    { color: #ffffff; }
 #header a:visited { color: #ffffff; }
@@ -41,13 +46,13 @@ text-align: center;
 /* FAUX LAYOUT WRAPPER */
 
 #wrapper{
-	/*width:800px;*/
 	width:100%;
 	text-align:left;
 	/*background:url(background_3.gif) repeat-y; /* WARNING: IF YOU CHANGE THE COLORS OF THE LAYOUT YOU HAVE TO CHANGE THIS IMAGE! */
 	overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
 	margin-top:10px;
 	margin-bottom:5px;
+	margin-left:25px;
 }
 
 /* ----- NAVIGATION ----- */
@@ -78,11 +83,15 @@ text-align: center;
 /* ----- FOOTER ----- */
 
 #footer { 
-	margin-top:5px;
-	/*width:800px;*/
+	margin-top:10px;
+	width: 95%;
 	height:50px;
-	background-color:#333333;
 	position:relative;
+	border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+        /* ----- background: -moz-linear-gradient(#101060, #1A1A1A); ----- */
+        /* ----- background: -webkit-gradient(linear, left top, left bottom, from(#101060), to(#1A1A1A)); ---- */
+	background-color:#BBBBBB;
+	margin-left:25px;
 }
 #footer h1 {
 	font-size:100%;
@@ -101,4 +110,65 @@ text-align: center;
 }
 .space {
 	clear:left;
+}
+/* ----- ttezuka_test_add ---- */
+input[type=submit] {
+	border:solid 2px #BBBBBB;
+	font-family:Arial, sans-serif;
+	text-transform:uppercase;
+	color:#000000;
+	cursor:pointer;
+	border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+}
+input[type=submit]:hover {
+        border:solid 2px #BBBBBB;
+        font-family:Arial, sans-serif;
+        text-transform:uppercase;
+        color:#000000;
+        cursor:pointer;
+        border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+}
+input[type=submit]:active   {
+        border:solid 2px #BBBBBB;
+        font-family:Arial, sans-serif;
+        text-transform:uppercase;
+        color:#000000;
+        cursor:pointer;
+        border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+background:#EEEEEE;
+border:none;
+padding:5px 2px;
+border:solid 1px #c0c0c0;
+color:#999999;
+border-radius: 3px 3px 3px 3px / 3px 3px 3px 3px;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+background:#FFFFFF;
+border:none;
+padding:5px 2px;
+border:solid 1px #c0c0c0;
+border-radius: 3px 3px 3px 3px / 3px 3px 3px 3px;
+color:#000000;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="email"]:hover,
+textarea:hover {
+background:#FFFFFF;
+border:none;
+padding:5px 2px;
+border:solid 1px #c0c0c0;
+border-radius: 3px 3px 3px 3px / 3px 3px 3px 3px;
+color:#000000;
 }

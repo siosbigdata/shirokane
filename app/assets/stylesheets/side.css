@@ -3,6 +3,7 @@
   margin: 0 0 2em;
   padding-top: 10px;
   padding: 5px;
+  border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
 }
 
 .cds-navi li { display: inline; }
@@ -13,13 +14,23 @@
   display: block;
   width: 165px;
   text-decoration: none;
-  border-left: 5px solid #000000;
-  background-color: #eeeeee;
-  color: #000000;
+  border-left: 5px solid #3399CC;
+  background-color: #EEEEEE;
+  color: #999999;
+  border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
 }
 
 .cds-navi li a:hover {
-  background-color: #999999;
-  color: #ff0000;
-  border-left: 5px solid #ff0000;
+  background-color: #DDDDDD;
+  color: #FFFFFF;
+  border-left: 5px solid #3399FF;
+  border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
+}
+
+#navigation {
+  border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+  /* ---- background: -moz-linear-gradient(#FEFFFF, #CCFFFF); ---- */
+  /* ---- background: -webkit-gradient(linear, left top, left bottom, from(#FEFFFF), to(#CCFFFF)); ---- */
+  background-color: #BBBBBB;
+  margin-left:25px
 }
