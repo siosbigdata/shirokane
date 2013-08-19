@@ -43,8 +43,8 @@ Shirokane::Application.configure do
   # config.force_ssl = true
 
   config.logger = Logger.new("log/production.log", 'daily')
-  Rails.logger.level = Logger::debug
-  #Rails.logger.level = Logger::info
+  Rails.logger.level = Logger::DEBUG
+  #Rails.logger.level = Logger::INFO
   # Set to :debug to see everything in the log.
   #config.log_level = :info
 
