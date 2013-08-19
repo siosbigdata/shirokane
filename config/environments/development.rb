@@ -17,6 +17,7 @@ Shirokane::Application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   config.logger = Logger.new("log/development.log", 'daily')
+  Rails.logger.level = Logger::debug
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
