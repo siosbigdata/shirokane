@@ -92,7 +92,7 @@ class GraphsController < PublichtmlController
       # 月曜日から開始するように調整
       @today = @today + (7-@today.wday).days
       @oldday = @today - 6.days
-      @term = @oldday.month.to_s + "." + @oldday.day.to_s + " - " + @today.month.to_s + "." + @today.day.to_s
+      @term = @oldday.month.to_s + t("datetime.prompts.month") + @oldday.day.to_s + t("datetime.prompts.day") + " - " + @today.month.to_s + t("datetime.prompts.month") + @today.day.to_s + t("datetime.prompts.day")
       stime = "%d"
     when 2  #月:１ヶ月分のデータを表示する
       @today = @today + @add.to_i.months if params[:add] # 追加日数
@@ -101,7 +101,7 @@ class GraphsController < PublichtmlController
       @today = nowmonth >> 1
       @today = @today - 1.day
       @oldday = nowmonth
-      @term = @oldday.month.to_s + "." + @oldday.day.to_s + " - " + @today.month.to_s + "." + @today.day.to_s
+      @term = @oldday.year.to_s + t("datetime.prompts.year") + @oldday.month.to_s + t("datetime.prompts.month")
       stime = "%d"
     when 3  #年:１ヶ月ごとのデータを表示する。
       @today = @today + @add.to_i.years if params[:add] # 追加日数
@@ -109,13 +109,13 @@ class GraphsController < PublichtmlController
       nowyear = Date::new(@today.year,1, 1)
       @today = nowyear + 1.year - 1.day
       @oldday = nowyear
-      @term = @oldday.year.to_s + "." + @oldday.month.to_s + " - " + @today.year.to_s + "." + @today.month.to_s
+      @term = @oldday.year.to_s + t("datetime.prompts.year")
       stime = "%m"
     else    #0か指定なしは１日の集計
       @today = @today - 1.day
       @today = @today + @add.to_i.days if params[:add] # 追加日数
       @oldday = @today
-      @term = @today.month.to_s + "." + @today.day.to_s
+      @term = @today.month.to_s + t("datetime.prompts.month") + @today.day.to_s + t("datetime.prompts.day")
       stime = "%H"
     end
 
