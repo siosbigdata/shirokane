@@ -89,20 +89,30 @@ class GraphsController < PublichtmlController
     case @graph_term
     when 1  #週:７日分の日別データを表示する
       @today = @today + (@add.to_i * 7).days if params[:add] # 追加日数
-      @oldday = @today - 7.days
+      # 月曜日から開始するように調整
+      @today = @today + (7-@today.wday).days
+      @oldday = @today - 6.days
       @term = @oldday.month.to_s + "." + @oldday.day.to_s + " - " + @today.month.to_s + "." + @today.day.to_s
       stime = "%d"
     when 2  #月:１ヶ月分のデータを表示する
       @today = @today + @add.to_i.months if params[:add] # 追加日数
-      @oldday = @today - 1.month
+      # 月初から開始するように調整
+      nowmonth = Date::new(@today.year,@today.month, 1)
+      @today = nowmonth >> 1
+      @today = @today - 1.day
+      @oldday = nowmonth
       @term = @oldday.month.to_s + "." + @oldday.day.to_s + " - " + @today.month.to_s + "." + @today.day.to_s
       stime = "%d"
     when 3  #年:１ヶ月ごとのデータを表示する。
       @today = @today + @add.to_i.years if params[:add] # 追加日数
-      @oldday = @today - 1.year
+      # 年初から開始するように調整
+      nowyear = Date::new(@today.year,1, 1)
+      @today = nowyear + 1.year - 1.day
+      @oldday = nowyear
       @term = @oldday.year.to_s + "." + @oldday.month.to_s + " - " + @today.year.to_s + "." + @today.month.to_s
       stime = "%m"
     else    #0か指定なしは１日の集計
+      @today = @today - 1.day
       @today = @today + @add.to_i.days if params[:add] # 追加日数
       @oldday = @today
       @term = @today.month.to_s + "." + @today.day.to_s
