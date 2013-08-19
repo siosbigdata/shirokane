@@ -1,10 +1,13 @@
 /* ----- HEADER ----- */
 #admin_header {
 	/*width:800px;*/
+	width:95%;
 	height:50px;
-	margin:0 auto auto auto;
+	border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+	/*margin:0 auto auto auto;*/
 	background-color:#cd5c5d;
 	position:relative;
+	margin-left:25px;
 }
 #admin_header a:link    { color: #ffffff; }
 #admin_header a:visited { color: #ffffff; }
@@ -18,13 +21,16 @@
 	overflow:auto; /* USE FIREFOX GUYS! WE ONLY NEED THIS LINE BECAUSE INTERNET EXPLODER ISN'T READING CODE PROPERLY */
 	margin-top:10px;
 	margin-bottom:5px;
+	margin-left:25px;
 }
 
 /* ----- NAVIGATION ----- */
 #admin_navigation {
-	display: table-cell;
-	width:190px;
-	background-color:#cd5c5d;
+  display: table-cell;
+  width:190px;
+  border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+  background-color: #cd5c5d;
+  margin-left:25px
 }
 
 /* ----- MAIN CONTENT ----- */
@@ -54,12 +60,19 @@
 
 /* ----- FOOTER ----- */
 #admin_footer { 
-	margin-top:5px;
+	/*margin-top:5px;
 	/*width:800px;*/
-	height:50px;
+	/*height:50px;
 	margin:0 auto auto auto;
 	background-color:#cd5c5d;
+	position:relative;*/
+	margin-top:10px;
+	width: 95%;
+	height:50px;
 	position:relative;
+	border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
+	background-color:#cd5c5d;
+	margin-left:25px;
 }
 #admin_footer h1 {
 	font-size:100%;
