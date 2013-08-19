@@ -26,12 +26,10 @@
   border-left: 5px solid #3399FF;
   border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
 }
-/*
-#navigation {
-  border-radius: 5px 5px 5px 5px / 5px 5px 5px 5px;
-  /* ---- background: -moz-linear-gradient(#FEFFFF, #CCFFFF); ---- */
-  /* ---- background: -webkit-gradient(linear, left top, left bottom, from(#FEFFFF), to(#CCFFFF)); ---- */
-  /*background-color: #BBBBBB;
-  margin-left:25px
+
+.cds-navi-admin li a{
+  border-left: 5px solid #556b2f;
 }
-*/
+.cds-navi-admin li a:hover{
+  border-left: 5px solid #adff2f;
+}
