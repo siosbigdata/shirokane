@@ -35,11 +35,13 @@ class Admin::GroupgraphsController < AdminController
     #対象group_idのレコードを削除
     Admin::Groupgraph.delete_all(:group_id  => gid)
     #対象レコードの新規追加
-    gs.keys.each do |ggs|
-      @gg = Admin::Groupgraph.new
-      @gg.group_id = gid
-      @gg.graph_id = ggs
-      @gg.save
+    if not gs.nil? then
+      gs.keys.each do |ggs|
+        @gg = Admin::Groupgraph.new
+        @gg.group_id = gid
+        @gg.graph_id = ggs
+        @gg.save
+      end
     end
     
     redirect_to admin_groups_path

@@ -20,30 +20,9 @@ class Admin::GraphsController < AdminController
   def show
   end
 
-#  # GET /admin/graphs/new
-#  def new
-#    @admin_graph = Admin::Graph.new
-#  end
-
   # GET /admin/graphs/1/edit
   def edit
   end
-
-#  # POST /admin/graphs
-#  # POST /admin/graphs.json
-#  def create
-#    @admin_graph = Admin::Graph.new(admin_graph_params)
-#
-#    respond_to do |format|
-#      if @admin_graph.save
-#        format.html { redirect_to @admin_graph, notice: 'Graph was successfully created.' }
-#        format.json { render action: 'show', status: :created, location: @admin_graph }
-#      else
-#        format.html { render action: 'new' }
-#        format.json { render json: @admin_graph.errors, status: :unprocessable_entity }
-#      end
-#    end
-#  end
 
   # PATCH/PUT /admin/graphs/1
   # PATCH/PUT /admin/graphs/1.json
@@ -58,20 +37,6 @@ class Admin::GraphsController < AdminController
       end
     end
   end
-
-#  # DELETE /admin/graphs/1
-#  # DELETE /admin/graphs/1.json
-#  def destroy
-#    # 削除前に関連するテーブルの削除を行う
-#    Admin::Groupgraph.delete_all(:graph_id  => @admin_graph.id)     #グループ-グラフ
-#    Admin::Groupdashboard.delete_all(:graph_id  => @admin_graph.id) #グループ-ダッシュボード
-#    # destory
-#    @admin_graph.destroy
-#    respond_to do |format|
-#      format.html { redirect_to admin_graphs_url }
-#      format.json { head :no_content }
-#    end
-#  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -90,6 +55,6 @@ class Admin::GraphsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_graph_params
-      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :x, :y,:template,:useval,:linewidth)
+      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :y,:template,:useval,:linewidth)
     end
 end

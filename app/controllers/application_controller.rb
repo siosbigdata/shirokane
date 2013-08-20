@@ -18,11 +18,11 @@ class ApplicationController < ActionController::Base
   helper_method :application_title
   
   # グラフ用データの取得
-  def td_graph_data(graph,startday,endday)
+  def td_graph_data(graph,term,startday,endday)
     # 表示テーブル名の設定
     Tdtable.table_name = "td_" + graph.name
     #SQLの作成
-    if graph.term == 1 || graph.term == 2 then  # 週、月:日別データを表示する
+    if term == 1 || term == 2 then  # 週、月:日別データを表示する
       if graph.analysis_type == 1 then #集計タイプ : graph.analysis_type 0:集計、1:平均
         #平均
         tdtable = Tdtable.where(:td_time => startday .. endday).group("date_trunc('day',td_time)").select("date_trunc('day',td_time) as td_time,avg(td_count) as td_count").order("date_trunc('day',td_time)")
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
         #集計
         tdtable = Tdtable.where(:td_time => startday .. endday).group("date_trunc('day',td_time)").select("date_trunc('day',td_time) as td_time,sum(td_count) as td_count").order("date_trunc('day',td_time)")
       end
-    elsif graph.term == 3 then  #年:１ヶ月ごとのデータを表示する。
+    elsif term == 3 then  #年:１ヶ月ごとのデータを表示する。
       if graph.analysis_type == 1 then #集計タイプ : graph.analysis_type 0:集計、1:平均
         #平均
         tdtable = Tdtable.where(:td_time => startday .. endday).group("date_trunc('month',td_time)").select("date_trunc('month',td_time) as td_time,avg(td_count) as td_count").order("date_trunc('month',td_time)")

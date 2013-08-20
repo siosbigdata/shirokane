@@ -8,7 +8,7 @@
 <% for rank in 1..4 %>
   <% if @graphs[rank] then%>
     <div id="dashboard">
-    	<h2><%= @graphs[rank].title %>(<%= @terms[rank]%>)</h2>
+    	<h2><%= @graphs[rank].title %>:<%= @h_analysis_types[@graphs[rank].analysis_type] %></h2>
 		<a href="<%= graph_path(@graphs[rank].id) %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
 	</div>
 	
@@ -36,8 +36,8 @@
 	  },
 	
 	  "data": [
-	    ["<%= @graphs[rank].x %>"<%= @xdatas[rank] %>],
-	    ["<%= @graphs[rank].y %>"<%= @ydatas[rank] %>]
+	    [""<%= @xdatas[rank] %>],
+	    [""<%= @ydatas[rank] %>]
 	  ]
 	};
 	ccchart.init('<%= @graphs[rank].name %>', chartdata)

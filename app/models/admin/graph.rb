@@ -5,7 +5,7 @@
 
 # 管理用グラフモデル
 # == テーブル作成
-# rails generate model graph name:string title:string graph_type:integer term:integer x:string y:string analysis_type:integer useval:interger linewidth:integer template:string
+# rails generate model graph name:string title:string graph_type:integer term:integer y:string analysis_type:integer useval:interger linewidth:integer template:string
 # == 注意
 # nameはTreasureData用データモデルのテーブル名とそろえる
 class Admin::Graph < ActiveRecord::Base
@@ -18,7 +18,6 @@ class Admin::Graph < ActiveRecord::Base
   validates :analysis_type,  :presence => true                  # 分析タイプ（集計、平均）
   validates :graph_type,  :presence => true                     # グラフタイプ（折線、縦棒）
   validates :term,  :presence => true                           # 期間
-  validates :x,  :presence => true                              # x
   validates :y,  :presence => true                              # y
   validates :useval, :presence => true,:numericality => true    # グラフに値を表示するかどうか
   validates :linewidth, :presence => true,:numericality => true # 線の太さ

@@ -3,8 +3,8 @@
 <!-- main content start -->
 <div id="content">
 <div id="sub_content">
-	<h1><%= @graph.title %></h1>
-	<h2><%= @h_terms[@graph_term] %>:<%= @term %></h2>
+	<h1><%= @graph.title %>:<%= @h_analysis_types[@graph.analysis_type] %></h1>
+	<h2><%= @term %></h2>
 	<div id="term_button">
 		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i - 1 %>" class="term_button"><%= t('button_back') %></a>
 		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>" class="term_button"><%= t('button_prev') %></a>
@@ -36,7 +36,7 @@
 	  },
 	
 	  "data": [
-	    ["<%= @graph.x %>"<%= @xdata %>],
+	    ["<%= @graphx %>"<%= @xdata %>],
 	    ["<%= @graph.y %>"<%= @ydata %>]
 	  ]
 	};

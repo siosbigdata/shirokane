@@ -8,7 +8,7 @@
 <% index=0%>
 <% @graphs.each do |graph| %>
     <div id="dashboard">
-    	<h2><%= graph.title %>(<%= @terms[index]%>)</h2>
+    	<h2><%= graph.title %>:<%= @h_analysis_types[graph.analysis_type] %></h2>
 		<canvas id="<%= graph.name %>"></canvas>
 	</div>
 	
@@ -36,8 +36,8 @@
 	  },
 	
 	  "data": [
-	    ["<%= graph.x %>"<%= @xdatas[index] %>],
-	    ["<%= graph.y %>"<%= @ydatas[index] %>]
+	    [""<%= @xdatas[index] %>],
+	    [""<%= @ydatas[index] %>]
 	  ]
 	};
 	ccchart.init('<%= graph.name %>', chartdata)

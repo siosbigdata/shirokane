@@ -15,7 +15,7 @@ class GraphsController < PublichtmlController
     redirect_to root_path
   end
   
-  #csv出力処理
+  # csv出力処理
   def csvexport
     # 表示可能グラフチェック
     return redirect_to :root if !check_graph_permission(params[:id]) 
@@ -49,17 +49,17 @@ class GraphsController < PublichtmlController
     # 表示可能グラフチェック
     return redirect_to :root if !check_graph_permission(params[:id]) 
       
-    #コンボボックスの値設定
+    # 値設定
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
     @h_terms ={0=> t('terms_day'),1 => t('terms_week'),2 => t('terms_month'),3 => t('terms_year')}
     @h_graphsize_width = {0 => 600,1 => 720,2 => 300}
     @h_graphsize_height = {0 => 400,1 => 480,2 => 200}
     @h_yesno = {0=>'no' , 1 => 'yes'}
     
-    #グラフ選択枝
+    # グラフ選択枝
     @graph_types = ['line','bar','pie']
           
-    #指定グラフ情報
+    # 指定グラフ情報
     @graph = Graph.find(params[:id])
       
     # 指定テンプレート情報
@@ -93,6 +93,7 @@ class GraphsController < PublichtmlController
       @today = @today + (7-@today.wday).days
       @oldday = @today - 6.days
       @term = @oldday.month.to_s + t("datetime.prompts.month") + @oldday.day.to_s + t("datetime.prompts.day") + " - " + @today.month.to_s + t("datetime.prompts.month") + @today.day.to_s + t("datetime.prompts.day")
+      @graphx = t("datetime.prompts.day")
       stime = "%d"
     when 2  #月:１ヶ月分のデータを表示する
       @today = @today + @add.to_i.months if params[:add] # 追加日数
@@ -102,6 +103,7 @@ class GraphsController < PublichtmlController
       @today = @today - 1.day
       @oldday = nowmonth
       @term = @oldday.year.to_s + t("datetime.prompts.year") + @oldday.month.to_s + t("datetime.prompts.month")
+      @graphx = t("datetime.prompts.day")
       stime = "%d"
     when 3  #年:１ヶ月ごとのデータを表示する。
       @today = @today + @add.to_i.years if params[:add] # 追加日数
@@ -110,12 +112,14 @@ class GraphsController < PublichtmlController
       @today = nowyear + 1.year - 1.day
       @oldday = nowyear
       @term = @oldday.year.to_s + t("datetime.prompts.year")
+      @graphx = t("datetime.prompts.month")
       stime = "%m"
     else    #0か指定なしは１日の集計
       @today = @today - 1.day
       @today = @today + @add.to_i.days if params[:add] # 追加日数
       @oldday = @today
       @term = @today.month.to_s + t("datetime.prompts.month") + @today.day.to_s + t("datetime.prompts.day")
+      @graphx = t("datetime.prompts.hour")
       stime = "%H"
     end
 
@@ -123,7 +127,7 @@ class GraphsController < PublichtmlController
     @today_s = @today.to_s + " 23:59:59"
     @oldday_s = @oldday.to_s + " 00:00:00"
     # データの取得
-    tdtable = td_graph_data(@graph,@oldday_s,@today_s)
+    tdtable = td_graph_data(@graph,@graph_term,@oldday_s,@today_s)
 
     # グラフ表示用データ作成
     @xdata = ""

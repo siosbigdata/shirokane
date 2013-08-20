@@ -12,6 +12,7 @@ class DashboardsController < PublichtmlController
     #グラフ選択枝
     @graph_types = ['line','bar','pie']
     @h_yesno = {0=>'no' , 1 => 'yes'}
+    @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
     
     #設定の取得
     ss = Setting.all
@@ -73,7 +74,7 @@ class DashboardsController < PublichtmlController
         today_s = today.to_s + " 23:59:59"
         oldday_s = oldday.to_s + " 00:00:00"
         # データの取得
-        tdtable = td_graph_data(graph,oldday_s,today_s)
+        tdtable = td_graph_data(graph,graph.term,oldday_s,today_s)
     
         # グラフ表示用データ作成
         xdata = ""
