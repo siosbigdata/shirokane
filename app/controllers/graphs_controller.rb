@@ -61,7 +61,7 @@ class GraphsController < PublichtmlController
           
     # 指定グラフ情報
     @graph = Graph.find(params[:id])
-      
+
     # 指定テンプレート情報
     templates = Graphtemplate.where({:name => @graph.template})
     @template = templates[0]

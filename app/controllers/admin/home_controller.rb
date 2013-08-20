@@ -79,8 +79,8 @@ class Admin::HomeController < AdminController
           xdata = ""
           ydata = ""
           tdtable.each do |dd|
-            xdata = xdata + "," + dd.td_time.strftime(stime)
-            ydata = ydata + "," + dd.td_count.to_i.to_s
+            xdata = xdata + dd.td_time.strftime(stime) + ","
+            ydata = ydata + dd.td_count.to_i.to_s + ","
           end
           #@graphs[db.view_rank.to_i] = graph
           @template << template

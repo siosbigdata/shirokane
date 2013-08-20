@@ -26,18 +26,21 @@
 	    "useShadow": "<%= @h_yesno[@template[rank].useshadow] %>",
 	    "lineWidth": <%= @graphs[rank].linewidth %>,
 	    "colorSet": 
-	          ["<%= @template[rank].linecolor %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
+	          ["<%= @template[rank].linecolor %>"],
 	    "bgGradient": {
 	            "direction":"vertical",
 	            "from":"<%= @template[rank].bgfrom %>",
 	            "to":"<%= @template[rank].bgto %>"
 	         },
-	    "textColor": "<%= @template[rank].textcolor %>"
+	    "textColor": "<%= @template[rank].textcolor %>",
+	    "useFirstToColName":false,
+	    "useFirstToRowName":false,
+	    "minY":0
 	  },
 	
 	  "data": [
-	    [""<%= @xdatas[rank] %>],
-	    [""<%= @ydatas[rank] %>]
+	    [<%= @xdatas[rank] %>],
+	    [<%= @ydatas[rank] %>]
 	  ]
 	};
 	ccchart.init('<%= @graphs[rank].name %>', chartdata)

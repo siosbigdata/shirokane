@@ -26,13 +26,14 @@
 	    "useShadow": "<%= @h_yesno[@template.useshadow] %>",
 	    "lineWidth": <%= @graph.linewidth %>,
 	    "colorSet": 
-	          ["<%= @template.linecolor %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
+	          ["<%= @template.linecolor %>"],
 	    "bgGradient": {
 	            "direction":"vertical",
 	            "from":"<%= @template.bgfrom %>",
 	            "to":"<%= @template.bgto %>"
 	         },
-	    "textColor": "<%= @template.textcolor %>"
+	    "textColor": "<%= @template.textcolor %>",
+	    "minY":0
 	  },
 	
 	  "data": [
