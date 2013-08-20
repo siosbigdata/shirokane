@@ -73,7 +73,7 @@ class DashboardsController < PublichtmlController
         today_s = today.to_s + " 23:59:59"
         oldday_s = oldday.to_s + " 00:00:00"
         # データの取得
-        tdtable = td_graph_data(graph.name,graph.term,graph.analysis_type,oldday_s,today_s)
+        tdtable = td_graph_data(graph,oldday_s,today_s)
     
         # グラフ表示用データ作成
         xdata = ""

@@ -3,7 +3,51 @@
 <!-- administrator main content start -->
 <div id="admin_content">
 <div id="admin_sub_content">
-	This is an administator's view!
+	<h1><%= Time.now().strftime('%Y/%m/%d %X') %></h1>
+	<div id="dashboards">
+<% index=0%>
+<% @graphs.each do |graph| %>
+    <div id="dashboard">
+    	<h2><%= graph.title %>(<%= @terms[index]%>)</h2>
+		<canvas id="<%= graph.name %>"></canvas>
+	</div>
+	
+	<script>
+	var chartdata = {
+	
+	  "config": {
+	  	"width": 300,
+	  	"height": 200,
+	  	"onlyChart":"yes",
+	    /*"title": "title",*/
+	    /*"subTitle": "subTitle",*/
+	    "type": "<%= @graph_types[graph.graph_type] %>",
+	    "useVal": "<%= @h_yesno[graph.useval] %>",
+	    "useShadow": "<%= @h_yesno[@template[index].useshadow] %>",
+	    "lineWidth": <%= graph.linewidth %>,
+	    "colorSet": 
+	          ["<%= @template[index].linecolor %>","#FF9114","#3CB000","#00A8A2","#0036C0","#C328FF","#FF34C0"],
+	    "bgGradient": {
+	            "direction":"vertical",
+	            "from":"<%= @template[index].bgfrom %>",
+	            "to":"<%= @template[index].bgto %>"
+	         },
+	    "textColor": "<%= @template[index].textcolor %>"
+	  },
+	
+	  "data": [
+	    ["<%= graph.x %>"<%= @xdatas[index] %>],
+	    ["<%= graph.y %>"<%= @ydatas[index] %>]
+	  ]
+	};
+	ccchart.init('<%= graph.name %>', chartdata)
+	</script>
+	<% if index%2 == 1 then %>
+	<div class="space"></div>
+	<% end %>
+	<% index += 1 %>
+<% end %>
+</div>
 
 </div>
 </div><!-- administrator main content end -->
