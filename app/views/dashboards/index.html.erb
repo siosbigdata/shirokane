@@ -9,6 +9,7 @@
   <% if @graphs[rank] then%>
     <div id="dashboard">
     	<h2><%= @graphs[rank].title %>:<%= @h_analysis_types[@graphs[rank].analysis_type] %></h2>
+    	<h3><%= @terms[rank] %></h3>
 		<a href="<%= graph_path(@graphs[rank].id) %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
 	</div>
 	

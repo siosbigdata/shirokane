@@ -33,6 +33,31 @@
 	top:1px;
 }
 
+.term_button_select{
+	border:1px solid #e65f44;
+	text-decoration:none;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #f0c911), color-stop(100%, #f2ab1e) );
+	background:-moz-linear-gradient( center top, #f0c911 5%, #f2ab1e 100% );
+	background:-ms-linear-gradient( top, #f0c911 5%, #f2ab1e 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0c911', endColorstr='#f2ab1e');
+	background-color:#f0c911;
+	color:#c92200;
+}
+
+.term_button_select:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #f2ab1e), color-stop(100%, #f0c911) );
+	background:-moz-linear-gradient( center top, #f2ab1e 5%, #f0c911 100% );
+	background:-ms-linear-gradient( top, #f2ab1e 5%, #f0c911 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f2ab1e', endColorstr='#f0c911');
+	background-color:#f2ab1e;
+}
+
+.term_button_select:active {
+	position:relative;
+	top:1px;
+}
+
+
 #term_button {
 	width: 600px;
 	height: 50px;

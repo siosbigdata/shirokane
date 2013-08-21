@@ -9,6 +9,7 @@
 <% @graphs.each do |graph| %>
     <div id="dashboard">
     	<h2><%= graph.title %>:<%= @h_analysis_types[graph.analysis_type] %></h2>
+    	<h3><%= @terms[index] %></h3>
 		<canvas id="<%= graph.name %>"></canvas>
 	</div>
 	

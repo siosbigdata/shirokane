@@ -6,10 +6,28 @@
 	<h1><%= @graph.title %>:<%= @h_analysis_types[@graph.analysis_type] %></h1>
 	<h2><%= @term %></h2>
 	<div id="term_button">
-		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i - 1 %>" class="term_button"><%= t('button_back') %></a>
-		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>" class="term_button"><%= t('button_prev') %></a>
-		<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn">csv</a>
+		<% if @graph_term == 0 then %>
+			<a href="<%= graph_path(@graph.id)%>?term=0" class="term_button_select term_button"><%= t('button_day') %></a>
+		<% else %>
+			<a href="<%= graph_path(@graph.id)%>?term=0" class="term_button"><%= t('button_day') %></a>
+		<% end %>
+		<% if @graph_term == 1 then %>
+			<a href="<%= graph_path(@graph.id)%>?term=1" class="term_button_select term_button"><%= t('button_week') %></a>
+		<% else %>
+			<a href="<%= graph_path(@graph.id)%>?term=1" class="term_button"><%= t('button_week') %></a>
+		<% end %>
+		<% if @graph_term == 2 then %>
+			<a href="<%= graph_path(@graph.id)%>?term=2" class="term_button_select term_button"><%= t('button_month') %></a>
+		<% else %>
+			<a href="<%= graph_path(@graph.id)%>?term=2" class="term_button"><%= t('button_month') %></a>
+		<% end %>
+		<% if @graph_term == 3 then %>
+			<a href="<%= graph_path(@graph.id)%>?term=3" class="term_button_select term_button"><%= t('button_year') %></a>
+		<% else %>
+			<a href="<%= graph_path(@graph.id)%>?term=3" class="term_button"><%= t('button_year') %></a>
+		<% end %>
 	</div>
+
 	<canvas id="<%= @graph.name %>"></canvas>
 	<br />
 	<script>
@@ -44,12 +62,10 @@
 	ccchart.init('<%= @graph.name %>', chartdata)
 	</script>
 
-	
 	<div id="term_button">
-		<a href="<%= graph_path(@graph.id)%>?term=0" class="term_button"><%= t('button_day') %></a>
-		<a href="<%= graph_path(@graph.id)%>?term=1" class="term_button"><%= t('button_week') %></a>
-		<a href="<%= graph_path(@graph.id)%>?term=2" class="term_button"><%= t('button_month') %></a>
-		<a href="<%= graph_path(@graph.id)%>?term=3" class="term_button"><%= t('button_year') %></a>
+		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i - 1 %>" class="term_button"><%= t('button_back') %></a>
+		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>" class="term_button"><%= t('button_prev') %></a>
+		<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn">csv</a>
 	</div>
 	
 
