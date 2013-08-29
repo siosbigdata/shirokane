@@ -9,7 +9,6 @@
 # == 初期データ作成
 # 管理者
 # User.create!(:name => "admin", :password => "admin", :password_confirmation => "admin",:title=>'管理者',:mail=>'admin@admin.com',:group_id=>1,admin:1)
-#
 class User < ActiveRecord::Base
     # パスワード用処理
     has_secure_password
@@ -18,7 +17,6 @@ class User < ActiveRecord::Base
     belongs_to :group
     
     # 入力チェック
-    #validates :name,  :presence => true,:uniqueness=>true
     validates :title,  :presence => true
     validates :mail,  :presence => true,:uniqueness=>true, :email_format => {:message => I18n.t('error_mail_message')}
 end
