@@ -22,7 +22,8 @@ class DashboardsController < PublichtmlController
     }
         
     # ダッシュボード情報取得
-    @dashboards = Groupdashboard.where({:group_id=>current_user.group.id}).order(:view_rank)
+    #@dashboards = Groupdashboard.where({:group_id=>current_user.group.id}).order(:view_rank)
+    @dashboards = Groupgraph.where(:group_id=>current_user.group.id,:dashboard => true).order(:view_rank)
     @graphs = Array.new()
     @template = Array.new()
     @xdatas = Array.new()
@@ -83,11 +84,11 @@ class DashboardsController < PublichtmlController
           xdata = xdata + dd.td_time.strftime(stime) + ","
           ydata = ydata + dd.td_count.to_i.to_s + ","
         end
-        @graphs[db.view_rank.to_i] = graph
-        @template[db.view_rank.to_i] = template
-        @xdatas[db.view_rank.to_i] = xdata
-        @ydatas[db.view_rank.to_i] = ydata
-        @terms[db.view_rank.to_i] = term
+        @graphs[db.graph_id.to_i] = graph
+        @template[db.graph_id.to_i] = template
+        @xdatas[db.graph_id.to_i] = xdata
+        @ydatas[db.graph_id.to_i] = ydata
+        @terms[db.graph_id.to_i] = term
       end
     end
   end

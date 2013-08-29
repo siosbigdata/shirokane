@@ -1,4 +1,4 @@
-# encoding: UTF-8
+ # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805051457) do
+ActiveRecord::Schema.define(version: 20130829015203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,17 +42,19 @@ ActiveRecord::Schema.define(version: 20130805051457) do
     t.string   "name"
   end
 
-  create_table "groupdashboards", force: true do |t|
-    t.integer  "group_id"
-    t.integer  "graph_id"
-    t.integer  "view_rank"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+#  create_table "groupdashboards", force: true do |t|
+#    t.integer  "group_id"
+#    t.integer  "graph_id"
+#    t.integer  "view_rank"
+#    t.datetime "created_at"
+#    t.datetime "updated_at"
+#  end
 
   create_table "groupgraphs", force: true do |t|
     t.integer  "group_id"
     t.integer  "graph_id"
+    t.boolean  "dashboard"
+    t.integer  "view_rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

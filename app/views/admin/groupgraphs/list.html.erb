@@ -13,6 +13,8 @@
     <tr>
       <th><%= t('title_select') %></th>
       <th><%= t('title_graph') %></th>
+      <th><%= t('title_dashboard') %></th>
+      <th><%= t('title_rank') %></th>
     </tr>
   </thead>
 
@@ -20,9 +22,10 @@
   	
     <% @graph.each do |g| %>
       <tr>
-        <td><%= check_box 'groupgraph', g.id,{:checked => @ghash[g.id]}, 1, false %></td>
+        <td><%= check_box 'groupgraph', g.id,{:checked => @gcheck[g.id]}, 1, false %></td>
         <td><%= g.title %></td>
-      </tr>
+        <td><%= check_box 'dashboard', g.id,{:checked => @ghash[g.id].dashboard}, 1, false %></td>
+        <td><%= number_field_tag 'view_rank' + g.id.to_s,@ghash[g.id].view_rank,{:min => 0,:max => 99,:size => 2} %>
     <% end %>
     
   </tbody>

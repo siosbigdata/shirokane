@@ -5,12 +5,13 @@
 <div id="sub_content">
 	<h1><%= Time.now().strftime('%Y/%m/%d %X') %></h1>
 	<div id="dashboards">
-<% for rank in 1..4 %>
-  <% if @graphs[rank] then%>
+<% index = 1 %>
+<% @dashboards.each do |ddd| %>
+  <% if @graphs[ddd.graph_id] then%>
     <div id="dashboard">
-    	<h2><%= @graphs[rank].title %>:<%= @h_analysis_types[@graphs[rank].analysis_type] %></h2>
-    	<h3><%= @terms[rank] %></h3>
-		<a href="<%= graph_path(@graphs[rank].id) %>"><canvas id="<%= @graphs[rank].name %>"></canvas></a>
+    	<h2><%= @graphs[ddd.graph_id].title %>:<%= @h_analysis_types[@graphs[ddd.graph_id].analysis_type] %></h2>
+    	<h3><%= @terms[ddd.graph_id] %></h3>
+		<a href="<%= graph_path(@graphs[ddd.graph_id].id) %>"><canvas id="<%= @graphs[ddd.graph_id].name %>"></canvas></a>
 	</div>
 	
 	<script>
@@ -22,33 +23,34 @@
 	  	"onlyChart":"yes",
 	    /*"title": "title",*/
 	    /*"subTitle": "subTitle",*/
-	    "type": "<%= @graph_types[@graphs[rank].graph_type] %>",
-	    "useVal": "<%= @h_yesno[@graphs[rank].useval] %>",
-	    "useShadow": "<%= @h_yesno[@template[rank].useshadow] %>",
-	    "lineWidth": <%= @graphs[rank].linewidth %>,
+	    "type": "<%= @graph_types[@graphs[ddd.graph_id].graph_type] %>",
+	    "useVal": "<%= @h_yesno[@graphs[ddd.graph_id].useval] %>",
+	    "useShadow": "<%= @h_yesno[@template[ddd.graph_id].useshadow] %>",
+	    "lineWidth": <%= @graphs[ddd.graph_id].linewidth %>,
 	    "colorSet": 
-	          ["<%= @template[rank].linecolor %>"],
+	          ["<%= @template[ddd.graph_id].linecolor %>"],
 	    "bgGradient": {
 	            "direction":"vertical",
-	            "from":"<%= @template[rank].bgfrom %>",
-	            "to":"<%= @template[rank].bgto %>"
+	            "from":"<%= @template[ddd.graph_id].bgfrom %>",
+	            "to":"<%= @template[ddd.graph_id].bgto %>"
 	         },
-	    "textColor": "<%= @template[rank].textcolor %>",
+	    "textColor": "<%= @template[ddd.graph_id].textcolor %>",
 	    "useFirstToColName":false,
 	    "useFirstToRowName":false,
 	    "minY":0
 	  },
 	
 	  "data": [
-	    [<%= @xdatas[rank] %>],
-	    [<%= @ydatas[rank] %>]
+	    [<%= @xdatas[ddd.graph_id] %>],
+	    [<%= @ydatas[ddd.graph_id] %>]
 	  ]
 	};
-	ccchart.init('<%= @graphs[rank].name %>', chartdata)
+	ccchart.init('<%= @graphs[ddd.graph_id].name %>', chartdata)
 	</script>
-	<% if rank%2 == 0 then %>
+	<% if index%3 == 0 then %>
 	<div class="space"></div>
 	<% end %>
+	<% index += 1 %>
 	<% end %>
 <% end %>
 </div>

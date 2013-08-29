@@ -16,7 +16,10 @@ Shirokane::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
-  config.logger = Logger.new("log/development.log", 'daily')
+  #http://threetreeslight.com/post/51883603368/rails-id-ip
+  #config.logger = Logger.new("log/development.log", 'daily')
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new("log/development.log", 'daily'))
+  config.log_tags = [ :subdomain, :uuid, :remote_ip ,'twitterapp']
   config.log_level = :debug
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
