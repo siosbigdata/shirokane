@@ -30,6 +30,7 @@ border-right: 1px solid #EEEEEE;
 	right:5px;
 	bottom: 5px;
 }
+#header_contents a {text-decoration: none;} 
 
 #login {
 	width:350px;

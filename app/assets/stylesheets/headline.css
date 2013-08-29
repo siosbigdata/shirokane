@@ -15,6 +15,14 @@ h3 { clear: both; font-size: 1.1em; color: #000; background: #fff url(images/h3b
 	padding: 10px 0 10px 10px; 
 }
 #logo h1 { color: #ffffff;  }
+#logo a {text-decoration: none;} 
+
+#head_dashboard { 
+	float: left; 
+	width:200px;
+	padding: 25px 0 0px 0px; 
+}
+#head_dashboard a {text-decoration: none;} 
 
 /* LEFT INTRO SIDE */	
 

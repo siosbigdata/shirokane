@@ -1,11 +1,13 @@
 <!-- main header start -->
 <div id="header">
 	<div id="logo">
-		<h1><%= application_title %></h1>
+		<h1><%= link_to application_title, root_path %></h1>
 	</div>
+	<div id="head_dashboard"><%= link_to t('title_dashboard'), root_path %></div>
 	<div id="header_contents">
 	<% if current_user != nil %>
 	  <%= current_user.title %> （<%= current_user.group.title %>）
+	  <%= link_to t('title_setting'), edit_user_path(current_user.id) %>
 	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>current_user.id}, :data =>{:confirm => t('logout_message')}, :method => :delete %>
 	<% end %>
 	</div>
