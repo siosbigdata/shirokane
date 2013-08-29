@@ -46,7 +46,7 @@ class Admin::SettingsController < AdminController
     
     def set_select_setting
       @select_yes_no ={"yes"=>"yes","no"=>"no"}
-      @select_color = {"white" => "#FFFFFF","black"=>"#000000","red" => "#FF0000","gray1"=>"#687478","gray2"=>"#222222","blue"=>"#0000ff","yellow"=>"#ffcc00","green"=>"#006600"}
+      #@select_color = {"white" => "#FFFFFF","black"=>"#000000","red" => "#FF0000","gray1"=>"#687478","gray2"=>"#222222","blue"=>"#0000ff","yellow"=>"#ffcc00","green"=>"#006600"}
       @select_graphsize = {"600×400" => "0","720×480" => "1","300×200" => "2"}
     end
 

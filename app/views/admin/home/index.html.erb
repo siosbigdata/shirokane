@@ -46,7 +46,7 @@
 	};
 	ccchart.init('<%= graph.name %>', chartdata)
 	</script>
-	<% if index%2 == 1 then %>
+	<% if (index + 1)%@gconf['dashboardnum'].to_i == 0 then %>
 	<div class="space"></div>
 	<% end %>
 	<% index += 1 %>

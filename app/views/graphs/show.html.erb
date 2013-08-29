@@ -51,7 +51,12 @@
 	            "to":"<%= @template.bgto %>"
 	         },
 	    "textColor": "<%= @template.textcolor %>",
-	    "minY":0
+	    "minY":<%= @graph.y_min %>,
+	    <% if @graph_term == 3 then %>
+	    	"maxY":<%= @graph.y_max.to_i * 30 %>
+	    <% else %>
+	    	"maxY":<%= @graph.y_max.to_i %>
+	    <% end %>
 	  },
 	
 	  "data": [

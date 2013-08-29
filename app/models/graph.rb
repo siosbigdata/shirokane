@@ -5,7 +5,9 @@
 
 # グラフモデル
 # == テーブル作成
-# rails generate model graph name:string title:string graph_type:integer term:integer y:string analysis_type:integer useval:interger linewidth:integer template:string
+# rails generate model graph name:string title:string graph_type:integer term:integer
+#                             x:string y:string y_max:integer y_min:integer
+#                             analysis_type:integer useval:interger linewidth:integer template:string
 # == 注意
 # nameはTreasureData用データモデルのテーブル名とそろえる
 class Graph < ActiveRecord::Base

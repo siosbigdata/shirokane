@@ -38,6 +38,8 @@ ja:
   title_graph_term: 期間
   title_graph_x: X軸表示名
   title_graph_y: Y軸表示名
+  title_graph_x_max: X軸最大値
+  title_graph_x_min: X軸最小値
   title_graph_useval: 値表示
   title_graph_linewidth: 線の太さ
   title_graph_template: テンプレート
@@ -72,6 +74,8 @@ ja:
     term: 期間
     x: X軸表示名
     y: Y軸表示名
+    x_max: X軸最大値
+    x_min: X軸最小値
     parameter: 値
     useval: 値表示
     linewidth: 線の太さ

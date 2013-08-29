@@ -8,6 +8,8 @@ class CreateGraphs < ActiveRecord::Migration
       t.integer :term
       t.string :x
       t.string :y
+      t.integer :y_max
+      t.integer :y_min
       t.integer :analysis_type
       t.integer :useval
       t.integer :linewidth

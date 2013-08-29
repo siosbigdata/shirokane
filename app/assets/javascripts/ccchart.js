@@ -488,7 +488,7 @@ window.ccchart =
       this.imgAlpha = op.config.imgAlpha || this.gcf.imgAlpha || 1;
       
       //影を付けるかどうか
-      this.useShadow =  op.config.useShadow || this.gcf.useShadow || 'yes';
+      this.useShadow =  op.config.useShadow || this.gcf.useShadow || 'no';
       if(this.useShadow === 'yes'){
         this.shadows = op.config.shadows || this.gcf.shadows ||{
         "hanrei" : ['#222', 5, 5, 5],

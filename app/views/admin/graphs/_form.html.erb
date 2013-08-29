@@ -37,6 +37,14 @@
     <%= f.label :y %><br>
     <%= f.text_field :y %>
   </div>
+  <div class="field">
+    <%= f.label :y_min %><br>
+    <%= f.text_field :y_min %>
+  </div>
+  <div class="field">
+    <%= f.label :y_max %><br>
+    <%= f.text_field :y_max %>
+  </div>
    <div class="field">
     <%= f.label :useval %><br>
     <%= f.select :useval,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>

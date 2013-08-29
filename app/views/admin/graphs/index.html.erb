@@ -14,6 +14,8 @@
       <th><%= t('title_graph_graph_type') %></th>
       <th><%= t('title_graph_term') %></th>
       <th><%= t('title_graph_y') %></th>
+      <th><%= t('title_graph_y_min') %></th>
+      <th><%= t('title_graph_y_max') %></th>
       <th><%= t('title_graph_useval') %></th>
       <th><%= t('title_graph_linewidth') %></th>
       <th><%= t('title_graph_template') %></th>
@@ -29,6 +31,8 @@
         <td><%= @h_graph_types[admin_graph.graph_type] %></td>
         <td><%= @h_terms[admin_graph.term] %></td>
         <td><%= admin_graph.y %></td>
+        <td><%= admin_graph.y_min %></td>
+        <td><%= admin_graph.y_max %></td>
         <td><%= @h_yesno[admin_graph.useval] %></td>
         <td><%= admin_graph.linewidth %></td>
         <td><%= @h_template[admin_graph.template] %></td>
