@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     @application_title = settings[0].parameter
   end
   helper_method :application_title
-  
+
   # テーブル名取得
   def get_td_tablename(name)
     return "td_" + name

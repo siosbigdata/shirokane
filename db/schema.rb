@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130829073808) do
+ActiveRecord::Schema.define(version: 20130830005152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,11 @@ ActiveRecord::Schema.define(version: 20130829073808) do
     t.integer  "columntype"
   end
 
+  create_table "td_graph6", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
   create_table "td_test1", id: false, force: true do |t|
     t.datetime "td_time"
     t.decimal  "td_count"
@@ -112,6 +117,9 @@ ActiveRecord::Schema.define(version: 20130829073808) do
     t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end

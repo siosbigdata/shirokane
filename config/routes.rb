@@ -4,32 +4,17 @@
 # Date:: 2013.07.25
 
 Shirokane::Application.routes.draw do
-  namespace :admin do
-    resources :settings
-  end
-
-  #get "home/index"
-  #get "graph/index"
-  #管理画面用
-  namespace :admin do
-    resources :login
-    resources :users
-    resources :graphs
-    resources :groups
-    resources :home
-    resources :groupgraphs do
-      member do
-        get 'list'
-      end
-    end
-#    resources :groupdashboards do
-#      member do
-#        get 'list'
-#      end
-#    end
-    root 'home#index'
-  end
-    
+  root 'dashboards#index'
+  
+  get "password_resets/new"
+  #get "logout" => "sessions#destroy", :as => "logout"
+  #get "login" => "sessions#new", :as => "login"
+  #get "signup" => "users#new", :as => "signup"
+  #root :to => "home#index"
+  #resources :users
+  #resources :sessions
+  resources :password_resets
+  
   resources :login
   resources :users
   resources :graphs do
@@ -37,8 +22,24 @@ Shirokane::Application.routes.draw do
       get 'csvexport'
     end
   end
+  
+    # You can have the root of your site routed with "root"
+    # root 'welcome#index'
+    
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-  root 'dashboards#index'
+  #管理画面用
+  namespace :admin do
+    resources :login
+    resources :users
+    resources :graphs
+    resources :groups
+    resources :home
+    resources :settings
+    resources :groupgraphs do
+      member do
+        get 'list'
+      end
+    end
+    root 'home#index'
+  end
 end
