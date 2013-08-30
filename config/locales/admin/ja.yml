@@ -59,6 +59,9 @@ ja:
   error_graph_message: グラフ情報の保存に失敗しました。
   error_mail_message: が正しくありません。
   error_setting_message: 設定値の保存に失敗しました。
+  
+  forgotten_password: パスワードを忘れた方
+  forgotten_password_message: パスワードを再設定する
 
   attributes:
     name: 名前

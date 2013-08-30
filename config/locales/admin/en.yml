@@ -59,6 +59,8 @@ en:
   error_mail_message: prohibited this mail from being saved
   error_setting_message: prohibited this setting from being saved
   
+  forgotten_password: forgotten password?
+  
   attributes:
     name: Name
     password: Password

@@ -1,10 +1,9 @@
 <%= render 'common/header' %>
 <div id="login">
 	<%= form_tag :controller => 'login', :action => 'create' do -%>
-	 
+	<h2 id="login_title"><%= t('login') %></h2>
 	<table>
 	<tbody>
-		<tr><td colspan="2"><h2 id="login_title"><%= t('login') %></h2></td></tr>
 		<tr>
 			<th><%= label_tag :mail, t('mail') %></th>
 			<td><%= text_field_tag :mail, params[:mail] %></td>
@@ -18,15 +17,10 @@
 			<div id="error_msg"><%= t('error_login_message') %><br /></div>
 			</td></tr>
 		<% end %>
-		<tr><td colspan="2"><div id="login_action"><%= submit_tag t('login') %></div></td></tr>
 	</tbody>
 	</table>
 	<% end %>
-	
-	<p><%= link_to "forgotten password?", new_password_reset_path %></p>
-	<div class="field">
-	  <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-	  <%= label_tag :remember_me %>
-	</div>
+	<div id="login_action"><%= submit_tag t('login') %></div>
+	<div id="forgotten_password"><%= link_to t('forgotten_password'), new_password_reset_path %></div>
 </div>
 <%= render 'common/footer' %>

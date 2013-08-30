@@ -37,14 +37,19 @@ border-right: 1px solid #EEEEEE;
 	margin:0 auto auto auto;
 }
 
-#login_action{
-	text-align: right;
+#login_title{
+	text-align: center;
 }
 
-#login_title{
-	text-align: left;
+#login_action{
+	text-align: center;
+	padding: 10px 0 0 0;
 }
-/* FAUX LAYOUT WRAPPER */
+
+#forgotten_password{
+	text-align: center;
+	padding: 20px 0 0 0;
+}
 
 #wrapper{
 	width:100%;
