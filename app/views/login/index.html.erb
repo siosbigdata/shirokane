@@ -19,8 +19,9 @@
 		<% end %>
 	</tbody>
 	</table>
-	<% end %>
 	<div id="login_action"><%= submit_tag t('login') %></div>
+	<% end %>
+	
 	<div id="forgotten_password"><%= link_to t('forgotten_password'), new_password_reset_path %></div>
 </div>
 <%= render 'common/footer' %>
