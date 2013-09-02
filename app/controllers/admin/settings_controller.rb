@@ -12,7 +12,8 @@ class Admin::SettingsController < AdminController
   # GET /admin/settings
   # GET /admin/settings.json
   def index
-    @admin_settings = Admin::Setting.all.order(:vieworder)
+    # vieworder = 0は非表示
+    @admin_settings = Admin::Setting.where.not(:vieworder => 0).order(:vieworder)
   end
 
   # GET /admin/settings/1
@@ -46,8 +47,6 @@ class Admin::SettingsController < AdminController
     
     def set_select_setting
       @select_yes_no ={"yes"=>"yes","no"=>"no"}
-      #@select_color = {"white" => "#FFFFFF","black"=>"#000000","red" => "#FF0000","gray1"=>"#687478","gray2"=>"#222222","blue"=>"#0000ff","yellow"=>"#ffcc00","green"=>"#006600"}
-      @select_graphsize = {"600×400" => "0","720×480" => "1","300×200" => "2"}
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

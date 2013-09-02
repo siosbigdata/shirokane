@@ -3,7 +3,7 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.08.30
 
-# パスワードの再設定
+# パスワードの再設定処理
 class PasswordResetsController < PublichtmlController
   def new
   end

@@ -17,11 +17,11 @@ class Admin::GroupgraphsController < AdminController
       if Admin::Groupgraph.exists?({:group_id => params[:id],:graph_id => g.id}) then
         tmp = Admin::Groupgraph.where(:group_id => params[:id],:graph_id => g.id) 
         
-          if tmp[0].view_rank.to_i < 1 then
-            tmp[0].view_rank = 99
-          end 
-          @gcheck[g.id] = true
-          @ghash[g.id] = tmp[0]
+        if tmp[0].view_rank.to_i < 1 then
+          tmp[0].view_rank = 99
+        end 
+        @gcheck[g.id] = true
+        @ghash[g.id] = tmp[0]
       else 
         tmp = Admin::Groupgraph.new
         tmp.dashboard = false
@@ -57,7 +57,6 @@ class Admin::GroupgraphsController < AdminController
     end
     
     redirect_to admin_groups_path
-      
   end
 end
 

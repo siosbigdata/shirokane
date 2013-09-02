@@ -40,6 +40,8 @@ class GraphsController < PublichtmlController
     end
     # ファイル名
     fname =  @graph.name.to_s + "_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.csv"
+    # ファイル容量記録
+    
     # 出力
     send_data(data, type: 'text/csv', filename: fname)    
   end
@@ -52,8 +54,6 @@ class GraphsController < PublichtmlController
     # 値設定
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
     @h_terms ={0=> t('terms_day'),1 => t('terms_week'),2 => t('terms_month'),3 => t('terms_year')}
-    @h_graphsize_width = {0 => 600,1 => 720,2 => 300}
-    @h_graphsize_height = {0 => 400,1 => 480,2 => 200}
     @h_yesno = {0=>'no' , 1 => 'yes'}
     
     # グラフ選択枝

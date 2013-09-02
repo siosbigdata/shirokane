@@ -20,8 +20,6 @@
         <%= f.select :parameter,@select_yes_no.keys.map{|t| [t,@select_yes_no[t]]} %>
     <% elsif @admin_setting.columntype == 3 %>
         <%= f.number_field :parameter,{:min => 1,:max => 10} %>
-    <% elsif @admin_setting.columntype == 4 %>
-        <%= f.select :parameter,@select_graphsize.keys.map{|t| [t,@select_graphsize[t]]} %>
     <% else %>
         <%= f.text_field :parameter %>
     <% end %>
