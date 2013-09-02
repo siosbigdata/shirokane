@@ -10,6 +10,9 @@
 #                             analysis_type:integer useval:interger linewidth:integer template:string
 # == 注意
 # nameはTreasureData用データモデルのテーブル名とそろえる
+# == サンプルグラフ
+# rails c
+# Graph.create(:name=>"test1",:title=>"newsite",:analysis_type=>0,:graph_type=>0,:term=>2,:x=>"time",:y=>"count",:useval=>0,:linewidth=>4,:template=>"white-dimgray",:y_max=>1000,:y_min=>0)
 class Graph < ActiveRecord::Base
   # アソシエーション
   has_many :groupgraph

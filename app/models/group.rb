@@ -7,6 +7,7 @@
 # == テーブル作成
 # rails generate model group name:string title:string
 # == 初期データ作成
+# rails c
 # Group.create(:name => "addmingroup", :title => "管理グループ")
 class Group < ActiveRecord::Base
 end

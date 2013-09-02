@@ -7,6 +7,7 @@
 # == テーブル作成
 # rails generate model graphtemplate name:string linecolor:string bgfrom:string bgto:string textcolor:strin
 # == サンプルテンプレート
+# rails c
 #Graphtemplate.create(:name=>'aliceblue-black',:linecolor => "#000000",:bgfrom => "#f0f8ff",:bgto => "#f0f8ff",:textcolor => "#000000" ,:useshadow=>"0")
 #Graphtemplate.create(:name=>'aliceblue-black-s',:linecolor => "#000000",:bgfrom => "#f0f8ff",:bgto => "#f0f8ff",:textcolor => "#000000" ,:useshadow=>"1")
 #Graphtemplate.create(:name=>'aliceblue-dimgray',:linecolor => "#696969",:bgfrom => "#f0f8ff",:bgto => "#f0f8ff",:textcolor => "#696969" ,:useshadow=>"0")
