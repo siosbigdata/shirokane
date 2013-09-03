@@ -7,24 +7,24 @@
 	<h2><%= @term %></h2>
 	<div id="term_button">
 		<% if @graph_term == 0 then %>
-			<a href="<%= graph_path(@graph.id)%>?term=0" class="term_button_select term_button"><%= t('button_day') %></a>
+			<a href="<%= graph_path(@graph.id)%>?term=0" class="term_button_select term_button"><%= t('datetime.prompts.day') %></a>
 		<% else %>
-			<a href="<%= graph_path(@graph.id)%>?term=0" class="term_button"><%= t('button_day') %></a>
+			<a href="<%= graph_path(@graph.id)%>?term=0" class="term_button"><%= t('datetime.prompts.day') %></a>
 		<% end %>
 		<% if @graph_term == 1 then %>
-			<a href="<%= graph_path(@graph.id)%>?term=1" class="term_button_select term_button"><%= t('button_week') %></a>
+			<a href="<%= graph_path(@graph.id)%>?term=1" class="term_button_select term_button"><%= t('week') %></a>
 		<% else %>
-			<a href="<%= graph_path(@graph.id)%>?term=1" class="term_button"><%= t('button_week') %></a>
+			<a href="<%= graph_path(@graph.id)%>?term=1" class="term_button"><%= t('week') %></a>
 		<% end %>
 		<% if @graph_term == 2 then %>
-			<a href="<%= graph_path(@graph.id)%>?term=2" class="term_button_select term_button"><%= t('button_month') %></a>
+			<a href="<%= graph_path(@graph.id)%>?term=2" class="term_button_select term_button"><%= t('datetime.prompts.month') %></a>
 		<% else %>
-			<a href="<%= graph_path(@graph.id)%>?term=2" class="term_button"><%= t('button_month') %></a>
+			<a href="<%= graph_path(@graph.id)%>?term=2" class="term_button"><%= t('datetime.prompts.month') %></a>
 		<% end %>
 		<% if @graph_term == 3 then %>
-			<a href="<%= graph_path(@graph.id)%>?term=3" class="term_button_select term_button"><%= t('button_year') %></a>
+			<a href="<%= graph_path(@graph.id)%>?term=3" class="term_button_select term_button"><%= t('datetime.prompts.year') %></a>
 		<% else %>
-			<a href="<%= graph_path(@graph.id)%>?term=3" class="term_button"><%= t('button_year') %></a>
+			<a href="<%= graph_path(@graph.id)%>?term=3" class="term_button"><%= t('datetime.prompts.year') %></a>
 		<% end %>
 	</div>
 
@@ -41,7 +41,7 @@
 	    /*"subTitle": "subTitle",*/
 	    "type": "<%= @graph_types[@graph.graph_type] %>",
 	    "useVal": "<%= @h_yesno[@graph.useval] %>",
-	    "useShadow": "<%= @h_yesno[@template.useshadow] %>",
+	    "useShadow": "<%= @h_yesno[@graph.useshadow] %>",
 	    "lineWidth": <%= @graph.linewidth %>,
 	    "colorSet": 
 	          ["<%= @template.linecolor %>"],

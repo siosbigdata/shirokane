@@ -49,6 +49,10 @@
     <%= f.label :useval %><br>
     <%= f.select :useval,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
   </div>
+  <div class="field">
+    <%= f.label :useshadow %><br>
+    <%= f.select :useshadow,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+  </div>
    <div class="field">
     <%= f.label :linewidth %><br>
     <%= f.number_field :linewidth %>

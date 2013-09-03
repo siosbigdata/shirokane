@@ -53,7 +53,7 @@ class GraphsController < PublichtmlController
       
     # 値設定
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
-    @h_terms ={0=> t('terms_day'),1 => t('terms_week'),2 => t('terms_month'),3 => t('terms_year')}
+    @h_terms ={0=> t('datetime.prompts.day'),1 => t('week'),2 => t('datetime.prompts.month'),3 => t('datetime.prompts.year')}
     @h_yesno = {0=>'no' , 1 => 'yes'}
     
     # グラフ選択枝

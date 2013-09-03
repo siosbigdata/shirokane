@@ -6,14 +6,13 @@ class CreateGraphs < ActiveRecord::Migration
       t.integer :analysis_type
       t.integer :graph_type
       t.integer :term
-      t.string :x
       t.string :y
       t.integer :y_max
       t.integer :y_min
-      t.integer :analysis_type
-      t.integer :useval
       t.integer :linewidth
       t.string  :template
+      t.integer :useval
+      t.integer :useshadow
           
       t.timestamps
     end

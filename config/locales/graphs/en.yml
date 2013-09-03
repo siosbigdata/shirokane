@@ -18,15 +18,9 @@ en:
   graph_types_line: Line
   graph_types_bar: Bar
   graph_types_pie: Pie
-  terms_day: Day
-  terms_week: Week
-  terms_month: Month
-  terms_year: Year
+  
+  week: Week
   
   #ボタン
-  button_day: Day
-  button_week: Week
-  button_month: Month
-  button_year: Year
   button_back: Prev
   button_prev: Next

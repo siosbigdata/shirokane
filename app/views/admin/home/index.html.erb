@@ -8,9 +8,8 @@
 <% index=0%>
 <% @graphs.each do |graph| %>
     <div id="dashboard">
-    	<h2><%= graph.title %>:<%= @h_analysis_types[graph.analysis_type] %></h2>
-    	<h3><%= @terms[index] %></h3>
-		<canvas id="<%= graph.name %>"></canvas>
+    	<h2><%= graph.title %></h2>
+		<a href="<%= admin_graph_path(graph.id) %>"><canvas id="<%= graph.name %>"></canvas></a>
 	</div>
 	
 	<script>
@@ -24,7 +23,7 @@
 	    /*"subTitle": "subTitle",*/
 	    "type": "<%= @graph_types[graph.graph_type] %>",
 	    "useVal": "<%= @h_yesno[graph.useval] %>",
-	    "useShadow": "<%= @h_yesno[@template[index].useshadow] %>",
+	    "useShadow": "<%= @h_yesno[graph.useshadow] %>",
 	    "lineWidth": <%= graph.linewidth %>,
 	    "colorSet": 
 	          ["<%= @template[index].linecolor %>"],

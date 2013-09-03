@@ -48,7 +48,7 @@ class Admin::GraphsController < AdminController
     def set_select_items
       @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
       @h_graph_types = {0 => t('graph_types_line'),1 => t('graph_types_bar')}
-      @h_terms ={0=> t('terms_day'),1 => t('terms_week'),2 => t('terms_month'),3 => t('terms_year')}
+      @h_terms ={0=> t('datetime.prompts.day'),1 => t('week'),2 => t('datetime.prompts.month'),3 => t('datetime.prompts.year')}
       @h_yesno={0=> t('title_no'),1 => t('title_yes')}
       @h_template = Hash.new()
       tmp = Admin::Graphtemplate.all.order(:name)
@@ -59,6 +59,6 @@ class Admin::GraphsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_graph_params
-      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :y,:y_max,:y_min,:template,:useval,:linewidth)
+      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :y,:y_max,:y_min,:template,:useval,:useshadow,:linewidth)
     end
 end

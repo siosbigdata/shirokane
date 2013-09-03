@@ -9,8 +9,7 @@
 <% @dashboards.each do |ddd| %>
   <% if @graphs[ddd.graph_id] then%>
     <div id="dashboard">
-    	<h2><%= @graphs[ddd.graph_id].title %>:<%= @h_analysis_types[@graphs[ddd.graph_id].analysis_type] %></h2>
-    	<h3><%= @terms[ddd.graph_id] %></h3>
+    	<h2><%= @graphs[ddd.graph_id].title %>:<%= @terms[ddd.graph_id] %></h2>
 		<a href="<%= graph_path(@graphs[ddd.graph_id].id) %>"><canvas id="<%= @graphs[ddd.graph_id].name %>"></canvas></a>
 	</div>
 	
@@ -25,7 +24,7 @@
 	    /*"subTitle": "subTitle",*/
 	    "type": "<%= @graph_types[@graphs[ddd.graph_id].graph_type] %>",
 	    "useVal": "<%= @h_yesno[@graphs[ddd.graph_id].useval] %>",
-	    "useShadow": "<%= @h_yesno[@template[ddd.graph_id].useshadow] %>",
+	    "useShadow": "<%= @h_yesno[@graphs[ddd.graph_id].useshadow] %>",
 	    "lineWidth": <%= @graphs[ddd.graph_id].linewidth %>,
 	    "colorSet": 
 	          ["<%= @template[ddd.graph_id].linecolor %>"],
