@@ -1,7 +1,7 @@
 .cds-navi {
   list-style-type: none;
-  margin: 0 0 2em;
-  padding-top: 10px;
+  margin: 0 0 0em;
+  padding-top: 5px;
   padding: 5px;
   border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
 }
@@ -14,7 +14,7 @@
   display: block;
   width: 165px;
   text-decoration: none;
-  border-left: 5px solid #3399CC;
+  border-left: 7px solid #EEEEEE;
   background-color: #EEEEEE;
   color: #999999;
   border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
@@ -23,13 +23,13 @@
 .cds-navi li a:hover {
   background-color: #DDDDDD;
   color: #FFFFFF;
-  border-left: 5px solid #3399FF;
+  border-left: 7px solid #3399FF;
   border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
 }
 
 .cds-navi-admin li a{
-  border-left: 5px solid #556b2f;
+  border-left: 7px solid #EEEEEE;
 }
 .cds-navi-admin li a:hover{
-  border-left: 5px solid #adff2f;
+  border-left: 7px solid #ff8c00;
 }

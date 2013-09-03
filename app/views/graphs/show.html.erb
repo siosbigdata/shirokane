@@ -3,8 +3,8 @@
 <!-- main content start -->
 <div id="content">
 <div id="sub_content">
-	<h1><%= @graph.title %>:<%= @h_analysis_types[@graph.analysis_type] %></h1>
-	<h2><%= @term %></h2>
+	<h1><%= @graph.title %>:<%= @term %></h1>
+	<h2><%= @h_analysis_types[@graph.analysis_type] %></h2>
 	<div id="term_button">
 		<% if @graph_term == 0 then %>
 			<a href="<%= graph_path(@graph.id)%>?term=0" class="term_button_select term_button"><%= t('datetime.prompts.day') %></a>
