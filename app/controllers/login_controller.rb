@@ -5,6 +5,7 @@
 
 # グラフ表示画面のログイン処理
 class LoginController < PublichtmlController
+    # ログイン画面
     def index
     end
     
@@ -13,6 +14,8 @@ class LoginController < PublichtmlController
       user = User.find_by_mail params[:mail]
       if user && user.authenticate(params[:pass])
         session[:user_id] = user.id
+        settings = Setting.where(:name => 'servicename')
+        session[:servicename] = settings[0].parameter
         cookies[:auth_token] = user.auth_token
         redirect_to root_path
       else
@@ -25,6 +28,7 @@ class LoginController < PublichtmlController
     # ユーザのログアウト処理を行う
     def destroy
       session[:user_id] = nil
+      session[:servicename] = nil
       cookies.delete(:auth_token)
       redirect_to root_path
     end

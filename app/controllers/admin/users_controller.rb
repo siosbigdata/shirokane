@@ -3,33 +3,30 @@
 # Author:: Kazuko Ohmura
 # Date:: 2013.07.25
 
-# ユーザ管理
+# ユーザー管理
 class Admin::UsersController < AdminController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
   before_action :set_admin_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /admin/users
-  # GET /admin/users.json
+  # ユーザー一覧
   def index
     @admin_users = Admin::User.all.order(:id)
   end
 
-  # GET /admin/users/1
-  # GET /admin/users/1.json
+  # ユーザー詳細
   def show
   end
 
-  # GET /admin/users/new
+  # ユーザー新規追加
   def new
     @admin_user = Admin::User.new
   end
 
-  # GET /admin/users/1/edit
+  # ユーザー編集画面
   def edit
   end
 
-  # POST /admin/users
-  # POST /admin/users.json
+  # ユーザー新規作成
   def create
     @admin_user = Admin::User.new(admin_user_params)
 
@@ -44,8 +41,7 @@ class Admin::UsersController < AdminController
     end
   end
 
-  # PATCH/PUT /admin/users/1
-  # PATCH/PUT /admin/users/1.json
+  # ユーザー更新
   def update
     respond_to do |format|
       if @admin_user.update(admin_user_params)
@@ -58,8 +54,7 @@ class Admin::UsersController < AdminController
     end
   end
 
-  # DELETE /admin/users/1
-  # DELETE /admin/users/1.json
+  # ユーザー削除
   def destroy
     @admin_user.destroy
     respond_to do |format|

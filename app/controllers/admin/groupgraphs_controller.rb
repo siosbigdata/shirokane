@@ -5,10 +5,8 @@
 
 # グループとグラフの結びつきを管理する
 class Admin::GroupgraphsController < AdminController
-
-  # GET /admin/groupgraphs/1/list
+  # グループごとのグラフ一覧表示
   def list
-    #@graph = Admin::Graph.joins('left join groupgraphs on graphs.id = groupgraphs.graph_id').order('groupgraphs.view_rank',:id).where('groupgraphs.group_id =' + params[:id].to_i.to_s)
     @graph = Admin::Graph.all.order(:id)
     @group = Admin::Group.find(params[:id])
     @ghash = Hash.new()
@@ -32,7 +30,7 @@ class Admin::GroupgraphsController < AdminController
     end
   end
   
-  #関連グラフの更新
+  # 関連グラフの更新
   def create
     gid = params[:group_id]
     gs = params[:groupgraph]

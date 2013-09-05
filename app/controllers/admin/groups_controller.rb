@@ -8,28 +8,25 @@ class Admin::GroupsController < AdminController
   before_filter :admin_authorize, :except => :login #ログインしていない場合はログイン画面に移動
   before_action :set_admin_group, only: [:show, :edit, :update, :destroy]
 
-  # GET /admin/groups
-  # GET /admin/groups.json
+  # グループ一覧画面
   def index
     @admin_groups = Admin::Group.all.order(:id)
   end
 
-  # GET /admin/groups/1
-  # GET /admin/groups/1.json
+  # グループ詳細画面
   def show
   end
 
-  # GET /admin/groups/new
+  # グループ新規追加画面
   def new
     @admin_group = Admin::Group.new
   end
 
-  # GET /admin/groups/1/edit
+  # グループ編集画面
   def edit
   end
 
-  # POST /admin/groups
-  # POST /admin/groups.json
+  # グループ新規作成
   def create
     @admin_group = Admin::Group.new(admin_group_params)
 
@@ -44,8 +41,7 @@ class Admin::GroupsController < AdminController
     end
   end
 
-  # PATCH/PUT /admin/groups/1
-  # PATCH/PUT /admin/groups/1.json
+  # グループ更新
   def update
     respond_to do |format|
       if @admin_group.update(admin_group_params)
@@ -58,8 +54,7 @@ class Admin::GroupsController < AdminController
     end
   end
 
-  # DELETE /admin/groups/1
-  # DELETE /admin/groups/1.json
+  # グループ削除
   def destroy
     # 削除前に関連するテーブルの削除を行う
     Admin::Groupgraph.delete_all(:group_id  => @admin_group.id)     #グループ-グラフ

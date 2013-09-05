@@ -9,23 +9,20 @@ class Admin::GraphsController < AdminController
   before_action :set_admin_graph, only: [:show, :edit, :update]
   before_action :set_select_items, only: [:index, :show,:edit]
 
-  # GET /admin/graphs
-  # GET /admin/graphs.json
+  # グラフ一覧画面
   def index
     @admin_graphs = Admin::Graph.all.order(:id)
   end
 
-  # GET /admin/graphs/1
-  # GET /admin/graphs/1.json
+  # グラフ詳細画面
   def show
   end
 
-  # GET /admin/graphs/1/edit
+  # グラフ編集画面
   def edit
   end
 
-  # PATCH/PUT /admin/graphs/1
-  # PATCH/PUT /admin/graphs/1.json
+  # グラフの更新
   def update
     respond_to do |format|
       if @admin_graph.update(admin_graph_params)

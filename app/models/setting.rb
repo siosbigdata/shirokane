@@ -13,5 +13,6 @@
 # Setting.create(:name => "title" ,:title => "アプリケーションタイトル",:parameter => "SIOS DashBoard" ,:vieworder => 2,:columntype => 0)
 # Setting.create(:name => "dashboardnum" ,:title => "ダッシュボードに並べるグラフ数",:parameter => "3" ,:vieworder => 10,:columntype => 3)
 # Setting.create(:name => "sessionnum" ,:title => "同時ログイン数",:parameter => "3" ,:vieworder => 0,:columntype => 3)
+# Setting.create(:name => "servicename" ,:title => "サービス名",:parameter => "shirokane" ,:vieworder => 0,:columntype => 0)  # 一意なservicenameを指定
 class Setting < ActiveRecord::Base
 end

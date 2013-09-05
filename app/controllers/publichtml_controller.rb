@@ -7,9 +7,9 @@
 class PublichtmlController < ApplicationController
   # 通常ユーザ用-現在のアカウント設定
   def current_user
-    #@current_user ||= User.find(session[:user_id]) if session[:user_id]
-    #@current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
-    if session[:user_id] then
+    settings = Setting.where(:name => 'servicename')
+    servicename = settings[0].parameter
+    if session[:user_id] && session[:servicename] == servicename then
       @current_user ||= User.find(session[:user_id])
     elsif cookies[:auth_token]
       @current_user ||= User.find_by_auth_token!(cookies[:auth_token])

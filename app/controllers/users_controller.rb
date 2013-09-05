@@ -6,16 +6,12 @@
 #ユーザ情報更新
 class UsersController < PublichtmlController
     before_filter :authorize, :except => :login #ログインしていない場合はログイン画面に移動
-    
-    def index
-      #@users = User.new
-    end
+    # 更新画面
     def edit
       @user = current_user
     end
   
-    # PATCH/PUT /admin/users/1
-    # PATCH/PUT /admin/users/1.json
+    # 更新処理
     def update
       @user = current_user
       respond_to do |format|
@@ -31,8 +27,6 @@ class UsersController < PublichtmlController
     end
     
     private
-    # Use callbacks to share common setup or constraints between actions.
-
       # Never trust parameters from the scary internet, only allow the white list through.
       def user_params
         params.require(:user).permit(:name, :password,:password_confirmation, :title, :mail, :group_id, :admin)

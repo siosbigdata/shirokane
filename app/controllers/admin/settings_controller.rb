@@ -9,24 +9,21 @@ class Admin::SettingsController < AdminController
   before_action :set_admin_setting, only: [:show, :edit, :update]
   before_action :set_select_setting, only: [:index,:show, :edit, :update]
 
-  # GET /admin/settings
-  # GET /admin/settings.json
+  # 管理用パラメーター一覧
   def index
     # vieworder = 0は非表示
     @admin_settings = Admin::Setting.where.not(:vieworder => 0).order(:vieworder)
   end
 
-  # GET /admin/settings/1
-  # GET /admin/settings/1.json
+  # 管理用パラメーター詳細
   def show
   end
 
-  # GET /admin/settings/1/edit
+  # 管理用パラメーター編集画面
   def edit
   end
 
-  # PATCH/PUT /admin/settings/1
-  # PATCH/PUT /admin/settings/1.json
+  # 管理用パラメーター更新
   def update
     respond_to do |format|
       if @admin_setting.update(admin_setting_params)
@@ -45,6 +42,7 @@ class Admin::SettingsController < AdminController
       @admin_setting = Admin::Setting.find(params[:id])
     end
     
+    # 選択肢設定
     def set_select_setting
       @select_yes_no ={"yes"=>"yes","no"=>"no"}
     end
