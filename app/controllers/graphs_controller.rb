@@ -20,7 +20,7 @@ class GraphsController < PublichtmlController
     # 表示可能グラフチェック
     return redirect_to root_path if !check_graph_permission(params[:id]) 
     # CSVダウンロード権限チェック
-    return redirect_to :action => 'show' if check_csv_size == false
+    return redirect_to graph_path if check_csv_size == false
 
     # 指定グラフ情報
     @graph = Graph.find(params[:id])
@@ -60,7 +60,7 @@ class GraphsController < PublichtmlController
   # 表示用処理
   def show
     # 表示可能グラフチェック
-    return redirect_to :root if !check_graph_permission(params[:id]) 
+    return redirect_to root_path if !check_graph_permission(params[:id]) 
       
     # 値設定
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}

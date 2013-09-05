@@ -29,7 +29,6 @@ class Admin::LoginController < AdminController
   def destroy
     session[:admin_user_id] = nil
     session[:admin_servicename] = nil
-    #redirect_to root_path
     render "index"
   end
 end

@@ -20,7 +20,7 @@ class PublichtmlController < ApplicationController
     unless current_user
       flash[:notice] = t('login_notice')
       session[:jumpto] = request.parameters
-      redirect_to :controller => 'login', :action => 'index'
+      redirect_to login_index_path
     end
   end
     

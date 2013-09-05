@@ -11,6 +11,7 @@ class Admin::UsersController < AdminController
   # ユーザー一覧
   def index
     @admin_users = Admin::User.all.order(:id)
+    @maxuser = get_maxuser
   end
 
   # ユーザー詳細
@@ -19,7 +20,12 @@ class Admin::UsersController < AdminController
 
   # ユーザー新規追加
   def new
-    @admin_user = Admin::User.new
+    admin_users = Admin::User.all
+    if admin_users.length < get_maxuser then
+      @admin_user = Admin::User.new
+    else
+      redirect_to admin_users_url
+    end
   end
 
   # ユーザー編集画面
@@ -73,4 +79,16 @@ class Admin::UsersController < AdminController
     def admin_user_params
       params.require(:admin_user).permit(:name, :password,:password_confirmation, :title, :mail, :group_id, :admin)
     end
+    
+  # 最大登録ユーザー数
+  def get_maxuser
+    # 最大ダウンロード容量取得
+    tmp1 = Setting.where(:name => 'maxuser')
+    if tmp1[0] then
+      res = tmp1[0].parameter.to_i
+    else
+      res = 999
+    end
+    return res
+  end
 end
