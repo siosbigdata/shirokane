@@ -21,7 +21,7 @@ class GraphsController < PublichtmlController
     return redirect_to root_path if !check_graph_permission(params[:id]) 
     # CSVダウンロード権限チェック
     return redirect_to :action => 'show' if check_csv_size == false
-          
+
     # 指定グラフ情報
     @graph = Graph.find(params[:id])
       
@@ -40,6 +40,7 @@ class GraphsController < PublichtmlController
         csv << [td.td_time, td.td_count]
       end
     end
+    
     # ファイル名
     fname =  @graph.name.to_s + "_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.csv"
       
@@ -198,8 +199,6 @@ class GraphsController < PublichtmlController
         end 
       end
     end 
-      
-
   end
   
   private

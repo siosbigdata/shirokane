@@ -53,6 +53,7 @@ ja:
   
   message_delete: 削除してもよいですか？
   message_select_blank: 選択してください。
+  message_over_csv: 今月のCSVダウンロード最大容量を超過しました。
 
   error: エラー
   error_user_message: ユーザ情報の保存に失敗しました。

@@ -72,6 +72,9 @@
 		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>" class="term_button"><%= t('button_prev') %></a>
 		<% if @csvflg then %>
 			<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn">csv</a>
+		<% else %>
+			<br />
+			<h4><%= t('message_over_csv') %></h4>
 		<% end %>
 	</div>
 	
