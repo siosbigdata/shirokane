@@ -28,8 +28,9 @@
 </table>
 
 <br>
-
+<% if @admin_groups.length < @maxuser then %>
 <%= link_to t('title_new'), new_admin_group_path %>
+<% end %>
 </div>
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

@@ -23,4 +23,16 @@ class AdminController < ApplicationController
       redirect_to admin_login_index_path
     end
   end
+  
+  # 最大登録ユーザー数
+  def get_maxuser
+    # 最大ダウンロード容量取得
+    tmp1 = Setting.where(:name => 'maxuser')
+    if tmp1[0] then
+      res = tmp1[0].parameter.to_i
+    else
+      res = 999
+    end
+    return res
+  end
 end

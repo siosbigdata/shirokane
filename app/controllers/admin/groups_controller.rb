@@ -11,6 +11,7 @@ class Admin::GroupsController < AdminController
   # グループ一覧画面
   def index
     @admin_groups = Admin::Group.all.order(:id)
+    @maxuser = get_maxuser
   end
 
   # グループ詳細画面
@@ -19,7 +20,12 @@ class Admin::GroupsController < AdminController
 
   # グループ新規追加画面
   def new
-    @admin_group = Admin::Group.new
+    admin_groups = Admin::Group.all
+    if admin_groups.length < get_maxuser then
+      @admin_group = Admin::Group.new
+    else
+      redirect_to admin_groups_url
+    end
   end
 
   # グループ編集画面
@@ -58,7 +64,6 @@ class Admin::GroupsController < AdminController
   def destroy
     # 削除前に関連するテーブルの削除を行う
     Admin::Groupgraph.delete_all(:group_id  => @admin_group.id)     #グループ-グラフ
-    Admin::Groupdashboard.delete_all(:group_id  => @admin_group.id) #グループ-ダッシュボード
     
     @admin_group.destroy
     respond_to do |format|
