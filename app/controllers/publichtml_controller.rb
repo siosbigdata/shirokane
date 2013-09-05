@@ -11,8 +11,6 @@ class PublichtmlController < ApplicationController
     servicename = settings[0].parameter
     if session[:user_id] && session[:servicename] == servicename then
       @current_user ||= User.find(session[:user_id])
-#    elsif cookies[:auth_token]
-#      @current_user ||= User.find_by_auth_token!(cookies[:auth_token])
     end
   end
   helper_method :current_user
@@ -33,5 +31,4 @@ class PublichtmlController < ApplicationController
     end
   end
   helper_method :current_graph_menu
-
 end

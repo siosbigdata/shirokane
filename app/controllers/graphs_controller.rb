@@ -18,7 +18,9 @@ class GraphsController < PublichtmlController
   # csv出力処理
   def csvexport
     # 表示可能グラフチェック
-    return redirect_to :root if !check_graph_permission(params[:id]) 
+    return redirect_to root_path if !check_graph_permission(params[:id]) 
+    # CSVダウンロード権限チェック
+    return redirect_to :action => 'show' if check_csv_size == false
           
     # 指定グラフ情報
     @graph = Graph.find(params[:id])
@@ -40,10 +42,18 @@ class GraphsController < PublichtmlController
     end
     # ファイル名
     fname =  @graph.name.to_s + "_#{Time.now.strftime('%Y_%m_%d_%H_%M_%S')}.csv"
-    # ファイル容量記録
-    
+      
     # 出力
-    send_data(data, type: 'text/csv', filename: fname)    
+    send_data(data, type: 'text/csv', filename: fname)
+    
+    # 出力データ容量記録
+    today = Date.today # 今月の日付
+    key = "csv_" + today.year.to_s + today.month.to_s
+    tmp = Setting.where(:name => key)
+    if tmp[0] then
+      csize = tmp[0].parameter.to_i + data.size
+      tmp[0].update_attribute(:parameter,csize)
+    end
   end
   
   # 表示用処理
@@ -55,6 +65,9 @@ class GraphsController < PublichtmlController
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
     @h_terms ={0=> t('datetime.prompts.day'),1 => t('week'),2 => t('datetime.prompts.month'),3 => t('datetime.prompts.year')}
     @h_yesno = {0=>'no' , 1 => 'yes'}
+    
+    # CSVダウンロードボタン用フラグ
+    @csvflg = check_csv_size
     
     # グラフ選択枝
     @graph_types = ['line','bar','pie']
@@ -193,5 +206,37 @@ class GraphsController < PublichtmlController
   # グラフが利用可能かをチェックする
   def check_graph_permission(p_graph_id)
     return Groupgraph.exists?({:group_id=>current_user.group.id,:graph_id=>p_graph_id}) 
+  end
+  
+  # 今月のCSVダウンロード容量チェック
+  def check_csv_size
+    # 最大ダウンロード容量取得
+    tmp1 = Setting.where(:name => 'csvdownloadsize')
+    maxcsvval = tmp1[0].parameter
+    res = true
+    res = false if get_csv_size.to_i > maxcsvval.to_i
+    return res
+  end
+  
+  # 今月のCSVダウンロード容量取得
+  def get_csv_size
+    today = Date.today # 今月の日付
+    key = "csv_" + today.year.to_s + today.month.to_s
+    tmp = Setting.where(:name => key)
+    if tmp[0] then
+      # レコードが存在する
+      res = tmp[0].parameter.to_i
+    else
+      # レコードが存在しない➡作成
+      csvrow = Setting.new
+      csvrow.name = key
+      csvrow.title = key
+      csvrow.parameter = 0
+      csvrow.vieworder = 0
+      csvrow.columntype = 0
+      csvrow.save
+      res = 0
+    end
+    return res
   end
 end

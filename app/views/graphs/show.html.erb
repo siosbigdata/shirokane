@@ -70,7 +70,9 @@
 	<div id="term_button">
 		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i - 1 %>" class="term_button"><%= t('button_back') %></a>
 		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>" class="term_button"><%= t('button_prev') %></a>
-		<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn">csv</a>
+		<% if @csvflg then %>
+			<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn">csv</a>
+		<% end %>
 	</div>
 	
 
