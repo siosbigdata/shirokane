@@ -16,7 +16,7 @@ class LoginController < PublichtmlController
         session[:user_id] = user.id
         settings = Setting.where(:name => 'servicename')
         session[:servicename] = settings[0].parameter
-        cookies[:auth_token] = user.auth_token
+        #cookies[:auth_token] = user.auth_token
         redirect_to root_path
       else
         flash.now.alert = "Invalid"
