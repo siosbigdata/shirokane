@@ -94,9 +94,9 @@ class GraphsController < PublichtmlController
       @graph_term = @graph.term
     end
     
-    #期間移動分
+    # 基準日付
     @today = Date.today
-    
+
     #期間の設定
     @add = 0 #追加日数初期化
     @add = params[:add] if params[:add]

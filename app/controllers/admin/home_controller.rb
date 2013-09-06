@@ -75,10 +75,64 @@ class Admin::HomeController < AdminController
         # グラフ表示用データ作成
         xdata = ""
         ydata = ""
-        tdtable.each do |dd|
-          xdata = xdata + dd.td_time.strftime(stime) + ","
-          ydata = ydata + dd.td_count.to_i.to_s + ","
+# add 9/6
+        weekflg = false
+        if graph.term == 1 || graph.term == 2 then # 週or月
+          snum = oldday.day.to_i
+          enum = today.day.to_i
+          if enum < snum then # 週間表示の場合で月をまたいでしまったときの処理
+            weekflg = true
+            snum2 = 1
+            enum2 = enum
+            nm = Date::new(@today.year,@today.month, 1)
+            eday = nm - 1.day
+            enum = eday.day.to_i
+          end
+        elsif graph.term == 3 then # 年
+          snum = oldday.month.to_i
+          enum = today.month.to_i
+        else # 日
+          snum = 0
+          enum = 24
         end
+        
+        # 値の設定
+        for dd in snum .. enum
+          xdata = xdata + "," + dd.to_s
+          flg = true
+          tdtable.each do |ddy|
+            if ddy.td_time.strftime(stime).to_i == dd then
+              ydata = ydata + "," + ddy.td_count.to_i.to_s
+              flg =false
+              break
+            end
+          end
+          if flg then
+            ydata = ydata + ",0"
+          end 
+        end
+        # 月をまたいでしまったときの特別処理
+        if weekflg then
+          for dd in snum2 .. enum2
+            xdata = xdata + "," + dd.to_s
+            flg = true
+            tdtable.each do |ddy|
+              if ddy.td_time.strftime(stime).to_i == dd then
+                ydata = ydata + "," + ddy.td_count.to_i.to_s
+                flg =false
+                break
+              end
+            end
+            if flg then
+              ydata = ydata + ",0"
+            end 
+          end
+        end 
+
+#        tdtable.each do |dd|
+#          xdata = xdata + dd.td_time.strftime(stime) + ","
+#          ydata = ydata + dd.td_count.to_i.to_s + ","
+#        end
         #@graphs[db.view_rank.to_i] = graph
         @template << template
         @xdatas  << xdata

@@ -34,7 +34,7 @@
 }
 
 .term_button_select{
-	border:1px solid #e65f44;
+	border:2px solid #e65f44;
 	text-decoration:none;
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #f0c911), color-stop(100%, #f2ab1e) );
 	background:-moz-linear-gradient( center top, #f0c911 5%, #f2ab1e 100% );
@@ -61,7 +61,7 @@
 #term_button {
 	width: 720px;
 	height: 50px;
-	text-align: right;
+	text-align: left;
 }
 
 .csv_btn {

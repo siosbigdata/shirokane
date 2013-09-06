@@ -20,8 +20,6 @@
 	  	"width": 300,
 	  	"height": 200,
 	  	"onlyChart":"yes",
-	    /*"title": "title",*/
-	    /*"subTitle": "subTitle",*/
 	    "type": "<%= @graph_types[@graphs[ddd.graph_id].graph_type] %>",
 	    "useVal": "<%= @h_yesno[@graphs[ddd.graph_id].useval] %>",
 	    "useShadow": "<%= @h_yesno[@graphs[ddd.graph_id].useshadow] %>",
@@ -36,7 +34,14 @@
 	    "textColor": "<%= @template[ddd.graph_id].textcolor %>",
 	    "useFirstToColName":false,
 	    "useFirstToRowName":false,
-	    "minY":0
+	    "minY":<%= @graphs[ddd.graph_id].y_min %>,
+	    <% if @graphs[ddd.graph_id].term == 0 then %>
+	    	"maxY":<%= @graphs[ddd.graph_id].y_max_time.to_i %>
+	    <% elsif @graphs[ddd.graph_id].term == 1 || @graphs[ddd.graph_id].term == 2 then %>
+	    	"maxY":<%= @graphs[ddd.graph_id].y_max_day.to_i %>
+	    <% else %>
+	    	"maxY":<%= @graphs[ddd.graph_id].y_max_month.to_i %>
+	    <% end %>
 	  },
 	
 	  "data": [

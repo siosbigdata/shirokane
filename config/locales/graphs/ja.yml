@@ -21,8 +21,12 @@ ja:
   graph_types_bar: 縦棒
   graph_types_pie: 円
   
+  #期間
   week: 週
-  
+  lbl_day: 時間別(日)
+  lbl_week: 日別(週)
+  lbl_month: 日別(月)
+  lbl_year: 月別(年)
   #ボタン
-  button_back: 前
-  button_prev: 次
+  button_back: ＜＜
+  button_prev: ＞＞
