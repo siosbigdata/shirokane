@@ -6,7 +6,7 @@
 Shirokane::Application.routes.draw do
   root 'dashboards#index'
   
-  get "password_resets/new"
+  #get "password_resets/new"
   resources :password_resets
   
   resources :login

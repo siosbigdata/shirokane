@@ -10,6 +10,7 @@ ja:
   title_home: ホーム
   title_dashboard: ダッシュボード
   message_user_update_success: 更新しました。
+  message_password_reset: パスワードの更新
   error_login_message: メールアドレスまたはパスワードが正しくありません。
   
   #選択肢

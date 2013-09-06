@@ -2,14 +2,15 @@
 <div id="login">
 	<h2 id="login_title"><%= t('forgotten_password') %></h2>
 	
+	<%= form_tag password_resets_path, :method => :post do %>
 	<table>
 	<tbody>
 		<tr><td colspan="2"><%= t('forgotten_password_message')%></td></tr>
-	<%= form_tag password_resets_path, :method => :post do %>
 		<tr><td><%= label_tag t('mail') %></td>
 	    <td><%= text_field_tag :email, params[:email] %></td></tr>
-	</tbody></table>
-	  <div id="login_action"><%= submit_tag t('title_send') %></div>
+	</tbody>
+	</table>
+	 <div id="login_action"><%= submit_tag t('title_send') %></div>
 	<% end %>
 
 </div>
