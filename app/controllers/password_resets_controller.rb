@@ -7,6 +7,8 @@
 
 # パスワードの再設定処理
 class PasswordResetsController < PublichtmlController
+  before_action :login_destroy, only: [:new, :edit]
+    
   # パスワード設定画面
   def new
   end
@@ -20,8 +22,6 @@ class PasswordResetsController < PublichtmlController
   
   # パスワード更新画面
   def edit
-    session[:user_id] = nil
-    session[:servicename] = nil
     @user = User.find_by_password_reset_token!(params[:id])
   end
   
@@ -35,5 +35,11 @@ class PasswordResetsController < PublichtmlController
     else
       render :edit
     end
+  end
+  
+  private 
+  def login_destroy
+    session[:user_id] = nil
+    session[:servicename] = nil
   end
 end
