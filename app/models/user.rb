@@ -4,7 +4,7 @@
 # Date:: 2013.07.25
 
 # ユーザテーブル
-# == テーブル作成
+# == 作成
 # rails generate model user name:string title:string password_digest:string mail:string group_id:integer admin:boolean
 # == 初期データ作成
 # 管理者

@@ -40,8 +40,16 @@
   <%= @admin_graph.y_min %>
 </p>
 <p>
-  <strong><%= t('title_graph_y_max') %></strong>
-  <%= @admin_graph.y_max %>
+  <strong><%= t('title_graph_y_max_time') %></strong>
+  <%= @admin_graph.y_max_time %>
+</p>
+<p>
+  <strong><%= t('title_graph_y_max_day') %></strong>
+  <%= @admin_graph.y_max_day %>
+</p>
+<p>
+  <strong><%= t('title_graph_y_max_month') %></strong>
+  <%= @admin_graph.y_max_month %>
 </p>
 <p>
   <strong><%= t('title_graph_useval') %></strong>
@@ -50,6 +58,10 @@
 <p>
   <strong><%= t('title_graph_useshadow') %></strong>
   <%= @h_yesno[@admin_graph.useshadow] %>
+</p>
+<p>
+  <strong><%= t('title_graph_usetip') %></strong>
+  <%= @h_yesno[@admin_graph.usetip] %>
 </p>
 <p>
   <strong><%= t('title_graph_linewidth') %></strong>

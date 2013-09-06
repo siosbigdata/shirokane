@@ -3624,9 +3624,9 @@ window.ccchart.m.cssHybrid =
           that.cssTooltips[id].innerHTML = htm;
         } else {
           var htm = ''
-          + '<span class="-ccchart-ttip-colnamestitle">'+colNamesTitle + '</span>' + ' '
-          + '<span class="-ccchart-ttip-colname">'+colName  + '</span>'+'<br>' 
-          + '<span class="-ccchart-ttip-rowname">'+rowName + '</span>'+ '<br>' 
+          + '<span class="-ccchart-ttip-colname">'+colName  + '</span>'
+          + '<span class="-ccchart-ttip-colnamestitle">'+colNamesTitle + '</span>' + '<br>' 
+          //+ '<span class="-ccchart-ttip-rowname">'+rowName + '</span>'+ '<br>' 
           + '<span class="-ccchart-ttip-data">' + data + '</span>'+ ( ' ' + unit + '' ||'')
           + '<span class="-ccchart-ttip-percent"> ' + percent + ' </span>'
           

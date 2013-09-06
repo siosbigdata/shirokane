@@ -7,12 +7,15 @@ class CreateGraphs < ActiveRecord::Migration
       t.integer :graph_type
       t.integer :term
       t.string :y
-      t.integer :y_max
       t.integer :y_min
+      t.integer :y_max_time
+      t.integer :y_max_day
+      t.integer :y_max_month
       t.integer :linewidth
       t.string  :template
       t.integer :useval
       t.integer :useshadow
+      t.integer :usetip
           
       t.timestamps
     end

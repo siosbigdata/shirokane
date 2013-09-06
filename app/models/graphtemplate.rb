@@ -4,7 +4,7 @@
 # Date:: 2013.08.05
 
 # グラフ用テンプレートも出る
-# == テーブル作成
+# == 作成
 # rails generate model graphtemplate name:string  bgfrom:string bgto:string linecolor:string textcolor:strin
 # == サンプルテンプレート
 # rails c

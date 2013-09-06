@@ -42,8 +42,16 @@
     <%= f.text_field :y_min %>
   </div>
   <div class="field">
-    <%= f.label :y_max %><br>
-    <%= f.text_field :y_max %>
+    <%= f.label :y_max_time %><br>
+    <%= f.text_field :y_max_time %>
+  </div>
+  <div class="field">
+    <%= f.label :y_max_day %><br>
+    <%= f.text_field :y_max_day %>
+  </div>
+  <div class="field">
+    <%= f.label :y_max_month %><br>
+    <%= f.text_field :y_max_month %>
   </div>
    <div class="field">
     <%= f.label :useval %><br>
@@ -52,6 +60,10 @@
   <div class="field">
     <%= f.label :useshadow %><br>
     <%= f.select :useshadow,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+  </div>
+  <div class="field">
+    <%= f.label :usetip %><br>
+    <%= f.select :usetip,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
   </div>
    <div class="field">
     <%= f.label :linewidth %><br>

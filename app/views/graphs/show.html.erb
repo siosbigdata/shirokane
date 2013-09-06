@@ -36,9 +36,10 @@
 	  "config": {
 	  	"width": 720,
 	  	"height": 480,
-	  	/*"onlyChart":"yes",*/
-	    /*"title": "title",*/
-	    /*"subTitle": "subTitle",*/
+	  	<% if @graph.usetip == 1 then %>
+	    "useMarker": "<%= @gconf['useMarker'] %>",
+	    "markerWidth": <%= @gconf['markerWidth'] %>,
+	    <% end %>
 	    "type": "<%= @graph_types[@graph.graph_type] %>",
 	    "useVal": "<%= @h_yesno[@graph.useval] %>",
 	    "useShadow": "<%= @h_yesno[@graph.useshadow] %>",
@@ -52,10 +53,12 @@
 	         },
 	    "textColor": "<%= @template.textcolor %>",
 	    "minY":<%= @graph.y_min %>,
-	    <% if @graph_term == 3 then %>
-	    	"maxY":<%= @graph.y_max.to_i * 30 %>
+	    <% if @graph_term == 0 then %>
+	    	"maxY":<%= @graph.y_max_time.to_i %>
+	    <% elsif @graph_term == 1 || @graph_term == 2 then %>
+	    	"maxY":<%= @graph.y_max_day.to_i %>
 	    <% else %>
-	    	"maxY":<%= @graph.y_max.to_i %>
+	    	"maxY":<%= @graph.y_max_month.to_i %>
 	    <% end %>
 	  },
 	
@@ -72,9 +75,6 @@
 		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>" class="term_button"><%= t('button_prev') %></a>
 		<% if @csvflg then %>
 			<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn">csv</a>
-		<% else %>
-			<br />
-			<h4><%= t('message_over_csv') %></h4>
 		<% end %>
 	</div>
 	

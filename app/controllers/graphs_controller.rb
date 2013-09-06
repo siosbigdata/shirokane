@@ -151,7 +151,7 @@ class GraphsController < PublichtmlController
     if @graph_term == 1 || @graph_term == 2 then # 週or月
       snum = @oldday.day.to_i
       enum = @today.day.to_i
-      if enum < snum then # 月をまたいでしまったときの処理
+      if enum < snum then # 週間表示の場合で月をまたいでしまったときの処理
         weekflg = true
         snum2 = 1
         enum2 = enum
@@ -200,7 +200,8 @@ class GraphsController < PublichtmlController
       end
     end 
   end
-  
+
+
   private
   # グラフが利用可能かをチェックする
   def check_graph_permission(p_graph_id)
