@@ -20,6 +20,8 @@ class PasswordResetsController < PublichtmlController
   
   # パスワード更新画面
   def edit
+    session[:user_id] = nil
+    session[:servicename] = nil
     @user = User.find_by_password_reset_token!(params[:id])
   end
   

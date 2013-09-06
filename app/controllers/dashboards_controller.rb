@@ -22,7 +22,6 @@ class DashboardsController < PublichtmlController
     }
         
     # ダッシュボード情報取得
-    #@dashboards = Groupdashboard.where({:group_id=>current_user.group.id}).order(:view_rank)
     @dashboards = Groupgraph.where(:group_id=>current_user.group.id,:dashboard => true).order(:view_rank)
     @graphs = Array.new()
     @template = Array.new()

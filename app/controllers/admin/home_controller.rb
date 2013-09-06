@@ -22,7 +22,6 @@ class Admin::HomeController < AdminController
       }
           
       # ダッシュボード情報取得
-      #@dashboards = Groupdashboard.where({:group_id=>current_user.group.id}).order(:view_rank)
       @graphs = Admin::Graph.all.order(:id)
       @template = Array.new()
       @xdatas = Array.new()
@@ -30,65 +29,61 @@ class Admin::HomeController < AdminController
       @terms = Array.new()
       
       @graphs.each do |graph|
-        #if db.graph_id > 0 then
-          ## データの取得
-          #graph = Graph.find(db.graph_id)
-          # 指定テンプレート情報
-          templates = Graphtemplate.where({:name => graph.template})
-          template = templates[0]
-              
-          #期間移動分
-          today = Date.today
-          
-          #期間の設定
-          case graph.term
-          when 1  #週:７日分の日別データを表示する
-            # 月曜日から開始するように調整
-            today = today + (7-today.wday).days
-            oldday = today - 6.days
-            term = oldday.month.to_s + t("datetime.prompts.month") + oldday.day.to_s + t("datetime.prompts.day") + " - " + today.month.to_s + t("datetime.prompts.month") + today.day.to_s + t("datetime.prompts.day")
-            stime = "%d"
-          when 2  #月:１ヶ月分のデータを表示する
-            # 月初から開始するように調整
-            nowmonth = Date::new(today.year,today.month, 1)
-            today = nowmonth >> 1
-            today = today - 1.day
-            oldday = nowmonth
-            term = oldday.month.to_s + t("datetime.prompts.month")
-            stime = "%d"
-          when 3  #年:１ヶ月ごとのデータを表示する。
-            # 年初から開始するように調整
-            nowyear = Date::new(today.year,1, 1)
-            today = nowyear + 1.year - 1.day
-            oldday = nowyear
-            term = oldday.year.to_s + t("datetime.prompts.year")
-            stime = "%m"
-          else    #0か指定なしは１日の集計
-            today = today - 1.day
-            oldday = today
-            term = today.month.to_s + t("datetime.prompts.month") + today.day.to_s + t("datetime.prompts.day")
-            stime = "%H"
-          end
+        # 指定テンプレート情報
+        templates = Graphtemplate.where({:name => graph.template})
+        template = templates[0]
+            
+        #期間移動分
+        today = Date.today
+        
+        #期間の設定
+        case graph.term
+        when 1  #週:７日分の日別データを表示する
+          # 月曜日から開始するように調整
+          today = today + (7-today.wday).days
+          oldday = today - 6.days
+          term = oldday.month.to_s + t("datetime.prompts.month") + oldday.day.to_s + t("datetime.prompts.day") + " - " + today.month.to_s + t("datetime.prompts.month") + today.day.to_s + t("datetime.prompts.day")
+          stime = "%d"
+        when 2  #月:１ヶ月分のデータを表示する
+          # 月初から開始するように調整
+          nowmonth = Date::new(today.year,today.month, 1)
+          today = nowmonth >> 1
+          today = today - 1.day
+          oldday = nowmonth
+          term = oldday.month.to_s + t("datetime.prompts.month")
+          stime = "%d"
+        when 3  #年:１ヶ月ごとのデータを表示する。
+          # 年初から開始するように調整
+          nowyear = Date::new(today.year,1, 1)
+          today = nowyear + 1.year - 1.day
+          oldday = nowyear
+          term = oldday.year.to_s + t("datetime.prompts.year")
+          stime = "%m"
+        else    #0か指定なしは１日の集計
+          today = today - 1.day
+          oldday = today
+          term = today.month.to_s + t("datetime.prompts.month") + today.day.to_s + t("datetime.prompts.day")
+          stime = "%H"
+        end
+  
+        # データ取得期間の設定
+        today_s = today.to_s + " 23:59:59"
+        oldday_s = oldday.to_s + " 00:00:00"
+        # データの取得
+        tdtable = td_graph_data(graph,graph.term,oldday_s,today_s)
     
-          # データ取得期間の設定
-          today_s = today.to_s + " 23:59:59"
-          oldday_s = oldday.to_s + " 00:00:00"
-          # データの取得
-          tdtable = td_graph_data(graph,graph.term,oldday_s,today_s)
-      
-          # グラフ表示用データ作成
-          xdata = ""
-          ydata = ""
-          tdtable.each do |dd|
-            xdata = xdata + dd.td_time.strftime(stime) + ","
-            ydata = ydata + dd.td_count.to_i.to_s + ","
-          end
-          #@graphs[db.view_rank.to_i] = graph
-          @template << template
-          @xdatas  << xdata
-          @ydatas  << ydata
-          @terms << term
-        #end
+        # グラフ表示用データ作成
+        xdata = ""
+        ydata = ""
+        tdtable.each do |dd|
+          xdata = xdata + dd.td_time.strftime(stime) + ","
+          ydata = ydata + dd.td_count.to_i.to_s + ","
+        end
+        #@graphs[db.view_rank.to_i] = graph
+        @template << template
+        @xdatas  << xdata
+        @ydatas  << ydata
+        @terms << term
       end
     end
 end
