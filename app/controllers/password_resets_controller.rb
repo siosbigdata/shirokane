@@ -2,6 +2,8 @@
 # PasswordResetsController
 # Author:: Kazuko Ohmura
 # Date:: 2013.08.30
+# == 参考にしたページ
+# http://ja.asciicasts.com/episodes/274-remember-me-reset-password
 
 # パスワードの再設定処理
 class PasswordResetsController < PublichtmlController

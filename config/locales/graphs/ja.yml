@@ -11,6 +11,7 @@ ja:
   title_dashboard: ダッシュボード
   message_user_update_success: 更新しました。
   message_password_reset: パスワードの更新
+  message_password_reset_mail: パスワードを変更する場合は下記のURLをクリックしてください。
   error_login_message: メールアドレスまたはパスワードが正しくありません。
   
   #選択肢
