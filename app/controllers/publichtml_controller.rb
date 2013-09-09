@@ -7,7 +7,7 @@
 class PublichtmlController < ApplicationController
   # 通常ユーザ用-現在のアカウント設定
   def current_user
-    if session[:user_id] && session[:servicename] == $settings['servicename'] then
+    if session[:user_id] && $settings && session[:servicename] == $settings['servicename'] then
       @current_user ||= User.find(session[:user_id])
     end
   end

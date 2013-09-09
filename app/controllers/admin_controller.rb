@@ -7,7 +7,7 @@
 class AdminController < ApplicationController
   # 管理者用-現在のアカウント設定
   def admin_current_user
-    if session[:admin_user_id] && session[:admin_servicename] == $settings['servicename'] then
+    if session[:admin_user_id] && $settings && session[:admin_servicename] == $settings['servicename'] then
       @admin_current_user ||= User.find(session[:admin_user_id])
     end
   end
