@@ -22,6 +22,8 @@ class ApplicationController < ActionController::Base
       $settings = Hash.new()
       ss.map{|s|
         $settings[s.name.to_s] = s.parameter.to_s
+        p s.name.to_s 
+        p s.parameter.to_s
       }
     end
   end

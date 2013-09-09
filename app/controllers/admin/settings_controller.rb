@@ -27,6 +27,8 @@ class Admin::SettingsController < AdminController
   def update
     respond_to do |format|
       if @admin_setting.update(admin_setting_params)
+        $settings = nil
+        get_settings
         format.html { redirect_to @admin_setting, notice: 'Setting was successfully updated.' }
         format.json { head :no_content }
       else
