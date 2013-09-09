@@ -16,6 +16,8 @@ class CreateGraphs < ActiveRecord::Migration
       t.integer :useval
       t.integer :useshadow
       t.integer :usetip
+      t.integer :usepredata
+      t.integer :uselastyeardata
           
       t.timestamps
     end

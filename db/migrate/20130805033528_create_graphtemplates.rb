@@ -6,6 +6,8 @@ class CreateGraphtemplates < ActiveRecord::Migration
       t.string :bgto
       t.string :textcolor
       t.string :name
+      t.string :linecolor_pre
+      t.string :linecolor_last
 
       t.timestamps
     end

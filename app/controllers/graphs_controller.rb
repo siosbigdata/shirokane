@@ -87,7 +87,7 @@ class GraphsController < PublichtmlController
     end
     
     # 基準日付
-    @today = Date.today
+    todaydata = Date.today
 
     # 追加期間の設定
     if params[:add] then
@@ -97,7 +97,7 @@ class GraphsController < PublichtmlController
     end
     
     # 期間の設定
-    res_graph_terms = set_graph_term(@graph_term,@today,@add)
+    res_graph_terms = set_graph_term(@graph_term,todaydata,@add)
     today = res_graph_terms['today']
     oldday = res_graph_terms['oldday']
     @term_s = res_graph_terms['term_s']
@@ -113,6 +113,34 @@ class GraphsController < PublichtmlController
     res_graph_data = set_graph_data(tdtable,@graph_term,oldday,today,res_graph_terms['stime'])
     @xdata = res_graph_data['xdata']
     @ydata = res_graph_data['ydata']
+      
+    # 期間の直前のデータ取得
+    if @graph.usepredata == 1 then
+      pre_graph_terms = set_graph_term(@graph_term,todaydata,@add - 1)
+      # データ取得期間の設定
+      ts_pre = pre_graph_terms['today'].to_s + " 23:59:59"
+      os_pre = pre_graph_terms['oldday'].to_s + " 00:00:00"
+      # データの取得
+      tdtable_pre = td_graph_data(@graph,@graph_term,os_pre,ts_pre)
+      
+      # グラフ表示用データ作成
+      pre_graph_data = set_graph_data(tdtable_pre,@graph_term,pre_graph_terms['oldday'],pre_graph_terms['today'],res_graph_terms['stime'])
+      @ydata_pre = pre_graph_data['ydata']
+    end
+    # 期間の前年のデータ取得
+    if @graph_term < 3 && @graph.uselastyeardata == 1 then
+      # データ取得期間の設定
+      tlast = today - 1.year
+      olast = oldday - 1.year
+      ts_last = tlast.to_s + " 23:59:59"
+      os_last = olast.to_s + " 00:00:00"
+      # データの取得
+      tdtable_last = td_graph_data(@graph,@graph_term,os_last,ts_last)
+      
+      # グラフ表示用データ作成
+      last_graph_data = set_graph_data(tdtable_last,@graph_term,olast,tlast,res_graph_terms['stime'])
+      @ydata_last = last_graph_data['ydata']
+    end
   end
 
 

@@ -47,7 +47,7 @@
 	    "useShadow": "<%= @h_yesno[@graph.useshadow] %>",
 	    "lineWidth": <%= @graph.linewidth %>,
 	    "colorSet": 
-	          ["<%= @template.linecolor %>"],
+	          ["<%= @template.linecolor %>","<%= @template.linecolor_pre %>","<%= @template.linecolor_last %>"],
 	    "bgGradient": {
 	            "direction":"vertical",
 	            "from":"<%= @template.bgfrom %>",
@@ -67,6 +67,12 @@
 	  "data": [
 	    ["<%= @graphx %>"<%= @xdata %>],
 	    ["<%= @graph.y %>"<%= @ydata %>]
+	    <% if @graph.usepredata == 1 then %>
+	    ,["<%= t('title_pre') %><%= @h_terms[@graph_term] %>"<%= @ydata_pre %>]
+	    <% end %>
+	    <% if @graph_term < 3 && @graph.uselastyeardata == 1 then %>
+	    ,["<%= t('title_last') %>"<%= @ydata_last %>]
+	    <% end %>
 	  ]
 	};
 	ccchart.init('<%= @graph.name %>', chartdata)

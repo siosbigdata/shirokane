@@ -27,6 +27,10 @@ ja:
   lbl_week: 日別(週)
   lbl_month: 日別(月)
   lbl_year: 月別(年)
+  
+  # 過去のグラフ
+  title_pre: 前
+  title_last: 昨年
   #ボタン
   button_back: ＜＜
   button_prev: ＞＞

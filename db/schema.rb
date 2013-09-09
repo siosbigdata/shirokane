@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20130830005152) do
     t.integer  "usetip"
     t.integer  "linewidth"
     t.string   "template"
+    t.integer  "usepredata"
+    t.integer  "uselastyeardata"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +44,8 @@ ActiveRecord::Schema.define(version: 20130830005152) do
     t.string   "bgto"
     t.string   "linecolor"
     t.string   "textcolor"
+    t.string   "linecolor_pre"
+    t.string   "linecolor_last"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
