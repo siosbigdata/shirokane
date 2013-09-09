@@ -63,7 +63,17 @@ $(function(){
 	    "useShadow": "<%= @h_yesno[@graph.useshadow] %>",
 	    "lineWidth": <%= @graph.linewidth %>,
 	    "colorSet": 
-	          ["<%= @template.linecolor %>","<%= @template.linecolor_pre %>","<%= @template.linecolor_last %>"],
+	    	<% if @graph.usepredata == 1 && @graph.uselastyeardata == 1 && @graph_term < 3 %>
+	          ["<%= @template.linecolor_pre %>","<%= @template.linecolor_last %>","<%= @template.linecolor %>"],
+	          <% elsif @graph.usepredata == 1 && @graph.uselastyeardata == 1 && @graph_term == 3 %>
+	          ["<%= @template.linecolor_pre %>","<%= @template.linecolor %>"],
+	          <% elsif @graph.usepredata == 1 && @graph.uselastyeardata == 0 %>
+	          ["<%= @template.linecolor_pre %>","<%= @template.linecolor %>"],
+	          <% elsif @graph.usepredata == 0 && @graph.uselastyeardata == 1 %>
+	          ["<%= @template.uselastyeardata %>","<%= @template.linecolor %>"],
+	          <% else %>
+	          ["<%= @template.linecolor %>"],
+	          <% end %>
 	    "bgGradient": {
 	            "direction":"vertical",
 	            "from":"<%= @template.bgfrom %>",
@@ -81,14 +91,14 @@ $(function(){
 	  },
 	
 	  "data": [
-	    ["<%= @graphx %>"<%= @xdata %>],
-	    ["<%= @graph.y %>"<%= @ydata %>]
+	    ["<%= @graphx %>"<%= @xdata %>]
 	    <% if @graph.usepredata == 1 then %>
 	    ,["<%= t('title_pre') %><%= @h_terms[@graph_term] %>"<%= @ydata_pre %>]
 	    <% end %>
 	    <% if @graph_term < 3 && @graph.uselastyeardata == 1 then %>
 	    ,["<%= t('title_last') %>"<%= @ydata_last %>]
 	    <% end %>
+	    ,["<%= @graph.y %>"<%= @ydata %>]
 	  ]
 	};
 	ccchart.init('<%= @graph.name %>', chartdata)
