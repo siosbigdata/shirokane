@@ -15,6 +15,18 @@ class GraphsController < PublichtmlController
     redirect_to root_path
   end
   
+  def setday
+    begin
+      today = Date.parse(params[:cal1])
+    rescue => e
+      # 引数付と認められなかった場合は本日の日付を設定
+      today = Date.today
+    end
+    term = params[:term]
+    add = params[:add]
+    redirect_to graph_path,:flash=>{:today=>today,:term=>term,:add=>add}
+  end
+  
   # csv出力処理
   def csvexport
     # 表示可能グラフチェック
@@ -80,24 +92,34 @@ class GraphsController < PublichtmlController
     @template = Graphtemplate.find_by_name(@graph.template)
     
     # 表示期間指定
-    if params[:term] then
+    if flash[:term] then
+      @graph_term = flash[:term].to_i
+    elsif params[:term] then
       @graph_term = params[:term].to_i
     else
       @graph_term = @graph.term
     end
     
     # 基準日付
-    todaydata = Date.today
-
+    if flash[:today] then
+      @todaydata = Date.parse(flash[:today].to_s)
+    elsif params[:today] then
+      @todaydata = Date.parse(params[:today].to_s)
+    else
+      @todaydata = Date.today - 1.day
+    end
+    
     # 追加期間の設定
-    if params[:add] then
+    if flash[:add] then
+      @add = flash[:add].to_i
+    elsif params[:add] then
       @add = params[:add].to_i
     else
       @add = 0
     end
     
     # 期間の設定
-    res_graph_terms = set_graph_term(@graph_term,todaydata,@add)
+    res_graph_terms = set_graph_term(@graph_term,@todaydata,@add)
     today = res_graph_terms['today']
     oldday = res_graph_terms['oldday']
     @term_s = res_graph_terms['term_s']
@@ -116,7 +138,7 @@ class GraphsController < PublichtmlController
       
     # 期間の直前のデータ取得
     if @graph.usepredata == 1 then
-      pre_graph_terms = set_graph_term(@graph_term,todaydata,@add - 1)
+      pre_graph_terms = set_graph_term(@graph_term,@todaydata,@add - 1)
       # データ取得期間の設定
       ts_pre = pre_graph_terms['today'].to_s + " 23:59:59"
       os_pre = pre_graph_terms['oldday'].to_s + " 00:00:00"

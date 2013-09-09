@@ -65,7 +65,6 @@ class ApplicationController < ActionController::Base
   def set_graph_term(graph_term,today,addcnt)
     case graph_term
     when 0 # 日の時間別のデータを表示する
-      today = today - 1.day
       today = today + addcnt.to_i.days # 追加日数
       oldday = today
       term_s = today.month.to_s + t("datetime.prompts.month") + today.day.to_s + t("datetime.prompts.day")

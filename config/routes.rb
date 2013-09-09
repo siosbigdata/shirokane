@@ -14,6 +14,7 @@ Shirokane::Application.routes.draw do
   resources :graphs do
     member do
       get 'csvexport'
+      post 'setday'
     end
   end
   
