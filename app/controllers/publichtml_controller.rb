@@ -7,9 +7,7 @@
 class PublichtmlController < ApplicationController
   # 通常ユーザ用-現在のアカウント設定
   def current_user
-    settings = Setting.where(:name => 'servicename')
-    servicename = settings[0].parameter
-    if session[:user_id] && session[:servicename] == servicename then
+    if session[:user_id] && session[:servicename] == $settings['servicename'] then
       @current_user ||= User.find(session[:user_id])
     end
   end
@@ -31,4 +29,5 @@ class PublichtmlController < ApplicationController
     end
   end
   helper_method :current_graph_menu
+
 end

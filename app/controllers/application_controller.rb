@@ -9,17 +9,21 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   #protect_from_forgery with: :exception
   protect_from_forgery
-  
-  # 通常ユーザ用-現在のアカウント設定
-  def application_title
-    settings = Setting.where(:name => 'title')
-    @application_title = settings[0].parameter
-  end
-  helper_method :application_title
 
   # テーブル名取得
   def get_td_tablename(name)
     return "td_" + name
+  end
+  
+# Settingsの値取得
+  def get_settings
+    if $settings == nil then
+      ss = Setting.all
+      $settings = Hash.new()
+      ss.map{|s|
+        $settings[s.name.to_s] = s.parameter.to_s
+      }
+    end
   end
   
   # グラフ用データの取得

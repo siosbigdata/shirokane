@@ -7,6 +7,8 @@
 class LoginController < PublichtmlController
     # ログイン画面
     def index
+      # settingsの値取得
+      get_settings
     end
     
     # ユーザのログイン処理を行う
@@ -14,9 +16,7 @@ class LoginController < PublichtmlController
       user = User.find_by_mail params[:mail]
       if user && user.authenticate(params[:pass])
         session[:user_id] = user.id
-        settings = Setting.where(:name => 'servicename')
-        session[:servicename] = settings[0].parameter
-        #cookies[:auth_token] = user.auth_token
+        session[:servicename] = $settings['servicename']
         redirect_to root_path
       else
         flash.now.alert = "Invalid"

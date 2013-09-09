@@ -7,9 +7,7 @@
 class AdminController < ApplicationController
   # 管理者用-現在のアカウント設定
   def admin_current_user
-    settings = Setting.where(:name => 'servicename')
-    servicename = settings[0].parameter
-    if session[:admin_user_id] && session[:admin_servicename] == servicename then
+    if session[:admin_user_id] && session[:admin_servicename] == $settings['servicename'] then
       @admin_current_user ||= User.find(session[:admin_user_id])
     end
   end
@@ -27,12 +25,12 @@ class AdminController < ApplicationController
   # 最大登録ユーザー数
   def get_maxuser
     # 最大ダウンロード容量取得
-    tmp1 = Setting.where(:name => 'maxuser')
-    if tmp1[0] then
-      res = tmp1[0].parameter.to_i
+    if $settings['maxuser'] then
+      res = $settings['maxuser'].to_i
     else
       res = 999
     end
     return res
   end
+
 end

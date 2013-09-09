@@ -39,8 +39,8 @@
 	  	"width": 720,
 	  	"height": 480,
 	  	<% if @graph.usetip == 1 then %>
-	    "useMarker": "<%= @gconf['useMarker'] %>",
-	    "markerWidth": <%= @gconf['markerWidth'] %>,
+	    "useMarker": "<%= $settings['useMarker'] %>",
+	    "markerWidth": <%= $settings['markerWidth'] %>,
 	    <% end %>
 	    "type": "<%= @graph_types[@graph.graph_type] %>",
 	    "useVal": "<%= @h_yesno[@graph.useval] %>",

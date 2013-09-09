@@ -50,10 +50,10 @@ class GraphsController < PublichtmlController
     # 出力データ容量記録
     today = Date.today # 今月の日付
     key = "csv_" + today.year.to_s + today.month.to_s
-    tmp = Setting.where(:name => key)
-    if tmp[0] then
-      csize = tmp[0].parameter.to_i + data.size
-      tmp[0].update_attribute(:parameter,csize)
+    tmp = Setting.find_by_name(key)
+    if tmp then
+      csize = tmp.parameter.to_i + data.size
+      tmp.update_attribute(:parameter,csize)
     end
   end
   
@@ -79,13 +79,6 @@ class GraphsController < PublichtmlController
     # 指定テンプレート情報
     templates = Graphtemplate.where({:name => @graph.template})
     @template = templates[0]
-
-    #設定の取得
-    ss = Setting.all
-    @gconf = Hash.new()
-    ss.map{|s|
-      @gconf[s.name] = s.parameter
-    }
     
     #表示期間指定
     if params[:term] then
@@ -210,11 +203,11 @@ class GraphsController < PublichtmlController
   
   # 今月のCSVダウンロード容量チェック
   def check_csv_size
-    # 最大ダウンロード容量取得
-    tmp1 = Setting.where(:name => 'csvdownloadsize')
-    maxcsvval = tmp1[0].parameter
-    res = true
-    res = false if get_csv_size.to_i > maxcsvval.to_i
+    if get_csv_size.to_i > $settings['csvdownloadsize'].to_i then
+      res = false
+    else
+      res = true
+    end
     return res
   end
   
@@ -222,10 +215,10 @@ class GraphsController < PublichtmlController
   def get_csv_size
     today = Date.today # 今月の日付
     key = "csv_" + today.year.to_s + today.month.to_s
-    tmp = Setting.where(:name => key)
-    if tmp[0] then
+    tmp = Setting.find_by_name(key)
+    if tmp then
       # レコードが存在する
-      res = tmp[0].parameter.to_i
+      res = tmp.parameter.to_i
     else
       # レコードが存在しない➡作成
       csvrow = Setting.new

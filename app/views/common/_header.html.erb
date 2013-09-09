@@ -1,7 +1,7 @@
 <!-- main header start -->
 <div id="header">
 	<div id="logo">
-		<h1><%= link_to application_title, root_path %></h1>
+		<h1><%= link_to $settings['title'], root_path %></h1>
 	</div>
 	<% if current_user != nil %>
 	<div id="head_dashboard"><%= link_to t('title_dashboard'), root_path %></div>

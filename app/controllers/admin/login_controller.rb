@@ -7,6 +7,8 @@
 class Admin::LoginController < AdminController
   # ログイン画面
   def index
+    # settingsの値取得
+    get_settings
   end
   
   # ユーザのログイン処理を行う
@@ -15,8 +17,7 @@ class Admin::LoginController < AdminController
 
     if user && user.authenticate(params[:pass]) && user.admin
       session[:admin_user_id] = user.id
-      settings = Setting.where(:name => 'servicename')
-      session[:admin_servicename] = settings[0].parameter
+      session[:admin_servicename] = $settings['servicename']
       redirect_to admin_root_path
     else
       flash.now.alert = "Invalid"

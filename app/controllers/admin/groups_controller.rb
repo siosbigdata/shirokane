@@ -63,7 +63,7 @@ class Admin::GroupsController < AdminController
   # グループ削除
   def destroy
     # 削除前に関連するテーブルの削除を行う
-    Admin::Groupgraph.delete_all(:group_id  => @admin_group.id)     #グループ-グラフ
+    Admin::Groupgraph.delete_all(:group_id => @admin_group.id)     #グループ-グラフ
     
     @admin_group.destroy
     respond_to do |format|

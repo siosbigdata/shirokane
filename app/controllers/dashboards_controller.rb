@@ -13,13 +13,6 @@ class DashboardsController < PublichtmlController
     @graph_types = ['line','bar','pie']
     @h_yesno = {0=>'no' , 1 => 'yes'}
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
-    
-    #設定の取得
-    ss = Setting.all
-    @gconf = Hash.new()
-    ss.map{|s|
-      @gconf[s.name] = s.parameter
-    }
         
     # ダッシュボード情報取得
     @dashboards = Groupgraph.where(:group_id=>current_user.group.id,:dashboard => true).order(:view_rank)
