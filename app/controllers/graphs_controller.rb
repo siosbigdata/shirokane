@@ -77,10 +77,9 @@ class GraphsController < PublichtmlController
     @graph = Graph.find(params[:id])
 
     # 指定テンプレート情報
-    templates = Graphtemplate.where({:name => @graph.template})
-    @template = templates[0]
+    @template = Graphtemplate.find_by_name(@graph.template)
     
-    #表示期間指定
+    # 表示期間指定
     if params[:term] then
       @graph_term = params[:term].to_i
     else
@@ -90,108 +89,30 @@ class GraphsController < PublichtmlController
     # 基準日付
     @today = Date.today
 
-    #期間の設定
-    @add = 0 #追加日数初期化
-    @add = params[:add] if params[:add]
-    case @graph_term
-    when 1  #週:７日分の日別データを表示する
-      @today = @today + (@add.to_i * 7).days if params[:add] # 追加日数
-      # 月曜日から開始するように調整
-      @today = @today + (7-@today.wday).days
-      @oldday = @today - 6.days
-      @term = @oldday.month.to_s + t("datetime.prompts.month") + @oldday.day.to_s + t("datetime.prompts.day") + " - " + @today.month.to_s + t("datetime.prompts.month") + @today.day.to_s + t("datetime.prompts.day")
-      @graphx = t("datetime.prompts.day")
-      stime = "%d"
-    when 2  #月:１ヶ月分のデータを表示する
-      @today = @today + @add.to_i.months if params[:add] # 追加日数
-      # 月初から開始するように調整
-      nowmonth = Date::new(@today.year,@today.month, 1)
-      @today = nowmonth >> 1
-      @today = @today - 1.day
-      @oldday = nowmonth
-      @term = @oldday.year.to_s + t("datetime.prompts.year") + @oldday.month.to_s + t("datetime.prompts.month")
-      @graphx = t("datetime.prompts.day")
-      stime = "%d"
-    when 3  #年:１ヶ月ごとのデータを表示する。
-      @today = @today + @add.to_i.years if params[:add] # 追加日数
-      # 年初から開始するように調整
-      nowyear = Date::new(@today.year,1, 1)
-      @today = nowyear + 1.year - 1.day
-      @oldday = nowyear
-      @term = @oldday.year.to_s + t("datetime.prompts.year")
-      @graphx = t("datetime.prompts.month")
-      stime = "%m"
-    else    #0か指定なしは１日の集計
-      @today = @today - 1.day
-      @today = @today + @add.to_i.days if params[:add] # 追加日数
-      @oldday = @today
-      @term = @today.month.to_s + t("datetime.prompts.month") + @today.day.to_s + t("datetime.prompts.day")
-      @graphx = t("datetime.prompts.hour")
-      stime = "%H"
-    end
-
-    # データ取得期間の設定
-    @today_s = @today.to_s + " 23:59:59"
-    @oldday_s = @oldday.to_s + " 00:00:00"
-    # データの取得
-    tdtable = td_graph_data(@graph,@graph_term,@oldday_s,@today_s)
-
-    # グラフ表示用データ作成
-    @xdata = ""
-    @ydata = ""
-
-    weekflg = false
-    if @graph_term == 1 || @graph_term == 2 then # 週or月
-      snum = @oldday.day.to_i
-      enum = @today.day.to_i
-      if enum < snum then # 週間表示の場合で月をまたいでしまったときの処理
-        weekflg = true
-        snum2 = 1
-        enum2 = enum
-        nm = Date::new(@today.year,@today.month, 1)
-        eday = nm - 1.day
-        enum = eday.day.to_i
-      end
-    elsif @graph_term == 3 then # 年
-      snum = @oldday.month.to_i
-      enum = @today.month.to_i
-    else # 日
-      snum = 0
-      enum = 24
+    # 追加期間の設定
+    if params[:add] then
+      @add = params[:add].to_i
+    else
+      @add = 0
     end
     
-    # 値の設定
-    for dd in snum .. enum
-      @xdata = @xdata + "," + dd.to_s
-      flg = true
-      tdtable.each do |ddy|
-        if ddy.td_time.strftime(stime).to_i == dd then
-          @ydata = @ydata + "," + ddy.td_count.to_i.to_s
-          flg =false
-          break
-        end
-      end
-      if flg then
-        @ydata = @ydata + ",0"
-      end 
-    end
-    # 月をまたいでしまったときの特別処理
-    if weekflg then
-      for dd in snum2 .. enum2
-        @xdata = @xdata + "," + dd.to_s
-        flg = true
-        tdtable.each do |ddy|
-          if ddy.td_time.strftime(stime).to_i == dd then
-            @ydata = @ydata + "," + ddy.td_count.to_i.to_s
-            flg =false
-            break
-          end
-        end
-        if flg then
-          @ydata = @ydata + ",0"
-        end 
-      end
-    end 
+    # 期間の設定
+    res_graph_terms = set_graph_term(@graph_term,@today,@add)
+    today = res_graph_terms['today']
+    oldday = res_graph_terms['oldday']
+    @term_s = res_graph_terms['term_s']
+    @graphx = res_graph_terms['graphx']
+
+    # データ取得期間の設定
+    @today_s = today.to_s + " 23:59:59"
+    @oldday_s = oldday.to_s + " 00:00:00"
+    # データの取得
+    tdtable = td_graph_data(@graph,@graph_term,@oldday_s,@today_s)
+    
+    # グラフ表示用データ作成
+    res_graph_data = set_graph_data(tdtable,@graph_term,oldday,today,res_graph_terms['stime'])
+    @xdata = res_graph_data['xdata']
+    @ydata = res_graph_data['ydata']
   end
 
 
