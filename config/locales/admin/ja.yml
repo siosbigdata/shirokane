@@ -44,6 +44,8 @@ ja:
   title_graph_useval: 値表示
   title_graph_useshadow: 影表示
   title_graph_usetip: ツールチップ表示
+  title_graph_usepredata: 直前データ表示
+  title_graph_uselastyeardata: 前年データ表示
   title_graph_linewidth: 線の太さ
   title_graph_template: テンプレート
   title_rank: 表示順
@@ -88,5 +90,8 @@ ja:
     useval: 値表示
     useshadow: 影表示
     usetip: ツールチップ表示
+    usepredata: 直前データ表示
+    uselastyeardata: 前年データ表示
     linewidth: 線の太さ
     template_id: テンプレート
+    template: テンプレート

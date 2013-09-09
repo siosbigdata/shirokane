@@ -16,5 +16,7 @@
 # Setting.create(:name => "servicename" ,:title => "サービス名",:parameter => "shirokane" ,:vieworder => 0,:columntype => 0)  # 一意なservicenameを指定
 # Setting.create(:name => "csvdownloadsize" ,:title => "最大CSVダウンロード容量",:parameter => "100000" ,:vieworder => 0,:columntype => 3)  # 上限は自由
 # Setting.create(:name => "maxuser" ,:title => "最大ユーザ数",:parameter => "5" ,:vieworder => 0,:columntype => 3)  # 上限は自由
+# Setting.create(:name => "useMarker" ,:title => "マーカーの種類",:parameter => "css-ring" ,:vieworder => 0,:columntype => 0) # css-maruも指定可能
+# Setting.create(:name => "markerWidth" ,:title => "マーカーの大きさ",:parameter => "1" ,:vieworder => 11,:columntype => 3)
 class Setting < ActiveRecord::Base
 end

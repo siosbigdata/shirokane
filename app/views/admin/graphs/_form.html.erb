@@ -65,6 +65,14 @@
     <%= f.label :usetip %><br>
     <%= f.select :usetip,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
   </div>
+  <div class="field">
+    <%= f.label :usepredata %><br>
+    <%= f.select :usepredata,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+  </div>
+  <div class="field">
+    <%= f.label :uselastyeardata %><br>
+    <%= f.select :uselastyeardata,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+  </div>
    <div class="field">
     <%= f.label :linewidth %><br>
     <%= f.number_field :linewidth %>

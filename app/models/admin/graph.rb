@@ -21,5 +21,7 @@ class Admin::Graph < Graph
   validates :usetip, :presence => true,:numericality => true    # グラフにチップをつけるかどうか
   validates :linewidth, :presence => true,:numericality => true # 線の太さ
   validates :template, :presence => true                        # テンプレート名
+  validates :usepredata, :presence => true,:numericality => true    # 前日、前週、前月、前年のデータを表示するかどうか
+  validates :uselastyeardata, :presence => true,:numericality => true    # １年前のデータを表示するかどうか
 end
 
