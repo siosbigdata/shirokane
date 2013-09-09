@@ -2,7 +2,9 @@
 <%= render 'common/sidebar' %>
 <!-- main content start -->
 <script>
-	var cal1 = new DQNEO.Calendar("cal1")
+$(function(){
+  $('#cal1').setCalendar();
+});
 </script>
 <div id="content">
 <div id="sub_content">
@@ -37,7 +39,7 @@
 		<%= form_tag(setday_graph_path) do |f| %>
 			日付を選択：
 			<span>
-			<input type="text" id="cal1" name="cal1" onclick="cal1.onclick();" onchange="cal1.onchange();">
+			<input type="text" id="cal1" name="cal1">
 			</span>
 			<%= hidden_field_tag(:term,@graph_term) %>
 			<%= hidden_field_tag(:add,@add) %>
