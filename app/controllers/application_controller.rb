@@ -118,7 +118,7 @@ class ApplicationController < ActionController::Base
     case graph_term
     when 0 # 日
       snum = 0
-      enum = 24
+      enum = 23
     when 1 # 週
       snum = oldday.day.to_i
       enum = today.day.to_i
