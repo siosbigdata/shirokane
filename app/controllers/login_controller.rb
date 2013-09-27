@@ -9,6 +9,9 @@ class LoginController < PublichtmlController
     def index
       # settingsの値取得
       get_settings
+      if current_user then
+        destroy
+      end
     end
     
     # ユーザのログイン処理を行う

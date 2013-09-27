@@ -8,7 +8,7 @@
 	  <ul>
 	  <li class="user"><i class="icon-user"></i>&nbsp;<%= current_user.title %><span class="group"><%= current_user.group.title %></span></li>
 	  <li class="logout">
-	  	<%= link_to({:controller => "login", :action => "destroy",:id=>current_user.id}, :data =>{:confirm => t('logout_message')}, :method => :delete) do %>
+	  	<%= link_to(login_path(current_user.id), :data =>{:confirm => t('logout_message')}, :method => :delete) do %>
 	  	<i class="icon-lock"></i>&nbsp;<%= t('logout') %>
 	  	<% end %>
 	  </li>
