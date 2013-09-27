@@ -16,6 +16,7 @@
         this.each(function(elm) {
 
             var fieldId = this.id;
+            alert(fieldId);
 
             if (opts && 'src' in opts) {
                 var triggerId = fieldId + '_trigger_';

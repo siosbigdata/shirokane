@@ -1,13 +1,7 @@
 <%= render 'common/header' %>
 <%= render 'common/sidebar' %>
 <!-- main content start -->
-<script>
-var jq = jQuery.noConflict();
-jq(function(){
- jq('#cal1').setCalendar({src:'<%= path_to_image "calender_btn.jpg" %>'});
-  //jq('#cal1').setCalendar();
-});
-</script>
+
 <div id="content">
 <div id="sub_content">
 	<h1>
@@ -22,12 +16,13 @@ jq(function(){
 <div id="search">
 	<h2><%= @h_analysis_types[@graph.analysis_type] %><%= t('title_graph_term') %>:<%= @term_s %></h2>
 	<div class="search_form">
-		<%= form_tag(setday_graph_path) do |f| %>
+		<%= form_tag(setday_graph_path) do %>
 		<%= hidden_field_tag(:term,@graph_term) %>
 		<%= hidden_field_tag(:add,@add) %>
 		<%= hidden_field_tag(:today,@todaydata) %>
 		<span>
-		<input type="text" id="cal1" name="cal1">
+		<input type="text" id="cal1" name="cal1" class="cal1" />
+		<img alt="cal_btn" class="calendar-trigger" id="cal1_trigger_" src="<%= path_to_image 'calender_btn.jpg' %>">
 		</span>
 		<%= submit_tag t('title_search'),:class=>'button' %>
 	<% end %>
@@ -103,7 +98,8 @@ var chartdata = {
     ,["<%= @graph.y %>"<%= @ydata %>]
   ]
 };
-ccchart.init('<%= @graph.name %>', chartdata)
+ccchart.init('<%= @graph.name %>', chartdata);
+Calendar.setup({inputField : 'cal1', ifFormat : '%Y-%m-%d', button : 'cal1_trigger_' });
 </script>
 
 </div><!-- main content end -->
