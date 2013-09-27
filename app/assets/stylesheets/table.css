@@ -23,7 +23,7 @@
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
     color:#69655c;
 }
-
+/*
 .coder tr:first-child th:first-child,
 .coder tr:first-child td:first-child {
     -webkit-border-radius: 6px 0 0 0;
@@ -55,11 +55,11 @@
          -o-border-radius: 0 0 6px 0;
             border-radius: 0 0 6px 0;
 }
-
+*/
 .coder thead th {background:#e3dcd5;}
 .coder thead+tbody th {background:#f4ede6;}
 .coder tbody th {text-align:left;}/*IE*/
-
+/*
 .coder thead tr:first-child th:first-child,
 .coder thead tr:first-child td:first-child {
     -webkit-border-radius: 6px 0 0 0;
@@ -100,4 +100,4 @@
        -moz-border-radius: 0 0 6px 0;
          -o-border-radius: 0 0 6px 0;
             border-radius: 0 0 6px 0;
-}
+}*/

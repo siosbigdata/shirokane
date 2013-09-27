@@ -1,11 +1,11 @@
 <!-- administrator navigation start -->
-<div id="admin_navigation">
-	<ul class="cds-navi-admin cds-navi">
-		<li><%= link_to t('title_home'), admin_root_path %></li>
-		<li><%= link_to t('menu_user'), admin_users_path %></li>
-		<li><%= link_to t('menu_group'), admin_groups_path %></li>
-		<li><%= link_to t('menu_graph'), admin_graphs_path %></li>
-		<li><%= link_to t('menu_setting'), admin_settings_path %></li>
+<div id="navigation">
+	<ul class="cds-navi">
+		<li<% if params[:controller] == "admin/home" %> class="select"<% end %>><%= link_to(admin_root_path) do %><i class="icon-desktop"></i>&nbsp;<%= t('title_home') %><% end %></li>
+		<li<% if params[:controller] == "admin/users" %> class="select"<% end %>><%= link_to(admin_users_path) do %><i class="icon-user"></i>&nbsp;<%= t('menu_user') %><% end %></li>
+		<li<% if params[:controller] == "admin/groups" || params[:controller] == "admin/groupgraphs" %> class="select"<% end %>><%= link_to(admin_groups_path) do %><i class="icon-group"></i>&nbsp;<%= t('menu_group') %><% end %></li>
+		<li<% if params[:controller] == "admin/graphs" %> class="select"<% end %>><%= link_to(admin_graphs_path) do %><i class="icon-bar-chart"></i>&nbsp;<%= t('menu_graph') %><% end %></li>
+		<li<% if params[:controller] == "admin/settings" %> class="select"<% end %>><%= link_to(admin_settings_path) do %><i class="icon-cog"></i>&nbsp;<%= t('menu_setting') %><% end %></li>
 	</ul>
 </div>
 <!-- administrator navigation end -->

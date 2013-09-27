@@ -1,3 +1,4 @@
+<div id="setting">
 <%= form_for(@admin_graph) do |f| %>
   <% if @admin_graph.errors.any? %>
     <div id="error_explanation">
@@ -82,6 +83,7 @@
     <%= f.select :template,@h_template.keys.map{|t| [@h_template[t], t]} %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('helpers.submit.update'),:class=>"button" %>
   </div>
 <% end %>
+</div>

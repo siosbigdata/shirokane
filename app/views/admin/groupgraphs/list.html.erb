@@ -1,11 +1,11 @@
 <%= render 'admin/common/header' %>
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
-<div id="admin_content">
-<div id="admin_sub_content">
-	<h1><%= t('menu_group') %></h1>
-	<h2><%= t('title_groupgraphs_list') %>:<%= @group.title %></h2>
-
+<div id="content">
+<div id="sub_content">
+	<h1><%= t('menu_group') %> &nbsp;-&nbsp;<%= t('title_groupgraphs_list') %>:<%= @group.title %></h1>
+</div>
+<div id="setting">
 <%= form_tag(admin_groupgraphs_path) do |f| %>
 <%= hidden_field_tag :group_id,@group.id %>
 <table class="coder">
@@ -25,17 +25,19 @@
         <td><%= check_box 'groupgraph', g.id,{:checked => @gcheck[g.id]}, 1, false %></td>
         <td><%= g.title %></td>
         <td><%= check_box 'dashboard', g.id,{:checked => @ghash[g.id].dashboard}, 1, false %></td>
-        <td><%= number_field_tag 'view_rank' + g.id.to_s,@ghash[g.id].view_rank,{:min => 0,:max => 99,:size => 2} %>
+        <td><%= number_field_tag 'view_rank' + g.id.to_s,@ghash[g.id].view_rank,{:min => 0,:max => 99,:size => 2} %></td>
     <% end %>
     
   </tbody>
 </table>
 <br />
-<p><%= submit_tag t('title_select')%></p>
-<% end %>
-<br />
-
-<%= link_to t('title_back'), admin_groups_path %>
+<div class="actions">
+	<%= submit_tag t('helpers.submit.update'),:class=>"button" %>
 </div>
+<% end %>
+</div>
+
+<%= link_to t('title_back'), admin_groups_path,:class=>"button_link" %>
+
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

@@ -1,16 +1,15 @@
 <%= render 'admin/common/header' %>
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
-<div id="admin_content">
-<div id="admin_sub_content">
-	
-	<h1><%= t('menu_user') %></h1>
-	<h2><%= t('title_edit') %></h2>
+<div id="content">
+<div id="sub_content">
+	<h1><%= t('menu_user') %>&nbsp;-&nbsp;<%= t('title_edit') %></h1>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to t('title_back'), admin_users_path %>
+<%= link_to t('title_back'), admin_users_path,:class=>"button_link" %>
 
-</div>
+
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

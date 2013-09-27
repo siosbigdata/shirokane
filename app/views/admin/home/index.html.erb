@@ -1,10 +1,12 @@
 <%= render 'admin/common/header' %>
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
-<div id="admin_content">
-<div id="admin_sub_content">
+<div id="content">
+<div id="sub_content">
 	<h1><%= Time.now().strftime('%Y/%m/%d %X') %></h1>
-	<div id="dashboards">
+</div>
+
+<div id="dashboards">
 <% index=0%>
 <% @graphs.each do |graph| %>
     <div id="dashboard">
@@ -57,6 +59,6 @@
 <% end %>
 </div>
 
-</div>
+
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

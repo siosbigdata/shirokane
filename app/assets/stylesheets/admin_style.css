@@ -1,0 +1,13 @@
+.button_link {
+	font-size: 12px;
+	padding: 4px;
+	background: #FFFFFF;
+	border: 1px solid #000000;
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+.button_link:hover{
+	/*background: rgba(42, 125, 202, 1);*/
+	background: #DDDDDD;
+}

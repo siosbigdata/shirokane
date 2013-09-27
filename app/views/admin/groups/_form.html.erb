@@ -1,3 +1,4 @@
+<div id="setting">
 <%= form_for(@admin_group) do |f| %>
   <% if @admin_group.errors.any? %>
     <div id="error_explanation">
@@ -20,6 +21,7 @@
     <%= f.text_field :title %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('helpers.submit.update'),:class=>"button" %>
   </div>
 <% end %>
+</div>

@@ -1,3 +1,4 @@
+<div id="setting">
 <%= form_for(@admin_user) do |f| %>
   <% if @admin_user.errors.any? %>
     <div id="error_explanation">
@@ -40,6 +41,7 @@
     <%= f.check_box :admin %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t('helpers.submit.update'),:class=>"button" %>
   </div>
 <% end %>
+</div>

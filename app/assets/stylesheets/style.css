@@ -373,6 +373,15 @@ overflow: hidden;
   color: #c5c5c5!important;
 }
 
+.data_btn a.disable {
+        border-top: 5px solid #c5c5c5!important;
+        color: #c5c5c5!important;
+        cursor: not-allowed!important;
+}
+.data_btn a.disable:hover {
+        background: transparent!important;
+}
+
 #graph {
 	margin: 0px 24px 50px 12px;
 	padding: 16px;

@@ -1,11 +1,11 @@
 <%= render 'admin/common/header' %>
 <%= render 'admin/common/sidebar' %>
 <!-- administrator main content start -->
-<div id="admin_content">
-<div id="admin_sub_content">
+<div id="content">
+<div id="sub_content">
 	
-	<h1><%= t('menu_user') %></h1>
-	<h2><%= t('title_show') %></h2>
+	<h1><%= t('menu_user') %>&nbsp;-&nbsp;<%= t('title_show') %></h1>
+</div>
 
 <p>
   <strong><Name:><%= t('title_user_name') %></strong>
@@ -31,10 +31,11 @@
   <strong><%= t('title_user_admin') %></strong>
   <%= @admin_user.admin %>
 </p>
+<br /><br />
+<%= link_to t('title_back'), admin_users_path,:class=>"button_link" %>
+<%= link_to t('title_edit'), edit_admin_user_path(@admin_user),:class=>"button_link" %>
 
-<%= link_to t('title_edit'), edit_admin_user_path(@admin_user) %> |
-<%= link_to t('title_back'), admin_users_path %>
 
-</div>
+
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>

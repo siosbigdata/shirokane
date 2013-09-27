@@ -1,15 +1,25 @@
 <!-- administrator header start -->
-<div id="admin_header">
+<div id="header">
 	<div id="logo">
-		<h1><%= link_to $settings['title'], admin_root_path %>&nbsp;<%= t('adminview') %></h1>
+		<h1><%= link_to(admin_root_path) do %><%= $settings['title'] %>&nbsp;<%= t('adminview') %><% end %></h1>
 	</div>
-	<div id="header_contents">
 	<% if admin_current_user != nil %>
-	  <%= admin_current_user.title %>
-	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>admin_current_user.id},:data=>{:confirm => t('logout_message')} , :method => :delete %>
-	<% end %>
+	<div id="header_contents">
+	 <ul>
+	  <li class="user"><i class="icon-user"></i>&nbsp;<%= admin_current_user.title %></li>
+	  <li class="logout">
+	  	<%= link_to(admin_login_path(admin_current_user.id), :data =>{:confirm => t('logout_message')}, :method => :delete) do %>
+	  	<i class="icon-lock"></i>&nbsp;<%= t('logout') %>
+	  	<% end %>
+	  </li>
+	  </ul>
 	</div>
+	<% end %>
 </div>
 <!-- administrator header end -->
 <!-- administrator wrapper start -->
-<div id="admin_wrapper">
+<% if admin_current_user != nil %>
+<div id="wrapper">
+<% else %>
+<div id="wrapper" class="login">
+<% end %>

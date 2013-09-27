@@ -9,6 +9,9 @@ class Admin::LoginController < AdminController
   def index
     # settingsの値取得
     get_settings
+    if admin_current_user then
+      destroy
+    end
   end
   
   # ユーザのログイン処理を行う

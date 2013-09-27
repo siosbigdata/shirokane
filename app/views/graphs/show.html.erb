@@ -2,10 +2,10 @@
 <%= render 'common/sidebar' %>
 <!-- main content start -->
 <script>
-var j = jQuery.noConflict();
-j(function(){
-  $('#cal1').setCalendar({src:'<%= path_to_image "calender_btn.jpg" %>'});
-  //$j('#cal1').setCalendar();
+var jq = jQuery.noConflict();
+jq(function(){
+ jq('#cal1').setCalendar({src:'<%= path_to_image "calender_btn.jpg" %>'});
+  //jq('#cal1').setCalendar();
 });
 </script>
 <div id="content">
@@ -44,8 +44,8 @@ j(function(){
 	<a href="<%= graph_path(@graph.id)%>?term=3&today=<%= @todaydata %>" class="term_button <% if @graph_term == 3 then %>select<% end %>"><%= t('lbl_year') %></a>
 	<% if @csvflg then %>
 	<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn"><i class="icon-download-alt"></i>&nbsp;csv</a>
-	<% eles %>
-	<p class="csv_btn disable"><i class="icon-download-alt"></i>&nbsp;csv</p>
+	<% else %>
+	<a href="javascript:void(0);" class="csv_btn disable"><i class="icon-download-alt"></i>&nbsp;csv</a>
 	<% end %>
 </div>
 <div id="graph">
