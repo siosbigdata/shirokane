@@ -368,6 +368,11 @@ overflow: hidden;
 	border-top: 5px solid #29A600;
 }
 
+.data_btn .disable {
+  border-top: 5px solid #c5c5c5!important;
+  color: #c5c5c5!important;
+}
+
 #graph {
 	margin: 0px 24px 50px 12px;
 	padding: 16px;

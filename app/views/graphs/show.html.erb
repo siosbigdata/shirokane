@@ -42,9 +42,11 @@ j(function(){
 	<a href="<%= graph_path(@graph.id)%>?term=1&today=<%= @todaydata %>" class="term_button <% if @graph_term == 1 then %>select<% end %>"><%= t('lbl_week') %></a>
 	<a href="<%= graph_path(@graph.id)%>?term=2&today=<%= @todaydata %>" class="term_button <% if @graph_term == 2 then %>select<% end %>"><%= t('lbl_month') %></a>
 	<a href="<%= graph_path(@graph.id)%>?term=3&today=<%= @todaydata %>" class="term_button <% if @graph_term == 3 then %>select<% end %>"><%= t('lbl_year') %></a>
-	<% if @csvflg then %><% end %>
+	<% if @csvflg then %>
 	<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn"><i class="icon-download-alt"></i>&nbsp;csv</a>
-	
+	<% eles %>
+	<p class="csv_btn disable"><i class="icon-download-alt"></i>&nbsp;csv</p>
+	<% end %>
 </div>
 <div id="graph">
 	<canvas id="<%= @graph.name %>"></canvas>
