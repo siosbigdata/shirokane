@@ -3,113 +3,97 @@
 <!-- main content start -->
 <script>
 $(function(){
-  $('#cal1').setCalendar({src:'<%= path_to_image "calendar.png"%>'});
+  $('#cal1').setCalendar({src:'<%= path_to_image "calender_btn.jpg" %>'});
 });
 </script>
 <div id="content">
 <div id="sub_content">
-	<h1><%= @graph.title %>:<%= @term_s %>(<%= @h_analysis_types[@graph.analysis_type] %>)</h1>
-	<br />
-	<div id="term_button">
-		<% if @graph_term == 0 then %>
-			<a href="<%= graph_path(@graph.id)%>?term=0&today=<%= @todaydata %>" class="term_button_select term_button"><%= t('lbl_day') %></a>
-		<% else %>
-			<a href="<%= graph_path(@graph.id)%>?term=0&today=<%= @todaydata %>" class="term_button"><%= t('lbl_day') %></a>
-		<% end %>
-		<% if @graph_term == 1 then %>
-			<a href="<%= graph_path(@graph.id)%>?term=1&today=<%= @todaydata %>" class="term_button_select term_button"><%= t('lbl_week') %></a>
-		<% else %>
-			<a href="<%= graph_path(@graph.id)%>?term=1&today=<%= @todaydata %>" class="term_button"><%= t('lbl_week') %></a>
-		<% end %>
-		<% if @graph_term == 2 then %>
-			<a href="<%= graph_path(@graph.id)%>?term=2&today=<%= @todaydata %>" class="term_button_select term_button"><%= t('lbl_month') %></a>
-		<% else %>
-			<a href="<%= graph_path(@graph.id)%>?term=2&today=<%= @todaydata %>" class="term_button"><%= t('lbl_month') %></a>
-		<% end %>
-		<% if @graph_term == 3 then %>
-			<a href="<%= graph_path(@graph.id)%>?term=3&today=<%= @todaydata %>" class="term_button_select term_button"><%= t('lbl_year') %></a>
-		<% else %>
-			<a href="<%= graph_path(@graph.id)%>?term=3&today=<%= @todaydata %>" class="term_button"><%= t('lbl_year') %></a>
-		<% end %>
-		<% if @csvflg then %>
-			<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn">csv</a>
-		<% end %>
-	</div>
-	<div>
-		<%= form_tag(setday_graph_path) do |f| %>
-			日付を選択：
-			<span>
-			<input type="text" id="cal1" name="cal1">
-			</span>
-			<%= hidden_field_tag(:term,@graph_term) %>
-			<%= hidden_field_tag(:add,@add) %>
-			<%= hidden_field_tag(:today,@todaydata) %>
-			<%= submit_tag t('title_select') %>
-		<% end %>
-	</div>
-	<canvas id="<%= @graph.name %>"></canvas>
-	<br />
-	<script>
-	var chartdata = {
-	  "config": {
-	  	"width": 720,
-	  	"height": 480,
-	  	<% if @graph.usetip == 1 then %>
-	    "useMarker": "<%= $settings['useMarker'] %>",
-	    "markerWidth": <%= $settings['markerWidth'] %>,
-	    <% end %>
-	    "type": "<%= @graph_types[@graph.graph_type] %>",
-	    "useVal": "<%= @h_yesno[@graph.useval] %>",
-	    "useShadow": "<%= @h_yesno[@graph.useshadow] %>",
-	    "lineWidth": <%= @graph.linewidth %>,
-	    "colorSet": 
-	    	<% if @graph.usepredata == 1 && @graph.uselastyeardata == 1 && @graph_term < 3 %>
-	          ["<%= @template.linecolor_pre %>","<%= @template.linecolor_last %>","<%= @template.linecolor %>"],
-	          <% elsif @graph.usepredata == 1 && @graph.uselastyeardata == 1 && @graph_term == 3 %>
-	          ["<%= @template.linecolor_pre %>","<%= @template.linecolor %>"],
-	          <% elsif @graph.usepredata == 1 && @graph.uselastyeardata == 0 %>
-	          ["<%= @template.linecolor_pre %>","<%= @template.linecolor %>"],
-	          <% elsif @graph.usepredata == 0 && @graph.uselastyeardata == 1 %>
-	          ["<%= @template.uselastyeardata %>","<%= @template.linecolor %>"],
-	          <% else %>
-	          ["<%= @template.linecolor %>"],
-	          <% end %>
-	    "bgGradient": {
-	            "direction":"vertical",
-	            "from":"<%= @template.bgfrom %>",
-	            "to":"<%= @template.bgto %>"
-	         },
-	    "textColor": "<%= @template.textcolor %>",
-	    "minY":<%= @graph.y_min %>,
-	    <% if @graph_term == 0 then %>
-	    	"maxY":<%= @graph.y_max_time.to_i %>
-	    <% elsif @graph_term == 1 || @graph_term == 2 then %>
-	    	"maxY":<%= @graph.y_max_day.to_i %>
-	    <% else %>
-	    	"maxY":<%= @graph.y_max_month.to_i %>
-	    <% end %>
-	  },
-	
-	  "data": [
-	    ["<%= @graphx %>"<%= @xdata %>]
-	    <% if @graph.usepredata == 1 then %>
-	    ,["<%= t('title_pre') %><%= @h_terms[@graph_term] %>"<%= @ydata_pre %>]
-	    <% end %>
-	    <% if @graph_term < 3 && @graph.uselastyeardata == 1 then %>
-	    ,["<%= t('title_last') %>"<%= @ydata_last %>]
-	    <% end %>
-	    ,["<%= @graph.y %>"<%= @ydata %>]
-	  ]
-	};
-	ccchart.init('<%= @graph.name %>', chartdata)
-	</script>
-
-	<div id="term_button">
-		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i - 1 %>&today=<%= @todaydata %>" class="term_button"><%= t('button_back') %></a>
-		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>&today=<%= @todaydata %>" class="term_button"><%= t('button_prev') %></a>
-	</div>
-	
-
+	<h1><%= @graph.title %></h1>
 </div>
+<div id="search">
+	<h2><%= @h_analysis_types[@graph.analysis_type] %><%= t('title_graph_term') %>:<%= @term_s %></h2>
+	<div class="search_form">
+		<%= form_tag(setday_graph_path) do |f| %>
+		<%= hidden_field_tag(:term,@graph_term) %>
+		<%= hidden_field_tag(:add,@add) %>
+		<%= hidden_field_tag(:today,@todaydata) %>
+		<span>
+		<input type="text" id="cal1" name="cal1">
+		</span>
+		<%= submit_tag t('title_search'),:class=>'button' %>
+	<% end %>
+	</div>
+	<div id="term_button" class="carent_btn">
+		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i - 1 %>&today=<%= @todaydata %>" class="term_button caret-left"><i class="icon-caret-left"></i></a>
+		<a href="<%= graph_path(@graph.id)%>?term=<%= @graph_term %>&add=<%= @add.to_i + 1 %>&today=<%= @todaydata %>" class="term_button caret-right"><i class="icon-caret-right"></i></a>
+	</div>
+</div>
+<div id="term_button" class="data_btn">
+	<a href="<%= graph_path(@graph.id)%>?term=0&today=<%= @todaydata %>" class="term_button <% if @graph_term == 0 then %>select<% end %>"><%= t('lbl_day') %></a>
+	<a href="<%= graph_path(@graph.id)%>?term=1&today=<%= @todaydata %>" class="term_button <% if @graph_term == 1 then %>select<% end %>"><%= t('lbl_week') %></a>
+	<a href="<%= graph_path(@graph.id)%>?term=2&today=<%= @todaydata %>" class="term_button <% if @graph_term == 2 then %>select<% end %>"><%= t('lbl_month') %></a>
+	<a href="<%= graph_path(@graph.id)%>?term=3&today=<%= @todaydata %>" class="term_button <% if @graph_term == 3 then %>select<% end %>"><%= t('lbl_year') %></a>
+	<% if @csvflg then %>ok<% end %>
+	<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn"><i class="icon-download-alt"></i>&nbsp;csv</a>
+	
+</div>
+<div id="graph">
+	<canvas id="<%= @graph.name %>"></canvas>
+</div>
+<script>
+var chartdata = {
+  "config": {
+  	"width": 720,
+  	"height": 480,
+  	<% if @graph.usetip == 1 then %>
+    "useMarker": "<%= $settings['useMarker'] %>",
+    "markerWidth": <%= $settings['markerWidth'] %>,
+    <% end %>
+    "type": "<%= @graph_types[@graph.graph_type] %>",
+    "useVal": "<%= @h_yesno[@graph.useval] %>",
+    "useShadow": "<%= @h_yesno[@graph.useshadow] %>",
+    "lineWidth": <%= @graph.linewidth %>,
+    "colorSet": 
+    	<% if @graph.usepredata == 1 && @graph.uselastyeardata == 1 && @graph_term < 3 %>
+          ["<%= @template.linecolor_pre %>","<%= @template.linecolor_last %>","<%= @template.linecolor %>"],
+          <% elsif @graph.usepredata == 1 && @graph.uselastyeardata == 1 && @graph_term == 3 %>
+          ["<%= @template.linecolor_pre %>","<%= @template.linecolor %>"],
+          <% elsif @graph.usepredata == 1 && @graph.uselastyeardata == 0 %>
+          ["<%= @template.linecolor_pre %>","<%= @template.linecolor %>"],
+          <% elsif @graph.usepredata == 0 && @graph.uselastyeardata == 1 %>
+          ["<%= @template.uselastyeardata %>","<%= @template.linecolor %>"],
+          <% else %>
+          ["<%= @template.linecolor %>"],
+          <% end %>
+    "bgGradient": {
+            "direction":"vertical",
+            "from":"<%= @template.bgfrom %>",
+            "to":"<%= @template.bgto %>"
+         },
+    "textColor": "<%= @template.textcolor %>",
+    "minY":<%= @graph.y_min %>,
+    <% if @graph_term == 0 then %>
+    	"maxY":<%= @graph.y_max_time.to_i %>
+    <% elsif @graph_term == 1 || @graph_term == 2 then %>
+    	"maxY":<%= @graph.y_max_day.to_i %>
+    <% else %>
+    	"maxY":<%= @graph.y_max_month.to_i %>
+    <% end %>
+  },
+
+  "data": [
+    ["<%= @graphx %>"<%= @xdata %>]
+    <% if @graph.usepredata == 1 then %>
+    ,["<%= t('title_pre') %><%= @h_terms[@graph_term] %>"<%= @ydata_pre %>]
+    <% end %>
+    <% if @graph_term < 3 && @graph.uselastyeardata == 1 then %>
+    ,["<%= t('title_last') %>"<%= @ydata_last %>]
+    <% end %>
+    ,["<%= @graph.y %>"<%= @ydata %>]
+  ]
+};
+ccchart.init('<%= @graph.name %>', chartdata)
+</script>
+
 </div><!-- main content end -->
 <%= render 'common/footer' %>

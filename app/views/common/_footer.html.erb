@@ -4,3 +4,21 @@
 	<!-- コピーライト / 著作権表示 -->
 	<h1>Copyright©SIOS Technology, Inc. All Rights Reserved</h1>
 </div><!-- main footer end -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var htmlHeight = $("html").height();
+  var contentHeight = $("#content").innerHeight();
+  $(function() {
+    if(htmlHeight > contentHeight){
+      $("#wrapper").css("height",htmlHeight-150+"px");
+      $("#content").css("height",htmlHeight-150+"px");
+    }
+  });
+  $(function() {
+    $(window).resize(function(){
+      var htmlHeight = $("html").height();
+      $("#wrapper").css("height",htmlHeight-150+"px");
+      $("#content").css("height",htmlHeight-150+"px");
+    });
+  });
+</script>

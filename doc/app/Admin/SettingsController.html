@@ -107,15 +107,15 @@
   
     <li><a href="../Admin/GraphsHelper.html">Admin::GraphsHelper</a>
   
+    <li><a href="../Admin/Graphtemplate.html">Admin::Graphtemplate</a>
+  
     <li><a href="../Admin/Group.html">Admin::Group</a>
-  
-    <li><a href="../Admin/Groupdashboard.html">Admin::Groupdashboard</a>
-  
-    <li><a href="../Admin/GroupdashboardsController.html">Admin::GroupdashboardsController</a>
   
     <li><a href="../Admin/GroupdashboardsHelper.html">Admin::GroupdashboardsHelper</a>
   
     <li><a href="../Admin/Groupgraph.html">Admin::Groupgraph</a>
+  
+    <li><a href="../Admin/GroupgraphsController.html">Admin::GroupgraphsController</a>
   
     <li><a href="../Admin/GroupgraphsHelper.html">Admin::GroupgraphsHelper</a>
   
@@ -153,8 +153,6 @@
   
     <li><a href="../DashboardsHelper.html">DashboardsHelper</a>
   
-    <li><a href="../Graph.html">Graph</a>
-  
     <li><a href="../GraphsController.html">GraphsController</a>
   
     <li><a href="../GraphsHelper.html">GraphsHelper</a>
@@ -163,19 +161,25 @@
   
     <li><a href="../Group.html">Group</a>
   
-    <li><a href="../Groupdashboard.html">Groupdashboard</a>
-  
     <li><a href="../Groupgraph.html">Groupgraph</a>
   
     <li><a href="../LoginController.html">LoginController</a>
   
     <li><a href="../LoginHelper.html">LoginHelper</a>
   
+    <li><a href="../PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="../PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="../PublichtmlController.html">PublichtmlController</a>
+  
     <li><a href="../Setting.html">Setting</a>
   
     <li><a href="../Tdtable.html">Tdtable</a>
   
     <li><a href="../User.html">User</a>
+  
+    <li><a href="../UserMailer.html">UserMailer</a>
   
     <li><a href="../UsersController.html">UsersController</a>
   
@@ -225,12 +229,12 @@
 
         <div class="method-description">
           
-          <p>GET /admin/settings/1/edit</p>
+          <p>管理用パラメーター編集画面</p>
           
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/settings_controller.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/settings_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- edit-source -->
@@ -254,14 +258,15 @@
 
         <div class="method-description">
           
-          <p>GET /admin/settings GET /admin/settings.json</p>
+          <p>管理用パラメーター一覧</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/settings_controller.rb, line 13</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/settings_controller.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-ivar">@admin_settings</span> = <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Setting</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:vieworder</span>)
+  <span class="ruby-comment"># vieworder = 0は非表示</span>
+  <span class="ruby-ivar">@admin_settings</span> = <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Setting</span>.<span class="ruby-identifier">where</span>.<span class="ruby-identifier">not</span>(<span class="ruby-value">:vieworder</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:vieworder</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
           
@@ -284,12 +289,12 @@
 
         <div class="method-description">
           
-          <p>GET /admin/settings/1 GET /admin/settings/1.json</p>
+          <p>管理用パラメーター詳細</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/settings_controller.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/settings_controller.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- show-source -->
@@ -313,15 +318,17 @@
 
         <div class="method-description">
           
-          <p>PATCH/PUT /admin/settings/1 PATCH/PUT /admin/settings/1.json</p>
+          <p>管理用パラメーター更新</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/settings_controller.rb, line 49</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/settings_controller.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@admin_setting</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">admin_setting_params</span>)
+      <span class="ruby-identifier">$settings</span> = <span class="ruby-keyword">nil</span>
+      <span class="ruby-identifier">get_settings</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@admin_setting</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;Setting was successfully updated.&#39;</span> }
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
     <span class="ruby-keyword">else</span>

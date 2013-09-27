@@ -4,13 +4,22 @@
 		<h1><%= link_to $settings['title'], root_path %></h1>
 	</div>
 	<% if current_user != nil %>
-	<div id="head_dashboard"><%= link_to t('title_dashboard'), root_path %></div>
 	<div id="header_contents">
-	  <%= current_user.title %> （<%= current_user.group.title %>）
-	  <%= link_to t('title_setting'), edit_user_path(current_user.id) %>
-	  <%= link_to t('logout'), {:controller => "login", :action => "destroy",:id=>current_user.id}, :data =>{:confirm => t('logout_message')}, :method => :delete %>
+	  <ul>
+	  <li class="user"><i class="icon-user"></i>&nbsp;<%= current_user.title %><span class="group"><%= current_user.group.title %></span></li>
+	  <li class="logout">
+	  	<%= link_to({:controller => "login", :action => "destroy",:id=>current_user.id}, :data =>{:confirm => t('logout_message')}, :method => :delete) do %>
+	  	<i class="icon-lock"></i>&nbsp;<%= t('logout') %>
+	  	<% end %>
+	  </li>
+	  <li class="setting"><%= link_to(edit_user_path(current_user.id)) do %><i class="icon-cog"></i><% end %></li>
+	  </ul>
 	</div>
 	<% end %>
 </div><!-- main header end -->
 <!-- main wrapper start -->
+<% if current_user != nil %>
 <div id="wrapper">
+<% else %>
+<div id="wrapper" class="login">
+<% end %>

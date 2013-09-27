@@ -20,34 +20,34 @@ ActiveRecord::Schema.define(version: 20130830005152) do
     t.string   "name"
     t.string   "title"
     t.integer  "graph_type"
-    t.integer  "analysis_type"
     t.integer  "term"
     t.string   "y"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "analysis_type"
+    t.integer  "useval"
+    t.integer  "linewidth"
+    t.string   "template"
     t.integer  "y_min"
+    t.integer  "useshadow"
     t.integer  "y_max_time"
     t.integer  "y_max_day"
     t.integer  "y_max_month"
-    t.integer  "useval"
-    t.integer  "useshadow"
     t.integer  "usetip"
-    t.integer  "linewidth"
-    t.string   "template"
     t.integer  "usepredata"
     t.integer  "uselastyeardata"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "graphtemplates", force: true do |t|
-    t.string   "name"
+    t.string   "linecolor"
     t.string   "bgfrom"
     t.string   "bgto"
-    t.string   "linecolor"
     t.string   "textcolor"
-    t.string   "linecolor_pre"
-    t.string   "linecolor_last"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "linecolor_pre"
+    t.string   "linecolor_last"
   end
 
   create_table "groupgraphs", force: true do |t|
@@ -76,32 +76,157 @@ ActiveRecord::Schema.define(version: 20130830005152) do
     t.integer  "columntype"
   end
 
-  create_table "td_graph6", id: false, force: true do |t|
+  create_table "td_graph01", id: false, force: true do |t|
     t.datetime "td_time"
     t.decimal  "td_count"
   end
 
-  create_table "td_test1", id: false, force: true do |t|
+  create_table "td_test01", id: false, force: true do |t|
     t.datetime "td_time"
     t.decimal  "td_count"
   end
 
-  create_table "td_test2", id: false, force: true do |t|
+  create_table "td_test02", id: false, force: true do |t|
     t.datetime "td_time"
     t.decimal  "td_count"
   end
 
-  create_table "td_test3", id: false, force: true do |t|
+  create_table "td_test03", id: false, force: true do |t|
     t.datetime "td_time"
     t.decimal  "td_count"
   end
 
-  create_table "td_test4", id: false, force: true do |t|
+  create_table "td_test04", id: false, force: true do |t|
     t.datetime "td_time"
     t.decimal  "td_count"
   end
 
-  create_table "td_test5", id: false, force: true do |t|
+  create_table "td_test05", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test06", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test07", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test08", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test09", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test10", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test11", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test12", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test13", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test14", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test15", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test16", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test17", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test18", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test19", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test20", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test21", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test22", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test23", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test24", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test25", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test26", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test27", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test28", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test29", id: false, force: true do |t|
+    t.datetime "td_time"
+    t.decimal  "td_count"
+  end
+
+  create_table "td_test30", id: false, force: true do |t|
     t.datetime "td_time"
     t.decimal  "td_count"
   end

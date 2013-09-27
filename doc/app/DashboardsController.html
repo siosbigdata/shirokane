@@ -59,7 +59,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">PublichtmlController
+  <p class="link"><a href="PublichtmlController.html">PublichtmlController</a>
   
 </nav>
 
@@ -101,15 +101,15 @@
   
     <li><a href="./Admin/GraphsHelper.html">Admin::GraphsHelper</a>
   
+    <li><a href="./Admin/Graphtemplate.html">Admin::Graphtemplate</a>
+  
     <li><a href="./Admin/Group.html">Admin::Group</a>
-  
-    <li><a href="./Admin/Groupdashboard.html">Admin::Groupdashboard</a>
-  
-    <li><a href="./Admin/GroupdashboardsController.html">Admin::GroupdashboardsController</a>
   
     <li><a href="./Admin/GroupdashboardsHelper.html">Admin::GroupdashboardsHelper</a>
   
     <li><a href="./Admin/Groupgraph.html">Admin::Groupgraph</a>
+  
+    <li><a href="./Admin/GroupgraphsController.html">Admin::GroupgraphsController</a>
   
     <li><a href="./Admin/GroupgraphsHelper.html">Admin::GroupgraphsHelper</a>
   
@@ -147,8 +147,6 @@
   
     <li><a href="./DashboardsHelper.html">DashboardsHelper</a>
   
-    <li><a href="./Graph.html">Graph</a>
-  
     <li><a href="./GraphsController.html">GraphsController</a>
   
     <li><a href="./GraphsHelper.html">GraphsHelper</a>
@@ -157,19 +155,25 @@
   
     <li><a href="./Group.html">Group</a>
   
-    <li><a href="./Groupdashboard.html">Groupdashboard</a>
-  
     <li><a href="./Groupgraph.html">Groupgraph</a>
   
     <li><a href="./LoginController.html">LoginController</a>
   
     <li><a href="./LoginHelper.html">LoginHelper</a>
   
+    <li><a href="./PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="./PublichtmlController.html">PublichtmlController</a>
+  
     <li><a href="./Setting.html">Setting</a>
   
     <li><a href="./Tdtable.html">Tdtable</a>
   
     <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserMailer.html">UserMailer</a>
   
     <li><a href="./UsersController.html">UsersController</a>
   
@@ -229,16 +233,10 @@
   <span class="ruby-comment">#グラフ選択枝</span>
   <span class="ruby-ivar">@graph_types</span> = [<span class="ruby-string">&#39;line&#39;</span>,<span class="ruby-string">&#39;bar&#39;</span>,<span class="ruby-string">&#39;pie&#39;</span>]
   <span class="ruby-ivar">@h_yesno</span> = {<span class="ruby-value">0</span>=<span class="ruby-operator">&gt;</span><span class="ruby-string">&#39;no&#39;</span> , <span class="ruby-value">1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;yes&#39;</span>}
-  
-  <span class="ruby-comment">#設定の取得</span>
-  <span class="ruby-identifier">ss</span> = <span class="ruby-constant">Setting</span>.<span class="ruby-identifier">all</span>
-  <span class="ruby-ivar">@gconf</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>()
-  <span class="ruby-identifier">ss</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
-    <span class="ruby-ivar">@gconf</span>[<span class="ruby-identifier">s</span>.<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">parameter</span>
-  }
+  <span class="ruby-ivar">@h_analysis_types</span> = {<span class="ruby-value">0</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&#39;analysis_types_sum&#39;</span>),<span class="ruby-value">1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&#39;analysis_types_avg&#39;</span>)}
       
   <span class="ruby-comment"># ダッシュボード情報取得</span>
-  <span class="ruby-ivar">@dashboards</span> = <span class="ruby-constant">Groupdashboard</span>.<span class="ruby-identifier">where</span>({<span class="ruby-value">:group_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>}).<span class="ruby-identifier">order</span>(<span class="ruby-value">:view_rank</span>)
+  <span class="ruby-ivar">@dashboards</span> = <span class="ruby-constant">Groupgraph</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:group_id=</span><span class="ruby-operator">&gt;</span><span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">group</span>.<span class="ruby-identifier">id</span>,<span class="ruby-value">:dashboard</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:view_rank</span>)
   <span class="ruby-ivar">@graphs</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
   <span class="ruby-ivar">@template</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
   <span class="ruby-ivar">@xdatas</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
@@ -246,53 +244,36 @@
   <span class="ruby-ivar">@terms</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
   
   <span class="ruby-ivar">@dashboards</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">db</span><span class="ruby-operator">|</span>
-    <span class="ruby-comment"># データの取得</span>
-    <span class="ruby-identifier">graph</span> = <span class="ruby-constant">Graph</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">db</span>.<span class="ruby-identifier">graph_id</span>)
-    <span class="ruby-comment"># 指定テンプレート情報</span>
-    <span class="ruby-identifier">templates</span> = <span class="ruby-constant">Graphtemplate</span>.<span class="ruby-identifier">where</span>({<span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">graph</span>.<span class="ruby-identifier">template</span>})
-    <span class="ruby-identifier">template</span> = <span class="ruby-identifier">templates</span>[<span class="ruby-value">0</span>]
-        
-    <span class="ruby-comment">#期間移動分</span>
-    <span class="ruby-identifier">today</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
-    
-    <span class="ruby-comment">#期間の設定</span>
-    <span class="ruby-keyword">case</span> <span class="ruby-identifier">graph</span>.<span class="ruby-identifier">term</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">1</span>  <span class="ruby-comment">#週:７日分の日別データを表示する</span>
-      <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">-</span> <span class="ruby-value">7</span>.<span class="ruby-identifier">days</span>
-      <span class="ruby-identifier">term</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; - &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>
-      <span class="ruby-identifier">stime</span> = <span class="ruby-string">&quot;%d&quot;</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">2</span>  <span class="ruby-comment">#月:１ヶ月分のデータを表示する</span>
-      <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">month</span>
-      <span class="ruby-identifier">term</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; - &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>
-      <span class="ruby-identifier">stime</span> = <span class="ruby-string">&quot;%d&quot;</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-value">3</span>  <span class="ruby-comment">#年:１ヶ月ごとのデータを表示する。</span>
-      <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">year</span>
-      <span class="ruby-identifier">term</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">year</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; - &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">year</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span>
-      <span class="ruby-identifier">stime</span> = <span class="ruby-string">&quot;%m&quot;</span>
-    <span class="ruby-keyword">else</span>    <span class="ruby-comment">#0か指定なしは１日の集計</span>
-      <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">today</span>
-      <span class="ruby-identifier">term</span> = <span class="ruby-identifier">today</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;.&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>
-      <span class="ruby-identifier">stime</span> = <span class="ruby-string">&quot;%H&quot;</span>
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">db</span>.<span class="ruby-identifier">graph_id</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-comment"># データの取得</span>
+      <span class="ruby-identifier">graph</span> = <span class="ruby-constant">Graph</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">db</span>.<span class="ruby-identifier">graph_id</span>)
+      
+      <span class="ruby-comment"># 指定テンプレート情報</span>
+      <span class="ruby-identifier">template</span> = <span class="ruby-constant">Graphtemplate</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">graph</span>.<span class="ruby-identifier">template</span>)
+          
+      <span class="ruby-comment">#期間移動分</span>
+      <span class="ruby-identifier">today</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+      
+      <span class="ruby-comment"># 期間の設定</span>
+      <span class="ruby-identifier">res_graph_terms</span> = <span class="ruby-identifier">set_graph_term</span>(<span class="ruby-identifier">graph</span>.<span class="ruby-identifier">term</span>,<span class="ruby-identifier">today</span>,<span class="ruby-value">0</span>)
+      <span class="ruby-identifier">today</span> = <span class="ruby-identifier">res_graph_terms</span>[<span class="ruby-string">&#39;today&#39;</span>]
+      <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">res_graph_terms</span>[<span class="ruby-string">&#39;oldday&#39;</span>]
 
-    <span class="ruby-comment"># データ取得期間の設定</span>
-    <span class="ruby-identifier">today_s</span> = <span class="ruby-identifier">today</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; 23:59:59&quot;</span>
-    <span class="ruby-identifier">oldday_s</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; 00:00:00&quot;</span>
-    <span class="ruby-comment"># データの取得</span>
-    <span class="ruby-identifier">tdtable</span> = <span class="ruby-identifier">td_graph_data</span>(<span class="ruby-identifier">graph</span>.<span class="ruby-identifier">name</span>,<span class="ruby-identifier">graph</span>.<span class="ruby-identifier">term</span>,<span class="ruby-identifier">graph</span>.<span class="ruby-identifier">analysis_type</span>,<span class="ruby-identifier">oldday_s</span>,<span class="ruby-identifier">today_s</span>)
+      <span class="ruby-comment"># データ取得期間の設定</span>
+      <span class="ruby-identifier">today_s</span> = <span class="ruby-identifier">today</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; 23:59:59&quot;</span>
+      <span class="ruby-identifier">oldday_s</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; 00:00:00&quot;</span>
+      <span class="ruby-comment"># データの取得</span>
+      <span class="ruby-identifier">tdtable</span> = <span class="ruby-identifier">td_graph_data</span>(<span class="ruby-identifier">graph</span>,<span class="ruby-identifier">graph</span>.<span class="ruby-identifier">term</span>,<span class="ruby-identifier">oldday_s</span>,<span class="ruby-identifier">today_s</span>)
 
-    <span class="ruby-comment"># グラフ表示用データ作成</span>
-    <span class="ruby-identifier">xdata</span> = <span class="ruby-string">&quot;&quot;</span>
-    <span class="ruby-identifier">ydata</span> = <span class="ruby-string">&quot;&quot;</span>
-    <span class="ruby-identifier">tdtable</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dd</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">xdata</span> = <span class="ruby-identifier">xdata</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dd</span>.<span class="ruby-identifier">td_time</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-identifier">stime</span>)
-      <span class="ruby-identifier">ydata</span> = <span class="ruby-identifier">ydata</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dd</span>.<span class="ruby-identifier">td_count</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-comment"># グラフ表示用データ作成</span>
+      <span class="ruby-identifier">res_graph_data</span> = <span class="ruby-identifier">set_graph_data</span>(<span class="ruby-identifier">tdtable</span>,<span class="ruby-identifier">graph</span>.<span class="ruby-identifier">term</span>,<span class="ruby-identifier">oldday</span>,<span class="ruby-identifier">today</span>,<span class="ruby-identifier">res_graph_terms</span>[<span class="ruby-string">&#39;stime&#39;</span>])
+            
+      <span class="ruby-ivar">@graphs</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">graph_id</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">graph</span>
+      <span class="ruby-ivar">@template</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">graph_id</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">template</span>
+      <span class="ruby-ivar">@xdatas</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">graph_id</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">res_graph_data</span>[<span class="ruby-string">&#39;xdata&#39;</span>]
+      <span class="ruby-ivar">@ydatas</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">graph_id</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">res_graph_data</span>[<span class="ruby-string">&#39;ydata&#39;</span>]
+      <span class="ruby-ivar">@terms</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">graph_id</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">res_graph_terms</span>[<span class="ruby-string">&#39;term_s&#39;</span>]
     <span class="ruby-keyword">end</span>
-    <span class="ruby-ivar">@graphs</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">view_rank</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">graph</span>
-    <span class="ruby-ivar">@template</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">view_rank</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">template</span>
-    <span class="ruby-ivar">@xdatas</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">view_rank</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">xdata</span>
-    <span class="ruby-ivar">@ydatas</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">view_rank</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">ydata</span>
-    <span class="ruby-ivar">@terms</span>[<span class="ruby-identifier">db</span>.<span class="ruby-identifier">view_rank</span>.<span class="ruby-identifier">to_i</span>] = <span class="ruby-identifier">term</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->

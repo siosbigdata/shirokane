@@ -1,31 +1,3 @@
-.cds-navi {
-  list-style-type: none;
-  margin: 0 0 0em;
-  padding-top: 5px;
-  padding: 5px;
-  border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
-}
-
-.cds-navi li { display: inline; }
-
-.cds-navi li a {
-  margin-bottom: 1px;
-  padding: 5px 0 5px 10px;
-  display: block;
-  width: 165px;
-  text-decoration: none;
-  border-left: 7px solid #EEEEEE;
-  background-color: #EEEEEE;
-  color: #999999;
-  border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
-}
-
-.cds-navi li a:hover {
-  background-color: #DDDDDD;
-  color: #FFFFFF;
-  border-left: 7px solid #3399FF;
-  border-radius: 2px 2px 2px 2px / 2px 2px 2px 2px;
-}
 
 .cds-navi-admin li a{
   border-left: 7px solid #EEEEEE;

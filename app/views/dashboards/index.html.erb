@@ -2,14 +2,15 @@
 <%= render 'common/sidebar' %>
 <!-- main content start -->
 <div id="content">
-<div id="sub_content">
+	<div id="sub_content">
 	<h1><%= Time.now().strftime('%Y/%m/%d %X') %></h1>
+	</div>
 	<div id="dashboards">
 <% index = 1 %>
 <% @dashboards.each do |ddd| %>
   <% if @graphs[ddd.graph_id] then%>
     <div id="dashboard">
-    	<h2><%= @graphs[ddd.graph_id].title %>:<%= @terms[ddd.graph_id] %></h2>
+    	<h2><i class="icon-signal"></i>&nbsp;<%= @graphs[ddd.graph_id].title %>:<%= @terms[ddd.graph_id] %></h2>
 		<a href="<%= graph_path(@graphs[ddd.graph_id].id) %>"><canvas id="<%= @graphs[ddd.graph_id].name %>"></canvas></a>
 	</div>
 	
@@ -57,7 +58,6 @@
 	<% index += 1 %>
 	<% end %>
 <% end %>
-</div>
 </div>
 </div><!-- main content end -->
 <%= render 'common/footer' %>

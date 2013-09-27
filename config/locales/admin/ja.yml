@@ -17,10 +17,12 @@ ja:
   title_list: 一覧
   title_new: 新規作成
   title_edit: 編集
+  title_update: 更新
   title_delete: 削除
   title_show: 詳細
   title_back: 戻る
   title_select: 選択
+  title_search: 検索
   title_send: 送信
   title_groupgraphs_list: グラフを選択する
   title_groupdashboards_list: ダッシュボード用グラフを選択する

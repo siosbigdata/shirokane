@@ -70,7 +70,15 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-application_title">#application_title</a>
+    <li><a href="#method-i-get_settings">#get_settings</a>
+    
+    <li><a href="#method-i-get_td_tablename">#get_td_tablename</a>
+    
+    <li><a href="#method-i-set_graph_data">#set_graph_data</a>
+    
+    <li><a href="#method-i-set_graph_term">#set_graph_term</a>
+    
+    <li><a href="#method-i-td_graph_data">#td_graph_data</a>
     
   </ul>
 </nav>
@@ -101,15 +109,15 @@
   
     <li><a href="./Admin/GraphsHelper.html">Admin::GraphsHelper</a>
   
+    <li><a href="./Admin/Graphtemplate.html">Admin::Graphtemplate</a>
+  
     <li><a href="./Admin/Group.html">Admin::Group</a>
-  
-    <li><a href="./Admin/Groupdashboard.html">Admin::Groupdashboard</a>
-  
-    <li><a href="./Admin/GroupdashboardsController.html">Admin::GroupdashboardsController</a>
   
     <li><a href="./Admin/GroupdashboardsHelper.html">Admin::GroupdashboardsHelper</a>
   
     <li><a href="./Admin/Groupgraph.html">Admin::Groupgraph</a>
+  
+    <li><a href="./Admin/GroupgraphsController.html">Admin::GroupgraphsController</a>
   
     <li><a href="./Admin/GroupgraphsHelper.html">Admin::GroupgraphsHelper</a>
   
@@ -147,8 +155,6 @@
   
     <li><a href="./DashboardsHelper.html">DashboardsHelper</a>
   
-    <li><a href="./Graph.html">Graph</a>
-  
     <li><a href="./GraphsController.html">GraphsController</a>
   
     <li><a href="./GraphsHelper.html">GraphsHelper</a>
@@ -157,19 +163,25 @@
   
     <li><a href="./Group.html">Group</a>
   
-    <li><a href="./Groupdashboard.html">Groupdashboard</a>
-  
     <li><a href="./Groupgraph.html">Groupgraph</a>
   
     <li><a href="./LoginController.html">LoginController</a>
   
     <li><a href="./LoginHelper.html">LoginHelper</a>
   
+    <li><a href="./PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="./PublichtmlController.html">PublichtmlController</a>
+  
     <li><a href="./Setting.html">Setting</a>
   
     <li><a href="./Tdtable.html">Tdtable</a>
   
     <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserMailer.html">UserMailer</a>
   
     <li><a href="./UsersController.html">UsersController</a>
   
@@ -208,10 +220,10 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-application_title" class="method-detail ">
+      <div id="method-i-get_settings" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">application_title</span><span
+          <span class="method-name">get_settings</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -219,24 +231,285 @@
 
         <div class="method-description">
           
-          <p>通常ユーザ用-現在のアカウント設定</p>
+          <p>Settingsの値取得</p>
           
 
           
-          <div class="method-source-code" id="application_title-source">
-            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 13</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">application_title</span>
-  <span class="ruby-identifier">settings</span> = <span class="ruby-constant">Setting</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;title&#39;</span>)
-  <span class="ruby-ivar">@application_title</span> = <span class="ruby-identifier">settings</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">parameter</span>
+          <div class="method-source-code" id="get_settings-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 18</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_settings</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">$settings</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">ss</span> = <span class="ruby-constant">Setting</span>.<span class="ruby-identifier">all</span>
+    <span class="ruby-identifier">$settings</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-identifier">ss</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">$settings</span>[<span class="ruby-identifier">s</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">parameter</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">p</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> 
+      <span class="ruby-identifier">p</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">parameter</span>.<span class="ruby-identifier">to_s</span>
+    }
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- application_title-source -->
+          </div><!-- get_settings-source -->
           
         </div>
 
         
 
         
-      </div><!-- application_title-method -->
+      </div><!-- get_settings-method -->
+
+    
+      <div id="method-i-get_td_tablename" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_td_tablename</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>テーブル名取得</p>
+          
+
+          
+          <div class="method-source-code" id="get_td_tablename-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_td_tablename</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;td_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_td_tablename-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_td_tablename-method -->
+
+    
+      <div id="method-i-set_graph_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_graph_data</span><span
+            class="method-args">(tdtable,graph_term,oldday,today,stime)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>グラフ表示用データ作成</p>
+          
+
+          
+          <div class="method-source-code" id="set_graph_data-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_graph_data</span>(<span class="ruby-identifier">tdtable</span>,<span class="ruby-identifier">graph_term</span>,<span class="ruby-identifier">oldday</span>,<span class="ruby-identifier">today</span>,<span class="ruby-identifier">stime</span>)
+  <span class="ruby-identifier">xdata</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">ydata</span> = <span class="ruby-string">&quot;&quot;</span>
+
+  <span class="ruby-identifier">weekflg</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-comment"># 開始日と終了日をチェック</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">graph_term</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-comment"># 日</span>
+    <span class="ruby-identifier">snum</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">enum</span> = <span class="ruby-value">23</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">1</span> <span class="ruby-comment"># 週</span>
+    <span class="ruby-identifier">snum</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">enum</span> = <span class="ruby-identifier">today</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">enum</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">snum</span> <span class="ruby-keyword">then</span> <span class="ruby-comment"># 週間表示の場合で月をまたいでしまったときの処理</span>
+      <span class="ruby-identifier">weekflg</span> = <span class="ruby-keyword">true</span> <span class="ruby-comment"># フラグをたてる</span>
+      <span class="ruby-identifier">snum2</span> = <span class="ruby-value">1</span>
+      <span class="ruby-identifier">enum2</span> = <span class="ruby-identifier">enum</span>
+      <span class="ruby-identifier">nm</span> = <span class="ruby-constant">Date</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>(<span class="ruby-identifier">today</span>.<span class="ruby-identifier">year</span>,<span class="ruby-identifier">today</span>.<span class="ruby-identifier">month</span>, <span class="ruby-value">1</span>)
+      <span class="ruby-identifier">eday</span> = <span class="ruby-identifier">nm</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">day</span>
+      <span class="ruby-identifier">enum</span> = <span class="ruby-identifier">eday</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">2</span> <span class="ruby-comment"># 月</span>
+    <span class="ruby-identifier">snum</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">enum</span> = <span class="ruby-identifier">today</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">3</span> <span class="ruby-comment"># 年</span>
+    <span class="ruby-identifier">snum</span> = <span class="ruby-value">1</span>
+    <span class="ruby-identifier">enum</span> = <span class="ruby-value">12</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># 値の設定</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">dd</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">snum</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">enum</span>
+    <span class="ruby-identifier">xdata</span> = <span class="ruby-identifier">xdata</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dd</span>.<span class="ruby-identifier">to_s</span>
+    <span class="ruby-identifier">flg</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-identifier">tdtable</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ddy</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">ddy</span>.<span class="ruby-identifier">td_time</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-identifier">stime</span>.<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">dd</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">ydata</span> = <span class="ruby-identifier">ydata</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ddy</span>.<span class="ruby-identifier">td_count</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">flg</span> =<span class="ruby-keyword">false</span>
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">flg</span> <span class="ruby-keyword">then</span> <span class="ruby-comment"># 値が存在しない場合は0を設定</span>
+      <span class="ruby-identifier">ydata</span> = <span class="ruby-identifier">ydata</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;,0&quot;</span>
+    <span class="ruby-keyword">end</span> 
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># 月をまたいでしまったときの特別処理</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">weekflg</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">dd</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">snum2</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">enum2</span>
+      <span class="ruby-identifier">xdata</span> = <span class="ruby-identifier">xdata</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dd</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">flg</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-identifier">tdtable</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">ddy</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">ddy</span>.<span class="ruby-identifier">td_time</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-identifier">stime</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">dd</span> <span class="ruby-keyword">then</span>
+          <span class="ruby-identifier">ydata</span> = <span class="ruby-identifier">ydata</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ddy</span>.<span class="ruby-identifier">td_count</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+          <span class="ruby-identifier">flg</span> =<span class="ruby-keyword">false</span>
+          <span class="ruby-keyword">break</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">flg</span> <span class="ruby-keyword">then</span> <span class="ruby-comment"># 値が存在しない場合は0を設定</span>
+        <span class="ruby-identifier">ydata</span> = <span class="ruby-identifier">ydata</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;,0&quot;</span>
+      <span class="ruby-keyword">end</span> 
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span> 
+  <span class="ruby-comment"># 戻り値の作成</span>
+  <span class="ruby-identifier">res</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;xdata&#39;</span>] = <span class="ruby-identifier">xdata</span>
+  <span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;ydata&#39;</span>] = <span class="ruby-identifier">ydata</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_graph_data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_graph_data-method -->
+
+    
+      <div id="method-i-set_graph_term" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_graph_term</span><span
+            class="method-args">(graph_term,today,addcnt)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>グラフ表示期間の設定</p>
+          
+
+          
+          <div class="method-source-code" id="set_graph_term-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 64</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_graph_term</span>(<span class="ruby-identifier">graph_term</span>,<span class="ruby-identifier">today</span>,<span class="ruby-identifier">addcnt</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">graph_term</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">0</span> <span class="ruby-comment"># 日の時間別のデータを表示する</span>
+    <span class="ruby-identifier">today</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addcnt</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">days</span> <span class="ruby-comment"># 追加日数</span>
+    <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">today</span>
+    <span class="ruby-identifier">term_s</span> = <span class="ruby-identifier">today</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.month&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.day&quot;</span>)
+    <span class="ruby-identifier">graphx</span> = <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.hour&quot;</span>)
+    <span class="ruby-identifier">stime</span> = <span class="ruby-string">&quot;%H&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">1</span>  <span class="ruby-comment"># 週:７日分の日別データを表示する</span>
+    <span class="ruby-identifier">today</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">addcnt</span>.<span class="ruby-identifier">to_i</span> * <span class="ruby-value">7</span>).<span class="ruby-identifier">days</span> <span class="ruby-comment"># 追加日数</span>
+    <span class="ruby-comment"># 月曜日から開始するように調整</span>
+    <span class="ruby-identifier">today</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">+</span> (<span class="ruby-value">7</span><span class="ruby-operator">-</span><span class="ruby-identifier">today</span>.<span class="ruby-identifier">wday</span>).<span class="ruby-identifier">days</span>
+    <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">-</span> <span class="ruby-value">6</span>.<span class="ruby-identifier">days</span>
+    <span class="ruby-identifier">term_s</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.month&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.day&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-string">&quot; - &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.month&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">today</span>.<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.day&quot;</span>)
+    <span class="ruby-identifier">graphx</span> = <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.day&quot;</span>)
+    <span class="ruby-identifier">stime</span> = <span class="ruby-string">&quot;%d&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">2</span>  <span class="ruby-comment"># 月:１ヶ月分のデータを表示する</span>
+    <span class="ruby-identifier">today</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addcnt</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">months</span> <span class="ruby-comment"># 追加日数</span>
+    <span class="ruby-comment"># 月初から開始するように調整</span>
+    <span class="ruby-identifier">nowmonth</span> = <span class="ruby-constant">Date</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>(<span class="ruby-identifier">today</span>.<span class="ruby-identifier">year</span>,<span class="ruby-identifier">today</span>.<span class="ruby-identifier">month</span>, <span class="ruby-value">1</span>)
+    <span class="ruby-identifier">today</span> = <span class="ruby-identifier">nowmonth</span> <span class="ruby-operator">&gt;&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">today</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">day</span>
+    <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">nowmonth</span>
+    <span class="ruby-identifier">term_s</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">year</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.year&quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">month</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.month&quot;</span>)
+    <span class="ruby-identifier">graphx</span> = <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.day&quot;</span>)
+    <span class="ruby-identifier">stime</span> = <span class="ruby-string">&quot;%d&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">3</span>  <span class="ruby-comment"># 年:１ヶ月ごとのデータを表示する。</span>
+    <span class="ruby-identifier">today</span> = <span class="ruby-identifier">today</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addcnt</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">years</span> <span class="ruby-comment"># 追加日数</span>
+    <span class="ruby-comment"># 年初から開始するように調整</span>
+    <span class="ruby-identifier">nowyear</span> = <span class="ruby-constant">Date</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>(<span class="ruby-identifier">today</span>.<span class="ruby-identifier">year</span>,<span class="ruby-value">1</span>, <span class="ruby-value">1</span>)
+    <span class="ruby-identifier">today</span> = <span class="ruby-identifier">nowyear</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>.<span class="ruby-identifier">day</span>
+    <span class="ruby-identifier">oldday</span> = <span class="ruby-identifier">nowyear</span>
+    <span class="ruby-identifier">term_s</span> = <span class="ruby-identifier">oldday</span>.<span class="ruby-identifier">year</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.year&quot;</span>)
+    <span class="ruby-identifier">graphx</span> = <span class="ruby-identifier">t</span>(<span class="ruby-string">&quot;datetime.prompts.month&quot;</span>)
+    <span class="ruby-identifier">stime</span> = <span class="ruby-string">&quot;%m&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># 戻り値準備</span>
+  <span class="ruby-identifier">res</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;today&#39;</span>] = <span class="ruby-identifier">today</span>
+  <span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;oldday&#39;</span>] = <span class="ruby-identifier">oldday</span>
+  <span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;term_s&#39;</span>] = <span class="ruby-identifier">term_s</span>
+  <span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;graphx&#39;</span>] = <span class="ruby-identifier">graphx</span>
+  <span class="ruby-identifier">res</span>[<span class="ruby-string">&#39;stime&#39;</span>] = <span class="ruby-identifier">stime</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_graph_term-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_graph_term-method -->
+
+    
+      <div id="method-i-td_graph_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">td_graph_data</span><span
+            class="method-args">(graph,term,startday,endday)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>グラフ用データの取得</p>
+          
+
+          
+          <div class="method-source-code" id="td_graph_data-source">
+            <pre><span class="ruby-comment"># File app/controllers/application_controller.rb, line 31</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">td_graph_data</span>(<span class="ruby-identifier">graph</span>,<span class="ruby-identifier">term</span>,<span class="ruby-identifier">startday</span>,<span class="ruby-identifier">endday</span>)
+  <span class="ruby-comment"># 表示テーブル名の設定</span>
+  <span class="ruby-constant">Tdtable</span>.<span class="ruby-identifier">table_name</span> = <span class="ruby-identifier">get_td_tablename</span>(<span class="ruby-identifier">graph</span>.<span class="ruby-identifier">name</span>)
+  <span class="ruby-comment">#SQLの作成</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">term</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">term</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-keyword">then</span>  <span class="ruby-comment"># 週、月:日別データを表示する</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">graph</span>.<span class="ruby-identifier">analysis_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-comment">#集計タイプ : graph.analysis_type 0:集計、1:平均</span>
+      <span class="ruby-comment">#平均</span>
+      <span class="ruby-identifier">tdtable</span> = <span class="ruby-constant">Tdtable</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:td_time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">startday</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">endday</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date_trunc(&#39;day&#39;,td_time)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;date_trunc(&#39;day&#39;,td_time) as td_time,avg(td_count) as td_count&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;date_trunc(&#39;day&#39;,td_time)&quot;</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment">#集計</span>
+      <span class="ruby-identifier">tdtable</span> = <span class="ruby-constant">Tdtable</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:td_time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">startday</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">endday</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date_trunc(&#39;day&#39;,td_time)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;date_trunc(&#39;day&#39;,td_time) as td_time,sum(td_count) as td_count&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;date_trunc(&#39;day&#39;,td_time)&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">term</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-keyword">then</span>  <span class="ruby-comment">#年:１ヶ月ごとのデータを表示する。</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">graph</span>.<span class="ruby-identifier">analysis_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-comment">#集計タイプ : graph.analysis_type 0:集計、1:平均</span>
+      <span class="ruby-comment">#平均</span>
+      <span class="ruby-identifier">tdtable</span> = <span class="ruby-constant">Tdtable</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:td_time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">startday</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">endday</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date_trunc(&#39;month&#39;,td_time)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;date_trunc(&#39;month&#39;,td_time) as td_time,avg(td_count) as td_count&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;date_trunc(&#39;month&#39;,td_time)&quot;</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment">#集計</span>
+      <span class="ruby-identifier">tdtable</span> = <span class="ruby-constant">Tdtable</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:td_time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">startday</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">endday</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date_trunc(&#39;month&#39;,td_time)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;date_trunc(&#39;month&#39;,td_time) as td_time,sum(td_count) as td_count&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;date_trunc(&#39;month&#39;,td_time)&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>   <span class="ruby-comment">#0か指定なしは１日の集計 : 時間別データを表示する</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">graph</span>.<span class="ruby-identifier">analysis_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span> <span class="ruby-comment">#集計タイプ : graph.analysis_type 0:集計、1:平均</span>
+      <span class="ruby-comment">#平均</span>
+      <span class="ruby-identifier">tdtable</span> = <span class="ruby-constant">Tdtable</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:td_time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">startday</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">endday</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date_trunc(&#39;hour&#39;,td_time)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;date_trunc(&#39;hour&#39;,td_time) as td_time,avg(td_count) as td_count&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;date_trunc(&#39;hour&#39;,td_time)&quot;</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment">#集計</span>
+      <span class="ruby-identifier">tdtable</span> = <span class="ruby-constant">Tdtable</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:td_time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">startday</span> <span class="ruby-operator">..</span> <span class="ruby-identifier">endday</span>).<span class="ruby-identifier">group</span>(<span class="ruby-string">&quot;date_trunc(&#39;hour&#39;,td_time)&quot;</span>).<span class="ruby-identifier">select</span>(<span class="ruby-string">&quot;date_trunc(&#39;hour&#39;,td_time) as td_time,sum(td_count) as td_count&quot;</span>).<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;date_trunc(&#39;hour&#39;,td_time)&quot;</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">tdtable</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- td_graph_data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- td_graph_data-method -->
 
     
     </section><!-- public-instance-method-details -->

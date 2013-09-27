@@ -113,15 +113,15 @@
   
     <li><a href="../Admin/GraphsHelper.html">Admin::GraphsHelper</a>
   
+    <li><a href="../Admin/Graphtemplate.html">Admin::Graphtemplate</a>
+  
     <li><a href="../Admin/Group.html">Admin::Group</a>
-  
-    <li><a href="../Admin/Groupdashboard.html">Admin::Groupdashboard</a>
-  
-    <li><a href="../Admin/GroupdashboardsController.html">Admin::GroupdashboardsController</a>
   
     <li><a href="../Admin/GroupdashboardsHelper.html">Admin::GroupdashboardsHelper</a>
   
     <li><a href="../Admin/Groupgraph.html">Admin::Groupgraph</a>
+  
+    <li><a href="../Admin/GroupgraphsController.html">Admin::GroupgraphsController</a>
   
     <li><a href="../Admin/GroupgraphsHelper.html">Admin::GroupgraphsHelper</a>
   
@@ -159,8 +159,6 @@
   
     <li><a href="../DashboardsHelper.html">DashboardsHelper</a>
   
-    <li><a href="../Graph.html">Graph</a>
-  
     <li><a href="../GraphsController.html">GraphsController</a>
   
     <li><a href="../GraphsHelper.html">GraphsHelper</a>
@@ -169,19 +167,25 @@
   
     <li><a href="../Group.html">Group</a>
   
-    <li><a href="../Groupdashboard.html">Groupdashboard</a>
-  
     <li><a href="../Groupgraph.html">Groupgraph</a>
   
     <li><a href="../LoginController.html">LoginController</a>
   
     <li><a href="../LoginHelper.html">LoginHelper</a>
   
+    <li><a href="../PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="../PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="../PublichtmlController.html">PublichtmlController</a>
+  
     <li><a href="../Setting.html">Setting</a>
   
     <li><a href="../Tdtable.html">Tdtable</a>
   
     <li><a href="../User.html">User</a>
+  
+    <li><a href="../UserMailer.html">UserMailer</a>
   
     <li><a href="../UsersController.html">UsersController</a>
   
@@ -231,12 +235,12 @@
 
         <div class="method-description">
           
-          <p>POST /admin/groups POST /admin/groups.json</p>
+          <p>グループ新規作成</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 32</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@admin_group</span> = <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Group</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">admin_group_params</span>)
 
@@ -271,16 +275,15 @@
 
         <div class="method-description">
           
-          <p>DELETE /admin/groups/1 DELETE /admin/groups/1.json</p>
+          <p>グループ削除</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 62</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-comment"># 削除前に関連するテーブルの削除を行う</span>
-  <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Groupgraph</span>.<span class="ruby-identifier">delete_all</span>(<span class="ruby-value">:group_id</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@admin_group</span>.<span class="ruby-identifier">id</span>)     <span class="ruby-comment">#グループ-グラフ</span>
-  <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Groupdashboard</span>.<span class="ruby-identifier">delete_all</span>(<span class="ruby-value">:group_id</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@admin_group</span>.<span class="ruby-identifier">id</span>) <span class="ruby-comment">#グループ-ダッシュボード</span>
+  <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Groupgraph</span>.<span class="ruby-identifier">delete_all</span>(<span class="ruby-value">:group_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@admin_group</span>.<span class="ruby-identifier">id</span>)     <span class="ruby-comment">#グループ-グラフ</span>
   
   <span class="ruby-ivar">@admin_group</span>.<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
@@ -309,12 +312,12 @@
 
         <div class="method-description">
           
-          <p>GET /admin/groups/1/edit</p>
+          <p>グループ編集画面</p>
           
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 27</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- edit-source -->
@@ -338,14 +341,15 @@
 
         <div class="method-description">
           
-          <p>GET /admin/groups GET /admin/groups.json</p>
+          <p>グループ一覧画面</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-ivar">@admin_groups</span> = <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Group</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-ivar">@admin_groups</span> = <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Group</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-value">:id</span>)
+  <span class="ruby-ivar">@maxuser</span> = <span class="ruby-identifier">get_maxuser</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
           
@@ -368,14 +372,19 @@
 
         <div class="method-description">
           
-          <p>GET /admin/groups/new</p>
+          <p>グループ新規追加画面</p>
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 22</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@admin_group</span> = <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Group</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">admin_groups</span> = <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Group</span>.<span class="ruby-identifier">all</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">admin_groups</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">get_maxuser</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-ivar">@admin_group</span> = <span class="ruby-constant">Admin</span><span class="ruby-operator">::</span><span class="ruby-constant">Group</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_groups_url</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -398,12 +407,12 @@
 
         <div class="method-description">
           
-          <p>GET /admin/groups/1 GET /admin/groups/1.json</p>
+          <p>グループ詳細画面</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- show-source -->
@@ -427,12 +436,12 @@
 
         <div class="method-description">
           
-          <p>PATCH/PUT /admin/groups/1 PATCH/PUT /admin/groups/1.json</p>
+          <p>グループ更新</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 48</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/groups_controller.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@admin_group</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">admin_group_params</span>)

@@ -74,6 +74,8 @@
     
     <li><a href="#method-i-admin_current_user">#admin_current_user</a>
     
+    <li><a href="#method-i-get_maxuser">#get_maxuser</a>
+    
   </ul>
 </nav>
 
@@ -103,15 +105,15 @@
   
     <li><a href="./Admin/GraphsHelper.html">Admin::GraphsHelper</a>
   
+    <li><a href="./Admin/Graphtemplate.html">Admin::Graphtemplate</a>
+  
     <li><a href="./Admin/Group.html">Admin::Group</a>
-  
-    <li><a href="./Admin/Groupdashboard.html">Admin::Groupdashboard</a>
-  
-    <li><a href="./Admin/GroupdashboardsController.html">Admin::GroupdashboardsController</a>
   
     <li><a href="./Admin/GroupdashboardsHelper.html">Admin::GroupdashboardsHelper</a>
   
     <li><a href="./Admin/Groupgraph.html">Admin::Groupgraph</a>
+  
+    <li><a href="./Admin/GroupgraphsController.html">Admin::GroupgraphsController</a>
   
     <li><a href="./Admin/GroupgraphsHelper.html">Admin::GroupgraphsHelper</a>
   
@@ -149,8 +151,6 @@
   
     <li><a href="./DashboardsHelper.html">DashboardsHelper</a>
   
-    <li><a href="./Graph.html">Graph</a>
-  
     <li><a href="./GraphsController.html">GraphsController</a>
   
     <li><a href="./GraphsHelper.html">GraphsHelper</a>
@@ -159,19 +159,25 @@
   
     <li><a href="./Group.html">Group</a>
   
-    <li><a href="./Groupdashboard.html">Groupdashboard</a>
-  
     <li><a href="./Groupgraph.html">Groupgraph</a>
   
     <li><a href="./LoginController.html">LoginController</a>
   
     <li><a href="./LoginHelper.html">LoginHelper</a>
   
+    <li><a href="./PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="./PublichtmlController.html">PublichtmlController</a>
+  
     <li><a href="./Setting.html">Setting</a>
   
     <li><a href="./Tdtable.html">Tdtable</a>
   
     <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserMailer.html">UserMailer</a>
   
     <li><a href="./UsersController.html">UsersController</a>
   
@@ -226,12 +232,12 @@
 
           
           <div class="method-source-code" id="admin_authorize-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 14</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">admin_authorize</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">admin_current_user</span>
     <span class="ruby-identifier">flash</span>[<span class="ruby-value">:notice</span>] = <span class="ruby-identifier">t</span>(<span class="ruby-string">&#39;login_notice&#39;</span>)
     <span class="ruby-identifier">session</span>[<span class="ruby-value">:jumpto</span>] = <span class="ruby-identifier">request</span>.<span class="ruby-identifier">parameters</span>
-    <span class="ruby-identifier">redirect_to</span> <span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;login&#39;</span>, <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;index&#39;</span>
+    <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_login_index_path</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- admin_authorize-source -->
@@ -262,7 +268,9 @@
           <div class="method-source-code" id="admin_current_user-source">
             <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 8</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">admin_current_user</span>
-  <span class="ruby-ivar">@admin_current_user</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_user_id</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_user_id</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_user_id</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">$settings</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_servicename</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">$settings</span>[<span class="ruby-string">&#39;servicename&#39;</span>] <span class="ruby-keyword">then</span>
+    <span class="ruby-ivar">@admin_current_user</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:admin_user_id</span>])
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- admin_current_user-source -->
           
@@ -272,6 +280,42 @@
 
         
       </div><!-- admin_current_user-method -->
+
+    
+      <div id="method-i-get_maxuser" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_maxuser</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>最大登録ユーザー数</p>
+          
+
+          
+          <div class="method-source-code" id="get_maxuser-source">
+            <pre><span class="ruby-comment"># File app/controllers/admin_controller.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_maxuser</span>
+  <span class="ruby-comment"># 最大ダウンロード容量取得</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">$settings</span>[<span class="ruby-string">&#39;maxuser&#39;</span>] <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">res</span> = <span class="ruby-identifier">$settings</span>[<span class="ruby-string">&#39;maxuser&#39;</span>].<span class="ruby-identifier">to_i</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">res</span> = <span class="ruby-value">999</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_maxuser-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_maxuser-method -->
 
     
     </section><!-- public-instance-method-details -->

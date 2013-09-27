@@ -1,8 +1,9 @@
 <!-- navigation start -->
 <div id="navigation">
 	<ul class="cds-navi">
+		<li class="select"><%= link_to(root_path) do %><i class="icon-desktop"></i>&nbsp;<%= t('title_dashboard') %><% end %></li>
 		<% current_graph_menu.each do |m| %>
-			<li><%= link_to m.title, graph_path(m.id) %></li>
+			<li><%= link_to(graph_path(m.id)) do %><i class="icon-star"></i>&nbsp;<%= m.title %><% end %></li>
 		<% end %>
 	</ul>
 </div><!-- navigation end -->

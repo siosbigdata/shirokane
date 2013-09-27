@@ -91,15 +91,15 @@
   
     <li><a href="./Admin/GraphsHelper.html">Admin::GraphsHelper</a>
   
+    <li><a href="./Admin/Graphtemplate.html">Admin::Graphtemplate</a>
+  
     <li><a href="./Admin/Group.html">Admin::Group</a>
-  
-    <li><a href="./Admin/Groupdashboard.html">Admin::Groupdashboard</a>
-  
-    <li><a href="./Admin/GroupdashboardsController.html">Admin::GroupdashboardsController</a>
   
     <li><a href="./Admin/GroupdashboardsHelper.html">Admin::GroupdashboardsHelper</a>
   
     <li><a href="./Admin/Groupgraph.html">Admin::Groupgraph</a>
+  
+    <li><a href="./Admin/GroupgraphsController.html">Admin::GroupgraphsController</a>
   
     <li><a href="./Admin/GroupgraphsHelper.html">Admin::GroupgraphsHelper</a>
   
@@ -137,8 +137,6 @@
   
     <li><a href="./DashboardsHelper.html">DashboardsHelper</a>
   
-    <li><a href="./Graph.html">Graph</a>
-  
     <li><a href="./GraphsController.html">GraphsController</a>
   
     <li><a href="./GraphsHelper.html">GraphsHelper</a>
@@ -147,19 +145,25 @@
   
     <li><a href="./Group.html">Group</a>
   
-    <li><a href="./Groupdashboard.html">Groupdashboard</a>
-  
     <li><a href="./Groupgraph.html">Groupgraph</a>
   
     <li><a href="./LoginController.html">LoginController</a>
   
     <li><a href="./LoginHelper.html">LoginHelper</a>
   
+    <li><a href="./PasswordResetsController.html">PasswordResetsController</a>
+  
+    <li><a href="./PasswordResetsHelper.html">PasswordResetsHelper</a>
+  
+    <li><a href="./PublichtmlController.html">PublichtmlController</a>
+  
     <li><a href="./Setting.html">Setting</a>
   
     <li><a href="./Tdtable.html">Tdtable</a>
   
     <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserMailer.html">UserMailer</a>
   
     <li><a href="./UsersController.html">UsersController</a>
   
@@ -176,12 +180,59 @@
 
   <div id="description" class="description">
     
-<p>グラフ用テンプレートも出る</p>
+<pre>グラフ用テンプレートも出る
+== 作成
+rails generate model graphtemplate name:string  bgfrom:string bgto:string linecolor:string textcolor:strin
+== サンプルテンプレート
+rails c</pre>
 
-<h2 id="label-%E3%83%86%E3%83%BC%E3%83%96%E3%83%AB%E4%BD%9C%E6%88%90">テーブル作成</h2>
-
-<p>rails generate model graphtemplate name:string linecolor:string
-bgfrom:string bgto:string textcolor:strin</p>
+<p>Graphtemplate.create(:name=&gt;&#39;aliceblue-black&#39;,:linecolor =&gt;
+“#000000”,:bgfrom =&gt; “f0f8ff”,:bgto =&gt; “f0f8ff”,:textcolor =&gt;
+“#000000” ,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;aliceblue-dimgray&#39;,:linecolor =&gt;
+“#696969”,:bgfrom =&gt; “f0f8ff”,:bgto =&gt; “f0f8ff”,:textcolor =&gt;
+“#696969” ,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;black-red&#39;,:linecolor =&gt;
+“ff0000”,:bgfrom =&gt; “#687478”,:bgto =&gt; “#222222”,:textcolor =&gt;
+“ff0000”,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;black-white&#39;,:linecolor =&gt;
+“ffffff”,:bgfrom =&gt; “#687478”,:bgto =&gt; “#222222”,:textcolor =&gt;
+“ffffff”)
+Graphtemplate.create(:name=&gt;&#39;cornsilk-dimgray&#39;,:linecolor =&gt;
+“#696969”,:bgfrom =&gt; “fff8dc”,:bgto =&gt; “fff8dc”,:textcolor =&gt;
+“#696969”,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;green-green&#39;,:linecolor =&gt;
+“#003300”,:bgfrom =&gt; “#00ff99”,:bgto =&gt; “#339933”,:textcolor =&gt;
+“#003300”,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;lavender-dimgray&#39;,:linecolor =&gt;
+“#696969”,:bgfrom =&gt; “e6e6fa”,:bgto =&gt; “e6e6fa”,:textcolor =&gt;
+“#696969”,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;lavenderblush-dimgray&#39;,:linecolor
+=&gt; “#696969”,:bgfrom =&gt; “fff0f5”,:bgto =&gt; “fff0f5”,:textcolor
+=&gt; “#696969” ,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt;
+“bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;lightcyan-dimgray&#39;,:linecolor =&gt;
+“#696969”,:bgfrom =&gt; “e0ffff”,:bgto =&gt; “e0ffff”,:textcolor =&gt;
+“#696969”,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b” )
+Graphtemplate.create(:name=&gt;&#39;lightsteelblue-dimgray&#39;,:linecolor
+=&gt; “#696969”,:bgfrom =&gt; “e0ffff”,:bgto =&gt; “b0c4de”,:textcolor
+=&gt; “#696969” ,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt;
+“bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;mistyrose-dimgray&#39;,:linecolor =&gt;
+“#696969”,:bgfrom =&gt; “ffe4e1”,:bgto =&gt; “ffe4e1”,:textcolor =&gt;
+“#696969” ,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;snow-dimgray&#39;,:linecolor =&gt;
+“#696969”,:bgfrom =&gt; “fffafa”,:bgto =&gt; “fffafa”,:textcolor =&gt;
+“#696969”,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;white-black&#39;,:linecolor =&gt;
+“#000000”,:bgfrom =&gt; “ffffff”,:bgto =&gt; “ffffff”,:textcolor =&gt;
+“#000000”,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;white-dimgray&#39;,:linecolor =&gt;
+“#696969”,:bgfrom =&gt; “ffffff”,:bgto =&gt; “ffffff”,:textcolor =&gt;
+“#696969” ,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)
+Graphtemplate.create(:name=&gt;&#39;yellow-orange&#39;,:linecolor =&gt;
+“ff6600”,:bgfrom =&gt; “ffff66”,:bgto =&gt; “ffcc33”,:textcolor =&gt;
+“ff6600”,:linecolor_pre =&gt; “#90ee90”,:linecolor_last =&gt; “bdb76b”)</p>
 
   </div><!-- description -->
 
