@@ -2,9 +2,9 @@
 <%= render 'common/sidebar' %>
 <!-- main content start -->
 <script>
-var $j = jQuery.noConflict();
-$j(function(){
-  $j('#cal1').setCalendar({src:'<%= path_to_image "calender_btn.jpg" %>'});
+var j = jQuery.noConflict();
+j(function(){
+  $('#cal1').setCalendar({src:'<%= path_to_image "calender_btn.jpg" %>'});
   //$j('#cal1').setCalendar();
 });
 </script>

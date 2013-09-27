@@ -31,3 +31,4 @@ pickle-email-*.html
 /config/locales/admin/*.yml
 /config/locales/defaults/*.yml
 /config/locales/graphs/*.yml
+/config/environments/*.rb
