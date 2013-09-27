@@ -10,7 +10,14 @@ j(function(){
 </script>
 <div id="content">
 <div id="sub_content">
-	<h1><%= @graph.title %></h1>
+	<h1>
+		<% if @graph.graph_type == 0 then %>
+			<i class="icon-picture"></i>
+		<% else %>
+			<i class="icon-bar-chart"></i>
+		<% end %>
+		&nbsp;<%= @graph.title %>
+	</h1>
 </div>
 <div id="search">
 	<h2><%= @h_analysis_types[@graph.analysis_type] %><%= t('title_graph_term') %>:<%= @term_s %></h2>

@@ -10,7 +10,14 @@
 <% @dashboards.each do |ddd| %>
   <% if @graphs[ddd.graph_id] then%>
     <div id="dashboard">
-    	<h2><i class="icon-signal"></i>&nbsp;<%= @graphs[ddd.graph_id].title %>:<%= @terms[ddd.graph_id] %></h2>
+    	<h2>
+			<% if @graphs[ddd.graph_id].graph_type == 0 then %>
+				<i class="icon-picture"></i>
+			<% else %>
+				<i class="icon-bar-chart"></i>
+			<% end %>
+			&nbsp;<%= @graphs[ddd.graph_id].title %>:<%= @terms[ddd.graph_id] %>
+		</h2>
 		<a href="<%= graph_path(@graphs[ddd.graph_id].id) %>"><canvas id="<%= @graphs[ddd.graph_id].name %>"></canvas></a>
 	</div>
 	
