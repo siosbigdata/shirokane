@@ -1,6 +1,6 @@
 /**
  *-------------------------------------
- * redmine
+ * redmine風のシンプルカレンダープラグイン
  * copyright DQNEO 2011
  * http://dqn.sakusakutto.jp/
  *
@@ -19,7 +19,7 @@
 
             if (opts && 'src' in opts) {
                 var triggerId = fieldId + '_trigger_';
-                var triggerElement  = '<img alt="calender_btn" class="calendar-trigger" id="' + triggerId  +  '" src="' + opts.src + '" />';
+                var triggerElement  = '<img alt="カレンダー" class="calendar-trigger" id="' + triggerId  +  '" src="' + opts.src + '" />';
                 $('#' + fieldId).after(triggerElement);
                 Calendar.setup({inputField : fieldId, ifFormat : '%Y-%m-%d', button : triggerId });
             } else {
