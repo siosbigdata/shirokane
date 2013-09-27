@@ -30,7 +30,7 @@
 
 <br>
 <% if @admin_groups.length < @maxuser then %>
-<%= link_to t('title_new'), new_admin_group_path %>
+<%= link_to t('title_new'), new_admin_group_path,:class=>"button_link" %>
 <% end %>
 
 </div><!-- administrator main content end -->
