@@ -1,3 +1,47 @@
+/* header */
+#header_admin{
+	width: 100%;
+	background: #cd5c5d;
+	padding: 25px 0;
+	position: relative;
+}
+
+#header_admin #logo{
+	position:absolute;
+	left: 50px;
+	top:12px;
+	width: 50%;
+}
+
+#header_admin h1{
+	margin: 0px;
+	font-size: 18px;
+	color: #fff;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+#header_admin h1 a{
+	color: #fff;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+/* button */
+.button_admin {
+	font-size: 12px;
+	padding: 8px;
+	background: #cd5c5d;
+	border: 1px solid #cd5c5d;
+	color: #fff;
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+.button_admin:hover{
+	background: rgba(42, 125, 202, 1);
+}
+
 .button_link {
 	font-size: 12px;
 	padding: 4px;

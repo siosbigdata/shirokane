@@ -10,7 +10,12 @@
 <% index=0%>
 <% @graphs.each do |graph| %>
     <div id="dashboard">
-    	<h2><%= graph.title %></h2>
+    	<h2><% if graph.graph_type == 0 then %>
+				<i class="icon-picture"></i>
+			<% else %>
+				<i class="icon-bar-chart"></i>
+			<% end %>
+			&nbsp;<%= graph.title %></h2>
 		<a href="<%= admin_graph_path(graph.id) %>"><canvas id="<%= graph.name %>"></canvas></a>
 	</div>
 	
