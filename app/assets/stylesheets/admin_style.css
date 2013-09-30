@@ -27,6 +27,35 @@
 	word-wrap: break-word;
 }
 
+#header_admin_contents {
+	position: absolute;
+	right: 50px;
+	top: 12px;
+}
+
+#header_admin_contents li{
+	display: inline-block;
+	font-size: 14px;
+	border-left: 1px solid #c35253;
+	margin-top: -12px;
+	color: #fff;
+}
+
+#header_admin_contents li a{
+	color: #fff;
+	padding: 12px;
+	display: block;
+}
+
+#header_admin_contents li a:hover{
+	background: rgba(195, 82, 83, 1);
+}
+
+#header_admin_contents li.user{
+	color: #fff;
+	padding: 12px;
+}
+
 /* button */
 .button_admin {
 	font-size: 12px;

@@ -4,7 +4,7 @@
 		<h1><%= link_to(admin_root_path) do %><%= $settings['title'] %>&nbsp;<%= t('adminview') %><% end %></h1>
 	</div>
 	<% if admin_current_user != nil %>
-	<div id="header_contents">
+	<div id="header_admin_contents">
 	 <ul>
 	  <li class="user"><i class="icon-user"></i>&nbsp;<%= admin_current_user.title %></li>
 	  <li class="logout">
