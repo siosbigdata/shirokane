@@ -6,18 +6,27 @@ Install
 =========
 * Prepare the environment to the database which can be connected to the Rails.
 * Please perform the following settings in your environment
-    $ git clone https://github.com/siosbigdata/shirokane.git newsite
-    $ vi config/database.yml (Please prepare by yourself is not included in the project.)
-    $ vi config/environments/production.rb (Fix the host of the last line)
-    $ cd newsite
-    $ mkdir log
-    $ chmod 777 log
-    $ bundle install
-    $ rake db:setup
+
+    > $ git clone https://github.com/siosbigdata/shirokane.git newsite
+    
+    > $ vi config/database.yml (Please prepare by yourself is not included in the project.)
+    
+    > $ vi config/environments/production.rb (Fix the host of the last line)
+    
+    > $ cd newsite
+    
+    > $ mkdir log
+    
+    > $ chmod 777 log
+    
+    > $ bundle install
+    
+    > $ rake db:setup
 
 Create Graph
 =========
 * create table
+    
     If you want to make "test01" table in database (ex. postgresql)
     > create table td_test01 (td_time timestamp with time zone,td_count decimal);
     
@@ -27,7 +36,7 @@ Create Graph
 Use Treasure Data Push
 =========
 * One time.
-    td query --result 'postgresql://newuser:newusernewuser@175.41.253.164/newdb/td_access'  -w -d sios_web    "SELECT TD_TIME_FORMAT(time, 'yyyy-MM-dd HH:00:00 +09:00') as td_time , COUNT(1) as td_count FROM www_access GROUP BY TD_TIME_FORMAT(time, 'yyyy-MM-dd HH:00:00 +09:00') " 
+    td query --result 'postgresql://newuser:newusernewuser@175.41.253.164/newdb/td_access'  -w -d sios_web "SELECT TD_TIME_FORMAT(time, 'yyyy-MM-dd HH:00:00 +09:00') as td_time , COUNT(1) as td_count FROM www_access GROUP BY TD_TIME_FORMAT(time, 'yyyy-MM-dd HH:00:00 +09:00') " 
 
 * If you run this push on a regular basis,you need to make "td shced"
 
