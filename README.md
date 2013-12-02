@@ -41,10 +41,11 @@ Attention
 License
 =========
 * Copyright &copy; 2013 SIOS Technology,Inc.  
-* Distributed under the [MIT License][MIT].  
+* Distributed under the [MIT License][MIT]([Japanese][MIT_JP]).  
 
 * Part of chart  
 [Copyright (c) 2013 Toshiro Takahashi][CCCHART]  
   
-[MIT]: http://www.opensource.org/licenses/mit-license.php  
+[MIT]: http://www.opensource.org/licenses/mit-license.php
+[MIT_JP]: http://sourceforge.jp/projects/opensource/wiki/licenses%2FMIT_license
 [CCCHART]: http://ccchart.com/  
