@@ -24,7 +24,7 @@ class GraphsController < PublichtmlController
     end
     term = params[:term]
     add = params[:add]
-    redirect_to graph_path,:flash=>{:today=>today,:term=>term,:add=>add}
+    redirect_to :action => "show",:flash=>{:today=>today,:term=>term,:add=>add}
   end
   
   # csv出力処理
@@ -72,7 +72,10 @@ class GraphsController < PublichtmlController
   # 表示用処理
   def show
     # 表示可能グラフチェック
-    return redirect_to root_path if !check_graph_permission(params[:id]) 
+    return redirect_to root_path if !check_graph_permission(params[:id])
+      
+    # 引数の取得
+    flash = params[:flash]
       
     # 値設定
     @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
@@ -92,7 +95,7 @@ class GraphsController < PublichtmlController
     @template = Graphtemplate.find_by_name(@graph.template)
     
     # 表示期間指定
-    if flash[:term] then
+    if flash then
       @graph_term = flash[:term].to_i
     elsif params[:term] then
       @graph_term = params[:term].to_i
@@ -101,7 +104,7 @@ class GraphsController < PublichtmlController
     end
     
     # 基準日付
-    if flash[:today] then
+    if flash then
       @todaydata = Date.parse(flash[:today].to_s)
     elsif params[:today] then
       @todaydata = Date.parse(params[:today].to_s)
@@ -110,7 +113,7 @@ class GraphsController < PublichtmlController
     end
     
     # 追加期間の設定
-    if flash[:add] then
+    if flash then
       @add = flash[:add].to_i
     elsif params[:add] then
       @add = params[:add].to_i
