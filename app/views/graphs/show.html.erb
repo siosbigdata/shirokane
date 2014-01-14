@@ -101,7 +101,7 @@ var chartdata = {
 };
 ccchart.init('<%= @graph.name %>', chartdata);
 
-<% if @graph.merge_graph != "" %>
+<% if @graph.merge_graph != nil && @graph.merge_graph != "" %>
 <!-- マージグラフ表示用 -->
 	var m_chartdata = $.extend(true, {}, chartdata);
 	m_chartdata.config.type = "<%= @graph_types[@m_graph.graph_type] %>";

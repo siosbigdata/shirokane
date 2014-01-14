@@ -168,7 +168,7 @@ class GraphsController < PublichtmlController
     end
     
     #マージ用グラフのデータ取得
-    if @graph.merge_graph != "" then
+    if @graph.merge_graph != nil && @graph.merge_graph != "" then
       # 指定グラフ情報
       @m_graph = Graph.find_by_name(@graph.merge_graph)
       # データの取得
