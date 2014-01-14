@@ -52,6 +52,10 @@
   <%= @admin_graph.y_max_month %>
 </p>
 <p>
+  <strong><%= t('title_graph_unit') %></strong>
+  <%= @admin_graph.y_unit %>
+</p>
+<p>
   <strong><%= t('title_graph_useval') %></strong>
   <%= @h_yesno[@admin_graph.useval] %>
 </p>
@@ -79,6 +83,14 @@
 <p>
   <strong><%= t('title_graph_template') %></strong>
   <%= @h_template[@admin_graph.template] %>
+</p>
+<p>
+  <strong><%= t('title_graph_merge_graph') %></strong>
+  <%= @admin_graph.merge_graph %>
+</p>
+<p>
+  <strong><%= t('title_graph_merge_linecolor') %></strong>
+  <%= @admin_graph.merge_linecolor %>
 </p>
 <br /><br />
 <%= link_to t('title_back'), admin_graphs_path,:class=>"button_link" %>

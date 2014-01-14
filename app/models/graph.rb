@@ -10,6 +10,8 @@
 #                             analysis_type:integer useval:interger useshadow:integer usetip:integer
 #                             linewidth:integer template:string
 #                             usepredata:integer uselastyeardata:integer
+#                             y_unit:string 
+#                             merge_linecolor:string merge_graph:string
 # == 注意
 # nameはTreasureData用データモデルのテーブル名とそろえる
 class Graph < ActiveRecord::Base

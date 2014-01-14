@@ -166,6 +166,18 @@ class GraphsController < PublichtmlController
       last_graph_data = set_graph_data(tdtable_last,@graph_term,olast,tlast,res_graph_terms['stime'])
       @ydata_last = last_graph_data['ydata']
     end
+    
+    #マージ用グラフのデータ取得
+    if @graph.merge_graph != "" then
+      # 指定グラフ情報
+      @m_graph = Graph.find_by_name(@graph.merge_graph)
+      # データの取得
+      m_tdtable = td_graph_data(@m_graph,@graph_term,@oldday_s,@today_s)
+      # グラフ表示用データ作成
+      m_res_graph_data = set_graph_data(m_tdtable,@graph_term,oldday,today,res_graph_terms['stime'])
+      @m_xdata = m_res_graph_data['xdata']
+      @m_ydata = m_res_graph_data['ydata']
+    end
   end
 
 

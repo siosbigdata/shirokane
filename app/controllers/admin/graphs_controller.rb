@@ -56,6 +56,6 @@ class Admin::GraphsController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_graph_params
-      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :y,:y_min,:y_max_time,:y_max_day,:y_max_month,:template,:useval,:useshadow,:usetip,:linewidth,:usepredata,:uselastyeardata)
+      params.require(:admin_graph).permit(:name, :title, :analysis_type,:graph_type, :term, :y,:y_min,:y_max_time,:y_max_day,:y_max_month,:template,:useval,:useshadow,:usetip,:linewidth,:usepredata,:uselastyeardata,:y_unit,:merge_linecolor,:merge_graph)
     end
 end

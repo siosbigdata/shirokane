@@ -50,6 +50,9 @@ ja:
   title_graph_uselastyeardata: 前年データ表示
   title_graph_linewidth: 線の太さ
   title_graph_template: テンプレート
+  title_graph_merge_graph: マージグラフ
+  title_graph_merge_linecolor: マージグラフ線色
+  title_graph_unit: Y軸表示文字
   title_rank: 表示順
   title_setting_name: 設定名
   title_setting_title: 表示名
@@ -88,6 +91,7 @@ ja:
     y_max_time: Y軸最大値-時
     y_max_day: Y軸最大値-日
     y_max_month: Y軸最大値-月
+    y_unit: Y軸表示文字
     parameter: 値
     useval: 値表示
     useshadow: 影表示
@@ -97,3 +101,6 @@ ja:
     linewidth: 線の太さ
     template_id: テンプレート
     template: テンプレート
+    merge_graph: マージグラフ
+    merge_linecolor: マージグラフ線色
+    

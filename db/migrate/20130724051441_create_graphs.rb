@@ -12,12 +12,12 @@ class CreateGraphs < ActiveRecord::Migration
       t.integer :y_max_day
       t.integer :y_max_month
       t.integer :linewidth
-      t.string  :template
       t.integer :useval
       t.integer :useshadow
       t.integer :usetip
       t.integer :usepredata
       t.integer :uselastyeardata
+      t.string  :template
           
       t.timestamps
     end

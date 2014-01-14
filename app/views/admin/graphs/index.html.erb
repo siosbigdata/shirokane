@@ -26,6 +26,7 @@
       <th><%= t('title_graph_uselastyeardata') %></th>
       <th><%= t('title_graph_linewidth') %></th>-->
       <th><%= t('title_graph_template') %></th>
+      <th><%= t('title_graph_merge_graph') %></th>
     </tr>
   </thead>
 
@@ -50,6 +51,7 @@
         <td><%= @h_yesno[admin_graph.uselastyeardata] %></td>
         <td><%= admin_graph.linewidth %></td>-->
         <td><%= @h_template[admin_graph.template] %></td>
+        <td><%= admin_graph.merge_graph %></td>
         
       </tr>
     <% end %>

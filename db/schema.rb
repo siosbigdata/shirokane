@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830005152) do
+ActiveRecord::Schema.define(version: 20140114071623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,20 +22,23 @@ ActiveRecord::Schema.define(version: 20130830005152) do
     t.integer  "graph_type"
     t.integer  "term"
     t.string   "y"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "analysis_type"
     t.integer  "useval"
     t.integer  "linewidth"
-    t.string   "template"
     t.integer  "y_min"
-    t.integer  "useshadow"
     t.integer  "y_max_time"
     t.integer  "y_max_day"
     t.integer  "y_max_month"
+    t.string   "y_unit"
+    t.integer  "useshadow"
     t.integer  "usetip"
     t.integer  "usepredata"
     t.integer  "uselastyeardata"
+    t.string   "template"
+    t.string   "merge_graph"
+    t.string   "merge_linecolor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "graphtemplates", force: true do |t|

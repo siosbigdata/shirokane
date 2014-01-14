@@ -49,8 +49,8 @@
 <script>
 var chartdata = {
   "config": {
-  	"width": 720,
-  	"height": 480,
+  	"width": <%= $settings['graph_width'] %>,
+  	"height": <%= $settings['graph_height'] %>,
   	<% if @graph.usetip == 1 then %>
     "useMarker": "<%= $settings['useMarker'] %>",
     "markerWidth": <%= $settings['markerWidth'] %>,
@@ -59,6 +59,7 @@ var chartdata = {
     "useVal": "<%= @h_yesno[@graph.useval] %>",
     "useShadow": "<%= @h_yesno[@graph.useshadow] %>",
     "lineWidth": <%= @graph.linewidth %>,
+    "unit":"<%= @graph.y_unit %>",
     "colorSet": 
     	<% if @graph.usepredata == 1 && @graph.uselastyeardata == 1 && @graph_term < 3 %>
           ["<%= @template.linecolor_pre %>","<%= @template.linecolor_last %>","<%= @template.linecolor %>"],
@@ -99,6 +100,25 @@ var chartdata = {
   ]
 };
 ccchart.init('<%= @graph.name %>', chartdata);
+
+<% if @graph.merge_graph != "" %>
+<!-- マージグラフ表示用 -->
+	var m_chartdata = $.extend(true, {}, chartdata);
+	m_chartdata.config.type = "<%= @graph_types[@m_graph.graph_type] %>";
+	m_chartdata.config.minY = <%= @m_graph.y_min %>;
+	<% if @graph_term == 0 then %>
+		m_chartdata.config.maxY=<%= @m_graph.y_max_time.to_i %>;
+	<% elsif @graph_term == 1 || @graph_term == 2 then %>
+		m_chartdata.config.maxY=<%= @m_graph.y_max_day.to_i %>;
+	<% else %>
+		m_chartdata.config.maxY=<%= @m_graph.y_max_month.to_i %>;
+	<% end %>
+	m_chartdata.config.colorSet = ["<%= @graph.merge_linecolor %>"];
+	m_chartdata.config.unit = "<%= @m_graph.y_unit %>";
+	m_chartdata.data = [["<%= @graphx %>"<%= @m_xdata %>],["<%= @m_graph.y %>"<%= @m_ydata %>]];
+	ccchart.add(m_chartdata);
+<% end %>
+
 Calendar.setup({inputField : 'cal1', ifFormat : '%Y-%m-%d', button : 'cal1_trigger_' });
 </script>
 

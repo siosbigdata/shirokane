@@ -54,6 +54,10 @@
     <%= f.label :y_max_month %><br>
     <%= f.text_field :y_max_month %>
   </div>
+  <div class="field">
+    <%= f.label :y_unit %><br>
+    <%= f.text_field :y_unit %>
+  </div>
    <div class="field">
     <%= f.label :useval %><br>
     <%= f.select :useval,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
@@ -81,6 +85,14 @@
    <div class="field">
     <%= f.label :template %><br>
     <%= f.select :template,@h_template.keys.map{|t| [@h_template[t], t]} %>
+  </div>
+  <div class="field">
+    <%= f.label :merge_graph %><br>
+    <%= f.text_field :merge_graph %>
+  </div>
+  <div class="field">
+    <%= f.label :merge_linecolor %><br>
+    <%= f.text_field :merge_linecolor %>
   </div>
   <div class="actions">
     <%= f.submit t('helpers.submit.update'),:class=>"button_admin" %>
