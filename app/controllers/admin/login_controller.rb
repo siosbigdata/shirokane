@@ -9,7 +9,7 @@ class Admin::LoginController < AdminController
   def index
     # settingsの値取得
     get_settings
-    if admin_current_user then
+    if admin_current_user
       destroy
     end
   end

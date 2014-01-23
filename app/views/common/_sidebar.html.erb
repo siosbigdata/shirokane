@@ -5,7 +5,7 @@
 		<% current_graph_menu.each do |m| %>
 			<li<% if params[:controller] == "graphs" && m.id == @graph.id %> class="select"<% end %>>
 				<%= link_to(graph_path(m.id)) do %>
-					<% if m.graph_type == 0 then %>
+					<% if m.graph_type == 0 %>
 					<i class="icon-picture"></i>
 					<% else %>
 					<i class="icon-bar-chart"></i>

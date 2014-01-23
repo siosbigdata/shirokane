@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   
 # Settingsの値取得
   def get_settings
-    if $settings == nil then
+    if $settings == nil
       ss = Setting.all
       $settings = Hash.new()
       ss.map{|s|
@@ -33,16 +33,16 @@ class ApplicationController < ActionController::Base
     # 表示テーブル名の設定
     Tdtable.table_name = get_td_tablename(graph.name)
     #SQLの作成
-    if term == 1 || term == 2 then  # 週、月:日別データを表示する
-      if graph.analysis_type == 1 then #集計タイプ : graph.analysis_type 0:集計、1:平均
+    if term == 1 || term == 2 # 週、月:日別データを表示する
+      if graph.analysis_type == 1 #集計タイプ : graph.analysis_type 0:集計、1:平均
         #平均
         tdtable = Tdtable.where(:td_time => startday .. endday).group("date_trunc('day',td_time)").select("date_trunc('day',td_time) as td_time,avg(td_count) as td_count").order("date_trunc('day',td_time)")
       else
         #集計
         tdtable = Tdtable.where(:td_time => startday .. endday).group("date_trunc('day',td_time)").select("date_trunc('day',td_time) as td_time,sum(td_count) as td_count").order("date_trunc('day',td_time)")
       end
-    elsif term == 3 then  #年:１ヶ月ごとのデータを表示する。
-      if graph.analysis_type == 1 then #集計タイプ : graph.analysis_type 0:集計、1:平均
+    elsif term == 3   #年:１ヶ月ごとのデータを表示する。
+      if graph.analysis_type == 1  #集計タイプ : graph.analysis_type 0:集計、1:平均
         #平均
         tdtable = Tdtable.where(:td_time => startday .. endday).group("date_trunc('month',td_time)").select("date_trunc('month',td_time) as td_time,avg(td_count) as td_count").order("date_trunc('month',td_time)")
       else
@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
         tdtable = Tdtable.where(:td_time => startday .. endday).group("date_trunc('month',td_time)").select("date_trunc('month',td_time) as td_time,sum(td_count) as td_count").order("date_trunc('month',td_time)")
       end
     else   #0か指定なしは１日の集計 : 時間別データを表示する
-      if graph.analysis_type == 1 then #集計タイプ : graph.analysis_type 0:集計、1:平均
+      if graph.analysis_type == 1  #集計タイプ : graph.analysis_type 0:集計、1:平均
         #平均
         tdtable = Tdtable.where(:td_time => startday .. endday).group("date_trunc('hour',td_time)").select("date_trunc('hour',td_time) as td_time,avg(td_count) as td_count").order("date_trunc('hour',td_time)")
       else
@@ -122,7 +122,7 @@ class ApplicationController < ActionController::Base
     when 1 # 週
       snum = oldday.day.to_i
       enum = today.day.to_i
-      if enum < snum then # 週間表示の場合で月をまたいでしまったときの処理
+      if enum < snum  # 週間表示の場合で月をまたいでしまったときの処理
         weekflg = true # フラグをたてる
         snum2 = 1
         enum2 = enum
@@ -143,29 +143,29 @@ class ApplicationController < ActionController::Base
       xdata = xdata + "," + dd.to_s
       flg = true
       tdtable.each do |ddy|
-        if ddy.td_time.strftime(stime.to_s).to_i == dd then
+        if ddy.td_time.strftime(stime.to_s).to_i == dd 
           ydata = ydata + "," + ddy.td_count.to_i.to_s
           flg =false
           break
         end
       end
-      if flg then # 値が存在しない場合は0を設定
+      if flg  # 値が存在しない場合は0を設定
         ydata = ydata + ",0"
       end 
     end
     # 月をまたいでしまったときの特別処理
-    if weekflg then
+    if weekflg 
       for dd in snum2 .. enum2
         xdata = xdata + "," + dd.to_s
         flg = true
         tdtable.each do |ddy|
-          if ddy.td_time.strftime(stime).to_i == dd then
+          if ddy.td_time.strftime(stime).to_i == dd 
             ydata = ydata + "," + ddy.td_count.to_i.to_s
             flg =false
             break
           end
         end
-        if flg then # 値が存在しない場合は0を設定
+        if flg  # 値が存在しない場合は0を設定
           ydata = ydata + ",0"
         end 
       end

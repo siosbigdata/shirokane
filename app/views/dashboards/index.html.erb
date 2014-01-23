@@ -8,10 +8,10 @@
 	<div id="dashboards">
 <% index = 1 %>
 <% @dashboards.each do |ddd| %>
-  <% if @graphs[ddd.graph_id] then%>
+  <% if @graphs[ddd.graph_id] %>
     <div id="dashboard">
     	<h2>
-			<% if @graphs[ddd.graph_id].graph_type == 0 then %>
+			<% if @graphs[ddd.graph_id].graph_type == 0  %>
 				<i class="icon-picture"></i>
 			<% else %>
 				<i class="icon-bar-chart"></i>
@@ -43,9 +43,9 @@
 	    "useFirstToColName":false,
 	    "useFirstToRowName":false,
 	    "minY":<%= @graphs[ddd.graph_id].y_min %>,
-	    <% if @graphs[ddd.graph_id].term == 0 then %>
+	    <% if @graphs[ddd.graph_id].term == 0  %>
 	    	"maxY":<%= @graphs[ddd.graph_id].y_max_time.to_i %>
-	    <% elsif @graphs[ddd.graph_id].term == 1 || @graphs[ddd.graph_id].term == 2 then %>
+	    <% elsif @graphs[ddd.graph_id].term == 1 || @graphs[ddd.graph_id].term == 2  %>
 	    	"maxY":<%= @graphs[ddd.graph_id].y_max_day.to_i %>
 	    <% else %>
 	    	"maxY":<%= @graphs[ddd.graph_id].y_max_month.to_i %>
@@ -59,7 +59,7 @@
 	};
 	ccchart.init('<%= @graphs[ddd.graph_id].name %>', chartdata)
 	</script>
-	<% if index%$settings['dashboardnum'].to_i == 0 then %>
+	<% if index%$settings['dashboardnum'].to_i == 0  %>
 	<div class="space"></div>
 	<% end %>
 	<% index += 1 %>

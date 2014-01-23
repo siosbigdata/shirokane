@@ -23,7 +23,7 @@ class DashboardsController < PublichtmlController
     @terms = Array.new()
     
     @dashboards.each do |db|
-      if db.graph_id > 0 then
+      if db.graph_id > 0 
         # データの取得
         graph = Graph.find(db.graph_id)
         

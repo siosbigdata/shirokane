@@ -5,7 +5,7 @@
 <div id="content">
 <div id="sub_content">
 	<h1>
-		<% if @graph.graph_type == 0 then %>
+		<% if @graph.graph_type == 0  %>
 			<i class="icon-picture"></i>
 		<% else %>
 			<i class="icon-bar-chart"></i>
@@ -33,11 +33,11 @@
 	</div>
 </div>
 <div id="term_button" class="data_btn">
-	<a href="<%= graph_path(@graph.id)%>?term=0&today=<%= @todaydata %>" class="term_button <% if @graph_term == 0 then %>select<% end %>"><%= t('lbl_day') %></a>
-	<a href="<%= graph_path(@graph.id)%>?term=1&today=<%= @todaydata %>" class="term_button <% if @graph_term == 1 then %>select<% end %>"><%= t('lbl_week') %></a>
-	<a href="<%= graph_path(@graph.id)%>?term=2&today=<%= @todaydata %>" class="term_button <% if @graph_term == 2 then %>select<% end %>"><%= t('lbl_month') %></a>
-	<a href="<%= graph_path(@graph.id)%>?term=3&today=<%= @todaydata %>" class="term_button <% if @graph_term == 3 then %>select<% end %>"><%= t('lbl_year') %></a>
-	<% if @csvflg then %>
+	<a href="<%= graph_path(@graph.id)%>?term=0&today=<%= @todaydata %>" class="term_button <% if @graph_term == 0  %>select<% end %>"><%= t('lbl_day') %></a>
+	<a href="<%= graph_path(@graph.id)%>?term=1&today=<%= @todaydata %>" class="term_button <% if @graph_term == 1  %>select<% end %>"><%= t('lbl_week') %></a>
+	<a href="<%= graph_path(@graph.id)%>?term=2&today=<%= @todaydata %>" class="term_button <% if @graph_term == 2  %>select<% end %>"><%= t('lbl_month') %></a>
+	<a href="<%= graph_path(@graph.id)%>?term=3&today=<%= @todaydata %>" class="term_button <% if @graph_term == 3  %>select<% end %>"><%= t('lbl_year') %></a>
+	<% if @csvflg  %>
 	<a href="<%= graph_path(@graph.id)%>/csvexport?start=<%= @oldday_s %>&end=<%= @today_s %>" class="csv_btn"><i class="icon-download-alt"></i>&nbsp;csv</a>
 	<% else %>
 	<a href="javascript:void(0);" class="csv_btn disable"><i class="icon-download-alt"></i>&nbsp;csv</a>
@@ -51,7 +51,7 @@ var chartdata = {
   "config": {
   	"width": <%= $settings['graph_width'] %>,
   	"height": <%= $settings['graph_height'] %>,
-  	<% if @graph.usetip == 1 then %>
+  	<% if @graph.usetip == 1  %>
     "useMarker": "<%= $settings['useMarker'] %>",
     "markerWidth": <%= $settings['markerWidth'] %>,
     <% end %>
@@ -79,9 +79,9 @@ var chartdata = {
          },
     "textColor": "<%= @template.textcolor %>",
     "minY":<%= @graph.y_min %>,
-    <% if @graph_term == 0 then %>
+    <% if @graph_term == 0  %>
     	"maxY":<%= @graph.y_max_time.to_i %>
-    <% elsif @graph_term == 1 || @graph_term == 2 then %>
+    <% elsif @graph_term == 1 || @graph_term == 2  %>
     	"maxY":<%= @graph.y_max_day.to_i %>
     <% else %>
     	"maxY":<%= @graph.y_max_month.to_i %>
@@ -90,10 +90,10 @@ var chartdata = {
 
   "data": [
     ["<%= @graphx %>"<%= @xdata %>]
-    <% if @graph.usepredata == 1 then %>
+    <% if @graph.usepredata == 1  %>
     ,["<%= t('title_pre') %><%= @h_terms[@graph_term] %>"<%= @ydata_pre %>]
     <% end %>
-    <% if @graph_term < 3 && @graph.uselastyeardata == 1 then %>
+    <% if @graph_term < 3 && @graph.uselastyeardata == 1  %>
     ,["<%= t('title_last') %>"<%= @ydata_last %>]
     <% end %>
     ,["<%= @graph.y %>"<%= @ydata %>]
@@ -106,9 +106,9 @@ ccchart.init('<%= @graph.name %>', chartdata);
 	var m_chartdata = $.extend(true, {}, chartdata);
 	m_chartdata.config.type = "<%= @graph_types[@m_graph.graph_type] %>";
 	m_chartdata.config.minY = <%= @m_graph.y_min %>;
-	<% if @graph_term == 0 then %>
+	<% if @graph_term == 0  %>
 		m_chartdata.config.maxY=<%= @m_graph.y_max_time.to_i %>;
-	<% elsif @graph_term == 1 || @graph_term == 2 then %>
+	<% elsif @graph_term == 1 || @graph_term == 2  %>
 		m_chartdata.config.maxY=<%= @m_graph.y_max_day.to_i %>;
 	<% else %>
 		m_chartdata.config.maxY=<%= @m_graph.y_max_month.to_i %>;

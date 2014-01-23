@@ -84,6 +84,7 @@
   <strong><%= t('title_graph_template') %></strong>
   <%= @h_template[@admin_graph.template] %>
 </p>
+<% if @merge %>
 <p>
   <strong><%= t('title_graph_merge_graph') %></strong>
   <%= @admin_graph.merge_graph %>
@@ -92,6 +93,7 @@
   <strong><%= t('title_graph_merge_linecolor') %></strong>
   <%= @admin_graph.merge_linecolor %>
 </p>
+<% end %>
 <br /><br />
 <%= link_to t('title_back'), admin_graphs_path,:class=>"button_link" %>
 <%= link_to t('title_edit'), edit_admin_graph_path(@admin_graph),:class=>"button_link" %> 

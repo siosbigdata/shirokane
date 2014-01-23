@@ -22,14 +22,18 @@
         <td><%= link_to admin_group.name, edit_admin_group_path(admin_group) %></td>
         <td><%= admin_group.title %></td>
         <td><%= link_to t('title_graph'), list_admin_groupgraph_path(admin_group) %></td>
+        <% if @delete_hash[admin_group.id] %>
+        <td>&nbsp;</td>
+        <% else %>
         <td><%= link_to t('title_delete'), admin_group, method: :delete, data: { confirm: t('message_delete') } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<% if @admin_groups.length < @maxuser then %>
+<% if @admin_groups.length < @maxuser %>
 <%= link_to t('title_new'), new_admin_group_path,:class=>"button_link" %>
 <% end %>
 

@@ -7,7 +7,7 @@
 class AdminController < ApplicationController
   # 管理者用-現在のアカウント設定
   def admin_current_user
-    if session[:admin_user_id] && $settings && session[:admin_servicename] == $settings['servicename'] then
+    if session[:admin_user_id] && $settings && session[:admin_servicename] == $settings['servicename'] 
       @admin_current_user ||= User.find(session[:admin_user_id])
     end
   end
@@ -24,11 +24,32 @@ class AdminController < ApplicationController
   
   # 最大登録ユーザー数
   def get_maxuser
+    res = 999
     # 最大ダウンロード容量取得
-    if $settings['maxuser'] then
+    if $settings['maxuser']
       res = $settings['maxuser'].to_i
-    else
-      res = 999
+    end
+    return res
+  end
+  
+  # グラフのマージ機能を利用させるかどうか
+  def get_use_merge_graph
+    res = false
+    if $settings['use_merge_graph'] 
+      if $settings['use_merge_graph'].to_i == 1
+        res = true
+      end
+    end
+    return res
+  end
+  
+  # グラフの新規追加機能を利用させるかどうか
+  def get_use_create_graph
+    res = false
+    if $settings['use_create_graph'] 
+      if $settings['use_create_graph'].to_i == 1
+        res = true
+      end
     end
     return res
   end

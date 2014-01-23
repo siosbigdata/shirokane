@@ -14,7 +14,7 @@
 
 <p>
   <strong><%= t('title_setting_parameter') %></strong>
-  <% if @admin_setting.columntype == 4 then %>
+  <% if @admin_setting.columntype == 4 %>
   	<%= @select_graphsize.keys[@admin_setting.parameter.to_i] %>
   <% else %>
   	<%= @admin_setting.parameter %>

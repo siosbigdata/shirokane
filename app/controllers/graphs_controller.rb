@@ -63,7 +63,7 @@ class GraphsController < PublichtmlController
     today = Date.today # 今月の日付
     key = "csv_" + today.year.to_s + today.month.to_s
     tmp = Setting.find_by_name(key)
-    if tmp then
+    if tmp 
       csize = tmp.parameter.to_i + data.size
       tmp.update_attribute(:parameter,csize)
     end
@@ -95,27 +95,27 @@ class GraphsController < PublichtmlController
     @template = Graphtemplate.find_by_name(@graph.template)
     
     # 表示期間指定
-    if flash then
+    if flash 
       @graph_term = flash[:term].to_i
-    elsif params[:term] then
+    elsif params[:term] 
       @graph_term = params[:term].to_i
     else
       @graph_term = @graph.term
     end
     
     # 基準日付
-    if flash then
+    if flash 
       @todaydata = Date.parse(flash[:today].to_s)
-    elsif params[:today] then
+    elsif params[:today] 
       @todaydata = Date.parse(params[:today].to_s)
     else
       @todaydata = Date.today - 1.day
     end
     
     # 追加期間の設定
-    if flash then
+    if flash 
       @add = flash[:add].to_i
-    elsif params[:add] then
+    elsif params[:add] 
       @add = params[:add].to_i
     else
       @add = 0
@@ -140,7 +140,7 @@ class GraphsController < PublichtmlController
     @ydata = res_graph_data['ydata']
       
     # 期間の直前のデータ取得
-    if @graph.usepredata == 1 then
+    if @graph.usepredata == 1 
       pre_graph_terms = set_graph_term(@graph_term,@todaydata,@add - 1)
       # データ取得期間の設定
       ts_pre = pre_graph_terms['today'].to_s + " 23:59:59"
@@ -153,7 +153,7 @@ class GraphsController < PublichtmlController
       @ydata_pre = pre_graph_data['ydata']
     end
     # 期間の前年のデータ取得
-    if @graph_term < 3 && @graph.uselastyeardata == 1 then
+    if @graph_term < 3 && @graph.uselastyeardata == 1 
       # データ取得期間の設定
       tlast = today - 1.year
       olast = oldday - 1.year
@@ -168,7 +168,7 @@ class GraphsController < PublichtmlController
     end
     
     #マージ用グラフのデータ取得
-    if @graph.merge_graph != nil && @graph.merge_graph != "" then
+    if @graph.merge_graph != nil && @graph.merge_graph != "" 
       # 指定グラフ情報
       @m_graph = Graph.find_by_name(@graph.merge_graph)
       # データの取得
@@ -189,7 +189,7 @@ class GraphsController < PublichtmlController
   
   # 今月のCSVダウンロード容量チェック
   def check_csv_size
-    if get_csv_size.to_i > $settings['csvdownloadsize'].to_i then
+    if get_csv_size.to_i > $settings['csvdownloadsize'].to_i 
       res = false
     else
       res = true
@@ -202,7 +202,7 @@ class GraphsController < PublichtmlController
     today = Date.today # 今月の日付
     key = "csv_" + today.year.to_s + today.month.to_s
     tmp = Setting.find_by_name(key)
-    if tmp then
+    if tmp 
       # レコードが存在する
       res = tmp.parameter.to_i
     else

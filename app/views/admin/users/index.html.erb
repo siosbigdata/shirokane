@@ -33,7 +33,7 @@
 
 <br />
 
-<% if @admin_users.length < @maxuser then %>
+<% if @admin_users.length < @maxuser %>
 <%= link_to t('title_new'), new_admin_user_path,:class=>"button_link" %>
 <% end %>
 
