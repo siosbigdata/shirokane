@@ -63,6 +63,8 @@ ja:
   message_delete: 削除してもよいですか？
   message_select_blank: 選択してください。
   message_over_csv: 今月のCSVダウンロード最大容量を超過しました。
+  message_graph_name: 「td_」をのぞいた存在するテーブル名を指定してください。
+  message_graph_new: 新規作成前にあらかじめデータベースに「td_XXXX」という名前のテーブルを作成する必要があります。
 
   error: エラー
   error_user_message: ユーザ情報の保存に失敗しました。
@@ -70,6 +72,8 @@ ja:
   error_graph_message: グラフ情報の保存に失敗しました。
   error_mail_message: が正しくありません。
   error_setting_message: 設定値の保存に失敗しました。
+  error_graph_name_format_message: に半角英数字を入力してください
+  error_graph_table_exists_message: に指定されたテーブルはデータベース内に存在しません。
   
   forgotten_password: パスワードを忘れた方
   forgotten_password_message: パスワードを再設定する

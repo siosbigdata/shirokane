@@ -11,10 +11,17 @@
       </ul>
     </div>
   <% end %>
-
+<% if @newflg %>
+<h3><%= t('message_graph_new') %></h3>
+<% end %>
   <div class="field">
     <%= f.label :name %><br>
-    <%= @admin_graph.name %>
+    <% if @newflg %>
+    	<%= f.text_field :name %>
+    	<br /><%= t('message_graph_name') %>
+    <% else %>
+    	<%= @admin_graph.name %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
@@ -86,6 +93,7 @@
     <%= f.label :template %><br>
     <%= f.select :template,@h_template.keys.map{|t| [@h_template[t], t]} %>
   </div>
+  <% if @merge %>
   <div class="field">
     <%= f.label :merge_graph %><br>
     <%= f.text_field :merge_graph %>
@@ -94,6 +102,7 @@
     <%= f.label :merge_linecolor %><br>
     <%= f.text_field :merge_linecolor %>
   </div>
+  <% end %>
   <div class="actions">
     <%= f.submit t('helpers.submit.update'),:class=>"button_admin" %>
   </div>

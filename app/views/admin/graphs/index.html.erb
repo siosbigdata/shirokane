@@ -26,7 +26,9 @@
       <th><%= t('title_graph_uselastyeardata') %></th>
       <th><%= t('title_graph_linewidth') %></th>-->
       <th><%= t('title_graph_template') %></th>
+      <% if @merge %>
       <th><%= t('title_graph_merge_graph') %></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -51,13 +53,17 @@
         <td><%= @h_yesno[admin_graph.uselastyeardata] %></td>
         <td><%= admin_graph.linewidth %></td>-->
         <td><%= @h_template[admin_graph.template] %></td>
+        <% if @merge %>
         <td><%= admin_graph.merge_graph %></td>
-        
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br />
+<% if @usecreate %>
+<%= link_to t('title_new'), new_admin_graph_path,:class=>"button_link" %>
+<% end %>
 
 </div><!-- administrator main content end -->
 <%= render 'admin/common/footer' %>
