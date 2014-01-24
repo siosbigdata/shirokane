@@ -28,8 +28,8 @@ Setting.create(:name => "useMarker" ,:title => "マーカーの種類",:paramete
 Setting.create(:name => "markerWidth" ,:title => "マーカーの大きさ",:parameter => "1" ,:vieworder => 10,:columntype => 3)
 Setting.create(:name => "graph_width" ,:title => "グラフの横",:parameter => "720" ,:vieworder => 3,:columntype => 1) # 720
 Setting.create(:name => "graph_height" ,:title => "グラフの縦",:parameter => "480" ,:vieworder => 4,:columntype => 1) # 480
-Setting.create(:name => "use_merge_graph" ,:title => "グラフのマージ機能の利用",:parameter => "0" ,:vieworder => 4,:columntype => 1) # 初期値：利用不可
-Setting.create(:name => "use_create_graph" ,:title => "グラフの新規追加機能の利用",:parameter => "0" ,:vieworder => 4,:columntype => 1) # 初期値：利用不可
+Setting.create(:name => "use_merge_graph" ,:title => "グラフのマージ機能の利用",:parameter => "0" ,:vieworder => 0,:columntype => 1) # 初期値：利用不可
+Setting.create(:name => "use_create_graph" ,:title => "グラフの新規追加機能の利用",:parameter => "0" ,:vieworder => 0,:columntype => 1) # 初期値：利用不可
 
 Graphtemplate.create(:name=>'aliceblue-black',:linecolor => "#000000",:bgfrom => "#f0f8ff",:bgto => "#f0f8ff",:textcolor => "#000000",:linecolor_pre => "#90ee90",:linecolor_last => "#bdb76b" )
 Graphtemplate.create(:name=>'aliceblue-dimgray',:linecolor => "#696969",:bgfrom => "#f0f8ff",:bgto => "#f0f8ff",:textcolor => "#696969",:linecolor_pre => "#90ee90",:linecolor_last => "#bdb76b" )
