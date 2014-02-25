@@ -13,9 +13,7 @@
 .gitignore
 .project
 .DS_Store
-ChangeLog
 Gemfile.lock
-README.rdoc
 *.rbc
 *.sassc
 .sass-cache
