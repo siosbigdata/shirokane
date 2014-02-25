@@ -10,13 +10,19 @@
 
 # Ignore all logfiles and tempfiles.
 
+.gitignore
+.project
+.DS_Store
+ChangeLog
+Gemfile.lock
+README.rdoc
 *.rbc
 *.sassc
 .sass-cache
 capybara-*.html
 .rspec
 /.bundle
-/vendor/bundle
+/vendor/*
 /log/*
 /tmp/*
 /public/system/*
