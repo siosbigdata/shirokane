@@ -26,18 +26,18 @@
 	  	"width": 300,
 	  	"height": 200,
 	  	"onlyChart":"yes",
-	    "type": "<%= @graph_types[graph.graph_type] %>",
-	    "useVal": "<%= @h_yesno[graph.useval] %>",
-	    "useShadow": "<%= @h_yesno[graph.useshadow] %>",
+	    "type": "<%= Admin::Graph::TYPE[graph.graph_type] %>",
+	    "useVal": "<%= Admin::Graph::H_YESNO[graph.useval] %>",
+	    "useShadow": "<%= Admin::Graph::H_YESNO[graph.useshadow] %>",
 	    "lineWidth": <%= graph.linewidth %>,
 	    "colorSet": 
-	          ["<%= @template[index].linecolor %>"],
+	          ["<%= @dashboard_settings['template'][index].linecolor %>"],
 	    "bgGradient": {
 	            "direction":"vertical",
-	            "from":"<%= @template[index].bgfrom %>",
-	            "to":"<%= @template[index].bgto %>"
+	            "from":"<%= @dashboard_settings['template'][index].bgfrom %>",
+	            "to":"<%= @dashboard_settings['template'][index].bgto %>"
 	         },
-	    "textColor": "<%= @template[index].textcolor %>",
+	    "textColor": "<%= @dashboard_settings['template'][index].textcolor %>",
 	    "useFirstToColName":false,
 	    "useFirstToRowName":false,
 	    "minY":<%= graph.y_min %>,
@@ -51,8 +51,8 @@
 	  },
 	
 	  "data": [
-	    [<%= @xdatas[index] %>],
-	    [<%= @ydatas[index] %>]
+	    [<%= @dashboard_settings["xdatas"][index] %>],
+	    [<%= @dashboard_settings["ydatas"][index] %>]
 	  ]
 	};
 	ccchart.init('<%= graph.name %>', chartdata)

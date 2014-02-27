@@ -37,22 +37,22 @@
       <tr>
         <td><%= link_to admin_graph.name, edit_admin_graph_path(admin_graph) %></td>
         <td><%= admin_graph.title %></td>
-        <td><%= @h_analysis_types[admin_graph.analysis_type] %></td>
-        <td><%= @h_graph_types[admin_graph.graph_type] %></td>
-        <td><%= @h_terms[admin_graph.term] %></td>
+        <td><%= @graph_settings[:h_analysis_types][admin_graph.analysis_type] %></td>
+        <td><%= @graph_settings[:h_graph_types][admin_graph.graph_type] %></td>
+        <td><%= @graph_settings[:h_terms][admin_graph.term] %></td>
         <td><%= admin_graph.y %></td>
         <!--
         <td><%= admin_graph.y_min %></td>
         <td><%= admin_graph.y_max_time %></td>
         <td><%= admin_graph.y_max_day %></td>
         <td><%= admin_graph.y_max_month %></td>
-        <td><%= @h_yesno[admin_graph.useval] %></td>
-        <td><%= @h_yesno[admin_graph.useshadow] %></td>
-        <td><%= @h_yesno[admin_graph.usetip] %></td>
-        <td><%= @h_yesno[admin_graph.usepredata] %></td>
-        <td><%= @h_yesno[admin_graph.uselastyeardata] %></td>
+        <td><%= @graph_settings[:h_yesno][admin_graph.useval] %></td>
+        <td><%= @graph_settings[:h_yesno][admin_graph.useshadow] %></td>
+        <td><%= @graph_settings[:h_yesno][admin_graph.usetip] %></td>
+        <td><%= @graph_settings[:h_yesno][admin_graph.usepredata] %></td>
+        <td><%= @graph_settings[:h_yesno][admin_graph.uselastyeardata] %></td>
         <td><%= admin_graph.linewidth %></td>-->
-        <td><%= @h_template[admin_graph.template] %></td>
+        <td><%= admin_graph.template %></td>
         <% if @merge %>
         <td><%= admin_graph.merge_graph %></td>
         <% end %>

@@ -73,16 +73,14 @@ class Admin::GraphsController < AdminController
     
     #選択肢の設定
     def set_select_items
-      @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
-      @h_graph_types = {0 => t('graph_types_line'),1 => t('graph_types_bar')}
-      @h_terms ={0=> t('datetime.prompts.day'),1 => t('week'),2 => t('datetime.prompts.month'),3 => t('datetime.prompts.year')}
-      @h_yesno={0=> t('title_no'),1 => t('title_yes')} 
+      @graph_settings = Admin::Graph::SETTINGS
+
       @h_template = Hash.new()
       tmp = Admin::Graphtemplate.all.order(:name)
       tmp.each do |tt|
         @h_template[tt.name.to_s] = tt.name.to_s
       end
-      
+
       @merge = get_use_merge_graph  # グラフのマージ機能を利用させるかどうか
       @usecreate = get_use_create_graph # グラフの新規追加機能を利用させるかどうか
     end
