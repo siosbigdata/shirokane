@@ -52,7 +52,7 @@ License
 * Copyright &copy; 2013 SIOS Technology,Inc.  
 * Distributed under the [MIT License][MIT]([Japanese][MIT_JP]).  
 
-* Part of chart  
+* Part of chart  ccchart
 [Copyright (c) 2013 Toshiro Takahashi][CCCHART]  
   
 [MIT]: http://www.opensource.org/licenses/mit-license.php
