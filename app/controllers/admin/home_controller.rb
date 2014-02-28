@@ -12,6 +12,7 @@ class Admin::HomeController < AdminController
       # ダッシュボード情報取得
       @graphs = Admin::Graph.all.order(:id)
       begin
+        #p @graphs.set_setting['template']
         @dashboard_settings = @graphs.set_setting
       rescue => e
         #TODO メソッドが無かった場合の処理が未実装

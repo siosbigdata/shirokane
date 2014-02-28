@@ -20,16 +20,12 @@
 *.rbc
 *.sassc
 capybara-*.html
-config.ru
-Gemfile.lock
 pickle-email-*.html
 rerun.txt
 robots.txt
 /.bundle
-/bin/*
 /coverage/
 /doc/*
-/lib/*
 /log/*
 /public/assets/*
 /public/system/*

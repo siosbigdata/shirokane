@@ -29,17 +29,17 @@
   </div>
   <div class="field">
     <%= f.label :analysis_type %><br>
-    <%= f.select :analysis_type,@h_analysis_types.keys.map{|t| [@h_analysis_types[t], t]} %>
+    <%= f.select :analysis_type,@graph_settings[:h_analysis_types].keys.map{|t| [@graph_settings[:h_analysis_types][t], t]} %>
   </div>
   
   <div class="field">
     <%= f.label :graph_type %><br>
-    <%= f.select :graph_type,@h_graph_types.keys.map{|t| [@h_graph_types[t], t]} %>
+    <%= f.select :graph_type,@graph_settings[:h_graph_types].keys.map{|t| [@graph_settings[:h_graph_types][t], t]} %>
   </div>
   
   <div class="field">
     <%= f.label :term %><br>
-    <%= f.select :term,@h_terms.keys.map{|t| [@h_terms[t], t]} %>
+    <%= f.select :term,@graph_settings[:h_terms].keys.map{|t| [@graph_settings[:h_terms][t], t]} %>
   </div>
   <div class="field">
     <%= f.label :y %><br>
@@ -67,23 +67,23 @@
   </div>
    <div class="field">
     <%= f.label :useval %><br>
-    <%= f.select :useval,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+    <%= f.select :useval,@graph_settings[:h_yesno].keys.map{|t| [@graph_settings[:h_yesno][t], t]} %>
   </div>
   <div class="field">
     <%= f.label :useshadow %><br>
-    <%= f.select :useshadow,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+    <%= f.select :useshadow,@graph_settings[:h_yesno].keys.map{|t| [@graph_settings[:h_yesno][t], t]} %>
   </div>
   <div class="field">
     <%= f.label :usetip %><br>
-    <%= f.select :usetip,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+    <%= f.select :usetip,@graph_settings[:h_yesno].keys.map{|t| [@graph_settings[:h_yesno][t], t]} %>
   </div>
   <div class="field">
     <%= f.label :usepredata %><br>
-    <%= f.select :usepredata,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+    <%= f.select :usepredata,@graph_settings[:h_yesno].keys.map{|t| [@graph_settings[:h_yesno][t], t]} %>
   </div>
   <div class="field">
     <%= f.label :uselastyeardata %><br>
-    <%= f.select :uselastyeardata,@h_yesno.keys.map{|t| [@h_yesno[t], t]} %>
+    <%= f.select :uselastyeardata,@graph_settings[:h_yesno].keys.map{|t| [@graph_settings[:h_yesno][t], t]} %>
   </div>
    <div class="field">
     <%= f.label :linewidth %><br>

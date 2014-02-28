@@ -65,7 +65,6 @@ class Admin::Graph < Graph
         "ydatas"   => [],
         "terms"    => [],
       }
-
       all.each do |graph|
         # 指定テンプレート情報
         template = Graphtemplate.find_by_name(graph.template)
@@ -77,7 +76,6 @@ class Admin::Graph < Graph
         res_graph_terms = set_graph_term(graph.term, today, 0)
         today = res_graph_terms['today']
         oldday = res_graph_terms['oldday']
-
         # データ取得期間の設定
         today_s = today.to_s + " 23:59:59"
         oldday_s = oldday.to_s + " 00:00:00"
@@ -95,6 +93,8 @@ class Admin::Graph < Graph
           dashboard_settings["terms"] << res_graph_terms['term_s']
         end
       end
+
+      p dashboard_settings["template"][0]
       return dashboard_settings
     end
 

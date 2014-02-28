@@ -48,6 +48,10 @@ class Tdtable < ActiveRecord::Base
       return tdtable
     end
 
+    def set_postgresql_sql graph, term
+      self.set_pg_sql graph, term
+    end
+    
     def set_pg_sql graph, term
       graph_term = graph.term
       if graph_term == 1 || graph_term == 2 # 週、月:日別データを表示する
