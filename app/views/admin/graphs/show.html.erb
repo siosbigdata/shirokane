@@ -18,17 +18,17 @@
 
 <p>
   <strong><%= t('title_graph_analysis_type') %></strong>
-  <%= @h_analysis_types[@admin_graph.analysis_type] %>
+  <%= @graph_settings[:h_analysis_types][@admin_graph.analysis_type] %>
 </p>
 
 <p>
   <strong><%= t('title_graph_graph_type') %></strong>
-  <%= @h_graph_types[@admin_graph.graph_type] %>
+  <%= @graph_settings[:h_graph_types][@admin_graph.graph_type] %>
 </p>
 
 <p>
   <strong><%= t('title_graph_term') %></strong>
-  <%= @h_terms[@admin_graph.term] %>
+  <%= @graph_settings[:h_terms][@admin_graph.term] %>
 </p>
 
 <p>
@@ -57,23 +57,23 @@
 </p>
 <p>
   <strong><%= t('title_graph_useval') %></strong>
-  <%= @h_yesno[@admin_graph.useval] %>
+  <%= @graph_settings[:h_yesno][@admin_graph.useval] %>
 </p>
 <p>
   <strong><%= t('title_graph_useshadow') %></strong>
-  <%= @h_yesno[@admin_graph.useshadow] %>
+  <%= @graph_settings[:h_yesno][@admin_graph.useshadow] %>
 </p>
 <p>
   <strong><%= t('title_graph_usetip') %></strong>
-  <%= @h_yesno[@admin_graph.usetip] %>
+  <%= @graph_settings[:h_yesno][@admin_graph.usetip] %>
 </p>
 <p>
   <strong><%= t('title_graph_usepredata') %></strong>
-  <%= @h_yesno[@admin_graph.usepredata] %>
+  <%= @graph_settings[:h_yesno][@admin_graph.usepredata] %>
 </p>
 <p>
   <strong><%= t('title_graph_uselastyeardata') %></strong>
-  <%= @h_yesno[@admin_graph.uselastyeardata] %>
+  <%= @graph_settings[:h_yesno][@admin_graph.uselastyeardata] %>
 </p>
 <p>
   <strong><%= t('title_graph_linewidth') %></strong>
