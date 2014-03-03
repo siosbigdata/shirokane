@@ -93,7 +93,7 @@
     <%= f.label :template %><br>
     <%= f.select :template,@h_template.keys.map{|t| [@h_template[t], t]} %>
   </div>
-  <% if @merge %>
+  <% if Admin::Graph.get_use_merge_graph %>
   <div class="field">
     <%= f.label :merge_graph %><br>
     <%= f.text_field :merge_graph %>

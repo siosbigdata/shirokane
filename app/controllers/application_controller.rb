@@ -10,12 +10,7 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery with: :exception
   protect_from_forgery
 
-  # テーブル名取得
-  def get_td_tablename(name)
-    return "td_" + name
-  end
-  
-# Settingsの値取得
+  # Settingsの値取得
   def get_settings
     if $settings == nil
       ss = Setting.all
@@ -27,7 +22,7 @@ class ApplicationController < ActionController::Base
       }
     end
   end
-  
+=begin
   # グラフ用データの取得
   def td_graph_data(graph,term,startday,endday)
     # 表示テーブル名の設定
@@ -176,4 +171,5 @@ class ApplicationController < ActionController::Base
     res['ydata'] = ydata
     return res
   end
+=end
 end

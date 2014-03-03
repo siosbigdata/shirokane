@@ -81,8 +81,8 @@ class Admin::GraphsController < AdminController
         @h_template[tt.name.to_s] = tt.name.to_s
       end
 
-      @merge = get_use_merge_graph  # グラフのマージ機能を利用させるかどうか
-      @usecreate = get_use_create_graph # グラフの新規追加機能を利用させるかどうか
+#      @merge = Admin::Graph.get_use_merge_graph  # グラフのマージ機能を利用させるかどうか
+#      @usecreate = Admin::Graph.get_use_create_graph # グラフの新規追加機能を利用させるかどうか
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

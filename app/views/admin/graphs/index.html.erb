@@ -26,7 +26,7 @@
       <th><%= t('title_graph_uselastyeardata') %></th>
       <th><%= t('title_graph_linewidth') %></th>-->
       <th><%= t('title_graph_template') %></th>
-      <% if @merge %>
+      <% if Admin::Graph.get_use_merge_graph %>
       <th><%= t('title_graph_merge_graph') %></th>
       <% end %>
     </tr>
@@ -61,7 +61,7 @@
   </tbody>
 </table>
 <br />
-<% if @usecreate %>
+<% if Admin::Graph.get_use_create_graph %>
 <%= link_to t('title_new'), new_admin_graph_path,:class=>"button_link" %>
 <% end %>
 

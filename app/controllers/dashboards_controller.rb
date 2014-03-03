@@ -9,13 +9,23 @@ class DashboardsController < PublichtmlController
   
   # ダッシュボード用
   def index
-    #グラフ選択枝
-    @graph_types = ['line','bar','pie']
-    @h_yesno = {0=>'no' , 1 => 'yes'}
-    @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
-        
+#    #グラフ選択枝
+#    @graph_types = ['line','bar','pie']
+#    @h_yesno = {0=>'no' , 1 => 'yes'}
+#    @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
+    p "★★★DashboardsController:index★★★★★★★★★"
     # ダッシュボード情報取得
     @dashboards = Groupgraph.where(:group_id=>current_user.group.id,:dashboard => true).order(:view_rank)
+    
+    begin
+      p "★★★begin★★★★★★★★★"
+      #p @graphs.set_setting['template']
+      @dashboard_settings = Graph.set_setting current_user.group.id
+    rescue => e
+      #TODO メソッドが無かった場合の処理が未実装
+      flash[:alert] = e
+    end
+=begin
     @graphs = Array.new()
     @template = Array.new()
     @xdatas = Array.new()
@@ -42,7 +52,7 @@ class DashboardsController < PublichtmlController
         today_s = today.to_s + " 23:59:59"
         oldday_s = oldday.to_s + " 00:00:00"
         # データの取得
-        tdtable = td_graph_data(graph,graph.term,oldday_s,today_s)
+        tdtable = Graph.td_graph_data(graph,graph.term,oldday_s,today_s)
 
         # グラフ表示用データ作成
         res_graph_data = set_graph_data(tdtable,graph.term,oldday,today,res_graph_terms['stime'])
@@ -54,5 +64,6 @@ class DashboardsController < PublichtmlController
         @terms[db.graph_id.to_i] = res_graph_terms['term_s']
       end
     end
+=end
   end
 end

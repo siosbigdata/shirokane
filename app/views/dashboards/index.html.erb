@@ -6,19 +6,18 @@
 	<h1><%= Time.now().strftime('%Y/%m/%d %X') %></h1>
 	</div>
 	<div id="dashboards">
-<% index = 1 %>
+<% index = 0 %>
 <% @dashboards.each do |ddd| %>
-  <% if @graphs[ddd.graph_id] %>
     <div id="dashboard">
     	<h2>
-			<% if @graphs[ddd.graph_id].graph_type == 0  %>
+			<% if @dashboard_settings['graphs'][index].graph_type == 0  %>
 				<i class="icon-picture"></i>
 			<% else %>
 				<i class="icon-bar-chart"></i>
 			<% end %>
-			&nbsp;<%= @graphs[ddd.graph_id].title %>:<%= @terms[ddd.graph_id] %>
+			&nbsp;<%= @dashboard_settings['graphs'][index].title %>:<%= @dashboard_settings['terms'][index] %>
 		</h2>
-		<a href="<%= graph_path(@graphs[ddd.graph_id].id) %>"><canvas id="<%= @graphs[ddd.graph_id].name %>"></canvas></a>
+		<a href="<%= graph_path(@dashboard_settings['graphs'][index].id) %>"><canvas id="<%= @dashboard_settings['graphs'][index].name %>"></canvas></a>
 	</div>
 	
 	<script>
@@ -28,42 +27,41 @@
 	  	"width": 300,
 	  	"height": 200,
 	  	"onlyChart":"yes",
-	    "type": "<%= @graph_types[@graphs[ddd.graph_id].graph_type] %>",
-	    "useVal": "<%= @h_yesno[@graphs[ddd.graph_id].useval] %>",
-	    "useShadow": "<%= @h_yesno[@graphs[ddd.graph_id].useshadow] %>",
-	    "lineWidth": <%= @graphs[ddd.graph_id].linewidth %>,
+	    "type": "<%= Graph::TYPE[@dashboard_settings['graphs'][index].graph_type] %>",
+	    "useVal": "<%= Graph::YESNO[@dashboard_settings['graphs'][index].useval] %>",
+	    "useShadow": "<%= Graph::YESNO[@dashboard_settings['graphs'][index].useshadow] %>",
+	    "lineWidth": <%= @dashboard_settings['graphs'][index].linewidth %>,
 	    "colorSet": 
-	          ["<%= @template[ddd.graph_id].linecolor %>"],
+	          ["<%= @dashboard_settings['template'][index].linecolor %>"],
 	    "bgGradient": {
 	            "direction":"vertical",
-	            "from":"<%= @template[ddd.graph_id].bgfrom %>",
-	            "to":"<%= @template[ddd.graph_id].bgto %>"
+	            "from":"<%= @dashboard_settings['template'][index].bgfrom %>",
+	            "to":"<%= @dashboard_settings['template'][index].bgto %>"
 	         },
-	    "textColor": "<%= @template[ddd.graph_id].textcolor %>",
+	    "textColor": "<%= @dashboard_settings['template'][index].textcolor %>",
 	    "useFirstToColName":false,
 	    "useFirstToRowName":false,
-	    "minY":<%= @graphs[ddd.graph_id].y_min %>,
-	    <% if @graphs[ddd.graph_id].term == 0  %>
-	    	"maxY":<%= @graphs[ddd.graph_id].y_max_time.to_i %>
-	    <% elsif @graphs[ddd.graph_id].term == 1 || @graphs[ddd.graph_id].term == 2  %>
-	    	"maxY":<%= @graphs[ddd.graph_id].y_max_day.to_i %>
+	    "minY":<%= @dashboard_settings['graphs'][index].y_min %>,
+	    <% if @dashboard_settings['graphs'][index].term == 0  %>
+	    	"maxY":<%= @dashboard_settings['graphs'][index].y_max_time.to_i %>
+	    <% elsif @dashboard_settings['graphs'][index].term == 1 || @dashboard_settings['graphs'][index].term == 2  %>
+	    	"maxY":<%= @dashboard_settings['graphs'][index].y_max_day.to_i %>
 	    <% else %>
-	    	"maxY":<%= @graphs[ddd.graph_id].y_max_month.to_i %>
+	    	"maxY":<%= @dashboard_settings['graphs'][index].y_max_month.to_i %>
 	    <% end %>
 	  },
 	
 	  "data": [
-	    [<%= @xdatas[ddd.graph_id] %>],
-	    [<%= @ydatas[ddd.graph_id] %>]
+	    [<%= @dashboard_settings['xdatas'][index] %>],
+	    [<%= @dashboard_settings['ydatas'][index] %>]
 	  ]
 	};
-	ccchart.init('<%= @graphs[ddd.graph_id].name %>', chartdata)
+	ccchart.init('<%= @dashboard_settings['graphs'][index].name %>', chartdata)
 	</script>
-	<% if index%$settings['dashboardnum'].to_i == 0  %>
+	<% if (index+1)%$settings['dashboardnum'].to_i == 0  %>
 	<div class="space"></div>
 	<% end %>
 	<% index += 1 %>
-	<% end %>
 <% end %>
 </div>
 </div><!-- main content end -->

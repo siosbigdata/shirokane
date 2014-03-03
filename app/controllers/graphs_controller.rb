@@ -77,16 +77,16 @@ class GraphsController < PublichtmlController
     # 引数の取得
     flash = params[:flash]
       
-    # 値設定
-    @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
-    @h_terms ={0=> t('datetime.prompts.day'),1 => t('week'),2 => t('datetime.prompts.month'),3 => t('datetime.prompts.year')}
-    @h_yesno = {0=>'no' , 1 => 'yes'}
+#    # 値設定
+#    @h_analysis_types = {0 => t('analysis_types_sum'),1 => t('analysis_types_avg')}
+#    @h_terms ={0=> t('datetime.prompts.day'),1 => t('week'),2 => t('datetime.prompts.month'),3 => t('datetime.prompts.year')}
+#    @h_yesno = {0=>'no' , 1 => 'yes'}
     
     # CSVダウンロードボタン用フラグ
     @csvflg = check_csv_size
     
-    # グラフ選択枝
-    @graph_types = ['line','bar','pie']
+#    # グラフ選択枝
+#    @graph_types = ['line','bar','pie']
           
     # 指定グラフ情報
     @graph = Graph.find(params[:id])
@@ -122,7 +122,7 @@ class GraphsController < PublichtmlController
     end
     
     # 期間の設定
-    res_graph_terms = set_graph_term(@graph_term,@todaydata,@add)
+    res_graph_terms = Graph.set_graph_term(@graph_term,@todaydata,@add)
     today = res_graph_terms['today']
     oldday = res_graph_terms['oldday']
     @term_s = res_graph_terms['term_s']
@@ -132,24 +132,27 @@ class GraphsController < PublichtmlController
     @today_s = today.to_s + " 23:59:59"
     @oldday_s = oldday.to_s + " 00:00:00"
     # データの取得
-    tdtable = td_graph_data(@graph,@graph_term,@oldday_s,@today_s)
+    #tdtable = td_graph_data(@graph,@graph_term,@oldday_s,@today_s)
+    tdtable = Tdtable.graph_data(@graph, term: @graph_term, end: @oldday_s, start: @today_s)
     
     # グラフ表示用データ作成
-    res_graph_data = set_graph_data(tdtable,@graph_term,oldday,today,res_graph_terms['stime'])
+    res_graph_data = Graph.set_graph_data(tdtable, @graph.term, oldday, today, res_graph_terms['stime'])
+    #res_graph_data = set_graph_data(tdtable,@graph_term,oldday,today,res_graph_terms['stime'])
     @xdata = res_graph_data['xdata']
     @ydata = res_graph_data['ydata']
       
     # 期間の直前のデータ取得
     if @graph.usepredata == 1 
-      pre_graph_terms = set_graph_term(@graph_term,@todaydata,@add - 1)
+      pre_graph_terms = Graph.set_graph_term(@graph_term,@todaydata,@add - 1)
       # データ取得期間の設定
       ts_pre = pre_graph_terms['today'].to_s + " 23:59:59"
       os_pre = pre_graph_terms['oldday'].to_s + " 00:00:00"
       # データの取得
-      tdtable_pre = td_graph_data(@graph,@graph_term,os_pre,ts_pre)
+      #tdtable_pre = td_graph_data(@graph,@graph_term,os_pre,ts_pre)
+      tdtable_pre = Tdtable.graph_data(@graph, term: @graph_term, end: os_pre, start: ts_pre)
       
       # グラフ表示用データ作成
-      pre_graph_data = set_graph_data(tdtable_pre,@graph_term,pre_graph_terms['oldday'],pre_graph_terms['today'],res_graph_terms['stime'])
+      pre_graph_data = Graph.set_graph_data(tdtable_pre,@graph_term,pre_graph_terms['oldday'],pre_graph_terms['today'],res_graph_terms['stime'])
       @ydata_pre = pre_graph_data['ydata']
     end
     # 期間の前年のデータ取得
@@ -160,10 +163,11 @@ class GraphsController < PublichtmlController
       ts_last = tlast.to_s + " 23:59:59"
       os_last = olast.to_s + " 00:00:00"
       # データの取得
-      tdtable_last = td_graph_data(@graph,@graph_term,os_last,ts_last)
+      #tdtable_last = td_graph_data(@graph,@graph_term,os_last,ts_last)
+      tdtable_last = Tdtable.graph_data(@graph, term: @graph_term, end: os_last, start: ts_last)
       
       # グラフ表示用データ作成
-      last_graph_data = set_graph_data(tdtable_last,@graph_term,olast,tlast,res_graph_terms['stime'])
+      last_graph_data = Graph.set_graph_data(tdtable_last,@graph_term,olast,tlast,res_graph_terms['stime'])
       @ydata_last = last_graph_data['ydata']
     end
     
@@ -172,9 +176,10 @@ class GraphsController < PublichtmlController
       # 指定グラフ情報
       @m_graph = Graph.find_by_name(@graph.merge_graph)
       # データの取得
-      m_tdtable = td_graph_data(@m_graph,@graph_term,@oldday_s,@today_s)
+      #m_tdtable = td_graph_data(@m_graph,@graph_term,@oldday_s,@today_s)
+      m_tdtable = Tdtable.graph_data(@m_graph,term: @graph_term, end: @oldday_s, start: @today_s)
       # グラフ表示用データ作成
-      m_res_graph_data = set_graph_data(m_tdtable,@graph_term,oldday,today,res_graph_terms['stime'])
+      m_res_graph_data = Graph.set_graph_data(m_tdtable,@graph_term,oldday,today,res_graph_terms['stime'])
       @m_xdata = m_res_graph_data['xdata']
       @m_ydata = m_res_graph_data['ydata']
     end

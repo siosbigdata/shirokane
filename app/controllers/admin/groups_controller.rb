@@ -11,7 +11,7 @@ class Admin::GroupsController < AdminController
   # グループ一覧画面
   def index
     @admin_groups = Admin::Group.all.order(:id)
-    @maxuser = get_maxuser
+    @maxgroup = Admin::Group.get_maxgroup
     
     #削除ボタンの表示制御--ユーザーが存在するグループの削除不可
     @delete_hash = Hash::new
@@ -28,7 +28,7 @@ class Admin::GroupsController < AdminController
   # グループ新規追加画面
   def new
     admin_groups = Admin::Group.all
-    if admin_groups.length < get_maxuser
+    if admin_groups.length < Admin::Group.get_maxgroup
       @admin_group = Admin::Group.new
     else
       redirect_to admin_groups_url

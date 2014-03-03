@@ -11,7 +11,7 @@ class Admin::UsersController < AdminController
   # ユーザー一覧
   def index
     @admin_users = Admin::User.all.order(:id)
-    @maxuser = get_maxuser
+    @maxuser = Admin::User.get_maxuser
   end
 
   # ユーザー詳細
@@ -21,7 +21,7 @@ class Admin::UsersController < AdminController
   # ユーザー新規追加
   def new
     admin_users = Admin::User.all
-    if admin_users.length < get_maxuser
+    if admin_users.length < Admin::User.get_maxuser
       @admin_user = Admin::User.new
     else
       redirect_to admin_users_url

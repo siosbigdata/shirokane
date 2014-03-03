@@ -12,7 +12,7 @@ class PublichtmlController < ApplicationController
     end
   end
   helper_method :current_user
-    
+
   # ログインチェック
   def authorize
     unless current_user
@@ -21,7 +21,7 @@ class PublichtmlController < ApplicationController
       redirect_to login_index_path
     end
   end
-    
+
   #graphメニュー作成
   def current_graph_menu
     if current_user 
@@ -30,5 +30,4 @@ class PublichtmlController < ApplicationController
     end
   end
   helper_method :current_graph_menu
-
 end

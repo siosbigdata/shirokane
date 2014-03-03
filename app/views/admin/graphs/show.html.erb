@@ -84,7 +84,7 @@
   <strong><%= t('title_graph_template') %></strong>
   <%= @h_template[@admin_graph.template] %>
 </p>
-<% if @merge %>
+<% if Admin::Graph.get_use_merge_graph %>
 <p>
   <strong><%= t('title_graph_merge_graph') %></strong>
   <%= @admin_graph.merge_graph %>

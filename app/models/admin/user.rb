@@ -7,4 +7,16 @@
 class Admin::User < User
   #入力チェック
   validates :name,  :presence => true,:uniqueness=>true
+  
+  class << self
+      # 最大登録ユーザー数
+      def get_maxuser
+        res = 999
+        # 最大ダウンロード容量取得
+        if $settings['maxuser']
+          res = $settings['maxuser'].to_i
+        end
+        return res
+      end
+    end
 end

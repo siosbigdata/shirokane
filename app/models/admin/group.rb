@@ -8,4 +8,10 @@ class Admin::Group < Group
   #入力チェック
   validates :name,  :presence => true,:uniqueness=>true
   validates :title,  :presence => true,:uniqueness=>true
+  
+  class << self
+    def get_maxgroup
+      return Admin::User.get_maxuser
+    end
+  end
 end

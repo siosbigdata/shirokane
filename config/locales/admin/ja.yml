@@ -86,6 +86,7 @@ ja:
     mail: メールアドレス
     admin: 管理者権限
     group: グループ
+    group_id: グループ
     graph: グラフ
     analysis_type: 分析タイプ
     graph_type: グラフタイプ
