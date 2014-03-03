@@ -136,7 +136,7 @@ class GraphsController < PublichtmlController
     tdtable = Tdtable.graph_data(@graph, term: @graph_term, end: @oldday_s, start: @today_s)
     
     # グラフ表示用データ作成
-    res_graph_data = Graph.set_graph_data(tdtable, @graph.term, oldday, today, res_graph_terms['stime'])
+    res_graph_data = Graph.set_graph_data(tdtable, @graph_term, oldday, today, res_graph_terms['stime'])
     #res_graph_data = set_graph_data(tdtable,@graph_term,oldday,today,res_graph_terms['stime'])
     @xdata = res_graph_data['xdata']
     @ydata = res_graph_data['ydata']
